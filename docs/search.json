@@ -1,23 +1,137 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About Me",
+    "objectID": "locoweed-report.html",
+    "href": "locoweed-report.html",
+    "title": "All Locoweed Analysis Report",
     "section": "",
-    "text": "Thanks for checking out my web site!"
+    "text": "Astragalus and Oxytropix species, part of the Legume Family, are found in terestrial ecoysstems globally, including the western regions of North America. Many of these species are both nontoxic and important forages. However, several species are known to be toxic to both livestock and wildlife. Oxytropis sericea Nutt can harbor a commensal endophyte, Alternaira oxytropos, a fungus that is assocaited with locoweed plants, specifically those of the genus Oxytropis. Plants containing the endophyte have been found to produce swansonine, a toxic alkaloid that can be harmful to livestock when ingested in large quantities (Song et al. 2019). In this study, we investigated the potential differences in volatile organic compound (VOC) emissions between specimens that contained the commensal endophyte Alternaria oxytropis, and those that did not.\nThese data consist of volatile collection events over the course of two years, 2022 and 2023. In both years, data was collected from wild plants in the field, and plants grown in the greenhouse.",
+    "crumbs": [
+      "MSU Masters",
+      "Locoweed"
+    ]
   },
   {
-    "objectID": "projects.html#project-2",
-    "href": "projects.html#project-2",
-    "title": "Projects",
-    "section": "Project 2",
-    "text": "Project 2"
+    "objectID": "locoweed-report.html#data-collection",
+    "href": "locoweed-report.html#data-collection",
+    "title": "All Locoweed Analysis Report",
+    "section": "Data Collection",
+    "text": "Data Collection\n\nField Volatile Collection\nVolatile collected was undergone on plants grown at a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. Plants were inventoried and logged using GPS, and tissue samples from each specimen were analyzed to establish whether the plant contained the endophyte. Volatiles were collected from all the plants in each year over the course of one to two successive weeks.\nVolatile were collected from 20 plants per day by placing Reynolds Turkey Oven Bags (Reynolds Group Holdings, Auckland, New Zealand) over the top of the selected number of leaflets.\n\n\nGreenhouse Volatile Collection\nSamples of each plant were first sent for analysis to mystery lab to see if endophyte was present or not. Volatile compounds were collected from healthy (size/stage) locoweed plants. Plants were paired based on size similarity, with one being E+ and the other E-. Three sets of pairs (twelve plants) were used for each volatile collection event. Collection was undergone for a period of six hours from 09:00 to 15:00.\nVolatiles were collected from twleve plants per day using glass volatile collection chambers (VCCs) that were 30 cm long and 4 cm in diameter. The top end of each VCC funneled into a threaded port that was 10 cm in daimter. Threaded onto the top of each VCC was an eight-port “octopus” manifold adapter. Two glass filter traps (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. An air source was connected to the base of each collection chamber with supply from charcoal air filters. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A small piece of cotton encompassed by a Teflon® guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Laboratory tape was used to seal the edges of the guillotine and prevent contamination by ambient and soil derived volatiles.\nVolatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al. (2009). After the six hour collection period, glass volatile collection traps were eluted using 200 µL of dichloromethane into 2 mL screw top vials (Agilent Technologies, Inc., Santa Clara, CA), followed by a slow release of nitrogen to further clear the volatile trap. 10 µL of nonyl acetate solution was added to the eluted solution as internal standard to quantify compounds. Samples were then subject to gas chromatography (GC) on a J&W HP – 5ms; 30m x 0.25 µm film thickness column (Agilent Technologies, Inc., Santa Clara, CA). The GC unit (Agilent 6890; Agilent Technologies, Santa Clara, CA) was paired with a mass spectrometer (MS, Agilent 5973 instrument). Samples were injected into the column in pulse splitless mode, with the initial pressure of 82.7 kPa/m.",
+    "crumbs": [
+      "MSU Masters",
+      "Locoweed"
+    ]
   },
   {
-    "objectID": "projects.html#project-3",
-    "href": "projects.html#project-3",
+    "objectID": "locoweed-report.html#data-analysis",
+    "href": "locoweed-report.html#data-analysis",
+    "title": "All Locoweed Analysis Report",
+    "section": "Data Analysis",
+    "text": "Data Analysis\nThe data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data (Brückner and Heethoff 2017). VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) (Oksanen et al. 2011). This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). Data were visualized using a combination of ggplot2 and knitr (Wickham 2016; Xie 2021). I selected a subset of comounds to ues for each analysis. These compounds were seelcted based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output. I will highlight the cmopounds that I used for each analysis as I get to them.",
+    "crumbs": [
+      "MSU Masters",
+      "Locoweed"
+    ]
+  },
+  {
+    "objectID": "locoweed-report.html#field-volatile-collection-1",
+    "href": "locoweed-report.html#field-volatile-collection-1",
+    "title": "All Locoweed Analysis Report",
+    "section": "Field Volatile Collection",
+    "text": "Field Volatile Collection\n\nBoxplot Comparison\n\n\n\n\n\n\n\n\n\n\n\nPERMANOVA\nThe locoweed samples, both SWA + and SWA -, exhibited numerous chromatogram peaks during collection. However, only volatile compoudns showing significant peaks inthe mass spectroscopy output or presenting differences in the overlays of the two SWA types were chosen for analysis.\nThere was no interaction between plant species and data of volatile collection.\nOur results show weak evidence of a difference between SWA+ and SWA- locoweed plants (p-val = 0.11).",
+    "crumbs": [
+      "MSU Masters",
+      "Locoweed"
+    ]
+  },
+  {
+    "objectID": "locoweed-report.html#greenhouse-volatile-collection-1",
+    "href": "locoweed-report.html#greenhouse-volatile-collection-1",
+    "title": "All Locoweed Analysis Report",
+    "section": "Greenhouse Volatile Collection",
+    "text": "Greenhouse Volatile Collection\n\n\n\n\n\nBoxplot Comparison\n\n\n\n\n\n\n\n\n\n\n\nPERMANOVA\n\n\nPermutation test for adonis under reduced model\nTerms added sequentially (first to last)\nBlocks:  strata \nPermutation: free\nNumber of permutations: 999\n\nadonis2(formula = gh.permanova.data ~ gh.data.per.meta$swa, permutations = 999, by = \"terms\", strata = interaction(gh.data.per.meta$pair, gh.data.per.meta$year))\n                      Df SumOfSqs      R2      F Pr(&gt;F)  \ngh.data.per.meta$swa   1   0.0682 0.01078 1.2096  0.042 *\nResidual             111   6.2562 0.98922                \nTotal                112   6.3244 1.00000                \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nOur results show moderate evidence of a difference between SWA+ and SWA- locoweed plants (p-val = 0.042).",
+    "crumbs": [
+      "MSU Masters",
+      "Locoweed"
+    ]
+  },
+  {
+    "objectID": "bballref.html",
+    "href": "bballref.html",
+    "title": "NBA Roster Analysis Tool",
+    "section": "",
+    "text": "From 2017 to 2019, I built my own NBA roster analysis tool for analyzing roster construction, free agency, and per-game metrics. The information is out of date, but all of the functionality still works.\n  \nTake a look!",
+    "crumbs": [
+      "Other",
+      "Basketball Analysis Tool"
+    ]
+  },
+  {
+    "objectID": "running.html",
+    "href": "running.html",
+    "title": "Running Pictures",
+    "section": "",
+    "text": "Deadhorse Ultra, 2023\n\n\n\n  \n\nDeadhorse Ultra, 2023"
+  },
+  {
+    "objectID": "field_report.html",
+    "href": "field_report.html",
+    "title": "MT Field Site Analysis Report",
+    "section": "",
+    "text": "Assessment of C. cinctus infestation and mortality within B. inermis were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530() Amber Lumite Screen (BioQuip® Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.\n\n\n\nWheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of C. cinctus infestation and cutting in the prior year. Cut stubble, which contained C. cinctus larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once B. inermis stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).\n\n\nStems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.\n\n\n\n\n\n\n\n\n\n\n\n\n\n2023 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n337\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n421\n\n\n0.71\n\n\n0.13\n\n\n\n\nlow\n\n\n415\n\n\n0.51\n\n\n0.03\n\n\n\n\n\n\n\n\n2022 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n444\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n418\n\n\n0.65\n\n\n0.03\n\n\n\n\nlow\n\n\n387\n\n\n0.45\n\n\n0.02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s take a closer look at the number of nodes borrowed through by the larvae. Using this information we can make an arguement about the size and length of time each larvae was alive prior to dying. This can be informative in understanding how many larvae would have been left later in the season for potential parasitism.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nANOVA Table\n\n\n\nDf\nSum Sq\nMean Sq\nF-Value\nPr(&gt;F)\n\n\n\n\ntreatment\n1\n0.044\n0.044\n6.692\n0.0144\n\n\nnodes.inf\n5\n0.286\n0.057\n8.612\n0.0000\n\n\nv.r\n2\n0.057\n0.029\n4.303\n0.0221\n\n\nResiduals\n32\n0.213\n0.007\nNA\nNA\n\n\n\n\n\n\n\n\nBased on the results of our ANOVA, we have weak evidence (Pval = 0.0221) to suggest there is a difference in the number of nodes infested when considering treatment group and vegetative and reproductive stems.\n\n\n\n\nCumulative sum of nodes infested\n\n\n\n\n\n\n\n\n\n\n\n\n\n# of Nodes Infested\n\n\n\nTreatment\n6\n5\n4\n3\n2\n1\n\n\n\n\nhigh\n0.01\n0.13\n0.36\n0.69\n0.89\n1\n\n\nlow\n0.03\n0.13\n0.47\n0.76\n0.94\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI like this plot because it shows the cumulative percentage sum of nodes infested at each node. For example, at the 3rd node in 2023, we see that close to 70% of the stems in the ‘high’ treatment group exhibited between 3 and 6 nodes infested. As a general thought exercise, the more nodes a larvae burrowed through, the larger the larvae. This means that if we classify a “large” larvae as one who burrowed through at least 4 nodes, our infestation data shows that 36% of the larvae in the ‘high’ treatment groups died as “large” larvae.\n\n\n\n\nStems with Living Larvae (2023)\n\n\nTreatment\nCount\nTotal Stems\n%\n\n\n\n\nhigh\n26\n421\n0.062\n\n\nlow\n35\n415\n0.084\n\n\n\n\n\n\n\n\nInteresting to see that 6.2% of stems in the ‘high’ treatment groups and 8.4% of stems in the ‘low’ treatment group had living WSS larvae. The stems for this experiement were harvested in late October, much later in the season when we would expect the second generation parasitoids to be searching for a host.",
+    "crumbs": [
+      "MSU Masters",
+      "Smooth Brome/Winter Wheat"
+    ]
+  },
+  {
+    "objectID": "field_report.html#methods",
+    "href": "field_report.html#methods",
+    "title": "MT Field Site Analysis Report",
+    "section": "",
+    "text": "Assessment of C. cinctus infestation and mortality within B. inermis were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530() Amber Lumite Screen (BioQuip® Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.\n\n\n\nWheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of C. cinctus infestation and cutting in the prior year. Cut stubble, which contained C. cinctus larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once B. inermis stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).\n\n\nStems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.",
+    "crumbs": [
+      "MSU Masters",
+      "Smooth Brome/Winter Wheat"
+    ]
+  },
+  {
+    "objectID": "field_report.html#analysis",
+    "href": "field_report.html#analysis",
+    "title": "MT Field Site Analysis Report",
+    "section": "",
+    "text": "2023 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n337\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n421\n\n\n0.71\n\n\n0.13\n\n\n\n\nlow\n\n\n415\n\n\n0.51\n\n\n0.03\n\n\n\n\n\n\n\n\n2022 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n444\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n418\n\n\n0.65\n\n\n0.03\n\n\n\n\nlow\n\n\n387\n\n\n0.45\n\n\n0.02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s take a closer look at the number of nodes borrowed through by the larvae. Using this information we can make an arguement about the size and length of time each larvae was alive prior to dying. This can be informative in understanding how many larvae would have been left later in the season for potential parasitism.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nANOVA Table\n\n\n\nDf\nSum Sq\nMean Sq\nF-Value\nPr(&gt;F)\n\n\n\n\ntreatment\n1\n0.044\n0.044\n6.692\n0.0144\n\n\nnodes.inf\n5\n0.286\n0.057\n8.612\n0.0000\n\n\nv.r\n2\n0.057\n0.029\n4.303\n0.0221\n\n\nResiduals\n32\n0.213\n0.007\nNA\nNA\n\n\n\n\n\n\n\n\nBased on the results of our ANOVA, we have weak evidence (Pval = 0.0221) to suggest there is a difference in the number of nodes infested when considering treatment group and vegetative and reproductive stems.\n\n\n\n\nCumulative sum of nodes infested\n\n\n\n\n\n\n\n\n\n\n\n\n\n# of Nodes Infested\n\n\n\nTreatment\n6\n5\n4\n3\n2\n1\n\n\n\n\nhigh\n0.01\n0.13\n0.36\n0.69\n0.89\n1\n\n\nlow\n0.03\n0.13\n0.47\n0.76\n0.94\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI like this plot because it shows the cumulative percentage sum of nodes infested at each node. For example, at the 3rd node in 2023, we see that close to 70% of the stems in the ‘high’ treatment group exhibited between 3 and 6 nodes infested. As a general thought exercise, the more nodes a larvae burrowed through, the larger the larvae. This means that if we classify a “large” larvae as one who burrowed through at least 4 nodes, our infestation data shows that 36% of the larvae in the ‘high’ treatment groups died as “large” larvae.\n\n\n\n\nStems with Living Larvae (2023)\n\n\nTreatment\nCount\nTotal Stems\n%\n\n\n\n\nhigh\n26\n421\n0.062\n\n\nlow\n35\n415\n0.084\n\n\n\n\n\n\n\n\nInteresting to see that 6.2% of stems in the ‘high’ treatment groups and 8.4% of stems in the ‘low’ treatment group had living WSS larvae. The stems for this experiement were harvested in late October, much later in the season when we would expect the second generation parasitoids to be searching for a host.",
+    "crumbs": [
+      "MSU Masters",
+      "Smooth Brome/Winter Wheat"
+    ]
+  },
+  {
+    "objectID": "field_report.html#methods-1",
+    "href": "field_report.html#methods-1",
+    "title": "MT Field Site Analysis Report",
+    "section": "Methods",
+    "text": "Methods\nTo assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.",
+    "crumbs": [
+      "MSU Masters",
+      "Smooth Brome/Winter Wheat"
+    ]
+  },
+  {
+    "objectID": "field_report.html#analysis-1",
+    "href": "field_report.html#analysis-1",
+    "title": "MT Field Site Analysis Report",
+    "section": "Analysis",
+    "text": "Analysis\n\nBig Sandy, MT 2023\n\nLochy Property - North Road\n\n\n\nNorth Road, Big Sandy, MT (2023)\n\n\nNote:\n- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road.\n\n\n\n\nNorth Road (site nn) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nnn\n20\nfall\n0.09\n0.62\n0.15\n0.77\n\n\nnn\n5\nfall\n0.15\n0.53\n0.36\n0.89\n\n\nnn\nbrome\nfall\n0.69\n0.05\n0.05\n0.10\n\n\nnn\nbrome\nsummer\n0.35\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nNorth Road (site ns) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nns\nbrome\nfall\n0.70\n0.03\n0.10\n0.13\n\n\nns\nbrome\nsummer\n0.44\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines.\n\n\nLochy Property - Gardiner Road\n\n\n\nGardiner Road, Big Sandy, MT (2023)\n\n\nIn 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway.\n\n\n\n\nGardiner Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n0.11\n0.25\n0.17\n0.42\n\n\n5\nfall\n0.17\n0.25\n0.20\n0.44\n\n\nbrome\nfall\n0.64\n0.04\n0.10\n0.14\n\n\nbrome\nsummer\n0.51\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts.\n\n\n\nMoccasin, MT 2023\n\nSunset & Harvest Road Intersection\n\n\n\nHarvest & Sunset Road Instersection, Big Sandy, MT (2023)\n\n\n\n\n\n\nSunset Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nsun\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nsun\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nsun\nbrome\nfall\n0.45\n0.15\n0.16\n0.31\n\n\nsun\nbrome\nsummer\n0.20\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nHarvest Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nhar\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nhar\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nhar\nbrome\nfall\n0.39\n0.07\n0.13\n0.21\n\n\nhar\nbrome\nsummer\n0.22\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKolin Road\n\n\n\nKolin Road, Moccasin, MT (2023)\n\n\n\n\n\n\nKolin Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n0.48\n0.330\n0.02\n0.35\n\n\n5\nfall\n0.54\n0.350\n0.00\n0.35\n\n\nbrome\nfall\n0.60\n0.005\n0.01\n0.02\n\n\nbrome\nsummer\n0.34\n0.000\n0.00\n0.00",
+    "crumbs": [
+      "MSU Masters",
+      "Smooth Brome/Winter Wheat"
+    ]
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
     "title": "Projects",
-    "section": "Project 3",
-    "text": "Project 3"
+    "section": "",
+    "text": "Montana State University\n\n\n\n  \n\nBasketball Reference Tool"
   }
 ]

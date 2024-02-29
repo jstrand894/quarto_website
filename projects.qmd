@@ -1,9 +1,22 @@
 ---
 title: "Projects"
+editor_options: 
+  chunk_output_type: console
 ---
+::: {style="display: flex;"}
 
-## Project 1
+<figure style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
+  <a href="msu-masters.qmd">
+    <img src="img/msu-logo.jpg" alt="Montana State University" width="200" height="200">
+  </a>
+  <figcaption style="text-align: center;">Montana State University</figcaption>
+</figure>
 
-## Project 2
+<figure style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;">
+  <a href="bballref.qmd">
+    <img src="img/bballref-logo.jpeg" alt="Basketball Reference Tool" width="200" height="200">
+  </a>
+  <figcaption style="text-align: center;">Basketball Reference Tool</figcaption>
+</figure>
 
-## Project 3
+:::

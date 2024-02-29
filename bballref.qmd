@@ -1,0 +1,18 @@
+---
+title: "NBA Roster Analysis Tool"
+
+editor_options: 
+  chunk_output_type: console
+---
+
+![](img/bballref-image.png)
+
+From 2017 to 2019, I built my own NBA roster analysis tool for analyzing roster construction, free agency, and per-game metrics. The information is out of date, but all of the functionality still works.
+
+
+<a href= "Basketball Analysis Tool/bballref.xlsx">
+  <img src="img/download2.jpg" alt="Basketball Reference Tool" 
+  width = "50" height = "50">
+</a>
+
+Take a look!

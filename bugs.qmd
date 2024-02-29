@@ -1,0 +1,14 @@
+---
+title: "bug pictures"
+filters:
+  - lightbox
+lightbox: auto
+---
+
+![Bug pic 1](img/bugs/IMG_1664.JPG){group="my-gallery"}
+![Bug pic 2](img/bugs/IMG_1678.JPG){group="my-gallery"}
+
+<figure>
+  <img src="img/bugs/IMG_1664.JPG" alt="Montana State University" 
+  width = 200" height = "200">
+</figure>

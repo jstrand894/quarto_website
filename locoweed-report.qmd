@@ -1,0 +1,563 @@
+---
+title: "All Locoweed Analysis Report"
+author: "Jackson Strand"
+date: '`r format(Sys.Date())`'
+output: 
+  html_document:
+    toc: true
+bibliography: citations/citations.bib
+link-citations: true
+cls: council-of-science-editors-author-date.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r libraries, echo = F, message = F, warning = F}
+library(tidyverse)
+library(readxl)
+library(MASS)
+library(knitr)
+library(kableExtra)
+library(compositions)
+# PERMANOVA
+library(vegan)
+library(spaa)
+library(devtools)
+devtools::install_github("GuillemSalazar/EcolUtils")
+library(EcolUtils)
+
+# Random Forest
+library(ranger)
+library(MVN) # for normality test
+
+
+```
+
+
+# INTRODUCTION
+Astragalus and Oxytropix species, part of the Legume Family, are found in terestrial ecoysstems globally, including the western regions of North America. Many of these species are both nontoxic and important forages. However, several species are known to be toxic to both livestock and wildlife. *Oxytropis sericea Nutt* can harbor a commensal endophyte, *Alternaira oxytropos*, a fungus that is assocaited with locoweed plants, specifically those of the genus *Oxytropis*. Plants containing the endophyte have been found to produce swansonine, a toxic alkaloid that can be harmful to livestock when ingested in large quantities [@locoweed]. In this study, we investigated the potential differences in volatile organic compound (VOC) emissions between specimens that contained the commensal endophyte *Alternaria oxytropis*, and those that did not.
+
+These data consist of volatile collection events over the course of two years, 2022 and 2023. In both years, data was collected from wild plants in the field, and plants grown in the greenhouse.
+
+# METHODOLOGY
+## Data Collection
+### Field Volatile Collection
+
+Volatile collected was undergone on plants grown at a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an extension research station of Montana State University in Bozeman, MT. Plants were inventoried and logged using GPS, and tissue samples from each specimen were analyzed to establish whether the plant contained the endophyte. Volatiles were collected from all the plants in each year over the course of one to two successive weeks.
+
+Volatile were collected from 20 plants per day by placing Reynolds Turkey Oven Bags (Reynolds Group Holdings, Auckland, New Zealand) over the top of the selected number of leaflets. 
+
+
+### Greenhouse Volatile Collection
+Samples of each plant were first sent for analysis to mystery lab to see if endophyte was present or not. 
+Volatile compounds were collected from healthy *(size/stage)* locoweed plants. Plants were paired based on size similarity, with one being E+ and the other E-. Three sets of pairs (twelve plants) were used for each volatile collection event. Collection was undergone for a period of six hours from 09:00 to 15:00. 
+
+Volatiles were collected from twleve plants per day using glass volatile collection chambers (VCCs) that were 30 cm long and 4 cm in diameter. The top end of each VCC funneled into a threaded port that was 10 cm in daimter. Threaded onto the top of each VCC was an eight-port "octopus" manifold adapter. Two glass filter traps (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. An air source was connected to the base of each collection chamber with supply from charcoal air filters. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A small piece of cotton encompassed by a Teflon® guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Laboratory tape was used to seal the edges of the guillotine and prevent contamination by ambient and soil derived volatiles.  
+
+Volatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al. (2009). After the six hour collection period, glass volatile collection traps were eluted using 200 µL of dichloromethane into 2 mL screw top vials (Agilent Technologies, Inc., Santa Clara, CA), followed by a slow release of nitrogen to further clear the volatile trap. 10 µL of nonyl acetate solution was added to the eluted solution as internal standard to quantify compounds. Samples were then subject to gas chromatography (GC) on a J&W HP – 5ms; 30m x 0.25 µm film thickness column (Agilent Technologies, Inc., Santa Clara, CA). The GC unit (Agilent 6890; Agilent Technologies, Santa Clara, CA) was paired with a mass spectrometer (MS, Agilent 5973 instrument). Samples were injected into the column in pulse splitless mode, with the initial pressure of 82.7 kPa/m. 
+
+## Data Analysis
+The data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using a combination of ggplot2 and knitr [@ggplot; @knitr]. I selected a subset of comounds to ues for each analysis. These compounds were seelcted based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output. I will highlight the cmopounds that I used for each analysis as I get to them.
+
+# RESULTS
+<!-- LOAD DATA -->
+```{r 2023 field data load, echo = F, message = F}
+field.2023 <-
+read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/Locoweed/Field/2023\ Field/2023\ Field\ Locoweed.xlsx", sheet = "proc") 
+```
+```{r 2022 field data load, echo = F, message = F}
+field.2022 <-
+read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/Locoweed/Field/2022\ Field/2022\ Field\ Locoweed.xlsx", sheet = "RAW proc") %>%
+  dplyr::filter(!plant.id == "581")
+```
+<!-- CLEAN UP DATA -->
+```{r 2023 field data cleanup, echo = F, message = F}
+field.2023.data <-
+field.2023 %>%
+  filter(compound %in% c("heptanal", "sixmethyl", "octanal",
+                         "z3hex", "dlimonene", "nonanal", 
+                         "decanal", "methylsalicylate", "cisthreehexiso")) %>%
+  dplyr::select(plant.id, compound, ngghr) %>%
+  group_by(plant.id, compound) %>%
+  na.omit() %>%
+  dplyr::reframe(ngghr = sum(ngghr)) %>%
+  distinct() %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  pivot_longer(-plant.id,
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  replace(is.na(.), 0) %>% filter(compound != "NA") %>%
+  mutate(ngghr = log(ngghr + 1.01, 2)) %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  left_join(field.2023 %>% 
+              dplyr::select(plant.id, swa, type, pair2), # go back and add pairs later
+            by = "plant.id") %>%
+  replace(is.na(.), 0) %>%
+  distinct() %>%
+  mutate_at(vars(swa, type), list(factor)) %>%
+  ungroup() %>%
+  mutate(year = "2023")
+```
+```{r 2022 field data cleanup, echo = F, message = F}
+field.2022.data <-
+field.2022 %>%
+  filter(compound %in% c("heptanal", "sixmethyl", "octanal",
+                         "z3hex", "dlimonene", "nonanal", 
+                         "decanal", "methylsalicylate", "cisthreehexiso")) %>%
+  dplyr::select(plant.id, compound, ngghr) %>%
+  group_by(plant.id, compound) %>%
+  na.omit() %>%
+  dplyr::reframe(ngghr = sum(ngghr)) %>%
+  distinct() %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  pivot_longer(-plant.id,
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  replace(is.na(.), 0) %>% filter(compound != "NA") %>%
+  mutate(ngghr = log(ngghr + 1.01, 2)) %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  left_join(field.2022 %>% 
+              dplyr::select(plant.id, swa, collection.type, pair2), # go back and add pairs later
+            by = "plant.id") %>%
+  # replace(is.na(.), 0) %>%
+  distinct() %>%
+  mutate_at(vars(swa, collection.type), list(factor)) %>%
+  ungroup() %>%
+  mutate(year = "2022") %>%
+  rename(type = collection.type) %>%
+  filter(!is.na(type) & type != 0) %>%
+  # replace leaves and flowers with l and s
+  mutate(type = ifelse(type == "leaves", "l", "f"))
+  
+```
+
+```{r COMPOUNDS, echo = F, message = F}
+compounds <- c('sixmethyl',
+               'z3hex',
+               'nonanal',
+               'dlimonene',
+               'methylsalicylate',
+               # 'decanal',
+               'cisthreehexiso',
+               'dodecanal',
+               # 'heptadecanal',
+               'octanal',
+               'bocimene',
+               'bmyrcene',
+               'heptanal')
+
+# "heptanal", "sixmethyl", "octanal",
+#                          "z3hex", "dlimonene", "nonanal", 
+#                          "decanal", "methylsalicylate",
+#                          "cisthreehexiso"
+```
+```{R CLR, echo = F, message = F}
+joined.data <-
+field.2023 %>%
+  dplyr::select(plant.id, compound, ngghr) %>%
+  filter(compound %in% compounds) %>%
+  group_by(plant.id, compound) %>%
+  na.omit() %>%
+  dplyr::reframe(plant.id, compound, ngghr = sum(ngghr)) %>%
+  distinct() %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  pivot_longer(-plant.id,
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  mutate(year = "2023") %>%
+  left_join(field.2023 %>%
+              dplyr::select(plant.id, 
+                            swa, type, pair2),
+            by = "plant.id",
+            relationship = "many-to-many") %>%
+  mutate_at(vars(swa), list(factor)) %>%
+  # rbind 2022 data
+  rbind(field.2022 %>%
+          dplyr::select(plant.id, compound, ngghr) %>%
+          # filter(compound %in% c('sixmethyl','z3hex','nonanal',
+          #                       'dlimonene','methylsalicylate',
+          #                       'decanal','cisthreehexiso','dodecanal',
+          #                       'heptadecanal','octanal','bocimene',
+          #                       'bmyrcene','heptanal')) %>%
+          group_by(plant.id, compound) %>%
+          na.omit() %>%
+          dplyr::reframe(plant.id, compound, 
+                           ngghr = sum(ngghr)) %>%
+          distinct() %>%
+          pivot_wider(names_from = "compound",
+                      values_from = "ngghr") %>%
+          pivot_longer(-plant.id,
+                       names_to = "compound",
+                       values_to = "ngghr") %>%
+          mutate(year = "2022") %>%
+          left_join(field.2022 %>%
+                      dplyr::select(plant.id,
+                                    swa, collection.type, pair2) %>%
+                      mutate_at(vars(swa), list(factor)),
+                    by = "plant.id",
+                    relationship = "many-to-many") %>%
+          rename(type = collection.type)) %>%
+  distinct() 
+
+
+# having trouble joining the two data sets because of the pair2 column 
+joined.data.clr <-
+joined.data %>%
+  filter(compound %in% compounds) %>%
+  dplyr::select(plant.id, ngghr, compound, year) %>%
+  # replace(is.na(.), 0) %>% filter(compound != "NA") %>%
+  mutate(ngghr = ifelse(ngghr == 0, 0.01, ngghr)) %>%
+  mutate(ngghr = ngghr + 1) %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+    # combine year and plant id into one column
+  unite(plant.id, plant.id, year, sep = "_") %>%
+  column_to_rownames("plant.id") %>%
+  clr() %>%
+  # put rownames back as a column
+  as.data.frame() %>%
+  rownames_to_column("plant.id") %>%
+    # move year and plant id back to being sepearte columns
+  separate(plant.id, into = c("plant.id", "year"), sep = "_") %>%
+  pivot_longer(-c(plant.id, year),
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  # add a value of 2 to each ngghr to remove negatives
+  mutate(ngghr = ngghr + 2) %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  # join
+  left_join(joined.data %>%
+              dplyr::select(plant.id, swa, year, type, pair2) %>%
+              mutate(plant.id = as.character(plant.id)),
+            by = c("plant.id","year")) %>%
+  mutate_at(vars(swa, year), list(factor)) %>%
+  distinct() %>%
+  na.omit() %>%
+  # i'm going to ignore the "stressed" 
+  # designation and just make those type "leaf"
+  mutate(type = recode(type, "leaves" = "l", "flowers" = "f", "s" = "l")) %>%
+  filter(!type == 0) %>%
+  distinct()
+
+
+
+```
+
+## Field Volatile Collection
+### Boxplot Comparison
+```{r all comparison boxplot, echo = F, fig.align = 'center'}
+joined.data.clr %>%
+  # pivot to make all compounds in one column
+  pivot_longer(-c(plant.id, year, swa, type, pair2),
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  # ggplot code
+  ggplot(aes(compound, ngghr, fill = swa)) +
+  geom_boxplot(position = position_dodge(width = 0.9),
+                 outlier.color = NA,
+                 alpha = 0.5) +
+  geom_jitter(aes(compound, ngghr),
+              alpha = 0.3,
+              position = position_jitterdodge(jitter.width = 0.2,
+                                              dodge.width = .8),
+              show.legend = FALSE,
+              # pch = 21, 
+              stroke = 0, 
+              size = 1.5) +
+  theme(axis.text.x = element_text(angle = 45, 
+                                    hjust = 1),
+        legend.background = element_rect(color = "black"),
+        # legend.position = c(0.8,0.9),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        panel.grid.major.x = element_line(color = "#F2F2F2")) +
+  labs(x = element_blank(),
+       y = "VOC quantity (CLR(ng/g/hr))",
+       title = "2022/23 Field Locoweed Volatile Profile Comparison") +
+  scale_fill_discrete(name = "Endophyte",
+                      labels = c("Not Present", "Present"))
+```
+
+### PERMANOVA
+```{r PERMDISP & PERMANOVA data, echo = F}
+set.seed(1)
+permanova.data <-
+  joined.data.clr %>%
+  dplyr::select(-swa,-type,-year,-pair2) %>%
+  column_to_rownames("plant.id") %>%
+  na.omit() %>%
+  mutate_all(~.^2) %>%
+  mutate_all(~.*100000) %>%
+  mutate_all(round, digits = 0) 
+
+# dist.matrix <-
+# vegdist(t(permanova.data),
+#         method = "canberra")
+
+dist.matrix <-
+vegdist(permanova.data,
+        method = "canberra")
+
+data.per.meta <-
+  joined.data.clr %>%
+  dplyr::select(swa,type,year,pair2) %>%
+  mutate(year = factor(year, levels = c("2023", "2022")))
+```
+```{r 22/23 FIELD PERMANOVA, echo = F, results = F}
+set.seed(1)
+permanova.output <-
+adonis2(permanova.data ~ data.per.meta$swa, 
+        strata = interaction(data.per.meta$pair2, 
+                             data.per.meta$type, 
+                             data.per.meta$year),
+        method = "canberra",
+        permutations = 999,
+        by = "terms",
+        na.rm = TRUE)
+permanova.output
+```
+```{r PERMANOVA p-values, echo  = F}
+p.value.swa <- permanova.output$`Pr(>F)`[1]
+# p.value.year <- permanova.output$`Pr(>F)`[2]
+# p.value.type <- permanova.output$`Pr(>F)`[3]
+```
+
+The locoweed samples, both SWA + and SWA -, exhibited numerous chromatogram peaks during collection. However, only volatile compoudns showing significant peaks inthe mass spectroscopy output or presenting differences in the overlays of the two SWA types were chosen for analysis. 
+
+There was no interaction between plant species and data of volatile collection. 
+
+Our results show **weak** evidence of a difference between SWA+ and SWA- locoweed plants (p-val = `r p.value.swa`).  
+ 
+## Greenhouse Volatile Collection
+<!-- LOAD DATA -->
+```{r gh RAW 22, echo = F}
+raw.gh.22 <-
+read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/Locoweed/Greenhouse/2022\ Spring\ Greenhouse/Spring\ 2022\ Locoweed/Spring\ 2022\ GH\ Locoweed\ RESULTS.xlsx", sheet = "RAW2") %>%
+  filter(remove == "no")
+```
+```{r gh RAW 23, echo = F}
+raw.gh.23 <-
+  read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/Locoweed/Greenhouse/2023\ Spring\ Greenhouse/Spring\ GH\ 23\ Locoweed\ Volatiles.xlsx", sheet = "RAW_PROC")
+
+```
+<!-- CLEAN DATA -->
+```{r gh CLEAN 22, echo = F}
+clean.gh.22 <-
+raw.gh.22 %>%
+  # filter(compound %in% c("heptanal", "sixmethyl", "octanal",
+  #                        "z3hex", "dlimonene", "nonanal", 
+  #                        "decanal", "methylsalicylate", "cisthreehexiso")) %>%
+  dplyr::select(plant.id, compound, ngghr) %>%
+  group_by(plant.id, compound) %>%
+  na.omit() %>%
+  filter(!compound == "standard") %>%
+  dplyr::reframe(ngghr = sum(ngghr)) %>%
+  distinct() %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  pivot_longer(-plant.id,
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  replace(is.na(.), 0) %>% filter(compound != "NA") %>%
+  mutate(ngghr = log(ngghr + 1.01, 2)) %>%
+  # pivot_wider(names_from = "compound",
+  #             values_from = "ngghr") %>%
+  left_join(raw.gh.22 %>% 
+              dplyr::select(plant.id, swa, pair), # go back and add pairs later
+            by = "plant.id",
+            relationship = "many-to-many") %>%
+  # replace(is.na(.), 0) %>%
+  distinct() %>%
+  mutate_at(vars(swa), list(factor)) %>%
+  ungroup() %>%
+  mutate(year = "2022")
+```
+```{r gh CLEAN 23, echo = F}
+clean.gh.23 <-
+raw.gh.23 %>%
+  dplyr::select(plant.id, compound, ngghr) %>%
+  group_by(plant.id, compound) %>%
+  na.omit() %>%
+  filter(!compound == "standard") %>%
+  dplyr::reframe(ngghr = sum(ngghr)) %>%
+  distinct() %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  pivot_longer(-plant.id,
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  replace(is.na(.), 0) %>% filter(compound != "NA") %>%
+  mutate(ngghr = log(ngghr + 1.01, 2)) %>%
+  # pivot_wider(names_from = "compound",
+              # values_from = "ngghr") %>%
+  left_join(raw.gh.23 %>% 
+              dplyr::select(plant.id, swa, pair), # go back and add pairs later
+            by = "plant.id",
+            relationship = "many-to-many") %>%
+  # replace(is.na(.), 0) %>%
+  distinct() %>%
+  mutate_at(vars(swa), list(factor)) %>%
+  ungroup() %>%
+  mutate(year = "2023") 
+```
+<!-- COMOPUNDS -->
+```{r gh compounds, echo = F, results = F}
+compounds22 <-
+raw.gh.22 %>%
+  dplyr::select(compound) %>%
+  na.omit() %>% distinct() 
+compounds23 <-
+raw.gh.23 %>%
+  dplyr::select(compound) %>%
+  na.omit() %>% distinct() 
+compounds22
+compounds23 %>%
+  print(n = 100)
+gh.compounds <- as.list(intersect(compounds22, compounds23))$compound
+```
+<!-- CLR -->
+```{r gh CLR, echo = F}
+gh.joined.data <-
+clean.gh.22 %>%
+  dplyr::select(plant.id, compound, ngghr, swa, year, pair) %>%
+  rbind(clean.gh.23 %>%
+          dplyr::select(plant.id, compound, ngghr, swa, year, pair)) %>%
+  distinct() %>%
+  filter(compound %in% gh.compounds) %>%
+  na.omit()
+
+# having trouble joining the two data sets because of the pair2 column 
+gh.joined.data.clr <-
+gh.joined.data %>%
+  dplyr::select(plant.id, ngghr, compound, year) %>%
+  # replace(is.na(.), 0) %>% filter(compound != "NA") %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+    # combine year and plant id into one column
+  unite(plant.id, plant.id, year, sep = "_") %>%
+  column_to_rownames("plant.id") %>%
+  clr() %>%
+  # put rownames back as a column
+  as.data.frame() %>%
+  rownames_to_column("plant.id") %>%
+    # move year and plant id back to being sepearte columns
+  separate(plant.id, into = c("plant.id", "year"), sep = "_") %>%
+  pivot_longer(-c(plant.id, year),
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  # add a value of 2 to each ngghr to remove negatives
+  mutate(ngghr = ngghr + 4) %>%
+  pivot_wider(names_from = "compound",
+              values_from = "ngghr") %>%
+  # join
+  left_join(gh.joined.data %>%
+              dplyr::select(plant.id, swa, year, pair) %>%
+              mutate(plant.id = as.character(plant.id)),
+            by = c("plant.id","year")) %>%
+  mutate_at(vars(swa, year, pair), list(factor)) %>%
+  distinct() %>%
+  na.omit()
+```
+
+### Boxplot Comparison
+```{r gh boxplot comparison, echo = F}
+gh.joined.data.clr %>%
+  # pivot to make all compounds in one column
+  pivot_longer(-c(plant.id, year, swa, pair),
+               names_to = "compound",
+               values_to = "ngghr") %>%
+  # ggplot code
+  ggplot(aes(compound, ngghr, fill = swa)) +
+  geom_boxplot(position = position_dodge(width = 0.9),
+                 outlier.color = NA,
+                 alpha = 0.5) +
+  geom_jitter(aes(compound, ngghr),
+              alpha = 0.3,
+              position = position_jitterdodge(jitter.width = 0.2,
+                                              dodge.width = .8),
+              show.legend = FALSE,
+              # pch = 21, 
+              stroke = 0, 
+              size = 1.5) +
+  theme(axis.text.x = element_text(angle = 45, 
+                                    hjust = 1),
+        legend.background = element_rect(color = "black"),
+        # legend.position = c(0.8,0.9),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        panel.grid.major.x = element_line(color = "#F2F2F2")) +
+  labs(x = element_blank(),
+       y = "VOC quantity (CLR(ng/g/hr))",
+       title = "2022/23 Field Locoweed Volatile Profile Comparison") +
+  scale_fill_discrete(name = "Endophyte",
+                      labels = c("Not Present", "Present"))
+```
+
+
+### PERMANOVA
+```{r gh PERMANOVA data, echo = F}
+set.seed(1)
+gh.permanova.data <-
+  gh.joined.data.clr %>%
+  dplyr::select(-swa, -pair) %>%
+  unite(plant.id, plant.id, year, sep = "_") %>%
+  column_to_rownames("plant.id") %>%
+  na.omit() %>%
+  mutate_all(~.^2) %>%
+  mutate_all(~.*100000) %>%
+  mutate_all(round, digits = 0) 
+
+# meta data
+gh.data.per.meta <-
+  gh.joined.data.clr %>%
+  dplyr::select(plant.id, swa,year,pair) %>%
+  mutate(year = factor(year, levels = c("2023", "2022")))
+```
+
+```{r PERMANOVA, echo = F}
+set.seed(1)
+gh.permanova.output <-
+adonis2(gh.permanova.data ~ gh.data.per.meta$swa, 
+        strata = interaction(gh.data.per.meta$pair, 
+                             gh.data.per.meta$year),
+        # method = "canberra",
+        permutations = 999,
+        by = "terms")
+
+gh.permanova.output
+```
+
+```{r gh PERMANOVA pvalues, echo = F}
+gh.p.value.swa <- gh.permanova.output$`Pr(>F)`[1]
+```
+
+Our results show **moderate** evidence of a difference between SWA+ and SWA- locoweed plants (p-val = `r gh.p.value.swa`). 
+
+# Data Overview
+
+# APPENDIX
+
+```{R clr data set print, echo = F}
+set.seed(25)
+kable(
+joined.data.clr %>%
+  dplyr::select(plant.id, bocimene, z3hex, nonanal, swa) %>%
+  # rename(pair = pair2) %>%
+  sample_n(size = n(), replace = FALSE) %>%
+  mutate(bocimene = round(bocimene, digits = 2),
+         z3hex = round(z3hex, digits = 2),
+         nonanal = round(nonanal, digits = 2)) %>%
+  head(),
+align = c("l", "l", "r", "c", "c", "c", "c")
+) %>%
+  kable_styling(full_width = FALSE, position = "center") 
+
+```
+
+

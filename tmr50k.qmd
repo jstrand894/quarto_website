@@ -1,0 +1,15 @@
+---
+title: "Teton Mountain Runs 50K"
+---
+
+::: {style="display: block;"}  
+
+```{r get images, echo = F, results = 'asis'}
+image_files <- list.files("img/tmr50k", pattern = ".JPG|.png|.gif|.jpg|.jpeg", full.names = TRUE)
+
+for (file in image_files) {
+  cat("![](",file, ")\n  \n")
+}
+```
+
+:::

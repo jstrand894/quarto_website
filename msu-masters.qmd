@@ -1,0 +1,21 @@
+---
+title: "MSU Masters"
+
+---
+<figure>
+  <img src="img/msu-masters/cages.heic" alt="Montana State University" 
+  width = 250" height = "200">
+</figure>
+
+<figure>
+  <img src="img/msu-masters/vcs.heic" alt="Montana State University" 
+  width = 200" height = "300">
+</figure>
+
+<figure>
+  <img src="img/msu-masters/field.heic" alt="Montana State University" 
+  width = 250" height = "200">
+</figure>
+
+
+

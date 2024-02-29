@@ -5,22 +5,52 @@ project:
 website:
   title: "Jackson Strand Website"
   navbar:
+    background: primary
+    search: true
+    logo: img/logo.png
     left:
-      - href: index.qmd
-        text: Home
-      - projects.qmd
+      - text: "Work"
+        file: projects.qmd
+      - text: "Pics"
+        menu: 
+          - running.qmd
+          - bugs.qmd
+      - text: "test"
+        file: aboutme.qmd
+    right: 
+      - href: aboutme.qmd
+        text: About Me
     tools:
-      - icon: twitter
-        href: https://twitter.com/
+      - icon: linkedin
+        href: https://linkedin.com/in/jacksonstrand
+      - icon: instagram
+        href: https://www.instagram.com/jstrand894/
       - icon: github
         href: https://github.com/jstrand894/quarto_website
+  sidebar:
+    - title: "Work"
+      style: "docked"
+      contents:
+        - text: "MSU Masters"
+          file: msu-masters.qmd
+          contents:
+            - text: "Locoweed"
+              href: locoweed-report.qmd
+            - text: "Smooth Brome/Winter Wheat"
+              href: field_report.qmd
+            - text: "Weather Data"
+              # link: weather-data.qmd
+        - text: "Other"
+          contents:
+            - text: "Basketball Analysis Tool"
+              file: bballref.qmd
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
-    left: "&copy; Copyright 2023, Jackson Strand"
+    left: "&copy; Copyright 2024, Jackson Strand"
 
 format:
   html:
-    theme: cerulean
+    theme: cosmo
     toc: true
 
 editor: source

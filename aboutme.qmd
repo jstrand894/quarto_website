@@ -1,0 +1,33 @@
+---
+title: "Jackson Strand"
+about:
+  id: me
+  template: trestles
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/jacksonstrand
+    - icon: instagram
+      text: Instagram
+      href: https://www.instagram.com/jstrand894/
+    - icon: github
+      text: GitHub
+      href: https://github.com/jstrand894 
+  image: img/aboutme/deadhorse.jpeg
+  
+sidebar: false
+---
+
+:::{#me}
+
+I am currently a Master's graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace. 
+
+[My CV](Aboutme/jackson_strand_updated_cv.pdf)
+
+![Me and Grace at Glacier National Park, 2023](img/aboutme/iceberg.JPG)  
+
+
+:::
+
+
+

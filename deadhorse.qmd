@@ -1,0 +1,23 @@
+---
+title: "Deadhorse Ultra 50 Miler"
+subtitle: "November 18, 2023"
+format: html
+filters:
+   - lightbox
+lightbox: auto
+editor_options: 
+  chunk_output_type: console
+---
+
+::: {style="display: grid;grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));grid-gap: 1em;"}
+```{r get images, echo = F, results = 'asis'}
+image_files <- list.files("img/deadhorse", pattern = ".JPG|.png|.gif|.jpg|.jpeg", full.names = TRUE)
+
+for (file in image_files) {
+  cat("![](",file, ")\n  \n")
+}
+```
+:::
+
+
+
