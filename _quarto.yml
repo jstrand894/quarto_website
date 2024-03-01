@@ -17,6 +17,8 @@ website:
           - bugs.qmd
       - text: "test"
         file: aboutme.qmd
+      - text: "CV"
+        file: cv.qmd
     right: 
       - href: aboutme.qmd
         text: About Me
@@ -27,6 +29,8 @@ website:
         href: https://www.instagram.com/jstrand894/
       - icon: github
         href: https://github.com/jstrand894/quarto_website
+      - icon: envelope
+        href: "mailto:jstrand894@gmail.com"
   sidebar:
     - title: "Work"
       style: "docked"
