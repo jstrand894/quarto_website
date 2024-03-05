@@ -1,8 +1,8 @@
 ---
-title: "Jackson Strand"
-about:
-  id: me
-  template: marquee
+about: 
+  template: jolla
+  id: about-block
+  image: "img/aboutme/crescent.HEIC"
   links:
     - icon: linkedin
       text: LinkedIn
@@ -13,14 +13,13 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/jstrand894 
-  image: img/aboutme/deadhorse.jpeg
-  
-sidebar: false
 ---
+::: {#about-block}
+:::
 
-:::{#me}
+# Welcome to my website!
 
-I am currently a Master's graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace. 
+My name is Jackson Strand. I am currently a Master's graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace. 
 
 
 ```{=html}
@@ -32,7 +31,7 @@ I am currently a Master's graduate student at Montana State University studying 
 ![Me and Grace at Glacier National Park, 2023](img/aboutme/iceberg.JPG)  
 
 
-:::
+
 
 
 

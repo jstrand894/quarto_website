@@ -13,15 +13,6 @@ output:
     # number_sections: true
 editor_options: 
   chunk_output_type: console
-  
-website:
-  sidebar:
-    style: "docked"
-    contents:
-      - section: "Test1"
-        contents: index.qmd
-      - section: "Test2"
-        contents: index.qmd
 ---
 ```{r library, echo = F, message = F, warning = F}
 library(tidyverse)
@@ -44,6 +35,39 @@ round_based_on_size <- function(x) {
 }
 ```
 
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cropping Example</title>
+<style>
+    }
+    .image-container {
+        width: auto; /* Set the width of the container */
+        height: auto; /* Set the height of the container */
+        overflow: hidden; /* Hide overflow */
+    }
+    .image-container img {
+        width: 100%; /* Make the image fill the container horizontally */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="img/msu-masters/cages-wide.jpg" alt="Your Image">
+</div>
+
+</body>
+</html>
+
+```
 # POST FARM
 
 ## Methods  

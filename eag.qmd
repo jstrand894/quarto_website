@@ -1,0 +1,87 @@
+---
+title: "eag"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r library, echo = F, message = F}
+library(dplyr)
+library(ggplot2)
+library(readxl)
+library(plotly)
+```
+```{r scale values, echo = F}
+# Define the original range
+min_original <- 1
+max_original <- 55680
+
+# Define the target range
+min_target <- 1.823
+max_target <- 10.02
+
+# Function to scale the values
+scale_values <- function(x) {
+  ((x - min_original) / (max_original - min_original)) * (max_target - min_target) + min_target
+}
+
+```
+
+```{r, echo = F}
+eag <-
+  read_excel("xlsx files/eag.xlsx", sheet = "test eag")
+
+fid <-
+  read_excel("xlsx files/eag.xlsx", sheet = "Peak") 
+
+# Generate a sequence of MeasRetTime values every 0.05
+new_MeasRetTime <- seq(min(fid$MeasRetTime), 
+                       max(fid$MeasRetTime), by = 0.05)
+
+# Create a data frame with the new MeasRetTime values
+new_data <- data.frame(MeasRetTime = new_MeasRetTime)
+
+# Merge the new data frame with the original data, filling missing values with 0
+filled_data <- merge(fid, new_data, by = "MeasRetTime", all = TRUE)
+filled_data[is.na(filled_data)] <- 0
+
+fid_plot <- 
+filled_data %>%
+  dplyr::select(MeasRetTime, Area, Height) %>%
+  mutate(Height = ifelse(MeasRetTime < 3.2, 0, Height))
+  # ggplot() +
+  # geom_point(aes(x = MeasRetTime, y = Height)) +
+  # geom_line(aes(x = MeasRetTime, y = Height)) +
+  # theme_bw()
+eag_plot <-
+eag %>%
+  mutate(row_num = row_number()) %>%
+  rename("EAD" = 'EAD 1') 
+ggplotly(
+ggplot() +
+  geom_line(data = fid_plot, aes(x = MeasRetTime, 
+                                 y = Height), 
+            color = "red") +
+  geom_line(data = eag_plot, aes(x = scale_values(row_num), 
+                                 y = EAD * 100), 
+            color = "blue") +
+
+  scale_y_continuous(name = "EAD", sec.axis = sec_axis(~./100, name = "Height")) + 
+  labs(title = "Comparison of EAD and Height",
+       x = "Row Number (Scaled)", 
+       y = "EAD",
+       color = "Legend") +
+  theme_bw() + 
+  scale_x_continuous(breaks = seq(min(fid_plot$MeasRetTime,
+                                      max(fid_plot$MeasRetTime), 
+                                      by = 1)))
+)
+  
+```
+
+
+
+
+
+
+
+

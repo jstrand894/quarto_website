@@ -3,10 +3,8 @@ title: "MT Field Site Analysis Report"
 author: "Jackson Strand"
 date: "`r Sys.Date()`"
 output: 
-  html_document:
-    self_contained: yes
-    include:
-    keep_md: true
+  quarto::quarto_html:
+    layout: sidebar
     theme: cosmo
     toc: true
     toc_float: true
@@ -37,6 +35,7 @@ round_based_on_size <- function(x) {
   return(rounded_values)
 }
 ```
+
 
 # POST FARM
 
@@ -544,10 +543,84 @@ stubble.brome %>%
    
 #### Lochy Property - North Road  
 
-![North Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/nnns-min.png?raw=true)
+```{=html}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
 
-   
-   
+<div class="container">
+  <img class="image" src="img/field-sites/nnns.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+<!-- ![North Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/nnns-min.png?raw=true) -->
+
 **Note:**    
 - In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road. 
 
@@ -635,7 +708,84 @@ We saw very low levels of infestation in 2023 within the wheat. This was likely 
 
 #### Lochy Property - Gardiner Road
 
-![Gardiner Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/gardiner%20road-min.png?raw=true)
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="img/field-sites/gardiner.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+<!-- ![Gardiner Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/gardiner%20road-min.png?raw=true) -->
 
 In 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway. 
 
@@ -698,7 +848,84 @@ Similar results to North Road seen here. Low infestation in the adjacent wheat f
 
 #### Sunset & Harvest Road Intersection
 
-![Harvest & Sunset Road Instersection, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/harvest%20road-min.png?raw=true)
+```{=html}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="img/field-sites/harvest.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+
+<!-- ![Harvest & Sunset Road Instersection, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/harvest%20road-min.png?raw=true) -->
   
 ```{r SUN/HAR data tables, echo = F}
 sun.table <-
@@ -780,7 +1007,84 @@ stubble.brome %>%
 
 #### Kolin Road
 
-![Kolin Road, Moccasin, MT (2023)](https://github.com/jstrand894/Website/blob/main/kolin%20road-min.png?raw=true)
+```{=html}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="img/field-sites/kolin.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+
+<!-- ![Kolin Road, Moccasin, MT (2023)](https://github.com/jstrand894/Website/blob/main/kolin%20road-min.png?raw=true) -->
 
 ```{r K data table, echo = F}
 k.table <-
@@ -790,6 +1094,7 @@ stubble.brome %>%
   dplyr::select(location, distance, collection, year, type, mean) %>%
   mutate(mean = round_based_on_size(mean)) %>%
   mutate_at(vars(location, distance, collection, year, type), as.factor) %>%
+  mutate(mean = mean*100) %>%
   pivot_wider(names_from = type,
               values_from = mean,
               values_fn = list(mean = mean)) %>%

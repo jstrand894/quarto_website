@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./img/aboutme/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -40,18 +41,17 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -84,7 +84,6 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Jackson Strand Website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -105,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./bugs.html">
- <span class="dropdown-text">bug pictures</span></a>
+ <span class="dropdown-text">Bugs</span></a>
   </li>  
     </ul>
   </li>
@@ -138,9 +137,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -163,20 +160,112 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div style="display: flex;">
-<figure style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;" class="figure">
-<a href="./msu-masters.html"> <img src="img/msu-logo.jpg" alt="Montana State University" width="200" height="200" class="figure-img"> </a>
-<figcaption style="text-align: center;">
-Montana State University
-</figcaption>
-</figure>
-<figure style="margin-right: 20px; display: flex; flex-direction: column; align-items: center;" class="figure">
-<a href="./bballref.html"> <img src="img/bballref-logo.jpeg" alt="Basketball Reference Tool" width="200" height="200" class="figure-img"> </a>
-<figcaption style="text-align: center;">
-Basketball Reference Tool
-</figcaption>
-</figure>
-</div>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box with Rounded Edges</title>
+<style>
+  .container {
+    width: 300px;
+    height: 300px; /* Set container height */
+    border: 0.5px solid #ccc; /* Light grey color */
+    border-radius: 8px; /* Less rounded edges */
+    overflow: hidden; /* Hide overflow content */
+    position: relative;
+    display: inline-block;
+    transition: box-shadow 0.15s ease; /* Transition for box-shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow by default */
+    text-align: center; /* Center content horizontally */
+    text-decoration: none; /* Remove underline */
+    margin-right: 20px; /* Add margin to create space between boxes */
+    margin-bottom: 20px;
+  }
+  
+  .container:last-child {
+    margin-right: 0; /* Remove margin from the last box */
+  }
+  
+  .container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+  }
+  
+  .content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .content img {
+    width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+    object-fit: cover; /* Crop the image to cover container */
+  }
+  
+  .text {
+    margin-top: 10px;
+    text-align: center; /* Center text within the box */
+    text-decoration: none;
+  }
+  
+  .text h1 {
+    font-size: 24px; /* Larger text size */
+    margin-top: 1px;
+    margin-bottom: 5px; /* Adjust margin between large and small text */
+    color: black;
+  }
+  .text h1:hover {
+    color: #2068DC; /* Change text color to blue on hover */
+  }
+  
+  .text p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #666;
+  }
+  <!--  .nba-container { -->
+  <!--   background-color: #0E1D2D; -->
+  <!-- } -->
+</style>
+
+
+  <a href="./msu-masters.html" class="container">
+    <div class="content">
+      <img src="img/projects-logos/msu-logo.jpg" alt="Image"> <!-- Center the image within the box -->
+      <div class="text">
+        <h1>MSU Master's - Entomology</h1>
+        <p>Co-Advised by David Weaver &amp; Tracy Sterling</p>
+      </div>
+    </div>
+  </a>
+  <a href="./bballref.html" class="container nba-container">
+    <div class="content">
+      <img src="img/projects-logos/bballref-logo-circle.jpg" alt="Image"> <!-- Center the image within the box -->
+      <div class="text">
+        <h1><br>NBA Roster Analysis Tool</h1>
+        <p></p>
+      </div>
+    </div>
+  </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

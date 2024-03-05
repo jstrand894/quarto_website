@@ -5,14 +5,67 @@ editor_options:
   chunk_output_type: console
 ---
 
-![](img/bballref-image.png)
-
 From 2017 to 2019, I built my own NBA roster analysis tool for analyzing roster construction, free agency, and per-game metrics. The information is out of date, but all of the functionality still works.
 
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBA Roster Analysis Tool Preview</title>
+</head>
+<body>
 
-<a href= "Basketball Analysis Tool/bballref.xlsx">
-  <img src="img/download2.jpg" alt="Basketball Reference Tool" 
-  width = "50" height = "50">
+<h2>Excel Preview</h2>
+
+<!-- Replace 'path_to_your_excel_file.xlsx' with the actual path to your Excel file -->
+<iframe src="https://1drv.ms/x/s!AiC9jtYNi0Ovhy_ySBYSU-xuO1CQ?e=ohHHit" width="100%" height="500px" frameborder="0">This browser does not support PDFs. Please download the PDF to view it: <a href="https://1drv.ms/x/s!AiC9jtYNi0Ovhy_ySBYSU-xuO1CQ?e=ohHHit</a></iframe>
+
+</body>
+</html>
+```
+
+Or download the file here:
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Button</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.button:hover {
+  background-color: #45a049; /* Darker green */
+}
+</style>
+</head>
+<body>
+
+<!-- Button to download the file -->
+<a href="/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Personal/bballref.xlsx " download="Jackson Strand NBA Roster Analysis Tool.xlsx">
+  <button class="button">Download File</button>
 </a>
 
-Take a look!
+</body>
+</html>
+
+
+```
+
+

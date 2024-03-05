@@ -1,8 +1,8 @@
 ---
-about:
+website:
   template: jolla
   id: about-block
-  image: "img/my_image.jpg"
+  image: "img/aboutme/crescent.HEIC"
   links:
     - icon: twitter
       text: Twitter

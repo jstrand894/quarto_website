@@ -47,18 +47,15 @@ I am currently a Master's graduate student at Montana State University studying 
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       grid-gap: 10px;
     }
-
     .gallery img {
       width: 100%;
       height: auto;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-
     .gallery img:hover {
       transform: scale(1.05); /* Slightly increase size on hover */
     }
-
     .expanded-container {
       position: fixed;
       top: 0;
@@ -108,7 +105,7 @@ I am currently a Master's graduate student at Montana State University studying 
 
   function navigateGallery(event) {
     // Calculate the click position relative to the expanded image
-    var clickX = event.pageX - event.target.offsetLeft;
+    var clickX = event.pageX - event.target.getBoundingClientRect().left;
     var imageWidth = event.target.offsetWidth;
 
     // Determine if the click was on the left or right side of the image
@@ -127,7 +124,5 @@ I am currently a Master's graduate student at Montana State University studying 
 
 </body>
 </html>
-
-
 
 ```

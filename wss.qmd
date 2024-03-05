@@ -1,0 +1,115 @@
+---
+title: "MSU Master's: Wheat Stem Sawfly"
+---
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box with Rounded Edges</title>
+<style>
+  .container {
+    width: calc(33.33% - 25px);
+    height: 300px; /* Set container height */
+    border: 0.5px solid #ccc; /* Light grey color */
+    border-radius: 8px; /* Less rounded edges */
+    overflow: hidden; /* Hide overflow content */
+    position: relative;
+    display: inline-block;
+    transition: box-shadow 0.15s ease; /* Transition for box-shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow by default */
+    text-align: center; /* Center content horizontally */
+    text-decoration: none; /* Remove underline */
+    margin-right: 20px; /* Add margin to create space between boxes */
+    margin-bottom: 20px;
+  }
+  
+  .container:last-child {
+    margin-right: 0; /* Remove margin from the last box */
+  }
+  
+  .container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+  }
+  
+  .content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .content img {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+    object-fit: cover; /* Crop the image to cover container */
+  }
+  
+  .text {
+    margin-top: 10px;
+    text-align: center; /* Center text within the box */
+    text-decoration: none;
+  }
+  
+  .text h1 {
+    font-size: 24px; /* Larger text size */
+    margin-top: 1px;
+    margin-bottom: 5px; /* Adjust margin between large and small text */
+    color: black;
+  }
+  .text h1:hover {
+    color: #2068DC; /* Change text color to blue on hover */
+  }
+  
+  .text p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+  <a href="pfreport.qmd" class="container">
+    <div class="content">
+      <img src="img/msu-masters/cages2.jpg" alt="Image"> <!-- Center the image within the box -->
+      <div class="text">
+        <h1>Controlled WSS Infestation</h1>
+        <p>Assessing WSS infestation and cutting within smooth brome in controlled research plot at Arthur H. Post Agronomy Farm.</p>
+      </div>
+    </div>
+  </a>
+  <a href="field_report.qmd" class="container">
+    <div class="content">
+      <img src="img/msu-masters/oviposition.JPG" alt="Image"> <!-- Center the image within the box -->
+      <div class="text">
+        <h1>Montana Field Sites</h1>
+        <p>Collection of wheat and smooth brome in Big Sandy and Moccasin, Montana to assess parasitism and WSS infestation.</p>
+      </div>
+    </div>
+  </a>
+  <a href="eag.qmd" class="container">
+    <div class="content">
+      <img src="img/msu-masters/vcs.jpg" alt="Image"> <!-- Center the image within the box -->
+      <div class="text">
+        <h1>Organic Volatile Collection</h1>
+        <p>Collection of wheat and smooth brome in <strong>Big Sandy</strong> and <strong>Moccasin</strong> Montana to assess parasitism and WSS infestation.</p>
+      </div>
+    </div>
+  </a>
+  <a href="https://www.example.com" class="container">
+    <div class="content">
+      <img src="img/msu-masters/clouds.jpg" alt="Image"> <!-- Center the image within the box -->
+      <div class="text">
+        <h1>Weather Data</h1>
+        <p>Weather data trends from Big Sandy and Moccasin, Montana.</p>
+      </div>
+    </div>
+  </a>
+</body>
+</html>
+
+```

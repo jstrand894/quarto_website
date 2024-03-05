@@ -5,6 +5,7 @@ date: '`r format(Sys.Date())`'
 output: 
   html_document:
     toc: true
+    code_folding: hide
 bibliography: citations/citations.bib
 link-citations: true
 cls: council-of-science-editors-author-date.csl
@@ -29,10 +30,40 @@ library(EcolUtils)
 # Random Forest
 library(ranger)
 library(MVN) # for normality test
-
-
 ```
 
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cropping Example</title>
+<style>
+    }
+    .image-container {
+        width: auto; /* Set the width of the container */
+        height: auto; /* Set the height of the container */
+        overflow: hidden; /* Hide overflow */
+    }
+    .image-container img {
+        width: 100%; /* Make the image fill the container horizontally */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="img/loco-bee-crop.JPG" alt="Your Image">
+</div>
+
+</body>
+</html>
+
+```
 
 # INTRODUCTION
 Astragalus and Oxytropix species, part of the Legume Family, are found in terestrial ecoysstems globally, including the western regions of North America. Many of these species are both nontoxic and important forages. However, several species are known to be toxic to both livestock and wildlife. *Oxytropis sericea Nutt* can harbor a commensal endophyte, *Alternaira oxytropos*, a fungus that is assocaited with locoweed plants, specifically those of the genus *Oxytropis*. Plants containing the endophyte have been found to produce swansonine, a toxic alkaloid that can be harmful to livestock when ingested in large quantities [@locoweed]. In this study, we investigated the potential differences in volatile organic compound (VOC) emissions between specimens that contained the commensal endophyte *Alternaria oxytropis*, and those that did not.
@@ -45,13 +76,143 @@ These data consist of volatile collection events over the course of two years, 2
 
 Volatile collected was undergone on plants grown at a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an extension research station of Montana State University in Bozeman, MT. Plants were inventoried and logged using GPS, and tissue samples from each specimen were analyzed to establish whether the plant contained the endophyte. Volatiles were collected from all the plants in each year over the course of one to two successive weeks.
 
+
 Volatile were collected from 20 plants per day by placing Reynolds Turkey Oven Bags (Reynolds Group Holdings, Auckland, New Zealand) over the top of the selected number of leaflets. 
 
 
 ### Greenhouse Volatile Collection
 Samples of each plant were first sent for analysis to mystery lab to see if endophyte was present or not. 
 Volatile compounds were collected from healthy *(size/stage)* locoweed plants. Plants were paired based on size similarity, with one being E+ and the other E-. Three sets of pairs (twelve plants) were used for each volatile collection event. Collection was undergone for a period of six hours from 09:00 to 15:00. 
+  
+```{r plant pictures, echo = F, eval = F}
 
+# Set the directory path
+directory_path <- "img/loco-plants"
+
+# List all the files in the directory
+file_names <- list.files(directory_path)
+
+# Initialize an empty character vector to store the HTML code
+html_code <- "<div class=\"gallery\">\n"
+
+# Loop through each file name and generate HTML code
+for (i in seq_along(file_names)) {
+  # Generate the HTML code for each image
+  image_html <- paste0('<img src="', directory_path, "/", file_names[i], '" alt="Image ', i, '" onclick="expandImage(this)">\n')
+  
+  # Append the generated HTML code to the existing code
+  html_code <- paste(html_code, image_html, sep = "")
+}
+
+# Close the gallery div
+html_code <- paste(html_code, "</div>\n<div class=\"expanded-container\" onclick=\"closeExpanded()\">\n  <img class=\"expanded\" id=\"expanded-image\" onclick=\"navigateGallery(event)\">\n</div>", sep = "")
+
+# Print the final HTML code
+cat(html_code)
+
+```
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure images cover the entire space */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .expanded-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+      display: none; /* Initially hidden */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .expanded {
+      max-width: 80%;
+      max-height: 80%;
+      cursor: pointer;
+    }
+    p.gallery-caption {
+      text-align: center;
+      font-style: italic;
+      color: #8B8989;
+    }
+  </style>
+</head>
+<body>
+
+<div class="gallery">
+<img src="img/loco-plants/IMG_0064.HEIC" alt="Image 1" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_0820 2.HEIC" alt="Image 2" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_1165.HEIC" alt="Image 3" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_1177.HEIC" alt="Image 4" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_1923.HEIC" alt="Image 5" onclick="expandImage(this)">
+</div>
+<div class="expanded-container" onclick="closeExpanded()">
+  <img class="expanded" id="expanded-image" onclick="navigateGallery(event)">
+</div> 
+
+<p class="gallery-caption">Greenhouse Volatile Collection Plants looked like this.</p>
+
+<script>
+  var currentImageIndex = 0;
+  var galleryImages = document.querySelectorAll('.gallery img');
+
+  function expandImage(img) {
+    currentImageIndex = Array.from(galleryImages).indexOf(img);
+    document.getElementById('expanded-image').src = img.src;
+    document.querySelector('.expanded-container').style.display = 'flex';
+  }
+
+  function closeExpanded() {
+    document.querySelector('.expanded-container').style.display = 'none';
+  }
+
+  function navigateGallery(event) {
+    // Calculate the click position relative to the expanded image
+    var clickX = event.pageX - event.target.getBoundingClientRect().left;
+    var imageWidth = event.target.offsetWidth;
+
+    // Determine if the click was on the left or right side of the image
+    if (clickX < imageWidth / 2) {
+      // Clicked on the left side: navigate to the previous image
+      currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    } else {
+      // Clicked on the right side: navigate to the next image
+      currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    }
+
+    // Update the expanded image source
+    document.getElementById('expanded-image').src = galleryImages[currentImageIndex].src;
+  }
+</script>
+
+</body>
+</html>
+
+```
+  
+<br>
 Volatiles were collected from twleve plants per day using glass volatile collection chambers (VCCs) that were 30 cm long and 4 cm in diameter. The top end of each VCC funneled into a threaded port that was 10 cm in daimter. Threaded onto the top of each VCC was an eight-port "octopus" manifold adapter. Two glass filter traps (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. An air source was connected to the base of each collection chamber with supply from charcoal air filters. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A small piece of cotton encompassed by a Teflon® guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Laboratory tape was used to seal the edges of the guillotine and prevent contamination by ambient and soil derived volatiles.  
 
 Volatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al. (2009). After the six hour collection period, glass volatile collection traps were eluted using 200 µL of dichloromethane into 2 mL screw top vials (Agilent Technologies, Inc., Santa Clara, CA), followed by a slow release of nitrogen to further clear the volatile trap. 10 µL of nonyl acetate solution was added to the eluted solution as internal standard to quantify compounds. Samples were then subject to gas chromatography (GC) on a J&W HP – 5ms; 30m x 0.25 µm film thickness column (Agilent Technologies, Inc., Santa Clara, CA). The GC unit (Agilent 6890; Agilent Technologies, Santa Clara, CA) was paired with a mass spectrometer (MS, Agilent 5973 instrument). Samples were injected into the column in pulse splitless mode, with the initial pressure of 82.7 kPa/m. 

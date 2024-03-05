@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jackson Strand Website - bug pictures</title>
+<title>Jackson Strand Website - Bugs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./img/aboutme/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -40,18 +41,17 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -84,7 +84,6 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Jackson Strand Website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -105,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./bugs.html">
- <span class="dropdown-text">bug pictures</span></a>
+ <span class="dropdown-text">Bugs</span></a>
   </li>  
     </ul>
   </li>
@@ -138,15 +137,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">bug pictures</h1>
+<h1 class="title">Bugs</h1>
 </div>
 
 
@@ -163,10 +160,162 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="img/bugs/IMG_1664.JPG" class="img-fluid" data-group="my-gallery" alt="Bug pic 1"> <img src="img/bugs/IMG_1678.JPG" class="img-fluid" data-group="my-gallery" alt="Bug pic 2"></p>
-<figure class="figure">
-<img src="img/bugs/IMG_1664.JPG" alt="Montana State University" width="200&quot;" height="200" class="figure-img">
-</figure>
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure images cover the entire space */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .expanded-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+      display: none; /* Initially hidden */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .expanded {
+      max-width: 80%;
+      max-height: 80%;
+      cursor: pointer;
+    }
+  </style>
+
+
+
+<div class="gallery">
+<img src="img/bugs/blueflowers.JPG" alt="Image 1" onclick="expandImage(this)">
+<img src="img/bugs/brownmoth.JPG" alt="Image 2" onclick="expandImage(this)">
+<img src="img/bugs/brownred-butterfly.JPG" alt="Image 3" onclick="expandImage(this)">
+<img src="img/bugs/butterfly-purpleflower.JPG" alt="Image 4" onclick="expandImage(this)">
+<img src="img/bugs/loco-bee.JPG" alt="Image 5" onclick="expandImage(this)">
+</div>
+<div class="expanded-container" onclick="closeExpanded()">
+  <img class="expanded" id="expanded-image" onclick="navigateGallery(event)">
+</div>
+
+<script>
+  var currentImageIndex = 0;
+  var galleryImages = document.querySelectorAll('.gallery img');
+
+  function expandImage(img) {
+    currentImageIndex = Array.from(galleryImages).indexOf(img);
+    document.getElementById('expanded-image').src = img.src;
+    document.querySelector('.expanded-container').style.display = 'flex';
+  }
+
+  function closeExpanded() {
+    document.querySelector('.expanded-container').style.display = 'none';
+  }
+
+  function navigateGallery(event) {
+    // Calculate the click position relative to the expanded image
+    var clickX = event.pageX - event.target.getBoundingClientRect().left;
+    var imageWidth = event.target.offsetWidth;
+
+    // Determine if the click was on the left or right side of the image
+    if (clickX < imageWidth / 2) {
+      // Clicked on the left side: navigate to the previous image
+      currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    } else {
+      // Clicked on the right side: navigate to the next image
+      currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    }
+
+    // Update the expanded image source
+    document.getElementById('expanded-image').src = galleryImages[currentImageIndex].src;
+  }
+</script>
+
+
+
+
+<p><br></p>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Button</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+</style>
+
+
+
+<!-- Button to download the file -->
+<a href="img/bugs/Jackson-Bug-Pics.zip" download="Jackson Bug Pictures">
+  <button class="button">Download All Pictures</button>
+</a>
+
+
+
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Crop Example</title>
+<style>
+  .image-container {
+    width: 300px; /* Set the width of the container */
+    height: 200px; /* Set the height of the container */
+    overflow: hidden; /* Hide any overflowing content */
+  }
+  .cropped-image {
+    width: 100%; /* Set the width of the image to fill the container */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+    object-fit: cover; /* Crop the image to cover the container */
+  }
+</style>
+
+
+
+<div class="image-container">
+  <img class="cropped-image" src="img/bugs/loco-bee.png" alt="Cropped Image">
+</div>
+
+
+
+
 
 
 
