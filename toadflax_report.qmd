@@ -231,9 +231,6 @@ sc.lo.plot
 
 
 
-
-
-
 ## PERMANOVA
 
 ```{r PERMANOVA, echo = F}
@@ -269,7 +266,7 @@ kable(as.data.frame(adonis_results),
       align = "lccccc") %>%
   kable_styling(full_width = FALSE,
                 bootstrap_options = c("striped", "bordered", "hover")) %>%
-  row_spec(0, background = "#f2f2f2") 
+  row_spec(0, background = "#f2f2f9") 
 
 permanova.p <- adonis_results$`Pr(>F)`[1]
 
