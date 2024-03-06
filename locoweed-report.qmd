@@ -1,5 +1,5 @@
 ---
-title: "All Locoweed Analysis Report"
+title: "Locoweed Volatiles"
 author: "Jackson Strand"
 date: '`r format(Sys.Date())`'
 output: 
@@ -11,6 +11,7 @@ link-citations: true
 cls: council-of-science-editors-author-date.csl
 editor_options: 
   chunk_output_type: console
+toc: true
 ---
 
 ```{r libraries, echo = F, message = F, warning = F}
@@ -30,8 +31,10 @@ library(EcolUtils)
 # Random Forest
 library(ranger)
 library(MVN) # for normality test
+library(plotly)
 ```
 
+<!-- bee cover image -->
 ```{=html}
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +67,8 @@ library(MVN) # for normality test
 </html>
 
 ```
+
+*Note: This project is still a work in progress.*
 
 # INTRODUCTION
 Astragalus and Oxytropix species, part of the Legume Family, are found in terestrial ecoysstems globally, including the western regions of North America. Many of these species are both nontoxic and important forages. However, several species are known to be toxic to both livestock and wildlife. *Oxytropis sericea Nutt* can harbor a commensal endophyte, *Alternaira oxytropos*, a fungus that is assocaited with locoweed plants, specifically those of the genus *Oxytropis*. Plants containing the endophyte have been found to produce swansonine, a toxic alkaloid that can be harmful to livestock when ingested in large quantities [@locoweed]. In this study, we investigated the potential differences in volatile organic compound (VOC) emissions between specimens that contained the commensal endophyte *Alternaria oxytropis*, and those that did not.
@@ -413,6 +418,7 @@ joined.data %>%
 ## Field Volatile Collection
 ### Boxplot Comparison
 ```{r all comparison boxplot, echo = F, fig.align = 'center'}
+
 joined.data.clr %>%
   # pivot to make all compounds in one column
   pivot_longer(-c(plant.id, year, swa, type, pair2),
@@ -443,6 +449,7 @@ joined.data.clr %>%
        title = "2022/23 Field Locoweed Volatile Profile Comparison") +
   scale_fill_discrete(name = "Endophyte",
                       labels = c("Not Present", "Present"))
+
 ```
 
 ### PERMANOVA

@@ -61,7 +61,7 @@ ggplot() +
   geom_line(data = fid_plot, aes(x = MeasRetTime, 
                                  y = Height), 
             color = "red") +
-  geom_line(data = eag_plot, aes(x = scale_values(row_num), 
+  geom_line(data = eag_plot, aes(x = scale_values(row_num)+1.2, 
                                  y = EAD * 100), 
             color = "blue") +
 
@@ -70,10 +70,7 @@ ggplot() +
        x = "Row Number (Scaled)", 
        y = "EAD",
        color = "Legend") +
-  theme_bw() + 
-  scale_x_continuous(breaks = seq(min(fid_plot$MeasRetTime,
-                                      max(fid_plot$MeasRetTime), 
-                                      by = 1)))
+  theme_bw() 
 )
   
 ```

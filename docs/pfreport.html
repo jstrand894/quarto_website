@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jackson Strand">
-<meta name="dcterms.date" content="2024-03-05">
+<meta name="dcterms.date" content="2024-03-06">
 
 <title>Jackson Strand Website - MT Post Farm Analysis Report</title>
 <style>
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -94,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link active" href="./projects.html" aria-current="page"> 
 <span class="menu-text">Work</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -106,16 +106,9 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./running.html">
  <span class="dropdown-text">Running Pictures</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./bugs.html">
- <span class="dropdown-text">Bugs</span></a>
-  </li>  
+        <li class="dropdown-header">bugs.qmds</li>
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./aboutme.html"> 
-<span class="menu-text">test</span></a>
-  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html"> 
 <span class="menu-text">CV</span></a>
@@ -163,13 +156,22 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./msu-masters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MSU Masters</span></a>
+            <a href="./projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projects</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./msu-masters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MSU-Master's</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./wss.html" class="sidebar-item-text sidebar-link">
@@ -178,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pfreport.html" class="sidebar-item-text sidebar-link active">
@@ -187,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fieldreport.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./field_report.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montana Field Sites</span></a>
   </div>
 </li>
@@ -199,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weatherdata.qmds" class="sidebar-item-text sidebar-link">
+  <a href="./weatherdata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Weather Data</span></a>
   </div>
 </li>
@@ -208,9 +210,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./locoweed-report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Locoweed</span></a>
+ <span class="menu-text">Locoweed Volatiles</span></a>
   </div>
 </li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -235,7 +239,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#post-farm" id="toc-post-farm" class="nav-link active" data-scroll-target="#post-farm">POST FARM</a>
+  <ul class="collapse">
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#plant-selection-and-cages" id="toc-plant-selection-and-cages" class="nav-link" data-scroll-target="#plant-selection-and-cages">Plant Selection and Cages</a></li>
+  <li><a href="#insects" id="toc-insects" class="nav-link" data-scroll-target="#insects">Insects</a></li>
+  </ul></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <ul class="collapse">
+  <li><a href="#overall-wss-infestation-and-cutting" id="toc-overall-wss-infestation-and-cutting" class="nav-link" data-scroll-target="#overall-wss-infestation-and-cutting">Overall WSS Infestation and Cutting</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -258,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 5, 2024</p>
+      <p class="date">March 6, 2024</p>
     </div>
   </div>
   

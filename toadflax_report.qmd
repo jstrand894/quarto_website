@@ -1,0 +1,286 @@
+---
+title: "Toadflax Analysis"
+author: "Jackson Strand"
+date: '`r format(Sys.Date())`'
+editor_options: 
+  chunk_output_type: console
+toc: true
+bibliography: citations/citations.bib
+link-citations: true
+cls: council-of-science-editors-author-date.csl
+---
+
+```{r libraries, echo = F, message = F}
+library(dplyr)
+library(tidyr)
+library(readxl)
+library(compositions) # 
+library(ggplot2) # ggplot
+library(vegan) # Adonis
+library(tibble)
+library(kableExtra) # Kable
+library(plotly)
+library(stats) # PCA
+library(ggbiplot) # PCA biplot
+
+```
+
+```{r data load, echo = F}
+data <-
+read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/Toadflax/Toadflax 2023 Parent and Hybrid Volatiles.xlsx",
+           sheet = "compounds") %>%
+  rename("gc_file" = 1,
+         "plant_id" = 2,
+         "plant" = 3,
+         "type" = 4,
+         "Z-3-Hexenol" = 5,
+         "a-Pinene" = 6,
+         "Thujene" = 7,
+         "Myrcene" = 8,
+         "1-octen-3-ol" = 9,
+         "6-methyl-3-heptanone" = 10,
+         "B-pinene" = 11,
+         "Z-3-Hexenyl Acetate" = 12,
+         "Limonene" = 13,
+         "Trans-B-ociemene" = 14,
+         "Cis-B-ocimene" = 15,
+         "Undecane" = 16,
+         "Linalool" = 17,
+         "Nonanal" = 18,
+         "Octenyl Acetate" = 19,
+         "Allo-ocimene" = 20,
+         "Terpineol" = 21,
+         "Methyl Salicylate" = 22,
+         "Decanal" = 23,
+         "P-anisaldehyde" = 24,
+         "Undecanal" = 25,
+         "2-Undecanal" = 26,
+         "Copaene" = 27,
+         "Cubebene" = 28,
+         "Dodecanal" = 29,
+         "Caryophyllene" = 30,
+         "day" = 31) 
+```
+
+# Boxplot Comparisons
+```{r boxplot data, echo = F}
+boxplot.data <-
+  data %>%
+    pivot_longer(-c(gc_file, plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+    group_by(type, compound) %>%
+    mutate(count = n(),
+           average = mean(value),
+           sd = sd(value),
+           se = (sd/sqrt(count))) %>%
+    reframe(type, compound,
+            average = mean(average),
+            sd = mean(sd),
+            se = mean(se)) %>%
+  unique()
+```
+
+
+```{r boxplot comparison (original data), echo = F, fig.height = 20, fig.width = 20}
+boxplot.data %>%
+  mutate(type = factor(type, levels = c("DT", "YT", "Natural", "Synthetic"))) %>%
+  ggplot(aes(x = type, y = average, fill = type)) +
+  geom_bar(stat = "identity") +
+  geom_errorbar(aes(x = type,
+                    ymin = average - se,
+                    ymax = average + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  labs(x = element_blank(),
+       y = "VOC Concentration (ng/g/hr)") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                    hjust = 1),
+        legend.position = 'none',
+        # legend.position = c(0.8,0.9),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        panel.grid.major.x = element_line(color = "#F2F2F2"),
+        axis.text = element_text(size = 22),
+        axis.title = element_text(size = 22),
+        strip.text = element_text(size = 22)) +
+  facet_wrap(~compound, 
+             scales = "free_y",
+             ncol = 3)
+
+```
+
+# Multivariate Analysis
+
+Multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PCA, Permutational Multivariate ANOVA (PERMANOVA), Permutational Analysis of Multivariate Dispersion (PERMDISP), and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using ggplot2 [@ggplot]. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output. 
+```{r CLR transformation, echo = F}
+data.clr <-
+data %>%
+  select(-gc_file) %>%
+  pivot_longer(-c(plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+  mutate(value = log(value + 1.01, 2)) %>%
+  pivot_wider(values_from = "value",
+              names_from = "compound") %>%
+  unite(plant_id, plant_id, plant, type, day, sep = "_") %>%
+  column_to_rownames("plant_id") %>%
+  clr() %>% # run the clr!
+  as.data.frame() %>%
+  rownames_to_column("plant_id") %>%
+  separate(plant_id, into = c("plant_id", "plant", "type", "day"),
+           sep = "_") %>%
+  pivot_longer(-c(plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+  mutate(value = value + 4) %>%
+  pivot_wider(values_from = "value",
+              names_from = "compound") %>%
+  mutate_at(vars(plant, type, day), list(factor))
+```
+
+## PCA
+
+```{r PCA, echo = F}
+pca.results <-
+data.clr %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+data.plus.pca <-
+  data.clr %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+
+meta <- data.clr %>% dplyr::select(plant, type, day)
+model.data <- data.frame(PC1, PC2, meta)
+model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
+scores.plot <-
+ggplot() +
+  geom_point(data = model.data,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data,
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA Scores Plot") +
+  theme_bw()
+
+loadings.plot <-
+ggplot() +
+  geom_segment(data = loadings.plot,
+               aes(x = 0, y = 0, xend = PC1, yend = PC2),
+               arrow = arrow(length = unit(0.1, "inches")),
+               alpha = 0.5,
+               color = "red") +
+  geom_text(data = loadings.plot,
+            hjust = 1.1, vjust = -1.2,
+            aes(PC1, PC2, label = compound),
+            size = 2) +
+  labs(x = "PC1", y = "PC2", title = "Toadflax PCA Loadings") +
+  theme_bw()
+
+sc.lo.plot <-
+ggbiplot(pca.results, obs.scale = 1, var.scale = 1, ellipse = FALSE,
+         group = data.clr$type, circle = FALSE) +
+  theme_bw() +
+  labs(title = "Toadflax PCA with loadings and scores")
+
+```
+
+Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
+
+```{r scores plot, echo = F}
+scores.plot
+```
+
+Next, we can look at our loadings and see where each compound is pushing the differences in our PCs.
+
+```{r loadings plot, echo = F}
+loadings.plot
+```
+
+Finally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures. 
+
+```{r sc.lo.plot, echo = F}
+sc.lo.plot
+```
+
+
+
+
+
+
+## PERMANOVA
+
+```{r PERMANOVA, echo = F}
+set.seed(1)
+
+permanova_data <-
+  data.clr %>%
+    unite(id, plant_id, plant, type, day, sep = "_") %>%
+    column_to_rownames("id") %>%
+    na.omit() %>%
+    mutate_all(~.^2) %>%
+    mutate_all(~.*100000) %>%
+    mutate_all(round, digits = 0)
+
+meta_data <-
+  data.clr %>%
+  select(plant_id, plant, type, day)
+
+
+# run PERMANOVA
+adonis_results <-
+adonis2(permanova_data ~ meta_data$type,
+        strata = meta_data$day,
+        # strata = interaction(meta_data$day,
+        #                      meta_data$plant),
+        # method = "canberra",
+        permutataions = 999,
+        by = "terms")
+  
+kable(as.data.frame(adonis_results),
+      format = "html",
+      caption = "Toadflax Type PERMANOVA",
+      align = "lccccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f2") 
+
+permanova.p <- adonis_results$`Pr(>F)`[1]
+
+```
+
+Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between our four plant types (YT, DT, Synthetic, and Natural). 
+
+Let's look to see if there are differences between the types individually. 
+
+
+
+
+
+

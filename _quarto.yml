@@ -21,9 +21,7 @@ website:
       - text: "Pics"
         menu: 
           - running.qmd
-          - bugs.qmd
-      - text: "test"
-        file: aboutme.qmd
+          - bugs.qmds
       - text: "CV"
         file: cv.qmd
     right: 
@@ -40,25 +38,32 @@ website:
         href: "mailto:jstrand894@gmail.com"
   sidebar:
     - title: "Work"
+      collapse-level: 4
+      border: true
       style: "docked"
       search: true
       contents:
-        - file: msu-masters.qmd
+        - text: "Projects"
+          file: projects.qmd
           contents:
-            - text: "Wheat Stem Sawfly"
-              href: wss.qmd
+            - text: "MSU-Master's"
+              href: msu-masters.qmd
               contents:
-                - text: "Controlled WSS Infestation"
-                  href: pfreport.qmd
-                - text: "Montana Field Sites"
-                  href: fieldreport.qmd
-                - text: "Organic Volatile Collection"
-                  href: eag.qmds
-                - text: "Weather Data"
-                  href: weatherdata.qmds
-              # link: weather-data.qmd
-            - text: "Locoweed"
-              href: locoweed-report.qmd
+                - text: "Wheat Stem Sawfly"
+                  href: wss.qmd
+                  contents:
+                  - text: "Controlled WSS Infestation"
+                    href: pfreport.qmd
+                  - text: "Montana Field Sites"
+                    href: field_report.qmd
+                  - text: "Organic Volatile Collection"
+                    href: eag.qmd
+                  - text: "Weather Data"
+                    href: weatherdata.qmd
+                - text: "Locoweed Volatiles"
+                  href: locoweed-report.qmd
+                - text: "Toadflax"
+                  href: toadflax_report.qmd
         - text: "Other"
           contents:
             - text: "Basketball Analysis Tool"
@@ -70,7 +75,6 @@ website:
 format:
   html:
     theme: cosmo
-    toc: false
 
 editor: source
 

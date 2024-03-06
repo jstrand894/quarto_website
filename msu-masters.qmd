@@ -82,7 +82,7 @@ title: "MSU Masters"
       </div>
     </div>
   </a>
-  <a href="https://www.example.com" class="container">
+  <a href="locoweed-report.qmd" class="container">
     <div class="content">
       <img src="img/msu-masters/loco-bee2.jpg" alt="Image"> <!-- Center the image within the box -->
       <div class="text">
