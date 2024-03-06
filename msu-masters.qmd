@@ -91,6 +91,15 @@ title: "MSU Masters"
       </div>
     </div>
   </a>
+  <a href="toadflax_report.qmd" class="container">
+    <div class="content">
+      <img src="img/msu-masters/toadflax.jpeg" alt="Image"> <!-- Center the image within the box -->
+      <div class="text">
+        <h1>Toadflax</h1>
+        <p></p>
+      </div>
+    </div>
+  </a>
 </body>
 </html>
 
