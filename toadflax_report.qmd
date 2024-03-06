@@ -301,11 +301,19 @@ Basically what all of the PERMDISP and PCoA results mean is that we are not seei
 
 
 
-Let's look to see if there are differences between the types individually. 
+<!-- Let's look to see if there are differences between the types individually.  -->
 
-```{r basic ANOVA, echo = F}
+<!-- ```{r basic ANOVA, echo = F} -->
+<!-- anova.data <- -->
+<!--   data.clr %>% -->
+<!--   dplyr::select(-c(plant_id, plant)) -->
 
-```
+<!-- compounds <- -->
+<!-- anova.data[,3:26] %>% -->
+<!--   colnames() -->
+
+<!-- manova(cbind(compounds) ~ type + day, data = anova.data$type) -->
+<!-- ``` -->
 
 
 
