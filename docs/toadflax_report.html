@@ -327,6 +327,7 @@ div.csl-indent {
 </section>
 <section id="multivariate-analysis" class="level1">
 <h1>Multivariate Analysis</h1>
+<p>Multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PCA, Permutational Multivariate ANOVA (PERMANOVA), Permutational Analysis of Multivariate Dispersion (PERMDISP), and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data <span class="citation" data-cites="chemoguide">(<a href="#ref-chemoguide" role="doc-biblioref">Brückner and Heethoff 2017</a>)</span>. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2011</a>)</span>. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. Data were visualized using ggplot2 <span class="citation" data-cites="ggplot">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>)</span>. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output.</p>
 <section id="pca" class="level2">
 <h2 class="anchored" data-anchor-id="pca">PCA</h2>
 <p>Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.</p>
@@ -359,7 +360,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data <span class="citation" data-cites="chemoguide">(<a href="#ref-chemoguide" role="doc-biblioref">Brückner and Heethoff 2017</a>)</span>. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2011</a>)</span>. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. Data were visualized using a combination of ggplot2 and knitr <span class="citation" data-cites="ggplot knitr">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>; <a href="#ref-knitr" role="doc-biblioref">Xie 2021</a>)</span>. I selected a subset of comounds to ues for each analysis. These compounds were seelcted based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output. I will highlight the cmopounds that I used for each analysis as I get to them.</p>
 </section>
 <section id="permanova" class="level2">
 <h2 class="anchored" data-anchor-id="permanova">PERMANOVA</h2>
@@ -370,12 +370,12 @@ div.csl-indent {
 <caption>Toadflax Type PERMANOVA</caption>
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: left; background-color: #f2f2f2 !important;"></th>
-<th data-quarto-table-cell-role="th" style="text-align: left; background-color: #f2f2f2 !important;">Df</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f2 !important;">SumOfSqs</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f2 !important;">R2</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f2 !important;">F</th>
-<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f2 !important;">Pr(&gt;F)</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; background-color: #f2f2f9 !important;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: left; background-color: #f2f2f9 !important;">Df</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f9 !important;">SumOfSqs</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f9 !important;">R2</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f9 !important;">F</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; background-color: #f2f2f9 !important;">Pr(&gt;F)</th>
 </tr>
 </thead>
 <tbody>
@@ -430,9 +430,6 @@ Oksanen, Jari, L. Gavin Simpson, F. Guillaume Blanchet, and Roeland Kindt. 2011.
 </div>
 <div id="ref-ggplot" class="csl-entry" role="listitem">
 Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
-</div>
-<div id="ref-knitr" class="csl-entry" role="listitem">
-Xie, Yihui. 2021. <span>“Knitr: A <span>General-Purpose</span> Package for Dynamic Report Generation in <span>R</span>.”</span> <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

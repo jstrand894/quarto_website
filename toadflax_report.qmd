@@ -174,7 +174,11 @@ model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
                                                     "5", "6", "7", "8",
                                                     "9"))
 
-scores.plot <-
+```
+
+Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
+
+```{r scores plot, echo = F}
 ggplot() +
   geom_point(data = model.data,
              aes(PC1, PC2, color = type)) +
@@ -188,8 +192,11 @@ ggplot() +
                aes(PC1, PC2, color = type)) +
   labs(title = "Toadflax PCA Scores Plot") +
   theme_bw()
+```
 
-loadings.plot <-
+Next, we can look at our loadings and see where each compound is pushing the differences in our PCs.
+
+```{r loadings plot, echo = F}
 ggplot() +
   geom_segment(data = loadings.plot,
                aes(x = 0, y = 0, xend = PC1, yend = PC2),
@@ -199,34 +206,18 @@ ggplot() +
   geom_text(data = loadings.plot,
             hjust = 1.1, vjust = -1.2,
             aes(PC1, PC2, label = compound),
-            size = 2) +
+            size = 4) +
   labs(x = "PC1", y = "PC2", title = "Toadflax PCA Loadings") +
   theme_bw()
-
-sc.lo.plot <-
-ggbiplot(pca.results, obs.scale = 1, var.scale = 1, ellipse = FALSE,
-         group = data.clr$type, circle = FALSE) +
-  theme_bw() +
-  labs(title = "Toadflax PCA with loadings and scores")
-
-```
-
-Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
-
-```{r scores plot, echo = F}
-scores.plot
-```
-
-Next, we can look at our loadings and see where each compound is pushing the differences in our PCs.
-
-```{r loadings plot, echo = F}
-loadings.plot
 ```
 
 Finally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures. 
 
 ```{r sc.lo.plot, echo = F}
-sc.lo.plot
+ggbiplot(pca.results, obs.scale = 1, var.scale = 1, ellipse = FALSE,
+         group = data.clr$type, circle = FALSE) +
+  theme_bw() +
+  labs(title = "Toadflax PCA with loadings and scores")
 ```
 
 
