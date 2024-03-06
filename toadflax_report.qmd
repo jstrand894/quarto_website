@@ -208,7 +208,9 @@ ggplot() +
             aes(PC1, PC2, label = compound),
             size = 4) +
   labs(x = "PC1", y = "PC2", title = "Toadflax PCA Loadings") +
-  theme_bw()
+  theme_bw() +
+  scale_x_continuous(expand = c(0.1, 0.1)) +
+  scale_y_continuous(expand = c(0.1, 0.1))
 ```
 
 Finally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures. 
@@ -265,8 +267,45 @@ permanova.p <- adonis_results$`Pr(>F)`[1]
 
 Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between our four plant types (YT, DT, Synthetic, and Natural). 
 
+```{r PERMDISP}
+
+dist <- dist(data.clr)
+
+permdisp.results <-
+betadisper(dist, data.clr$type)
+
+
+permdisp.results
+p_value <- anova(permdisp.results)$'Pr(>F)'[1]
+if (p_value < 0.05) {
+  cat("Significant differences in multivariate dispersion among groups.\n")
+} else {
+  cat("We found no significant difference (pval =",anova(permdisp.results)$'Pr(>F)'[1], ") in multivariate dispersion among groups.\n")
+}
+
+pcoa <-
+capscale(dist ~ 1, data = data.clr)
+
+pcoa_df <- data.frame(scores(pcoa)$sites, group = data.clr$type)
+
+ggplot(pcoa_df, aes(x = MDS1, y = MDS2, color = group)) +
+  geom_point(alpha = 0.7) +
+  labs(x = "PCo1", y = "PCo2", color = "Type",
+       title = "PCoA Plot") +
+  theme_bw() +
+  stat_ellipse()
+
+```
+
+Basically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different in the dispersion within each of our groups when we compare them to one another. We are seeing a very small p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot. 
+
+
+
 Let's look to see if there are differences between the types individually. 
 
+```{r basic ANOVA, echo = F}
+
+```
 
 
 
