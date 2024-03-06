@@ -12,91 +12,116 @@
     ]
   },
   {
-    "objectID": "save.html",
-    "href": "save.html",
-    "title": "save",
+    "objectID": "toadflax_report.html#pca",
+    "href": "toadflax_report.html#pca",
+    "title": "Toadflax Analysis",
     "section": "",
-    "text": "box with shadow when you hover\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Wheat Stem Sawfly"
-  },
-  {
-    "objectID": "running.html",
-    "href": "running.html",
-    "title": "Running Pictures",
-    "section": "",
-    "text": "Deadhorse Ultra, 2023\n\n\n\n  \n\nTeton Mountain Runs, 2023"
-  },
-  {
-    "objectID": "tmr50k.html",
-    "href": "tmr50k.html",
-    "title": "Teton Mountain Runs 50K",
-    "section": "",
-    "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Button\n\n\n\n\n\n\n  Download All Pictures"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to my website!",
-    "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Instagram\n  \n  \n    \n     GitHub\n  \n\n\n\n\nWelcome to my website!\nMy name is Jackson Strand. I am currently a Master’s graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace.\n\n  View my CV\n\n\n\n\nMe and Grace at Glacier National Park, 2023"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        MSU Master's - Entomology\n        Co-Advised by David Weaver & Tracy Sterling\n      \n    \n  \n  \n    \n       \n      \n        NBA Roster Analysis Tool",
+    "text": "Let’s say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a difference.\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$plant\n1\n0.1309064\n0.0574618\n2.072809\n0.08\n\n\nResidual\n34\n2.1472404\n0.9425382\nNA\nNA\n\n\nTotal\n35\n2.2781468\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show no evidence (p-val = 0.08) of a difference between our four plant types (YT, DT, Synthetic, and Natural).",
     "crumbs": [
       "Work",
-      "Projects"
+      "Projects",
+      "MSU-Master's",
+      "Toadflax"
     ]
   },
   {
-    "objectID": "index cv.html",
-    "href": "index cv.html",
-    "title": "Curriculum vitae",
-    "section": "",
-    "text": "Download current CV\n  \n\n\n  \n\n\nView the tutorial for this template (+ download link)"
+    "objectID": "toadflax_report.html#permanova",
+    "href": "toadflax_report.html#permanova",
+    "title": "Toadflax Analysis",
+    "section": "PERMANOVA",
+    "text": "PERMANOVA\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).\n\ndist &lt;- dist(data.clr)\n\nWarning in stats::dist(cdt(x), ...): NAs introduced by coercion\n\npermdisp.results &lt;-\nbetadisper(dist, data.clr$type)\n\n\npermdisp.results\n\n\n    Homogeneity of multivariate dispersions\n\nCall: betadisper(d = dist, group = data.clr$type)\n\nNo. of Positive Eigenvalues: 26\nNo. of Negative Eigenvalues: 0\n\nAverage distance to median:\n       DT   Natural Synthetic        YT \n    6.572     6.623     6.699     7.161 \n\nEigenvalues for PCoA axes:\n(Showing 8 of 26 eigenvalues)\n PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 \n1266.4  922.1  671.8  519.2  406.3  319.9  292.6  258.6 \n\np_value &lt;- anova(permdisp.results)$'Pr(&gt;F)'[1]\nif (p_value &lt; 0.05) {\n  cat(\"Significant differences in multivariate dispersion among groups.\\n\")\n} else {\n  cat(\"We found no significant difference (pval =\",anova(permdisp.results)$'Pr(&gt;F)'[1], \") in multivariate dispersion among groups.\\n\")\n}\n\nWe found no significant difference (pval = 0.5548198 ) in multivariate dispersion among groups.\n\npcoa &lt;-\ncapscale(dist ~ 1, data = data.clr)\n\npcoa_df &lt;- data.frame(scores(pcoa)$sites, group = data.clr$type)\n\nggplot(pcoa_df, aes(x = MDS1, y = MDS2, color = group)) +\n  geom_point(alpha = 0.7) +\n  labs(x = \"PCo1\", y = \"PCo2\", color = \"Type\",\n       title = \"PCoA Plot\") +\n  theme_bw() +\n  stat_ellipse()\n\n\n\n\n\n\n\n\nBasically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different in the dispersion within each of our groups when we compare them to one another. We are seeing a very small p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot.",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's",
+      "Toadflax"
+    ]
   },
   {
-    "objectID": "index template.html",
-    "href": "index template.html",
-    "title": "Welcome to my website!",
-    "section": "",
-    "text": "Welcome to my website!\nI am Gandalf the White, a renowned wizard and scholar of Middle-earth. Over the centuries, I have dedicated my life to studying the history, languages, and cultures of the peoples of Middle-earth. On this website, I offer a glimpse into my vast body of knowledge, ongoing research, and publications.\nMy research interests span the entirety of Middle-earth, from the distant past to the present day. I am particularly passionate about the languages and mythologies of the Elves, Dwarves, and Men, and I have made significant contributions to the understanding of these subjects. My studies of the natural world have also been extensive, and I am an expert in the flora and fauna of Middle-earth. Additionally, I have been involved in many important historical events and offer valuable first-hand accounts and insights on the past.\nNot only am I a scholar, but I am also a mentor and teacher. Over the centuries, I have had the honor of working with many young wizards, passing on my knowledge and experience to the next generation. I have a particular interest in the education of hobbits, whom I see as having great potential despite their small size and simple lifestyle. My teaching style is engaging and accessible, and I encourage my students to think critically and creatively.\nOn this website, you will find a selection of my published works, including scholarly articles, monographs, and translations. You will also find news and updates on my current research projects, as well as information on upcoming events and conferences where I will be speaking. I invite you to explore my website and learn more about my life’s work as one of Middle-earth’s greatest scholars and thinkers. Please feel free to contact me if you have any questions or would like to discuss potential projects.\n\nView the tutorial for this template (+ download link)"
-  },
-  {
-    "objectID": "weatherdata.html",
-    "href": "weatherdata.html",
-    "title": "Weather Data MT",
-    "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(glue)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\ninventory_url &lt;- \"https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt\"\n\ninventory &lt;- read_table(inventory_url,\n           col_names = c(\"station\", \"lat\", \"lon\", \"variable\", \"start\", \"end\"))\n\n\n── Column specification ────────────────────────────────────────────────────────\ncols(\n  station = col_character(),\n  lat = col_double(),\n  lon = col_double(),\n  variable = col_character(),\n  start = col_double(),\n  end = col_double()\n)\n\ninventory\n\n# A tibble: 747,331 × 6\n   station       lat   lon variable start   end\n   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;\n 1 ACW00011604  17.1 -61.8 TMAX      1949  1949\n 2 ACW00011604  17.1 -61.8 TMIN      1949  1949\n 3 ACW00011604  17.1 -61.8 PRCP      1949  1949\n 4 ACW00011604  17.1 -61.8 SNOW      1949  1949\n 5 ACW00011604  17.1 -61.8 SNWD      1949  1949\n 6 ACW00011604  17.1 -61.8 PGTM      1949  1949\n 7 ACW00011604  17.1 -61.8 WDFG      1949  1949\n 8 ACW00011604  17.1 -61.8 WSFG      1949  1949\n 9 ACW00011604  17.1 -61.8 WT03      1949  1949\n10 ACW00011604  17.1 -61.8 WT08      1949  1949\n# ℹ 747,321 more rows\n\nmy_lat &lt;- 45.661966103346735 * 2 * pi/360\nmy_long &lt;- -111.04939878991246 * 2 * pi/360\n\nmy_station &lt;- \n  inventory %&gt;%\n    mutate(lat_r = lat *2 *pi/360,\n           lon_r = lon *2 *pi/360,\n           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + cos(lat_r) * cos(my_lat) * cos(my_long - lon_r))) %&gt;%\n    filter(start &lt; 1960 & end &gt; 2020) %&gt;%\n    top_n(n = -1, d) %&gt;%\n    distinct(station) %&gt;%\n    pull(station)\n\nstation_daily &lt;- glue(\"https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz\")\n\nlocal_weather &lt;- \nread_csv(station_daily,\n         col_names = c(\"station\", \"date\", \"variable\", \"value\", \"a\", \"b\", \"c\", \"d\")) %&gt;%\n  dplyr::select(station, date, variable, value) %&gt;%\n  pivot_wider(names_from = \"variable\", values_from = \"value\",\n                values_fill = 0) %&gt;%\n  dplyr::select(date, TMAX, PRCP, SNOW) %&gt;%\n  mutate(date = ymd(date))\n\nRows: 253083 Columns: 8\n\n\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (5): station, variable, a, b, c\ndbl (3): date, value, d\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nbozeman_weather &lt;-\n  local_weather %&gt;%\n  filter(date &gt; \"2000-01-01\")\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = TMAX)) +\n  theme_bw()\n\n\n\n\n\n\n\n\ntitle: “Montana Weather Data”"
-  },
-  {
-    "objectID": "pfreport.html#methods",
-    "href": "pfreport.html#methods",
-    "title": "MT Post Farm Analysis Report",
+    "objectID": "field_report.html#methods",
+    "href": "field_report.html#methods",
+    "title": "MT Field Site Analysis Report",
     "section": "Methods",
-    "text": "Methods\n\nPlant Selection and Cages\nAssessment of C. cinctus infestation and mortality within B. inermis were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530() Amber Lumite Screen (BioQuip® Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.\n\n\nInsects\nWheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of C. cinctus infestation and cutting in the prior year. Cut stubble, which contained C. cinctus larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once B. inermis stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).\n\nData Collection\nStems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.",
+    "text": "Methods\nTo assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.",
     "crumbs": [
       "Work",
       "Projects",
       "MSU-Master's",
       "Wheat Stem Sawfly",
-      "Controlled WSS Infestation"
+      "Montana Field Sites"
     ]
   },
   {
-    "objectID": "pfreport.html#analysis",
-    "href": "pfreport.html#analysis",
-    "title": "MT Post Farm Analysis Report",
+    "objectID": "field_report.html#analysis",
+    "href": "field_report.html#analysis",
+    "title": "MT Field Site Analysis Report",
     "section": "Analysis",
-    "text": "Analysis\n\nOverall WSS Infestation and Cutting\n\nBasic Table and Plot of Infestation\n\n\n\n\n2023 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n337\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n421\n\n\n0.71\n\n\n0.13\n\n\n\n\nlow\n\n\n415\n\n\n0.51\n\n\n0.03\n\n\n\n\n\n\n\n\n2022 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n444\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n418\n\n\n0.65\n\n\n0.03\n\n\n\n\nlow\n\n\n387\n\n\n0.45\n\n\n0.02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s take a closer look at the number of nodes borrowed through by the larvae. Using this information we can make an arguement about the size and length of time each larvae was alive prior to dying. This can be informative in understanding how many larvae would have been left later in the season for potential parasitism.\n\n\nInfestation Percentage/Node\n\n\n\n\n\n\n\n\n\n\n\nANOVA Table\n\n\n\nDf\nSum Sq\nMean Sq\nF-Value\nPr(&gt;F)\n\n\n\n\ntreatment\n1\n0.044\n0.044\n6.692\n0.0144\n\n\nnodes.inf\n5\n0.286\n0.057\n8.612\n0.0000\n\n\nv.r\n2\n0.057\n0.029\n4.303\n0.0221\n\n\nResiduals\n32\n0.213\n0.007\nNA\nNA\n\n\n\n\n\n\n\n\nBased on the results of our ANOVA, we have weak evidence (Pval = 0.0221) to suggest there is a difference in the number of nodes infested when considering treatment group and vegetative and reproductive stems.\n\n\n\n\nCumulative sum of nodes infested\n\n\n\n\n\n\n\n\n\n\n\n\n\n# of Nodes Infested\n\n\n\nTreatment\n6\n5\n4\n3\n2\n1\n\n\n\n\nhigh\n0.01\n0.13\n0.36\n0.69\n0.89\n1\n\n\nlow\n0.03\n0.13\n0.47\n0.76\n0.94\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI like this plot because it shows the cumulative percentage sum of nodes infested at each node. For example, at the 3rd node in 2023, we see that close to 70% of the stems in the ‘high’ treatment group exhibited between 3 and 6 nodes infested. As a general thought exercise, the more nodes a larvae burrowed through, the larger the larvae. This means that if we classify a “large” larvae as one who burrowed through at least 4 nodes, our infestation data shows that 36% of the larvae in the ‘high’ treatment groups died as “large” larvae.\n\n\n\n\nStems with Living Larvae (2023)\n\n\nTreatment\nCount\nTotal Stems\n%\n\n\n\n\nhigh\n26\n421\n0.062\n\n\nlow\n35\n415\n0.084\n\n\n\n\n\n\n\n\nInteresting to see that 6.2% of stems in the ‘high’ treatment groups and 8.4% of stems in the ‘low’ treatment group had living WSS larvae. The stems for this experiement were harvested in late October, much later in the season when we would expect the second generation parasitoids to be searching for a host.",
+    "text": "Analysis\n\nBig Sandy, MT 2023\n\nLochy Property - North Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nNote:\n- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road.\n\n\n\n\nNorth Road (site nn) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nnn\n20\nfall\n0.09\n0.62\n0.15\n0.77\n\n\nnn\n5\nfall\n0.15\n0.53\n0.36\n0.89\n\n\nnn\nbrome\nfall\n0.69\n0.05\n0.05\n0.10\n\n\nnn\nbrome\nsummer\n0.35\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nNorth Road (site ns) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nns\nbrome\nfall\n0.70\n0.03\n0.10\n0.13\n\n\nns\nbrome\nsummer\n0.44\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines.\n\n\nLochy Property - Gardiner Road\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nIn 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway.\n\n\n\n\nGardiner Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n0.11\n0.25\n0.17\n0.42\n\n\n5\nfall\n0.17\n0.25\n0.20\n0.44\n\n\nbrome\nfall\n0.64\n0.04\n0.10\n0.14\n\n\nbrome\nsummer\n0.51\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts.\n\n\n\nMoccasin, MT 2023\n\nSunset & Harvest Road Intersection\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nSunset Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nsun\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nsun\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nsun\nbrome\nfall\n0.45\n0.15\n0.16\n0.31\n\n\nsun\nbrome\nsummer\n0.20\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nHarvest Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nhar\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nhar\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nhar\nbrome\nfall\n0.39\n0.07\n0.13\n0.21\n\n\nhar\nbrome\nsummer\n0.22\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKolin Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nKolin Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n48\n33.0\n2\n35\n\n\n5\nfall\n54\n35.0\n0\n35\n\n\nbrome\nfall\n60\n0.5\n1\n2\n\n\nbrome\nsummer\n34\n0.0\n0\n0",
     "crumbs": [
       "Work",
       "Projects",
       "MSU-Master's",
       "Wheat Stem Sawfly",
-      "Controlled WSS Infestation"
+      "Montana Field Sites"
+    ]
+  },
+  {
+    "objectID": "msu-masters.html",
+    "href": "msu-masters.html",
+    "title": "MSU Masters",
+    "section": "",
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Wheat Stem Sawfly\n        Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.\n      \n    \n  \n  \n    \n       \n      \n        Locoweed Volatiles\n        Comparison of volatile organic compounds profiles of Oxytropis plants that contained the commensal endophyte Alternaria oxytropis and those that did not.\n      \n    \n  \n  \n    \n       \n      \n        Toadflax",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's"
+    ]
+  },
+  {
+    "objectID": "bugs.html",
+    "href": "bugs.html",
+    "title": "Bugs",
+    "section": "",
+    "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Button\n\n\n\n\n\n\n  Download All Pictures\n\n\n\n\n\n\n\n\n\n\nImage Crop Example"
+  },
+  {
+    "objectID": "deadhorse.html",
+    "href": "deadhorse.html",
+    "title": "Deadhorse Ultra 50 Miler",
+    "section": "",
+    "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Button\n\n\n\n\n\n\n  Download All Pictures"
+  },
+  {
+    "objectID": "aboutme.html",
+    "href": "aboutme.html",
+    "title": "Jackson Strand",
+    "section": "",
+    "text": "LinkedIn\n  \n  \n    \n     Instagram\n  \n  \n    \n     GitHub\n  \n\n  \n  \nI am currently a Master’s graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace.\n\n  View my CV\n\n\n\n\nMe and Grace at Glacier National Park, 2023\n\n\n\n\n\n\n\n\n  \n  \n  Image Gallery"
+  },
+  {
+    "objectID": "wss.html",
+    "href": "wss.html",
+    "title": "MSU Master’s: Wheat Stem Sawfly",
+    "section": "",
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Controlled WSS Infestation\n        Assessing WSS infestation and cutting within smooth brome in controlled research plot at Arthur H. Post Agronomy Farm.\n      \n    \n  \n  \n    \n       \n      \n        Montana Field Sites\n        Collection of wheat and smooth brome in Big Sandy and Moccasin, Montana to assess parasitism and WSS infestation.\n      \n    \n  \n  \n    \n       \n      \n        Organic Volatile Collection\n        Collection of wheat and smooth brome in Big Sandy and Moccasin Montana to assess parasitism and WSS infestation.\n      \n    \n  \n  \n    \n       \n      \n        Weather Data\n        Weather data trends from Big Sandy and Moccasin, Montana.",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's",
+      "Wheat Stem Sawfly"
+    ]
+  },
+  {
+    "objectID": "locoweed-report.html",
+    "href": "locoweed-report.html",
+    "title": "Locoweed Volatiles",
+    "section": "",
+    "text": "Note: This project is still a work in progress.",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's",
+      "Locoweed Volatiles"
     ]
   },
   {
@@ -152,120 +177,99 @@
     ]
   },
   {
-    "objectID": "wss.html",
-    "href": "wss.html",
-    "title": "MSU Master’s: Wheat Stem Sawfly",
-    "section": "",
-    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Controlled WSS Infestation\n        Assessing WSS infestation and cutting within smooth brome in controlled research plot at Arthur H. Post Agronomy Farm.\n      \n    \n  \n  \n    \n       \n      \n        Montana Field Sites\n        Collection of wheat and smooth brome in Big Sandy and Moccasin, Montana to assess parasitism and WSS infestation.\n      \n    \n  \n  \n    \n       \n      \n        Organic Volatile Collection\n        Collection of wheat and smooth brome in Big Sandy and Moccasin Montana to assess parasitism and WSS infestation.\n      \n    \n  \n  \n    \n       \n      \n        Weather Data\n        Weather data trends from Big Sandy and Moccasin, Montana.",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Wheat Stem Sawfly"
-    ]
-  },
-  {
-    "objectID": "aboutme.html",
-    "href": "aboutme.html",
-    "title": "Jackson Strand",
-    "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Instagram\n  \n  \n    \n     GitHub\n  \n\n  \n  \nI am currently a Master’s graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace.\n\n  View my CV\n\n\n\n\nMe and Grace at Glacier National Park, 2023\n\n\n\n\n\n\n\n\n  \n  \n  Image Gallery"
-  },
-  {
-    "objectID": "deadhorse.html",
-    "href": "deadhorse.html",
-    "title": "Deadhorse Ultra 50 Miler",
-    "section": "",
-    "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Button\n\n\n\n\n\n\n  Download All Pictures"
-  },
-  {
-    "objectID": "bugs.html",
-    "href": "bugs.html",
-    "title": "Bugs",
-    "section": "",
-    "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Button\n\n\n\n\n\n\n  Download All Pictures\n\n\n\n\n\n\n\n\n\n\nImage Crop Example"
-  },
-  {
-    "objectID": "msu-masters.html",
-    "href": "msu-masters.html",
-    "title": "MSU Masters",
-    "section": "",
-    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Wheat Stem Sawfly\n        Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.\n      \n    \n  \n  \n    \n       \n      \n        Locoweed Volatiles\n        Comparison of volatile organic compounds profiles of Oxytropis plants that contained the commensal endophyte Alternaria oxytropis and those that did not.\n      \n    \n  \n  \n    \n       \n      \n        Toadflax",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's"
-    ]
-  },
-  {
-    "objectID": "field_report.html",
-    "href": "field_report.html",
-    "title": "MT Field Site Analysis Report",
-    "section": "",
-    "text": "To assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.\n\n\n\n\n\n\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nNote:\n- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road.\n\n\n\n\nNorth Road (site nn) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nnn\n20\nfall\n0.09\n0.62\n0.15\n0.77\n\n\nnn\n5\nfall\n0.15\n0.53\n0.36\n0.89\n\n\nnn\nbrome\nfall\n0.69\n0.05\n0.05\n0.10\n\n\nnn\nbrome\nsummer\n0.35\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nNorth Road (site ns) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nns\nbrome\nfall\n0.70\n0.03\n0.10\n0.13\n\n\nns\nbrome\nsummer\n0.44\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines.\n\n\n\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nIn 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway.\n\n\n\n\nGardiner Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n0.11\n0.25\n0.17\n0.42\n\n\n5\nfall\n0.17\n0.25\n0.20\n0.44\n\n\nbrome\nfall\n0.64\n0.04\n0.10\n0.14\n\n\nbrome\nsummer\n0.51\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts.\n\n\n\n\n\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nSunset Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nsun\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nsun\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nsun\nbrome\nfall\n0.45\n0.15\n0.16\n0.31\n\n\nsun\nbrome\nsummer\n0.20\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nHarvest Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nhar\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nhar\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nhar\nbrome\nfall\n0.39\n0.07\n0.13\n0.21\n\n\nhar\nbrome\nsummer\n0.22\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nKolin Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n48\n33.0\n2\n35\n\n\n5\nfall\n54\n35.0\n0\n35\n\n\nbrome\nfall\n60\n0.5\n1\n2\n\n\nbrome\nsummer\n34\n0.0\n0\n0",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Wheat Stem Sawfly",
-      "Montana Field Sites"
-    ]
-  },
-  {
-    "objectID": "field_report.html#methods",
-    "href": "field_report.html#methods",
-    "title": "MT Field Site Analysis Report",
+    "objectID": "pfreport.html#methods",
+    "href": "pfreport.html#methods",
+    "title": "MT Post Farm Analysis Report",
     "section": "Methods",
-    "text": "Methods\nTo assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.",
+    "text": "Methods\n\nPlant Selection and Cages\nAssessment of C. cinctus infestation and mortality within B. inermis were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530() Amber Lumite Screen (BioQuip® Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.\n\n\nInsects\nWheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of C. cinctus infestation and cutting in the prior year. Cut stubble, which contained C. cinctus larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once B. inermis stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).\n\nData Collection\nStems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.",
     "crumbs": [
       "Work",
       "Projects",
       "MSU-Master's",
       "Wheat Stem Sawfly",
-      "Montana Field Sites"
+      "Controlled WSS Infestation"
     ]
   },
   {
-    "objectID": "field_report.html#analysis",
-    "href": "field_report.html#analysis",
-    "title": "MT Field Site Analysis Report",
+    "objectID": "pfreport.html#analysis",
+    "href": "pfreport.html#analysis",
+    "title": "MT Post Farm Analysis Report",
     "section": "Analysis",
-    "text": "Analysis\n\nBig Sandy, MT 2023\n\nLochy Property - North Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nNote:\n- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road.\n\n\n\n\nNorth Road (site nn) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nnn\n20\nfall\n0.09\n0.62\n0.15\n0.77\n\n\nnn\n5\nfall\n0.15\n0.53\n0.36\n0.89\n\n\nnn\nbrome\nfall\n0.69\n0.05\n0.05\n0.10\n\n\nnn\nbrome\nsummer\n0.35\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nNorth Road (site ns) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nns\nbrome\nfall\n0.70\n0.03\n0.10\n0.13\n\n\nns\nbrome\nsummer\n0.44\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines.\n\n\nLochy Property - Gardiner Road\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nIn 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway.\n\n\n\n\nGardiner Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n0.11\n0.25\n0.17\n0.42\n\n\n5\nfall\n0.17\n0.25\n0.20\n0.44\n\n\nbrome\nfall\n0.64\n0.04\n0.10\n0.14\n\n\nbrome\nsummer\n0.51\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts.\n\n\n\nMoccasin, MT 2023\n\nSunset & Harvest Road Intersection\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nSunset Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nsun\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nsun\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nsun\nbrome\nfall\n0.45\n0.15\n0.16\n0.31\n\n\nsun\nbrome\nsummer\n0.20\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nHarvest Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nhar\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nhar\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nhar\nbrome\nfall\n0.39\n0.07\n0.13\n0.21\n\n\nhar\nbrome\nsummer\n0.22\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKolin Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nKolin Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n48\n33.0\n2\n35\n\n\n5\nfall\n54\n35.0\n0\n35\n\n\nbrome\nfall\n60\n0.5\n1\n2\n\n\nbrome\nsummer\n34\n0.0\n0\n0",
+    "text": "Analysis\n\nOverall WSS Infestation and Cutting\n\nBasic Table and Plot of Infestation\n\n\n\n\n2023 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n337\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n421\n\n\n0.71\n\n\n0.13\n\n\n\n\nlow\n\n\n415\n\n\n0.51\n\n\n0.03\n\n\n\n\n\n\n\n\n2022 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n444\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n418\n\n\n0.65\n\n\n0.03\n\n\n\n\nlow\n\n\n387\n\n\n0.45\n\n\n0.02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s take a closer look at the number of nodes borrowed through by the larvae. Using this information we can make an arguement about the size and length of time each larvae was alive prior to dying. This can be informative in understanding how many larvae would have been left later in the season for potential parasitism.\n\n\nInfestation Percentage/Node\n\n\n\n\n\n\n\n\n\n\n\nANOVA Table\n\n\n\nDf\nSum Sq\nMean Sq\nF-Value\nPr(&gt;F)\n\n\n\n\ntreatment\n1\n0.044\n0.044\n6.692\n0.0144\n\n\nnodes.inf\n5\n0.286\n0.057\n8.612\n0.0000\n\n\nv.r\n2\n0.057\n0.029\n4.303\n0.0221\n\n\nResiduals\n32\n0.213\n0.007\nNA\nNA\n\n\n\n\n\n\n\n\nBased on the results of our ANOVA, we have weak evidence (Pval = 0.0221) to suggest there is a difference in the number of nodes infested when considering treatment group and vegetative and reproductive stems.\n\n\n\n\nCumulative sum of nodes infested\n\n\n\n\n\n\n\n\n\n\n\n\n\n# of Nodes Infested\n\n\n\nTreatment\n6\n5\n4\n3\n2\n1\n\n\n\n\nhigh\n0.01\n0.13\n0.36\n0.69\n0.89\n1\n\n\nlow\n0.03\n0.13\n0.47\n0.76\n0.94\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI like this plot because it shows the cumulative percentage sum of nodes infested at each node. For example, at the 3rd node in 2023, we see that close to 70% of the stems in the ‘high’ treatment group exhibited between 3 and 6 nodes infested. As a general thought exercise, the more nodes a larvae burrowed through, the larger the larvae. This means that if we classify a “large” larvae as one who burrowed through at least 4 nodes, our infestation data shows that 36% of the larvae in the ‘high’ treatment groups died as “large” larvae.\n\n\n\n\nStems with Living Larvae (2023)\n\n\nTreatment\nCount\nTotal Stems\n%\n\n\n\n\nhigh\n26\n421\n0.062\n\n\nlow\n35\n415\n0.084\n\n\n\n\n\n\n\n\nInteresting to see that 6.2% of stems in the ‘high’ treatment groups and 8.4% of stems in the ‘low’ treatment group had living WSS larvae. The stems for this experiement were harvested in late October, much later in the season when we would expect the second generation parasitoids to be searching for a host.",
     "crumbs": [
       "Work",
       "Projects",
       "MSU-Master's",
       "Wheat Stem Sawfly",
-      "Montana Field Sites"
+      "Controlled WSS Infestation"
     ]
   },
   {
-    "objectID": "field_report.html#methods-1",
-    "href": "field_report.html#methods-1",
-    "title": "MT Field Site Analysis Report",
-    "section": "Methods",
-    "text": "Methods\nTo assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.",
+    "objectID": "weatherdata.html",
+    "href": "weatherdata.html",
+    "title": "Weather Data MT",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(glue)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\ninventory_url &lt;- \"https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt\"\n\ninventory &lt;- read_table(inventory_url,\n           col_names = c(\"station\", \"lat\", \"lon\", \"variable\", \"start\", \"end\"))\n\n\n── Column specification ────────────────────────────────────────────────────────\ncols(\n  station = col_character(),\n  lat = col_double(),\n  lon = col_double(),\n  variable = col_character(),\n  start = col_double(),\n  end = col_double()\n)\n\ninventory\n\n# A tibble: 747,331 × 6\n   station       lat   lon variable start   end\n   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;\n 1 ACW00011604  17.1 -61.8 TMAX      1949  1949\n 2 ACW00011604  17.1 -61.8 TMIN      1949  1949\n 3 ACW00011604  17.1 -61.8 PRCP      1949  1949\n 4 ACW00011604  17.1 -61.8 SNOW      1949  1949\n 5 ACW00011604  17.1 -61.8 SNWD      1949  1949\n 6 ACW00011604  17.1 -61.8 PGTM      1949  1949\n 7 ACW00011604  17.1 -61.8 WDFG      1949  1949\n 8 ACW00011604  17.1 -61.8 WSFG      1949  1949\n 9 ACW00011604  17.1 -61.8 WT03      1949  1949\n10 ACW00011604  17.1 -61.8 WT08      1949  1949\n# ℹ 747,321 more rows\n\nmy_lat &lt;- 45.661966103346735 * 2 * pi/360\nmy_long &lt;- -111.04939878991246 * 2 * pi/360\n\nmy_station &lt;- \n  inventory %&gt;%\n    mutate(lat_r = lat *2 *pi/360,\n           lon_r = lon *2 *pi/360,\n           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + cos(lat_r) * cos(my_lat) * cos(my_long - lon_r))) %&gt;%\n    filter(start &lt; 1960 & end &gt; 2020) %&gt;%\n    top_n(n = -1, d) %&gt;%\n    distinct(station) %&gt;%\n    pull(station)\n\nstation_daily &lt;- glue(\"https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz\")\n\nlocal_weather &lt;- \nread_csv(station_daily,\n         col_names = c(\"station\", \"date\", \"variable\", \"value\", \"a\", \"b\", \"c\", \"d\")) %&gt;%\n  dplyr::select(station, date, variable, value) %&gt;%\n  pivot_wider(names_from = \"variable\", values_from = \"value\",\n                values_fill = 0) %&gt;%\n  dplyr::select(date, TMAX, PRCP, SNOW) %&gt;%\n  mutate(date = ymd(date))\n\nRows: 253113 Columns: 8\n\n\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (5): station, variable, a, b, c\ndbl (3): date, value, d\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nbozeman_weather &lt;-\n  local_weather %&gt;%\n  filter(date &gt; \"2000-01-01\")\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = TMAX)) +\n  theme_bw()\n\n\n\n\n\n\n\n\ntitle: “Montana Weather Data”",
     "crumbs": [
       "Work",
       "Projects",
       "MSU-Master's",
       "Wheat Stem Sawfly",
-      "Montana Field Sites"
+      "Weather Data"
     ]
   },
   {
-    "objectID": "field_report.html#analysis-1",
-    "href": "field_report.html#analysis-1",
-    "title": "MT Field Site Analysis Report",
-    "section": "Analysis",
-    "text": "Analysis\n\nBig Sandy, MT 2023\n\nLochy Property - North Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nNote:\n- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road.\n\n\n\n\nNorth Road (site nn) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nnn\n20\nfall\n0.09\n0.62\n0.15\n0.77\n\n\nnn\n5\nfall\n0.15\n0.53\n0.36\n0.89\n\n\nnn\nbrome\nfall\n0.69\n0.05\n0.05\n0.10\n\n\nnn\nbrome\nsummer\n0.35\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nNorth Road (site ns) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nns\nbrome\nfall\n0.70\n0.03\n0.10\n0.13\n\n\nns\nbrome\nsummer\n0.44\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines.\n\n\nLochy Property - Gardiner Road\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nIn 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway.\n\n\n\n\nGardiner Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n0.11\n0.25\n0.17\n0.42\n\n\n5\nfall\n0.17\n0.25\n0.20\n0.44\n\n\nbrome\nfall\n0.64\n0.04\n0.10\n0.14\n\n\nbrome\nsummer\n0.51\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts.\n\n\n\nMoccasin, MT 2023\n\nSunset & Harvest Road Intersection\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nSunset Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nsun\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nsun\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nsun\nbrome\nfall\n0.45\n0.15\n0.16\n0.31\n\n\nsun\nbrome\nsummer\n0.20\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nHarvest Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nhar\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nhar\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nhar\nbrome\nfall\n0.39\n0.07\n0.13\n0.21\n\n\nhar\nbrome\nsummer\n0.22\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKolin Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nKolin Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n48\n33.0\n2\n35\n\n\n5\nfall\n54\n35.0\n0\n35\n\n\nbrome\nfall\n60\n0.5\n1\n2\n\n\nbrome\nsummer\n34\n0.0\n0\n0",
+    "objectID": "index template.html",
+    "href": "index template.html",
+    "title": "Welcome to my website!",
+    "section": "",
+    "text": "Welcome to my website!\nI am Gandalf the White, a renowned wizard and scholar of Middle-earth. Over the centuries, I have dedicated my life to studying the history, languages, and cultures of the peoples of Middle-earth. On this website, I offer a glimpse into my vast body of knowledge, ongoing research, and publications.\nMy research interests span the entirety of Middle-earth, from the distant past to the present day. I am particularly passionate about the languages and mythologies of the Elves, Dwarves, and Men, and I have made significant contributions to the understanding of these subjects. My studies of the natural world have also been extensive, and I am an expert in the flora and fauna of Middle-earth. Additionally, I have been involved in many important historical events and offer valuable first-hand accounts and insights on the past.\nNot only am I a scholar, but I am also a mentor and teacher. Over the centuries, I have had the honor of working with many young wizards, passing on my knowledge and experience to the next generation. I have a particular interest in the education of hobbits, whom I see as having great potential despite their small size and simple lifestyle. My teaching style is engaging and accessible, and I encourage my students to think critically and creatively.\nOn this website, you will find a selection of my published works, including scholarly articles, monographs, and translations. You will also find news and updates on my current research projects, as well as information on upcoming events and conferences where I will be speaking. I invite you to explore my website and learn more about my life’s work as one of Middle-earth’s greatest scholars and thinkers. Please feel free to contact me if you have any questions or would like to discuss potential projects.\n\nView the tutorial for this template (+ download link)"
+  },
+  {
+    "objectID": "index cv.html",
+    "href": "index cv.html",
+    "title": "Curriculum vitae",
+    "section": "",
+    "text": "Download current CV\n  \n\n\n  \n\n\nView the tutorial for this template (+ download link)"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        MSU Master's - Entomology\n        Co-Advised by David Weaver & Tracy Sterling\n      \n    \n  \n  \n    \n       \n      \n        NBA Roster Analysis Tool",
     "crumbs": [
       "Work",
-      "Projects",
-      "MSU-Master's",
-      "Wheat Stem Sawfly",
-      "Montana Field Sites"
+      "Projects"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to my website!",
+    "section": "",
+    "text": "LinkedIn\n  \n  \n    \n     Instagram\n  \n  \n    \n     GitHub\n  \n\n\n\n\nWelcome to my website!\nMy name is Jackson Strand. I am currently a Master’s graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace.\n\n  View my CV\n\n\n\n\nMe and Grace at Glacier National Park, 2023"
+  },
+  {
+    "objectID": "tmr50k.html",
+    "href": "tmr50k.html",
+    "title": "Teton Mountain Runs 50K",
+    "section": "",
+    "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Button\n\n\n\n\n\n\n  Download All Pictures"
+  },
+  {
+    "objectID": "running.html",
+    "href": "running.html",
+    "title": "Running Pictures",
+    "section": "",
+    "text": "Deadhorse Ultra, 2023\n\n\n\n  \n\nTeton Mountain Runs, 2023"
+  },
+  {
+    "objectID": "save.html",
+    "href": "save.html",
+    "title": "save",
+    "section": "",
+    "text": "box with shadow when you hover\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Wheat Stem Sawfly"
   },
   {
     "objectID": "cv.html",
@@ -282,16 +286,29 @@
     "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n  \n \n\n\n\n\n\n\n\n\n  \n  \n  Image Gallery"
   },
   {
-    "objectID": "locoweed-report.html",
-    "href": "locoweed-report.html",
-    "title": "Locoweed Volatiles",
-    "section": "",
-    "text": "Note: This project is still a work in progress.",
+    "objectID": "toadflax_report.html#multivariate-analysis",
+    "href": "toadflax_report.html#multivariate-analysis",
+    "title": "Toadflax Analysis",
+    "section": "Multivariate Analysis",
+    "text": "Multivariate Analysis\nMultivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PCA, Permutational Multivariate ANOVA (PERMANOVA), Permutational Analysis of Multivariate Dispersion (PERMDISP), and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data (Brückner and Heethoff 2017). VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) (Oksanen et al. 2011). This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). Data were visualized using ggplot2 (Wickham 2016). The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output.\n\nPCA\nOur first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.\n\n\n\n\n\n\n\n\n\nNext, we can look at our loadings and see where each compound is pushing the differences in our PCs.\n\n\n\n\n\n\n\n\n\nFinally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures.\n\n\n\n\n\n\n\n\n\nGrouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context.\n\n\nPERMANOVA\nAs stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). It is useful when considering non-normal multivariate data like our toadflax data set.\n\nPERMANOVA - D6, Y6, Synthetic, Natural\n\n\n\n\nToadflax Type PERMANOVA: D6, Y6, Synthetic, Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).\nLet’s check for a difference between our synthetic and natural plant types.\n\n\nPERMANOVA - Synthetic & Natural\n\n\n\n\nToadflax Type PERMANOVA: Synthetic & Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n1\n0.4267748\n0.1616969\n13.30914\n0.001\n\n\nResidual\n69\n2.2125751\n0.8383031\nNA\nNA\n\n\nTotal\n70\n2.6393499\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between Natural and Synthetic plant types.\n\n\n\nPERMDISP & PCoA\nPermutational Analysis of Multivariate Dispersions, or PERMDISP, is a multivariate statistic used to assess differences in dispersion (variation) among groups or treatments. This method is particularly useful when dealing with multivariate data where there are multiple variables measured on each sample or observation.\nPrincipal Coordinates Analysis (PCoA), also known as Classical Multidimensional Scaling (MDS), is a multivariate statistical technique used for exploring and visualizing patterns of similarity or dissimilarity in data. PCoA is closely related to Principal Component Analysis (PCA), but whereas PCA operates on the covariance matrix of the data, PCoA works directly on a distance or dissimilarity matrix.\nI ran a PERMDISP on our entire data set.\n\n\n\n    Homogeneity of multivariate dispersions\n\nCall: betadisper(d = dist, group = data.clr$type)\n\nNo. of Positive Eigenvalues: 26\nNo. of Negative Eigenvalues: 0\n\nAverage distance to median:\n       DT   Natural Synthetic        YT \n    6.572     6.623     6.699     7.161 \n\nEigenvalues for PCoA axes:\n(Showing 8 of 26 eigenvalues)\n PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 \n1266.4  922.1  671.8  519.2  406.3  319.9  292.6  258.6 \n\n\nWe found no significant difference (pval = 0.5548198 ) in multivariate dispersion among groups.\n\n\n\n\n\n\n\n\n\nBasically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different (0.5548198) in the dispersion within each of our groups when we compare them to one another. We are seeing a very large p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot.\nThis means that we don’t need to consider differences in broad dispersional differences between our plant types.",
     "crumbs": [
       "Work",
       "Projects",
       "MSU-Master's",
-      "Locoweed Volatiles"
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "toadflax_report.html#boxplot-comparisons",
+    "href": "toadflax_report.html#boxplot-comparisons",
+    "title": "Toadflax Analysis",
+    "section": "Boxplot Comparisons",
+    "text": "Boxplot Comparisons",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's",
+      "Toadflax"
     ]
   },
   {
@@ -299,7 +316,7 @@
     "href": "toadflax_report.html",
     "title": "Toadflax Analysis",
     "section": "",
-    "text": "BOXPLOT COMPARISONS\n\n\n\n\n\n\n\n\n\n\n\nPERMANOVA\nStatistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data (Brückner and Heethoff 2017). VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) (Oksanen et al. 2011). This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). Data were visualized using a combination of ggplot2 and knitr (Wickham 2016; Xie 2021). I selected a subset of comounds to ues for each analysis. These compounds were seelcted based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output. I will highlight the cmopounds that I used for each analysis as I get to them.\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural)\nLet’s look to see if there are differences between\n\n\n\n\n\nReferences\n\nAnderson, Marti J. 2017. “Permutational Multivariate Analysis of Variance (PERMANOVA).” In Wiley StatsRef: Statistics Reference Online, 1–15. Chichester, UK: John Wiley & Sons, Ltd.\n\n\nBrückner, Adrien, and Michael Heethoff. 2017. “A Chemo-Ecologists’ Practical Guide to Compositional Data Analysis.” Chemoecology 27: 33–46. https://doi.org/10.1007/s00049-016-0227-8.\n\n\nOksanen, Jari, L. Gavin Simpson, F. Guillaume Blanchet, and Roeland Kindt. 2011. “Ordination Methods, Diversity Analysis and Other Functions for Community and Vegetation Ecologists.”\n\n\nWickham, Hadley. 2016. Ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. https://ggplot2.tidyverse.org.\n\n\nXie, Yihui. 2021. “Knitr: A General-Purpose Package for Dynamic Report Generation in R.” https://yihui.org/knitr/.",
+    "text": "I’m going to briefly analyze the data in two different formats.\nOverall, the data is good. I think a little bit of pairing down of the number of compounds we are looking at could be helpful.",
     "crumbs": [
       "Work",
       "Projects",
@@ -308,11 +325,11 @@
     ]
   },
   {
-    "objectID": "toadflax_report.html#permanova",
-    "href": "toadflax_report.html#permanova",
+    "objectID": "toadflax_report.html#multivariate-analysis-1",
+    "href": "toadflax_report.html#multivariate-analysis-1",
     "title": "Toadflax Analysis",
-    "section": "PERMANOVA",
-    "text": "PERMANOVA\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).\n\ndist &lt;- dist(data.clr)\n\nWarning in stats::dist(cdt(x), ...): NAs introduced by coercion\n\npermdisp.results &lt;-\nbetadisper(dist, data.clr$type)\n\n\npermdisp.results\n\n\n    Homogeneity of multivariate dispersions\n\nCall: betadisper(d = dist, group = data.clr$type)\n\nNo. of Positive Eigenvalues: 26\nNo. of Negative Eigenvalues: 0\n\nAverage distance to median:\n       DT   Natural Synthetic        YT \n    6.572     6.623     6.699     7.161 \n\nEigenvalues for PCoA axes:\n(Showing 8 of 26 eigenvalues)\n PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 \n1266.4  922.1  671.8  519.2  406.3  319.9  292.6  258.6 \n\np_value &lt;- anova(permdisp.results)$'Pr(&gt;F)'[1]\nif (p_value &lt; 0.05) {\n  cat(\"Significant differences in multivariate dispersion among groups.\\n\")\n} else {\n  cat(\"We found no significant difference (pval =\",anova(permdisp.results)$'Pr(&gt;F)'[1], \") in multivariate dispersion among groups.\\n\")\n}\n\nWe found no significant difference (pval = 0.5548198 ) in multivariate dispersion among groups.\n\npcoa &lt;-\ncapscale(dist ~ 1, data = data.clr)\n\npcoa_df &lt;- data.frame(scores(pcoa)$sites, group = data.clr$type)\n\nggplot(pcoa_df, aes(x = MDS1, y = MDS2, color = group)) +\n  geom_point(alpha = 0.7) +\n  labs(x = \"PCo1\", y = \"PCo2\", color = \"Type\",\n       title = \"PCoA Plot\") +\n  theme_bw() +\n  stat_ellipse()\n\n\n\n\n\n\n\n\nBasically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different in the dispersion within each of our groups when we compare them to one another. We are seeing a very small p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot.",
+    "section": "Multivariate Analysis",
+    "text": "Multivariate Analysis\n\nPCA\n\n\n\n\n\n\n\n\n\n\n\nPERMANOVA\nLet’s say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference.\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$plant\n1\n0.1309064\n0.0574618\n2.072809\n0.08\n\n\nResidual\n34\n2.1472404\n0.9425382\nNA\nNA\n\n\nTotal\n35\n2.2781468\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show no evidence (p-val = 0.08) of a difference between volatile profiles between Y6D6 and D6Y6 plants.",
     "crumbs": [
       "Work",
       "Projects",
@@ -321,11 +338,11 @@
     ]
   },
   {
-    "objectID": "toadflax_report.html#pca",
-    "href": "toadflax_report.html#pca",
+    "objectID": "toadflax_report.html#simple-raw-boxplot-comparisons",
+    "href": "toadflax_report.html#simple-raw-boxplot-comparisons",
     "title": "Toadflax Analysis",
-    "section": "PCA",
-    "text": "PCA\nOur first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.\n\n\n\n\n\n\n\n\n\nNext, we can look at our loadings and see where each compound is pushing the differences in our PCs.\n\n\n\n\n\n\n\n\n\nFinally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures.",
+    "section": "Simple Raw Boxplot Comparisons",
+    "text": "Simple Raw Boxplot Comparisons",
     "crumbs": [
       "Work",
       "Projects",
