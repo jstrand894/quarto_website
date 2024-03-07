@@ -272,22 +272,25 @@ div.csl-indent {
   <ul>
   <li><a href="#methods" id="toc-methods" class="nav-link active" data-scroll-target="#methods">Methods</a></li>
   <li><a href="#raw-boxplot-comparisons" id="toc-raw-boxplot-comparisons" class="nav-link" data-scroll-target="#raw-boxplot-comparisons">Raw Boxplot Comparisons</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#organized-by-type" id="toc-organized-by-type" class="nav-link" data-scroll-target="#organized-by-type">Organized by Type</a></li>
   <li><a href="#organized-by-plant" id="toc-organized-by-plant" class="nav-link" data-scroll-target="#organized-by-plant">Organized by Plant</a></li>
   </ul></li>
   <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#organized-by-type-1" id="toc-organized-by-type-1" class="nav-link" data-scroll-target="#organized-by-type-1">Organized by Type</a>
   <ul class="collapse">
-  <li><a href="#pca-with-variable-category-selection" id="toc-pca-with-variable-category-selection" class="nav-link" data-scroll-target="#pca-with-variable-category-selection">PCA with Variable Category Selection</a></li>
+  <li><a href="#all-data" id="toc-all-data" class="nav-link" data-scroll-target="#all-data">All Data</a></li>
+  <li><a href="#variable-category-selection" id="toc-variable-category-selection" class="nav-link" data-scroll-target="#variable-category-selection">Variable Category Selection</a>
+  <ul class="collapse">
   <li><a href="#compare-dt-yt-synthetic" id="toc-compare-dt-yt-synthetic" class="nav-link" data-scroll-target="#compare-dt-yt-synthetic">Compare: DT, YT, Synthetic</a></li>
   <li><a href="#compare-synthetic-and-natural" id="toc-compare-synthetic-and-natural" class="nav-link" data-scroll-target="#compare-synthetic-and-natural">Compare: Synthetic and Natural</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#organized-by-plant-1" id="toc-organized-by-plant-1" class="nav-link" data-scroll-target="#organized-by-plant-1">Organized by Plant</a></li>
   </ul></li>
   <li><a href="#permanova" id="toc-permanova" class="nav-link" data-scroll-target="#permanova">PERMANOVA</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#organized-by-type-2" id="toc-organized-by-type-2" class="nav-link" data-scroll-target="#organized-by-type-2">Organized by Type</a>
   <ul class="collapse">
   <li><a href="#d6-y6-synthetic-natural" id="toc-d6-y6-synthetic-natural" class="nav-link" data-scroll-target="#d6-y6-synthetic-natural">D6, Y6, Synthetic, Natural</a></li>
@@ -380,6 +383,8 @@ div.csl-indent {
 <p>Principal Component Analysis (PCA) is a statistical method used to simplify complex datasets by identifying patterns and relationships among variables. It transforms the original data into a new set of variables called principal components, which capture the most important information in the data. These components help visualize and understand the main sources of variation among samples or observations. In this study, PCA was used to analyze the variability in volatile organic compound (VOC) compositions across samples, allowing researchers to explore and interpret the data more easily.</p>
 <section id="organized-by-type-1" class="level2">
 <h2 class="anchored" data-anchor-id="organized-by-type-1">Organized by Type</h2>
+<section id="all-data" class="level3">
+<h3 class="anchored" data-anchor-id="all-data">All Data</h3>
 <p>We’re going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -411,18 +416,18 @@ div.csl-indent {
 </div>
 </div>
 <p>Grouping our compounds by family (i.e.&nbsp;terpenes, aldehydes, etc.) could provide a little bit of more context.</p>
-<section id="pca-with-variable-category-selection" class="level3">
-<h3 class="anchored" data-anchor-id="pca-with-variable-category-selection">PCA with Variable Category Selection</h3>
+</section>
+<section id="variable-category-selection" class="level3">
+<h3 class="anchored" data-anchor-id="variable-category-selection">Variable Category Selection</h3>
 <p>I will create several PCA plots by filtering out different plant categories. There’s a crucial distinction to be made here. In one set of plots, I’ll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I’ll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method.</p>
 <p>I’ve also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.</p>
 <p>In my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.</p>
 <p>As a reference, I’m going to show the plot from all varaibles and data on the right side.</p>
 <p>Let’s start by removing the natural hybrids from our PCA and view the results.</p>
-</section>
-<section id="compare-dt-yt-synthetic" class="level3">
-<h3 class="anchored" data-anchor-id="compare-dt-yt-synthetic">Compare: DT, YT, Synthetic</h3>
-<section id="post-pca-model-filter" class="level4">
-<h4 class="anchored" data-anchor-id="post-pca-model-filter">Post-PCA Model Filter</h4>
+<section id="compare-dt-yt-synthetic" class="level4">
+<h4 class="anchored" data-anchor-id="compare-dt-yt-synthetic">Compare: DT, YT, Synthetic</h4>
+<section id="post-pca-model-filter" class="level5">
+<h5 class="anchored" data-anchor-id="post-pca-model-filter">Post-PCA Model Filter</h5>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -433,8 +438,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="pre-pca-model-filter" class="level4">
-<h4 class="anchored" data-anchor-id="pre-pca-model-filter">Pre-PCA Model Filter</h4>
+<section id="pre-pca-model-filter" class="level5">
+<h5 class="anchored" data-anchor-id="pre-pca-model-filter">Pre-PCA Model Filter</h5>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -446,10 +451,10 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="compare-synthetic-and-natural" class="level3">
-<h3 class="anchored" data-anchor-id="compare-synthetic-and-natural">Compare: Synthetic and Natural</h3>
-<section id="post-pca-model-filter-1" class="level4">
-<h4 class="anchored" data-anchor-id="post-pca-model-filter-1">Post-PCA Model Filter</h4>
+<section id="compare-synthetic-and-natural" class="level4">
+<h4 class="anchored" data-anchor-id="compare-synthetic-and-natural">Compare: Synthetic and Natural</h4>
+<section id="post-pca-model-filter-1" class="level5">
+<h5 class="anchored" data-anchor-id="post-pca-model-filter-1">Post-PCA Model Filter</h5>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -470,8 +475,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="pre-pca-model-filter-1" class="level4">
-<h4 class="anchored" data-anchor-id="pre-pca-model-filter-1">Pre-PCA Model Filter</h4>
+<section id="pre-pca-model-filter-1" class="level5">
+<h5 class="anchored" data-anchor-id="pre-pca-model-filter-1">Pre-PCA Model Filter</h5>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -484,6 +489,7 @@ div.csl-indent {
 <div style="border: 1px solid black; padding: 10px; ">
 <p>After running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two.</p>
 </div>
+</section>
 </section>
 </section>
 </section>

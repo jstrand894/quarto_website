@@ -5,6 +5,7 @@ date: '`r format(Sys.Date())`'
 editor_options: 
   chunk_output_type: console
 toc: true
+toc-depth: 4
 bibliography: citations/citations.bib
 link-citations: true
 cls: council-of-science-editors-author-date.csl
@@ -115,6 +116,7 @@ compound.order <- c("Z-3-Hexenol",
 "Dodecanal",
 "Caryophyllene")
 ```
+
 # Methods 
 
 Boxpot and multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1). We employed Principal Compoenent Analysis (PCA), Permutational Multivariate ANOVA (PERMANOVA), and Permutational Analysis of Multivariate Dispersion (PERMDISP). The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using ggplot2 [@ggplot]. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output. 
@@ -343,7 +345,7 @@ ggbiplot(pca.results, obs.scale = 1, var.scale = 1, ellipse = FALSE,
 
 Grouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context. 
 
-### PCA with Variable Category Selection
+### Variable Category Selection
 
 I will create several PCA plots by filtering out different plant categories. There's a crucial distinction to be made here. In one set of plots, I'll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I'll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method. 
 
@@ -355,9 +357,9 @@ As a reference, I'm going to show the plot from all varaibles and data on the ri
 
 Let's start by removing the natural hybrids from our PCA and view the results.  
 
-### Compare: DT, YT, Synthetic  
+#### Compare: DT, YT, Synthetic  
 
-#### Post-PCA Model Filter  
+##### Post-PCA Model Filter  
 
 ```{r scores plot category POST natural removed, echo = F, fig.width = 12}
 all.scores <-
@@ -406,7 +408,7 @@ grid.arrange(scores.post.natrem, all.scores, ncol = 2)
 ```
 
 
-#### Pre-PCA Model Filter
+##### Pre-PCA Model Filter
 ```{r PCA category PRE no natural, echo = F}
 types <- c("DT", "YT", "Synthetic")
 
@@ -472,9 +474,9 @@ grid.arrange(scores.pre.natrm, all.scores, ncol = 2)
 
 
 
-### Compare: Synthetic and Natural  
+#### Compare: Synthetic and Natural  
 
-#### Post-PCA Model Filter
+##### Post-PCA Model Filter
 
 ```{r scores plot type HYBRIDS, echo = F, fig.width = 12}
 scores.post.hybrids <-
@@ -518,7 +520,7 @@ ggplot() +
   stat_ellipse(data = model.data.all %>%
                  filter(type %in% c("Natural", "Synthetic")),
                aes(PC1, PC2, color = type)) +
-  labs(title = "Toadflax PCA Scores Plot - Hybrids") +
+  labs(title = "Toadflax PCA - Hybrids") +
   theme_bw() +
   lims(x = c(-5.726419, 7.824495), y = c(-3.879407, 4.630473)) +
   scale_color_manual(values = c("DT" = "grey", 
@@ -533,7 +535,7 @@ grid.arrange(scores.post.hybrids, all.scores, ncol = 2)
 
 ```
 
-#### Pre-PCA Model Filter
+##### Pre-PCA Model Filter
 
 ```{r PCA category PRE hybrids, echo = F}
 types <- c("Natural", "Synthetic")
@@ -589,7 +591,7 @@ ggplot() +
        color = element_blank()) +
   stat_ellipse(data = model.data,
                aes(PC1, PC2, color = type)) +
-  labs(title = "Toadflax PCA Scores Plot") +
+  labs(title = "Toadflax PCA - Hybrids") +
   theme_bw()+
   scale_color_manual(values = c("DT" = "#F8766D", 
                                 "Synthetic" = "#7CAE00",
