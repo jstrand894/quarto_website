@@ -58,8 +58,16 @@ bozeman_weather <-
   filter(date > "2000-01-01")
 
 ggplot(data = bozeman_weather) +
-  geom_line(aes(x = date, y = TMAX)) +
+  geom_line(aes(x = date, y = PRCP)) +
+  theme_bw() 
+
+
+
+ggplot(data = bozeman_weather) +
+  geom_line(aes(x = date, y = PRCP)) +
+  geom_smooth(aes(x = date, y = PRCP), method = "loess", se = TRUE) +
   theme_bw()
+
 ```
 title: "Montana Weather Data"
 ---

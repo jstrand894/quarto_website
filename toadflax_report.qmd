@@ -22,6 +22,7 @@ library(kableExtra) # Kable
 library(plotly)
 library(stats) # PCA
 library(ggbiplot) # PCA biplot
+library(gridExtra)
 
 ```
 
@@ -114,18 +115,25 @@ compound.order <- c("Z-3-Hexenol",
 "Dodecanal",
 "Caryophyllene")
 ```
+# Methods 
 
-I'm going to briefly analyze the data in two different formats. 
+Boxpot and multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1). We employed Principal Compoenent Analysis (PCA), Permutational Multivariate ANOVA (PERMANOVA), and Permutational Analysis of Multivariate Dispersion (PERMDISP). The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using ggplot2 [@ggplot]. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output. 
+
+<div style="border: 1px solid black; padding: 10px;">
+I'm going to briefly analyze the data in two different formats.
   
 - <u>Type:</u> groupings of YT, DT, Natural, and Synthetic
 - <u>Plant:</u> groupings of each plant type - D6, Y6, D6Y6, Y6D6, HBR, RAD
+</div>
+  
+Overall, the data is quite good. I think a little bit of pairing down of the number of compounds we are looking at could be helpful. 
 
-Overall, the data is good. I think a little bit of pairing down of the number of compounds we are looking at could be helpful. 
+# Raw Boxplot Comparisons
 
-# Organized by type category
-This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.
+## Organized by Type
 
-## Simple Raw Boxplot Comparisons
+**Type:** This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.
+
 ```{r boxplot data category, echo = F}
 boxplot.data.category <-
   data %>%
@@ -145,8 +153,6 @@ boxplot.data.category <-
   mutate(compound = factor(compound, levels = compound.order)) %>%
   na.omit()
 ```
-
-
 ```{r boxplot comparison category (original data), echo = F, fig.height = 20, fig.width = 20}
 boxplot.data.category %>%
   mutate(type = factor(type, levels = c("DT", "YT", "Natural", "Synthetic"))) %>%
@@ -176,13 +182,78 @@ boxplot.data.category %>%
 
 ```
 
-## Multivariate Analysis
+## Organized by Plant
 
-Multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PCA, Permutational Multivariate ANOVA (PERMANOVA), Permutational Analysis of Multivariate Dispersion (PERMDISP), and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using ggplot2 [@ggplot]. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output. 
+**Plant:** This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.  
 
-### PCA
+```{r boxplot data plant, echo = F}
+boxplot.data.plant <-
+  data %>%
+    pivot_longer(-c(gc_file, plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+    group_by(plant, compound) %>%
+    mutate(count = n(),
+           average = mean(value),
+           sd = sd(value),
+           se = (sd/sqrt(count))) %>%
+    reframe(plant, compound,
+            mean = mean(average),
+            sd = mean(sd),
+            se = mean(se)) %>%
+  unique() %>%
+  left_join(data %>%
+              dplyr::select(plant, type),
+            by = "plant",
+            relationship = "many-to-many") %>%
+  unique() %>%
+  mutate(plant = factor(plant, 
+                        levels = c("D6", "Y6", 
+                                   "D6Y6", "Y6D6",
+                                   "HBR", "RAD"))) %>%
+  mutate(compound = factor(compound, levels = compound.order)) %>%
+  na.omit()
+```
+```{r boxplot comparison plant (original data), echo = F, fig.height = 20, fig.width = 20}
+boxplot.data.plant  %>%
+  ggplot(aes(x = plant, y = mean, fill = type)) +
+  geom_bar(stat = "identity", alpha = 0.5) +
+  geom_errorbar(aes(x = plant,
+                    ymin = mean - se,
+                    ymax = mean + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  labs(x = element_blank(),
+       y = "VOC Concentration (ng/g/hr)") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                    hjust = 1),
+        legend.position = 'bottom',
+        # legend.position = c(0.8,0.9),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        panel.grid.major.x = element_line(color = "#F2F2F2"),
+        axis.text = element_text(size = 22),
+        axis.title = element_text(size = 22),
+        strip.text = element_text(size = 22),
+        legend.text = element_text(size = 22),
+        legend.title = element_text(size = 22)) +
+  facet_wrap(~compound, 
+             scales = "free_y",
+             ncol = 3)
 
-```{r PCA category, echo = F}
+```
+
+<hr>
+
+# Principal Component Analysis (PCA)
+
+Principal Component Analysis (PCA) is a statistical method used to simplify complex datasets by identifying patterns and relationships among variables. It transforms the original data into a new set of variables called principal components, which capture the most important information in the data. These components help visualize and understand the main sources of variation among samples or observations. In this study, PCA was used to analyze the variability in volatile organic compound (VOC) compositions across samples, allowing researchers to explore and interpret the data more easily.
+
+
+## Organized by Type
+
+```{r PCA category all, echo = F}
 pca.results <-
 data.clr %>%
   dplyr::select(-c(plant_id, plant, type, day)) %>%
@@ -209,18 +280,18 @@ loadings %>%
   
 
 meta <- data.clr %>% dplyr::select(plant, type, day)
-model.data <- data.frame(PC1, PC2, meta)
-model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+model.data.all <- data.frame(PC1, PC2, meta)
+model.data.all$day <- factor(model.data.all$day, levels = c("1", "2", "3", "4",
                                                     "5", "6", "7", "8",
                                                     "9"))
 
 ```
 
-Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
+We're going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
 
 ```{r scores plot, echo = F}
 ggplot() +
-  geom_point(data = model.data,
+  geom_point(data = model.data.all,
              aes(PC1, PC2, color = type)) +
   # geom_text(aes(label = day))
   geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
@@ -228,10 +299,15 @@ ggplot() +
   labs(x = "PC1", y = "PC2", 
        title = "Toadflax PCA Plot",
        color = element_blank()) +
-  stat_ellipse(data = model.data,
+  stat_ellipse(data = model.data.all,
                aes(PC1, PC2, color = type)) +
   labs(title = "Toadflax PCA Scores Plot") +
-  theme_bw()
+  theme_bw() +
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
 ```
 
 Next, we can look at our loadings and see where each compound is pushing the differences in our PCs.
@@ -264,203 +340,267 @@ ggbiplot(pca.results, obs.scale = 1, var.scale = 1, ellipse = FALSE,
 
 Grouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context. 
 
-### PERMANOVA  
+### PCA with Variable Category Selection
 
-As stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. It is useful when considering non-normal multivariate data like our toadflax data set. 
+I will create several PCA plots by filtering out different plant categories. There's a crucial distinction to be made here. In one set of plots, I'll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I'll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method. 
 
-#### PERMANOVA - D6, Y6, Synthetic, Natural
-```{r PERMANOVA all type, echo = F}
-set.seed(1)
+I've also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.
 
-permanova_data <-
-  data.clr %>%
-    unite(id, plant_id, plant, type, day, sep = "_") %>%
-    column_to_rownames("id") %>%
-    na.omit() %>%
-    mutate_all(~.^2) %>%
-    mutate_all(~.*100000) %>%
-    mutate_all(round, digits = 0)
+In my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.
 
-meta_data <-
-  data.clr %>%
-  select(plant_id, plant, type, day)
+As a reference, I'm going to show the plot from all varaibles and data on the right side. 
 
+Let's start by removing the natural hybrids from our PCA and view the results.  
 
-# run PERMANOVA
-adonis_results <-
-adonis2(permanova_data ~ meta_data$type,
-        # strata = meta_data$day,
-        # strata = interaction(meta_data$day,
-        #                      meta_data$plant),
-        # method = "canberra",
-        permutataions = 999,
-        by = "terms")
-  
-kable(as.data.frame(adonis_results),
-      format = "html",
-      caption = "Toadflax Type PERMANOVA: D6, Y6, Synthetic, Natural",
-      align = "lccccc") %>%
-  kable_styling(full_width = FALSE,
-                bootstrap_options = c("striped", "bordered", "hover")) %>%
-  row_spec(0, background = "#f2f2f9") 
+### Compare: DT, YT, Synthetic  
 
-permanova.p <- adonis_results$`Pr(>F)`[1]
+#### Post-PCA Model Filter  
+
+```{r scores plot category POST natural removed, echo = F, fig.width = 12}
+all.scores <-
+  ggplot() +
+    geom_point(data = model.data.all,
+               aes(PC1, PC2, color = type)) +
+    # geom_text(aes(label = day))
+    geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+    geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+    labs(x = "PC1", y = "PC2", 
+         title = "Toadflax PCA Plot",
+         color = element_blank()) +
+    stat_ellipse(data = model.data.all,
+                 aes(PC1, PC2, color = type)) +
+    labs(title = "Toadflax PCA - All Data") +
+    theme_bw() +
+    scale_color_manual(values = c("DT" = "#F8766D", 
+                                  "Synthetic" = "#7CAE00",
+                                  "YT" = "#00BFC4",
+                                  "Natural" = "#C77CFF"))
+
+scores.post.natrem <- 
+  ggplot() +
+  geom_point(data = model.data.all %>%
+               filter(!type == "Natural"),
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+               filter(!type == "Natural"),
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA - DT, YT, Synthetic") +
+  theme_bw() +
+  # theme(legend.position = "none") +
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
+grid.arrange(scores.post.natrem, all.scores, ncol = 2)
 
 ```
 
-Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between our four plant types (YT, DT, Synthetic, and Natural). 
 
-Let's check for a difference between our synthetic and natural plant types. 
+#### Pre-PCA Model Filter
+```{r PCA category PRE no natural, echo = F}
+types <- c("DT", "YT", "Synthetic")
 
-#### PERMANOVA - Synthetic & Natural
-```{r PERMANOVA synthetic natural type, echo = F}
-set.seed(1)
+pca.results <-
+data.clr %>%
+  filter(type %in% types) %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
 
-types <- c("Synthetic", "Natural")
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
 
-permanova_data <-
+data.plus.pca <-
   data.clr %>%
     filter(type %in% types) %>%
-    unite(id, plant_id, plant, type, day, sep = "_") %>%
-    column_to_rownames("id") %>%
-    na.omit() %>%
-    mutate_all(~.^2) %>%
-    mutate_all(~.*100000) %>%
-    mutate_all(round, digits = 0)
+    cbind(scores)
 
-meta_data <-
-  data.clr %>%
-  filter(type %in% types) %>%
-  select(plant_id, plant, type, day)
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
 
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
 
-# run PERMANOVA
-adonis_results <-
-adonis2(permanova_data ~ meta_data$type,
-        # strata = meta_data$day,
-        # strata = interaction(meta_data$day,
-        #                      meta_data$plant),
-        # method = "canberra",
-        permutataions = 999,
-        by = "terms")
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
   
-kable(as.data.frame(adonis_results),
-      format = "html",
-      caption = "Toadflax Type PERMANOVA: Synthetic & Natural",
-      align = "lccccc") %>%
-  kable_styling(full_width = FALSE,
-                bootstrap_options = c("striped", "bordered", "hover")) %>%
-  row_spec(0, background = "#f2f2f9") 
+# meta data
+meta <- data.clr %>% 
+  filter(type %in% types) %>%
+  dplyr::select(plant, type, day) 
+  
 
-permanova.p <- adonis_results$`Pr(>F)`[1]
+model.data <- data.frame(PC1, PC2, meta)
+model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
 ```
-Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between Natural and Synthetic plant types.  
+```{r PCA scores plot category PRE no natural, echo = F, fig.width = 12}
+scores.pre.natrm <- 
+ggplot() +
+  geom_point(data = model.data,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data,
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA Scores Plot") +
+  theme_bw()+
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4"))
 
-### PERMDISP & PCoA
-Permutational Analysis of Multivariate Dispersions, or PERMDISP, is a multivariate statistic used to assess differences in dispersion (variation) among groups or treatments. This method is particularly useful when dealing with multivariate data where there are multiple variables measured on each sample or observation.  
-
-Principal Coordinates Analysis (PCoA), also known as Classical Multidimensional Scaling (MDS), is a multivariate statistical technique used for exploring and visualizing patterns of similarity or dissimilarity in data. PCoA is closely related to Principal Component Analysis (PCA), but whereas PCA operates on the covariance matrix of the data, PCoA works directly on a distance or dissimilarity matrix.
-
-I ran a PERMDISP on our entire data set. 
-
-```{r PERMDISP, echo = F, warning = F, message = F}
-
-dist <- dist(data.clr)
-
-permdisp.results <-
-betadisper(dist, data.clr$type)
+grid.arrange(scores.pre.natrm, all.scores, ncol = 2)
+```
 
 
-permdisp.results
-p_value <- anova(permdisp.results)$'Pr(>F)'[1]
-if (p_value < 0.05) {
-  cat("Significant differences in multivariate dispersion among groups.\n")
-} else {
-  cat("We found no significant difference (pval =",anova(permdisp.results)$'Pr(>F)'[1], ") in multivariate dispersion among groups.\n")
-}
 
-pcoa <-
-capscale(dist ~ 1, data = data.clr)
+### Compare: Synthetic and Natural  
 
-pcoa_df <- data.frame(scores(pcoa)$sites, group = data.clr$type)
+#### Post-PCA Model Filter
 
-ggplot(pcoa_df, aes(x = MDS1, y = MDS2, color = group)) +
-  geom_point(alpha = 0.7) +
-  labs(x = "PCo1", y = "PCo2", color = "Type",
-       title = "PCoA Plot") +
+```{r scores plot type HYBRIDS, echo = F, fig.width = 12}
+scores.post.hybrids <-
+ggplot() +
+  geom_point(data = model.data.all %>%
+               filter(type %in% c("Synthetic", "Natural")),
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+               filter(type %in% c("Synthetic", "Natural")),
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA Scores Plot - Hybrids") +
   theme_bw() +
-  stat_ellipse()
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
+grid.arrange(scores.post.hybrids, all.scores, ncol = 2)
 
 ```
 
-Basically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different (`r anova(permdisp.results)$'Pr(>F)'[1]`) in the dispersion within each of our groups when we compare them to one another. We are seeing a very large p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot. 
+I've also plotted just the two hybrid plant categories but included the data points from the rest of the samples.
 
-This means that we don't need to consider differences in broad dispersional differences between our plant types. 
+```{r scores plot type HYBRIDS with old data, echo = F, fig.width = 12, warning = F}
+scores.post.hybrids <-
+ggplot() +
+  geom_point(data = model.data.all,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+                 filter(type %in% c("Natural", "Synthetic")),
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA Scores Plot - Hybrids") +
+  theme_bw() +
+  lims(x = c(-5.726419, 7.824495), y = c(-3.879407, 4.630473)) +
+  scale_color_manual(values = c("DT" = "grey", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "grey",
+                                "Natural" = "#C77CFF"))
 
-# Organized by plant type
-This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.
-```{r boxplot data plant, echo = F}
-boxplot.data.plant <-
-  data %>%
-    pivot_longer(-c(gc_file, plant_id, plant, type, day),
-               names_to = "compound",
-               values_to = "value") %>%
-    group_by(plant, compound) %>%
-    mutate(count = n(),
-           average = mean(value),
-           sd = sd(value),
-           se = (sd/sqrt(count))) %>%
-    reframe(plant, compound,
-            mean = mean(average),
-            sd = mean(sd),
-            se = mean(se)) %>%
-  unique() %>%
-  left_join(data %>%
-              dplyr::select(plant, type),
-            by = "plant",
-            relationship = "many-to-many") %>%
-  unique() %>%
-  mutate(plant = factor(plant, 
-                        levels = c("D6", "Y6", 
-                                   "D6Y6", "Y6D6",
-                                   "HBR", "RAD"))) %>%
-  mutate(compound = factor(compound, levels = compound.order)) %>%
-  na.omit()
-```
+grid.arrange(scores.post.hybrids, all.scores, ncol = 2)
 
-```{r boxplot comparison plant (original data), echo = F, fig.height = 20, fig.width = 20}
-boxplot.data.plant  %>%
-  ggplot(aes(x = plant, y = mean, fill = type)) +
-  geom_bar(stat = "identity", alpha = 0.5) +
-  geom_errorbar(aes(x = plant,
-                    ymin = mean - se,
-                    ymax = mean + se),
-                position = position_dodge(0.9),
-                width = 0.2,
-                alpha = 0.5) +
-  labs(x = element_blank(),
-       y = "VOC Concentration (ng/g/hr)") +
-  theme(axis.text.x = element_text(angle = 45, 
-                                    hjust = 1),
-        legend.position = 'bottom',
-        # legend.position = c(0.8,0.9),
-        panel.background = element_rect(fill = "white"),
-        axis.line = element_line(color = "black"),
-        panel.grid.major.x = element_line(color = "#F2F2F2"),
-        axis.text = element_text(size = 22),
-        axis.title = element_text(size = 22),
-        strip.text = element_text(size = 22),
-        legend.text = element_text(size = 22),
-        legend.title = element_text(size = 22)) +
-  facet_wrap(~compound, 
-             scales = "free_y",
-             ncol = 3)
+
+
 
 ```
 
-## Multivariate Analysis
+#### Pre-PCA Model Filter
 
-### PCA 
+```{r PCA category PRE hybrids, echo = F}
+types <- c("Natural", "Synthetic")
+
+pca.results <-
+data.clr %>%
+  filter(type %in% types) %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+data.plus.pca <-
+  data.clr %>%
+    filter(type %in% types) %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+# meta data
+meta <- data.clr %>% 
+  filter(type %in% types) %>%
+  dplyr::select(plant, type, day) 
+  
+
+model.data <- data.frame(PC1, PC2, meta)
+model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
+```
+```{r PCA scores plot category PRE hybrids, echo = F, fig.width = 12}
+scores.pre.hybrids <- 
+ggplot() +
+  geom_point(data = model.data,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data,
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA Scores Plot") +
+  theme_bw()+
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
+grid.arrange(scores.pre.hybrids, all.scores, ncol = 2)
+```
+
+<div style="border: 3px solid #427EDC; padding: 10px; ">
+After running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two. 
+</div>
+
+## Organized by Plant 
 
 ```{r PCA plant, echo = F}
 pca.results <-
@@ -509,7 +649,103 @@ ggplot() +
   theme_bw() 
 ```
 
-### PERMANOVA 
+<hr>
+
+# PERMANOVA  
+
+## Organized by Type
+
+As stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. It is useful when considering non-normal multivariate data like our Toadflax data set. 
+
+### D6, Y6, Synthetic, Natural
+```{r PERMANOVA all type, echo = F}
+set.seed(1)
+
+permanova_data <-
+  data.clr %>%
+    unite(id, plant_id, plant, type, day, sep = "_") %>%
+    column_to_rownames("id") %>%
+    na.omit() %>%
+    mutate_all(~.^2) %>%
+    mutate_all(~.*100000) %>%
+    mutate_all(round, digits = 0)
+
+meta_data <-
+  data.clr %>%
+  select(plant_id, plant, type, day)
+
+
+# run PERMANOVA
+adonis_results <-
+adonis2(permanova_data ~ meta_data$type,
+        # strata = meta_data$day,
+        # strata = interaction(meta_data$day,
+        #                      meta_data$plant),
+        # method = "canberra",
+        permutataions = 999,
+        by = "terms")
+  
+kable(as.data.frame(adonis_results),
+      format = "html",
+      caption = "Toadflax Type PERMANOVA: D6, Y6, Synthetic, Natural",
+      align = "lccccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f9") 
+
+permanova.p <- adonis_results$`Pr(>F)`[1]
+
+```
+
+Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between our four plant types (YT, DT, Synthetic, and Natural). 
+
+Let's check for a difference between our synthetic and natural plant types. 
+
+### Synthetic & Natural
+```{r PERMANOVA synthetic natural type, echo = F}
+set.seed(1)
+
+types <- c("Synthetic", "Natural")
+
+permanova_data <-
+  data.clr %>%
+    filter(type %in% types) %>%
+    unite(id, plant_id, plant, type, day, sep = "_") %>%
+    column_to_rownames("id") %>%
+    na.omit() %>%
+    mutate_all(~.^2) %>%
+    mutate_all(~.*100000) %>%
+    mutate_all(round, digits = 0)
+
+meta_data <-
+  data.clr %>%
+  filter(type %in% types) %>%
+  select(plant_id, plant, type, day)
+
+
+# run PERMANOVA
+adonis_results <-
+adonis2(permanova_data ~ meta_data$type,
+        # strata = meta_data$day,
+        # strata = interaction(meta_data$day,
+        #                      meta_data$plant),
+        # method = "canberra",
+        permutataions = 999,
+        by = "terms")
+  
+kable(as.data.frame(adonis_results),
+      format = "html",
+      caption = "Toadflax Type PERMANOVA: Synthetic & Natural",
+      align = "lccccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f9") 
+
+permanova.p <- adonis_results$`Pr(>F)`[1]
+```
+Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between Natural and Synthetic plant types.  
+
+## Organized by Plant
 
 Let's say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference. 
 
@@ -557,6 +793,49 @@ permanova.p <- adonis_results$`Pr(>F)`[1]
 ```
 
 Our results show **no** evidence (p-val = `r permanova.p`) of a difference between volatile profiles between Y6D6 and D6Y6 plants. 
+
+<hr>
+
+# PERMDISP & PCoA
+Permutational Analysis of Multivariate Dispersions, or PERMDISP, is a multivariate statistic used to assess differences in dispersion (variation) among groups or treatments. This method is particularly useful when dealing with multivariate data where there are multiple variables measured on each sample or observation.  
+
+Principal Coordinates Analysis (PCoA), also known as Classical Multidimensional Scaling (MDS), is a multivariate statistical technique used for exploring and visualizing patterns of similarity or dissimilarity in data. PCoA is closely related to Principal Component Analysis (PCA), but whereas PCA operates on the covariance matrix of the data, PCoA works directly on a distance or dissimilarity matrix.
+
+I ran a PERMDISP on our entire data set. 
+
+```{r PERMDISP, echo = F, warning = F, message = F}
+
+dist <- dist(data.clr)
+
+permdisp.results <-
+betadisper(dist, data.clr$type)
+
+
+permdisp.results
+p_value <- anova(permdisp.results)$'Pr(>F)'[1]
+if (p_value < 0.05) {
+  cat("Significant differences in multivariate dispersion among groups.\n")
+} else {
+  cat("We found no significant difference (pval =",anova(permdisp.results)$'Pr(>F)'[1], ") in multivariate dispersion among groups.\n")
+}
+
+pcoa <-
+capscale(dist ~ 1, data = data.clr)
+
+pcoa_df <- data.frame(scores(pcoa)$sites, group = data.clr$type)
+
+ggplot(pcoa_df, aes(x = MDS1, y = MDS2, color = group)) +
+  geom_point(alpha = 0.7) +
+  labs(x = "PCo1", y = "PCo2", color = "Type",
+       title = "PCoA Plot") +
+  theme_bw() +
+  stat_ellipse()
+
+```
+
+Basically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different (`r anova(permdisp.results)$'Pr(>F)'[1]`) in the dispersion within each of our groups when we compare them to one another. We are seeing a very large p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot. 
+
+This means that we don't need to consider differences in broad dispersional differences between our plant types. 
 
 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jackson Strand">
-<meta name="dcterms.date" content="2024-03-06">
+<meta name="dcterms.date" content="2024-03-07">
 
 <title>Jackson Strand Website - Toadflax Analysis</title>
 <style>
@@ -270,24 +270,32 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#organized-by-type-category" id="toc-organized-by-type-category" class="nav-link active" data-scroll-target="#organized-by-type-category">Organized by type category</a>
+  <li><a href="#methods" id="toc-methods" class="nav-link active" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#raw-boxplot-comparisons" id="toc-raw-boxplot-comparisons" class="nav-link" data-scroll-target="#raw-boxplot-comparisons">Raw Boxplot Comparisons</a>
   <ul class="collapse">
-  <li><a href="#simple-raw-boxplot-comparisons" id="toc-simple-raw-boxplot-comparisons" class="nav-link" data-scroll-target="#simple-raw-boxplot-comparisons">Simple Raw Boxplot Comparisons</a></li>
-  <li><a href="#multivariate-analysis" id="toc-multivariate-analysis" class="nav-link" data-scroll-target="#multivariate-analysis">Multivariate Analysis</a>
+  <li><a href="#organized-by-type" id="toc-organized-by-type" class="nav-link" data-scroll-target="#organized-by-type">Organized by Type</a></li>
+  <li><a href="#organized-by-plant" id="toc-organized-by-plant" class="nav-link" data-scroll-target="#organized-by-plant">Organized by Plant</a></li>
+  </ul></li>
+  <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a>
   <ul class="collapse">
-  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca">PCA</a></li>
-  <li><a href="#permanova" id="toc-permanova" class="nav-link" data-scroll-target="#permanova">PERMANOVA</a></li>
+  <li><a href="#organized-by-type-1" id="toc-organized-by-type-1" class="nav-link" data-scroll-target="#organized-by-type-1">Organized by Type</a>
+  <ul class="collapse">
+  <li><a href="#pca-with-variable-category-selection" id="toc-pca-with-variable-category-selection" class="nav-link" data-scroll-target="#pca-with-variable-category-selection">PCA with Variable Category Selection</a></li>
+  <li><a href="#compare-dt-yt-synthetic" id="toc-compare-dt-yt-synthetic" class="nav-link" data-scroll-target="#compare-dt-yt-synthetic">Compare: DT, YT, Synthetic</a></li>
+  <li><a href="#compare-synthetic-and-natural" id="toc-compare-synthetic-and-natural" class="nav-link" data-scroll-target="#compare-synthetic-and-natural">Compare: Synthetic and Natural</a></li>
+  </ul></li>
+  <li><a href="#organized-by-plant-1" id="toc-organized-by-plant-1" class="nav-link" data-scroll-target="#organized-by-plant-1">Organized by Plant</a></li>
+  </ul></li>
+  <li><a href="#permanova" id="toc-permanova" class="nav-link" data-scroll-target="#permanova">PERMANOVA</a>
+  <ul class="collapse">
+  <li><a href="#organized-by-type-2" id="toc-organized-by-type-2" class="nav-link" data-scroll-target="#organized-by-type-2">Organized by Type</a>
+  <ul class="collapse">
+  <li><a href="#d6-y6-synthetic-natural" id="toc-d6-y6-synthetic-natural" class="nav-link" data-scroll-target="#d6-y6-synthetic-natural">D6, Y6, Synthetic, Natural</a></li>
+  <li><a href="#synthetic-natural" id="toc-synthetic-natural" class="nav-link" data-scroll-target="#synthetic-natural">Synthetic &amp; Natural</a></li>
+  </ul></li>
+  <li><a href="#organized-by-plant-2" id="toc-organized-by-plant-2" class="nav-link" data-scroll-target="#organized-by-plant-2">Organized by Plant</a></li>
+  </ul></li>
   <li><a href="#permdisp-pcoa" id="toc-permdisp-pcoa" class="nav-link" data-scroll-target="#permdisp-pcoa">PERMDISP &amp; PCoA</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#organized-by-plant-type" id="toc-organized-by-plant-type" class="nav-link" data-scroll-target="#organized-by-plant-type">Organized by plant type</a>
-  <ul class="collapse">
-  <li><a href="#multivariate-analysis-1" id="toc-multivariate-analysis-1" class="nav-link" data-scroll-target="#multivariate-analysis-1">Multivariate Analysis</a>
-  <ul class="collapse">
-  <li><a href="#pca-1" id="toc-pca-1" class="nav-link" data-scroll-target="#pca-1">PCA</a></li>
-  <li><a href="#permanova-1" id="toc-permanova-1" class="nav-link" data-scroll-target="#permanova-1">PERMANOVA</a></li>
-  </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -313,7 +321,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 6, 2024</p>
+      <p class="date">March 7, 2024</p>
     </div>
   </div>
   
@@ -325,17 +333,23 @@ div.csl-indent {
 </header>
 
 
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>Boxpot and multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1). We employed Principal Compoenent Analysis (PCA), Permutational Multivariate ANOVA (PERMANOVA), and Permutational Analysis of Multivariate Dispersion (PERMDISP). The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data <span class="citation" data-cites="chemoguide">(<a href="#ref-chemoguide" role="doc-biblioref">Brückner and Heethoff 2017</a>)</span>. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2011</a>)</span>. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. Data were visualized using ggplot2 <span class="citation" data-cites="ggplot">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>)</span>. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output.</p>
+<div style="border: 1px solid black; padding: 10px;">
 <p>I’m going to briefly analyze the data in two different formats.</p>
 <ul>
 <li><u>Type:</u> groupings of YT, DT, Natural, and Synthetic</li>
 <li><u>Plant:</u> groupings of each plant type - D6, Y6, D6Y6, Y6D6, HBR, RAD</li>
 </ul>
-<p>Overall, the data is good. I think a little bit of pairing down of the number of compounds we are looking at could be helpful.</p>
-<section id="organized-by-type-category" class="level1">
-<h1>Organized by type category</h1>
-<p>This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.</p>
-<section id="simple-raw-boxplot-comparisons" class="level2">
-<h2 class="anchored" data-anchor-id="simple-raw-boxplot-comparisons">Simple Raw Boxplot Comparisons</h2>
+</div>
+<p>Overall, the data is quite good. I think a little bit of pairing down of the number of compounds we are looking at could be helpful.</p>
+</section>
+<section id="raw-boxplot-comparisons" class="level1">
+<h1>Raw Boxplot Comparisons</h1>
+<section id="organized-by-type" class="level2">
+<h2 class="anchored" data-anchor-id="organized-by-type">Organized by Type</h2>
+<p><strong>Type:</strong> This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -346,12 +360,27 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="multivariate-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="multivariate-analysis">Multivariate Analysis</h2>
-<p>Multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PCA, Permutational Multivariate ANOVA (PERMANOVA), Permutational Analysis of Multivariate Dispersion (PERMDISP), and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data <span class="citation" data-cites="chemoguide">(<a href="#ref-chemoguide" role="doc-biblioref">Brückner and Heethoff 2017</a>)</span>. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2011</a>)</span>. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. Data were visualized using ggplot2 <span class="citation" data-cites="ggplot">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>)</span>. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output.</p>
-<section id="pca" class="level3">
-<h3 class="anchored" data-anchor-id="pca">PCA</h3>
-<p>Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.</p>
+<section id="organized-by-plant" class="level2">
+<h2 class="anchored" data-anchor-id="organized-by-plant">Organized by Plant</h2>
+<p><strong>Plant:</strong> This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/boxplot comparison plant (original data)-1.png" class="img-fluid figure-img" width="1920"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="principal-component-analysis-pca" class="level1">
+<h1>Principal Component Analysis (PCA)</h1>
+<p>Principal Component Analysis (PCA) is a statistical method used to simplify complex datasets by identifying patterns and relationships among variables. It transforms the original data into a new set of variables called principal components, which capture the most important information in the data. These components help visualize and understand the main sources of variation among samples or observations. In this study, PCA was used to analyze the variability in volatile organic compound (VOC) compositions across samples, allowing researchers to explore and interpret the data more easily.</p>
+<section id="organized-by-type-1" class="level2">
+<h2 class="anchored" data-anchor-id="organized-by-type-1">Organized by Type</h2>
+<p>We’re going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -382,12 +411,103 @@ div.csl-indent {
 </div>
 </div>
 <p>Grouping our compounds by family (i.e.&nbsp;terpenes, aldehydes, etc.) could provide a little bit of more context.</p>
+<section id="pca-with-variable-category-selection" class="level3">
+<h3 class="anchored" data-anchor-id="pca-with-variable-category-selection">PCA with Variable Category Selection</h3>
+<p>I will create several PCA plots by filtering out different plant categories. There’s a crucial distinction to be made here. In one set of plots, I’ll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I’ll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method.</p>
+<p>I’ve also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.</p>
+<p>In my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.</p>
+<p>As a reference, I’m going to show the plot from all varaibles and data on the right side.</p>
+<p>Let’s start by removing the natural hybrids from our PCA and view the results.</p>
 </section>
-<section id="permanova" class="level3">
-<h3 class="anchored" data-anchor-id="permanova">PERMANOVA</h3>
-<p>As stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. It is useful when considering non-normal multivariate data like our toadflax data set.</p>
-<section id="permanova---d6-y6-synthetic-natural" class="level4">
-<h4 class="anchored" data-anchor-id="permanova---d6-y6-synthetic-natural">PERMANOVA - D6, Y6, Synthetic, Natural</h4>
+<section id="compare-dt-yt-synthetic" class="level3">
+<h3 class="anchored" data-anchor-id="compare-dt-yt-synthetic">Compare: DT, YT, Synthetic</h3>
+<section id="post-pca-model-filter" class="level4">
+<h4 class="anchored" data-anchor-id="post-pca-model-filter">Post-PCA Model Filter</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/scores plot category POST natural removed-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="pre-pca-model-filter" class="level4">
+<h4 class="anchored" data-anchor-id="pre-pca-model-filter">Pre-PCA Model Filter</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/PCA scores plot category PRE no natural-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="compare-synthetic-and-natural" class="level3">
+<h3 class="anchored" data-anchor-id="compare-synthetic-and-natural">Compare: Synthetic and Natural</h3>
+<section id="post-pca-model-filter-1" class="level4">
+<h4 class="anchored" data-anchor-id="post-pca-model-filter-1">Post-PCA Model Filter</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/scores plot type HYBRIDS-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I’ve also plotted just the two hybrid plant categories but included the data points from the rest of the samples.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/scores plot type HYBRIDS with old data-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="pre-pca-model-filter-1" class="level4">
+<h4 class="anchored" data-anchor-id="pre-pca-model-filter-1">Pre-PCA Model Filter</h4>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/PCA scores plot category PRE hybrids-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<div style="border: 3px solid #427EDC; padding: 10px; ">
+<p>After running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="organized-by-plant-1" class="level2">
+<h2 class="anchored" data-anchor-id="organized-by-plant-1">Organized by Plant</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/scores plot plant-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="permanova" class="level1">
+<h1>PERMANOVA</h1>
+<section id="organized-by-type-2" class="level2">
+<h2 class="anchored" data-anchor-id="organized-by-type-2">Organized by Type</h2>
+<p>As stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. It is useful when considering non-normal multivariate data like our Toadflax data set.</p>
+<section id="d6-y6-synthetic-natural" class="level3">
+<h3 class="anchored" data-anchor-id="d6-y6-synthetic-natural">D6, Y6, Synthetic, Natural</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -438,8 +558,8 @@ div.csl-indent {
 <p>Our results show <strong>strong</strong> evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).</p>
 <p>Let’s check for a difference between our synthetic and natural plant types.</p>
 </section>
-<section id="permanova---synthetic-natural" class="level4">
-<h4 class="anchored" data-anchor-id="permanova---synthetic-natural">PERMANOVA - Synthetic &amp; Natural</h4>
+<section id="synthetic-natural" class="level3">
+<h3 class="anchored" data-anchor-id="synthetic-natural">Synthetic &amp; Natural</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -490,74 +610,8 @@ div.csl-indent {
 <p>Our results show <strong>strong</strong> evidence (p-val = 0.001) of a difference between Natural and Synthetic plant types.</p>
 </section>
 </section>
-<section id="permdisp-pcoa" class="level3">
-<h3 class="anchored" data-anchor-id="permdisp-pcoa">PERMDISP &amp; PCoA</h3>
-<p>Permutational Analysis of Multivariate Dispersions, or PERMDISP, is a multivariate statistic used to assess differences in dispersion (variation) among groups or treatments. This method is particularly useful when dealing with multivariate data where there are multiple variables measured on each sample or observation.</p>
-<p>Principal Coordinates Analysis (PCoA), also known as Classical Multidimensional Scaling (MDS), is a multivariate statistical technique used for exploring and visualizing patterns of similarity or dissimilarity in data. PCoA is closely related to Principal Component Analysis (PCA), but whereas PCA operates on the covariance matrix of the data, PCoA works directly on a distance or dissimilarity matrix.</p>
-<p>I ran a PERMDISP on our entire data set.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Homogeneity of multivariate dispersions
-
-Call: betadisper(d = dist, group = data.clr$type)
-
-No. of Positive Eigenvalues: 26
-No. of Negative Eigenvalues: 0
-
-Average distance to median:
-       DT   Natural Synthetic        YT 
-    6.572     6.623     6.699     7.161 
-
-Eigenvalues for PCoA axes:
-(Showing 8 of 26 eigenvalues)
- PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 
-1266.4  922.1  671.8  519.2  406.3  319.9  292.6  258.6 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>We found no significant difference (pval = 0.5548198 ) in multivariate dispersion among groups.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="toadflax_report_files/figure-html/PERMDISP-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Basically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different (0.5548198) in the dispersion within each of our groups when we compare them to one another. We are seeing a very large p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot.</p>
-<p>This means that we don’t need to consider differences in broad dispersional differences between our plant types.</p>
-</section>
-</section>
-</section>
-<section id="organized-by-plant-type" class="level1">
-<h1>Organized by plant type</h1>
-<p>This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="toadflax_report_files/figure-html/boxplot comparison plant (original data)-1.png" class="img-fluid figure-img" width="1920"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="multivariate-analysis-1" class="level2">
-<h2 class="anchored" data-anchor-id="multivariate-analysis-1">Multivariate Analysis</h2>
-<section id="pca-1" class="level3">
-<h3 class="anchored" data-anchor-id="pca-1">PCA</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="toadflax_report_files/figure-html/scores plot plant-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="permanova-1" class="level3">
-<h3 class="anchored" data-anchor-id="permanova-1">PERMANOVA</h3>
+<section id="organized-by-plant-2" class="level2">
+<h2 class="anchored" data-anchor-id="organized-by-plant-2">Organized by Plant</h2>
 <p>Let’s say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -607,6 +661,46 @@ Eigenvalues for PCoA axes:
 </div>
 </div>
 <p>Our results show <strong>no</strong> evidence (p-val = 0.08) of a difference between volatile profiles between Y6D6 and D6Y6 plants.</p>
+<hr>
+</section>
+</section>
+<section id="permdisp-pcoa" class="level1">
+<h1>PERMDISP &amp; PCoA</h1>
+<p>Permutational Analysis of Multivariate Dispersions, or PERMDISP, is a multivariate statistic used to assess differences in dispersion (variation) among groups or treatments. This method is particularly useful when dealing with multivariate data where there are multiple variables measured on each sample or observation.</p>
+<p>Principal Coordinates Analysis (PCoA), also known as Classical Multidimensional Scaling (MDS), is a multivariate statistical technique used for exploring and visualizing patterns of similarity or dissimilarity in data. PCoA is closely related to Principal Component Analysis (PCA), but whereas PCA operates on the covariance matrix of the data, PCoA works directly on a distance or dissimilarity matrix.</p>
+<p>I ran a PERMDISP on our entire data set.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Homogeneity of multivariate dispersions
+
+Call: betadisper(d = dist, group = data.clr$type)
+
+No. of Positive Eigenvalues: 26
+No. of Negative Eigenvalues: 0
+
+Average distance to median:
+       DT   Natural Synthetic        YT 
+    6.572     6.623     6.699     7.161 
+
+Eigenvalues for PCoA axes:
+(Showing 8 of 26 eigenvalues)
+ PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 
+1266.4  922.1  671.8  519.2  406.3  319.9  292.6  258.6 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>We found no significant difference (pval = 0.5548198 ) in multivariate dispersion among groups.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="toadflax_report_files/figure-html/PERMDISP-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Basically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different (0.5548198) in the dispersion within each of our groups when we compare them to one another. We are seeing a very large p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot.</p>
+<p>This means that we don’t need to consider differences in broad dispersional differences between our plant types.</p>
 <!-- Let's look to see if there are differences between the types individually.  -->
 <!-- ```{r basic ANOVA, echo = F} -->
 <!-- anova.data <- -->
@@ -620,8 +714,6 @@ Eigenvalues for PCoA axes:
 
 
 
-</section>
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

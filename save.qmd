@@ -76,3 +76,16 @@ title: "save"
 </html>
 
 ```
+
+
+# how to see what the default colors are in R
+```{r}
+library(scales)
+
+for(i in 1:8){
+  print(hue_pal()(i))
+}
+hue_pal()(4)
+show_col(hue_pal()(4))
+
+```
