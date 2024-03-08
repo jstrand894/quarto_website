@@ -96,17 +96,17 @@ compound.order <- c("Z-3-Hexenol",
 "1-octen-3-ol",
 "6-methyl-3-heptanone",
 "B-pinene",
-"Z-3-HexenylAcetate",
+"Z-3-Hexenyl Acetate",
 "Limonene",
 "Trans-B-ociemene",
 "Cis-B-ocimene",
 "Undecane",
 "Linalool",
 "Nonanal",
-"OctenylAcetate",
+"Octenyl Acetate",
 "Allo-ocimene",
 "Terpineol",
-"MethylSalicylate",
+"Methyl Salicylate",
 "Decanal",
 "P-anisaldehyde",
 "Undecanal",
@@ -137,8 +137,8 @@ Overall, the data is quite good. I think a little bit of pairing down of the num
 
 **Type:** This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.
 
-```{r boxplot data category, echo = F}
-boxplot.data.category <-
+```{r boxplot data type, echo = F}
+boxplot.data.type <-
   data %>%
     pivot_longer(-c(gc_file, plant_id, plant, type, day),
                names_to = "compound",
@@ -152,12 +152,10 @@ boxplot.data.category <-
             average = mean(average),
             sd = mean(sd),
             se = mean(se)) %>%
-  unique() %>%
-  mutate(compound = factor(compound, levels = compound.order)) %>%
-  na.omit()
+  unique() 
 ```
 ```{r boxplot comparison category (original data), echo = F, fig.height = 20, fig.width = 20}
-boxplot.data.category %>%
+boxplot.data.type %>%
   mutate(type = factor(type, levels = c("DT", "YT", "Natural", "Synthetic"))) %>%
   ggplot(aes(x = type, y = average, fill = type)) +
   geom_bar(stat = "identity", alpha = 0.5) +
@@ -295,7 +293,7 @@ model.data.all$day <- factor(model.data.all$day, levels = c("1", "2", "3", "4",
 We're going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
 
 ```{r scores plot, echo = F}
-scores.all <-
+scores.type <-
 ggplot() +
   geom_point(data = model.data.all,
              aes(PC1, PC2, color = type)) +
@@ -312,7 +310,7 @@ ggplot() +
                                 "YT" = "#00BFC4",
                                 "Natural" = "#C77CFF"))
 
-ggplotly(scores.all,
+ggplotly(scores.type,
          width = 700) %>%
   layout(legend = list(title = "")) %>%
   config(
@@ -397,9 +395,9 @@ Let's start by removing the natural hybrids from our PCA and view the results.
 ##### Post-PCA Model Filter  
 
 ```{r scores plot category POST natural removed, echo = F, fig.width = 12}
-# scores.all.plotly <-
+# scores.type.plotly <-
 # ggplotly(
-scores.all <-
+scores.type <-
   ggplot() +
     geom_point(data = model.data.all,
                aes(PC1, PC2, color = type)) +
@@ -411,7 +409,7 @@ scores.all <-
          color = element_blank()) +
     stat_ellipse(data = model.data.all,
                  aes(PC1, PC2, color = type)) +
-    labs(title = "Toadflax PCA - All Data") +
+    labs(title = "Toadflax PCA - All Types") +
     theme_bw() +
     scale_color_manual(values = c("DT" = "#F8766D", 
                                   "Synthetic" = "#7CAE00",
@@ -428,7 +426,6 @@ scores.post.natrem <-
   geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
   geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
   labs(x = "PC1", y = "PC2", 
-       title = "Toadflax PCA Plot",
        color = element_blank(),
        color = element_blank()) +
   stat_ellipse(data = model.data.all %>%
@@ -443,18 +440,72 @@ scores.post.natrem <-
                                 "Natural" = "#C77CFF"))
 
 # remove the legend from one of the plots
-# for (i in 1:length(scores.all.plotly$x$data)) {
-#   scores.all.plotly$x$data[[i]]$showlegend <- FALSE
+# for (i in 1:length(scores.type.plotly$x$data)) {
+#   scores.type.plotly$x$data[[i]]$showlegend <- FALSE
 # }
 # use subplot to plot the two plots side by side
-# subplot(scores.all.plotly, scores.post.natrem, 
+# subplot(scores.type.plotly, scores.post.natrem, 
 #         nrows = 1, shareY = FALSE, shareX = FALSE, 
 #         widths = c(0.5, 0.5)) %>%
 #   layout(legend = list(title = ""))
 
-grid.arrange(scores.post.natrem, scores.all, ncol = 2)
+grid.arrange(scores.post.natrem, scores.type, ncol = 2)
+```
+
+```{r save files1, echo = F}
+ggsave(filename = "Toadflax PCA Scores - Type | All.png",
+       plot = scores.type,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+ggsave(filename = "Toadflax PCA (Post) - DT, YT, Synthetic.png",
+       plot = scores.type,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Button</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+</style>
+</head>
+<body>
+
+<!-- Button to download the file -->
+<a href="Toadflax PCA Scores - Type | All.png" download="TetonMountainRuns2023">
+  <button class="button">Download All Pictures</button>
+</a>
+
+</body>
+</html>
 
 ```
+
+
 
 
 ##### Pre-PCA Model Filter
@@ -518,7 +569,7 @@ ggplot() +
                                 "Synthetic" = "#7CAE00",
                                 "YT" = "#00BFC4"))
 
-grid.arrange(scores.pre.natrm, scores.all, ncol = 2)
+grid.arrange(scores.pre.natrm, scores.type, ncol = 2)
 ```
 
 
@@ -549,7 +600,7 @@ ggplot() +
                                 "YT" = "#00BFC4",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.post.hybrids, scores.all, ncol = 2)
+grid.arrange(scores.post.hybrids, scores.type, ncol = 2)
 
 ```
 
@@ -577,7 +628,7 @@ ggplot() +
                                 "YT" = "grey",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.post.hybrids, scores.all, ncol = 2)
+grid.arrange(scores.post.hybrids, scores.type, ncol = 2)
 
 
 
@@ -648,7 +699,7 @@ ggplot() +
                                 "YT" = "#00BFC4",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.pre.hybrids, scores.all, ncol = 2)
+grid.arrange(scores.pre.hybrids, scores.type, ncol = 2)
 ```
 
 <div style="border: 1px solid black; padding: 10px; ">
