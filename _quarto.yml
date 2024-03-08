@@ -21,7 +21,7 @@ website:
       - text: "Pics"
         menu: 
           - running.qmd
-          - bugs.qmds
+          - bugs.qmd
       - text: "CV"
         file: cv.qmd
     right: 
