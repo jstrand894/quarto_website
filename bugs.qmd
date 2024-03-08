@@ -166,35 +166,3 @@ cat(html_code)
 
 ```
 
-
-
-```{=html}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Crop Example</title>
-<style>
-  .image-container {
-    width: 300px; /* Set the width of the container */
-    height: 200px; /* Set the height of the container */
-    overflow: hidden; /* Hide any overflowing content */
-  }
-  .cropped-image {
-    width: 100%; /* Set the width of the image to fill the container */
-    height: auto; /* Automatically adjust the height to maintain aspect ratio */
-    object-fit: cover; /* Crop the image to cover the container */
-  }
-</style>
-</head>
-<body>
-
-<div class="image-container">
-  <img class="cropped-image" src="img/bugs/loco-bee.png" alt="Cropped Image">
-</div>
-
-</body>
-</html>
-
-```
