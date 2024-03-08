@@ -24,6 +24,7 @@ library(plotly)
 library(stats) # PCA
 library(ggbiplot) # PCA biplot
 library(gridExtra)
+library(ggrepel)
 
 ```
 
@@ -333,28 +334,61 @@ ggplot() +
                arrow = arrow(length = unit(0.1, "inches")),
                alpha = 0.5,
                color = "red") +
-  geom_text(data = loadings.plot,
-            hjust = 1.1, vjust = -1.2,
-            aes(PC1, PC2, label = compound),
-            size = 4) +
   labs(x = "PC1", y = "PC2", title = "Toadflax PCA Loadings") +
   theme_bw() +
   scale_x_continuous(expand = c(0.1, 0.1)) +
   scale_y_continuous(expand = c(0.1, 0.1))
 
-loadings.plotly <-
-ggplotly(loadings.ggplot,
-         width = 700) %>%
-  layout(legend = list(title = "")) %>%
-  config(
-    displayModeBar = TRUE,
-    displaylogo = FALSE,
-    modeBarButtonsToRemove = list('lasso2d', 
-                                  'hoverClosestCartesian',
-                                  'hoverCompareCartesian')
-  )
+loadings.ggplot +
+  geom_text(data = loadings.plot,
+            aes(PC1, PC2, label = compound)) +
+  annotate("text", x = 0.2, y = -0.15, 
+           label = "Myrcene, B-Pinene, \nLimonene, Thujene", 
+           hjust = 0, vjust = 1, size = 4, color = "black") +
+  annotate("rect", xmin = 0.5, ymin = 0.5, xmax = 0.9, ymax = 0.9)
 
-loadings.plotly
+,
+           label = "Decanal, Nonanal, \nDodecanal, Undecanal")
+,
+           hjust = 1, vjust = 1, size = 4, color = "black") +
+  geom_rect(aes(xmin = -0.3, ))
+?annotate
+loadings.ggplot + 
+  geom_label_repel(data = loadings.plot,
+                   aes(PC1, PC2, label = compound),
+                   size = 4,
+                   fill = "white",
+                   color = "black",
+                   alpha = 0.7,
+                   label.padding = unit(0.25, "lines"),
+                   label.r = unit(0.15, "lines"))
+
+loadings.ggplot + 
+  geom_label(data = loadings.plot,
+             aes(PC1, PC2, label = compound),
+             size = 4,
+             fill = "white",
+             color = "black",
+             alpha = 0.7,
+             label.padding = unit(0.25, "lines"),
+             label.r = unit(0.15, "lines"))
+
+
+# plotly options
+
+# loadings.plotly <-
+# ggplotly(loadings.ggplot,
+#          width = 700) %>%
+#   layout(legend = list(title = "")) %>%
+#   config(
+#     displayModeBar = TRUE,
+#     displaylogo = FALSE,
+#     modeBarButtonsToRemove = list('lasso2d', 
+#                                   'hoverClosestCartesian',
+#                                   'hoverCompareCartesian')
+#   )
+# 
+# loadings.plotly
 ```
 
 Finally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures. 
@@ -651,6 +685,20 @@ scores <- as.data.frame(pca.results$x)
 loadings <- as.data.frame(pca.results$rotation)
 variance <- as.data.frame(pca.results$sdev^2)
 
+
+##
+var.explained <- pca.results$sdev^2 / sum(pca.results$sdev^2) * 100
+formatted_variance <- format(var.explained, scientific = FALSE)
+pc_names <- paste0("PC", 1:length(var.explained))
+variance_table <- data.frame(PC = pc_names, var.explained = formatted_variance)
+
+var.table <- 
+variance_table %>%
+  as.data.frame() %>%
+  mutate(var.explained = as.numeric(var.explained)) %>%
+  mutate(var.explained = round(var.explained, 2))
+## 
+
 data.plus.pca <-
   data.clr %>%
     filter(type %in% types) %>%
@@ -687,7 +735,7 @@ ggplot() +
   # geom_text(aes(label = day))
   geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
   geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
-  labs(x = "PC1", y = "PC2", 
+  labs(x = "PC1 (23.65%)", y = "PC2 (11.66%)", 
        title = "Toadflax PCA Plot",
        color = element_blank()) +
   stat_ellipse(data = model.data,
@@ -854,7 +902,8 @@ ggplot() +
   # geom_text(aes(label = day))
   geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
   geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
-  labs(x = "PC1", y = "PC2", 
+  labs(x = "PC1 (23.56%)", 
+       y = "PC2 (11.66%)", 
        title = "Toadflax PCA - HBR and RAD",
        color = element_blank()) +
   stat_ellipse(data = model.data.wild,
@@ -871,6 +920,8 @@ ggplot() +
                                 "Y6" = "#00BFC4",
                                 "Y6D6" = "#619CFF",
                                 "D6Y6" = "#F564E3"))
+
+
 
 grid.arrange(scores.post.hbrrad, scores.plant, ncol = 2)
 ```
