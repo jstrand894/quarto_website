@@ -341,18 +341,12 @@ ggplot() +
 
 loadings.ggplot +
   geom_text(data = loadings.plot,
-            aes(PC1, PC2, label = compound)) +
-  annotate("text", x = 0.2, y = -0.15, 
-           label = "Myrcene, B-Pinene, \nLimonene, Thujene", 
-           hjust = 0, vjust = 1, size = 4, color = "black") +
-  annotate("rect", xmin = 0.5, ymin = 0.5, xmax = 0.9, ymax = 0.9)
+            aes(PC1, PC2, label = compound))
+```
 
-,
-           label = "Decanal, Nonanal, \nDodecanal, Undecanal")
-,
-           hjust = 1, vjust = 1, size = 4, color = "black") +
-  geom_rect(aes(xmin = -0.3, ))
-?annotate
+<img src="toadflax_plots/loadings_with_boxes.png" alt="Toadflax PCA Loadings Plot with Box Labels" width="650"/>
+
+```{r more loading plots, echo = F}
 loadings.ggplot + 
   geom_label_repel(data = loadings.plot,
                    aes(PC1, PC2, label = compound),
@@ -373,7 +367,6 @@ loadings.ggplot +
              label.padding = unit(0.25, "lines"),
              label.r = unit(0.15, "lines"))
 
-
 # plotly options
 
 # loadings.plotly <-
@@ -390,6 +383,9 @@ loadings.ggplot +
 # 
 # loadings.plotly
 ```
+
+
+
 
 Finally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures. 
 
