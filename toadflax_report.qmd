@@ -322,7 +322,7 @@ ggplotly(scores.type,
                                   'hoverCompareCartesian')
   )
 ```
-```{r save files6, echo = F}
+```{r save files1, echo = F}
 ggsave(filename = "Toadflax PCA - All Type.png",
        plot = scores.type,
        path = "toadflax_plots/",
@@ -395,7 +395,7 @@ loadings.ggplot +
   geom_text(data = loadings.plot,
             aes(PC1, PC2, label = compound))
 ```
-```{r save files6, echo = F}
+```{r save files2, echo = F}
 ggsave(filename = "Toadflax PCA - Loadings Plot Basic.png",
        plot = loadings.ggplot,
        path = "toadflax_plots/",
@@ -593,7 +593,7 @@ scores.post.natrem <-
 
 grid.arrange(scores.post.natrem, scores.type, ncol = 2)
 ```
-```{r save files1, echo = F}
+```{r save files3, echo = F}
 ggsave(filename = "Toadflax PCA Scores - Type_All.png",
        plot = scores.type,
        path = "toadflax_plots/",
@@ -724,7 +724,7 @@ ggplot() +
 
 grid.arrange(scores.pre.natrm, scores.type, ncol = 2)
 ```
-```{r save files2, echo = F}
+```{r save files4, echo = F}
 ggsave(filename = "Toadflax PCA (Pre) - DT, YT, Synthetic.png",
        plot = scores.pre.natrm,
        path = "toadflax_plots/",
@@ -814,7 +814,7 @@ ggplot() +
 grid.arrange(scores.post.hybrids, scores.type, ncol = 2)
 
 ```
-```{r save files3, echo = F}
+```{r save files5, echo = F}
 ggsave(filename = "Toadflax PCA (Post) - Hybrids.png",
        plot = scores.post.hybrids,
        path = "toadflax_plots/",
@@ -900,7 +900,7 @@ ggplot() +
 grid.arrange(scores.post.hybrids.wold, scores.type, ncol = 2)
 
 ```
-```{r save files4, echo = F}
+```{r save files6, echo = F}
 ggsave(filename = "Toadflax PCA (Post) - Hybrids with entire.png",
        plot = scores.post.hybrids.wold,
        path = "toadflax_plots/",
@@ -1038,7 +1038,7 @@ ggplot() +
 
 grid.arrange(scores.pre.hybrids, scores.type, ncol = 2)
 ```
-```{r save files5, echo = F}
+```{r save files7, echo = F}
 ggsave(filename = "Toadflax PCA (Pre) - Hybrids.png",
        plot = scores.pre.hybrids,
        path = "toadflax_plots/",
@@ -1168,7 +1168,7 @@ ggplotly(scores.plant,
   )
 
 ```
-```{r save files6, echo = F}
+```{r save files8, echo = F}
 ggsave(filename = "Toadflax PCA - Type_Plant.png",
        plot = scores.plant,
        path = "toadflax_plots/",
@@ -1257,7 +1257,7 @@ ggplot() +
 
 grid.arrange(scores.post.hbrrad, scores.plant, ncol = 2)
 ```
-```{r save files7, echo = F}
+```{r save files9, echo = F}
 ggsave(filename = "Toadflax PCA (Post_Plant_NBR RAD).png",
        plot = scores.post.hbrrad,
        path = "toadflax_plots/",
@@ -1390,7 +1390,7 @@ ggplot() +
 
 grid.arrange(scores.pre.hbrrad, scores.plant, ncol = 2)
 ```
-```{r save files8, echo = F}
+```{r save files10, echo = F}
 ggsave(filename = "Toadflax PCA (Pre_Plant_NBR RAD).png",
        plot = scores.pre.hbrrad ,
        path = "toadflax_plots/",
