@@ -1,0 +1,169 @@
+---
+title: "larger boxplots"
+---
+
+
+```{r libraries, echo = F, message = F}
+library(dplyr)
+library(tidyr)
+library(readxl)
+library(compositions) # 
+library(ggplot2) # ggplot
+library(vegan) # Adonis
+library(tibble)
+library(kableExtra) # Kable
+library(plotly)
+library(stats) # PCA
+library(ggbiplot) # PCA biplot
+library(gridExtra)
+library(ggrepel)
+
+```
+
+```{r data load, echo = F}
+data <-
+read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/Toadflax/Toadflax 2023 Parent and Hybrid Volatiles.xlsx",
+           sheet = "compounds") %>%
+  rename("gc_file" = 1,
+         "plant_id" = 2,
+         "plant" = 3,
+         "type" = 4,
+         "Z-3-Hexenol" = 5,
+         "a-Pinene" = 6,
+         "Thujene" = 7,
+         "Myrcene" = 8,
+         "1-octen-3-ol" = 9,
+         "6-methyl-3-heptanone" = 10,
+         "B-pinene" = 11,
+         "Z-3-Hexenyl Acetate" = 12,
+         "Limonene" = 13,
+         "Trans-B-ociemene" = 14,
+         "Cis-B-ocimene" = 15,
+         "Undecane" = 16,
+         "Linalool" = 17,
+         "Nonanal" = 18,
+         "Octenyl Acetate" = 19,
+         "Allo-ocimene" = 20,
+         "Terpineol" = 21,
+         "Methyl Salicylate" = 22,
+         "Decanal" = 23,
+         "P-anisaldehyde" = 24,
+         "Undecanal" = 25,
+         "2-Undecanal" = 26,
+         "Copaene" = 27,
+         "Cubebene" = 28,
+         "Dodecanal" = 29,
+         "Caryophyllene" = 30,
+         "day" = 31) 
+```
+```{r CLR transformation, echo = F}
+data.clr <-
+data %>%
+  select(-gc_file) %>%
+  pivot_longer(-c(plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+  mutate(value = log(value + 1.01, 2)) %>%
+  pivot_wider(values_from = "value",
+              names_from = "compound") %>%
+  unite(plant_id, plant_id, plant, type, day, sep = "_") %>%
+  column_to_rownames("plant_id") %>%
+  clr() %>% # run the clr!
+  as.data.frame() %>%
+  rownames_to_column("plant_id") %>%
+  separate(plant_id, into = c("plant_id", "plant", "type", "day"),
+           sep = "_") %>%
+  pivot_longer(-c(plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+  mutate(value = value + 4) %>%
+  pivot_wider(values_from = "value",
+              names_from = "compound") %>%
+  mutate_at(vars(plant, type, day), list(factor))
+```
+```{r compound order, echo = F}
+compound.order <- c("Z-3-Hexenol",
+"a-Pinene",
+"Thujene",
+"Myrcene",
+"1-octen-3-ol",
+"6-methyl-3-heptanone",
+"B-pinene",
+"Z-3-Hexenyl Acetate",
+"Limonene",
+"Trans-B-ociemene",
+"Cis-B-ocimene",
+"Undecane",
+"Linalool",
+"Nonanal",
+"Octenyl Acetate",
+"Allo-ocimene",
+"Terpineol",
+"Methyl Salicylate",
+"Decanal",
+"P-anisaldehyde",
+"Undecanal",
+"2-Undecanal",
+"Copaene",
+"Cubebene",
+"Dodecanal",
+"Caryophyllene")
+```
+
+
+
+```{r boxplot data type, echo = F}
+boxplot.data.type <-
+  data %>%
+    pivot_longer(-c(gc_file, plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+    group_by(type, compound) %>%
+    mutate(count = n(),
+           average = mean(value),
+           sd = sd(value),
+           se = (sd/sqrt(count))) %>%
+    reframe(type, compound,
+            average = mean(average),
+            sd = mean(sd),
+            se = mean(se)) %>%
+  unique() 
+```
+```{r boxplot comparison category (original data), echo = F, fig.height = 60, fig.width = 26}
+boxplot.data.type.plot <-
+  boxplot.data.type %>%
+  mutate(type = factor(type, levels = c("DT", "YT", "Natural", "Synthetic"))) %>%
+  ggplot(aes(x = type, y = average, fill = type)) +
+  geom_bar(stat = "identity", alpha = 0.5) +
+  geom_errorbar(aes(x = type,
+                    ymin = average - se,
+                    ymax = average + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5,
+                linewidth = 2.5) +
+  labs(x = element_blank(),
+       y = "VOC Concentration (ng/g/hr)") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                    hjust = 1),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        panel.grid.major.x = element_line(color = "#F2F2F2")) +
+  facet_wrap(~compound, 
+             scales = "free_y",
+             ncol = 3) 
+
+boxplot.data.type.plot +
+  theme(legend.position = "bottom",
+        legend.key.width = unit(2, "cm"),
+        legend.spacing.x = unit(1, "cm"),
+        strip.text.y = element_text(margin = margin(0, 20, 0, 0)),
+        panel.spacing = unit(1, "lines"),
+        legend.title = element_blank(),
+        axis.text = element_text(size = 44),
+        axis.title = element_text(size = 44),
+        strip.text = element_text(size = 44),
+        legend.text = element_text(size = 48),   
+        plot.title = element_text(size = 48)) 
+
+```

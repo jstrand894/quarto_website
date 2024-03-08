@@ -316,7 +316,7 @@
     "href": "toadflax_report.html#organized-by-type",
     "title": "Toadflax Analysis",
     "section": "Organized by Type",
-    "text": "Organized by Type\nType: This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.",
+    "text": "Organized by Type\nType: This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n  \n    View Larger Boxplots",
     "crumbs": [
       "Work",
       "Projects",
@@ -388,5 +388,12 @@
       "MSU-Master's",
       "Toadflax"
     ]
+  },
+  {
+    "objectID": "larger_boxpots.html",
+    "href": "larger_boxpots.html",
+    "title": "larger boxplots",
+    "section": "",
+    "text": "Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
   }
 ]

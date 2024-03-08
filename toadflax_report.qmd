@@ -137,6 +137,51 @@ Overall, the data is quite good. I think a little bit of pairing down of the num
 ## Organized by Type
 
 **Type:** This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <a href="larger_boxplots.qmd">
+    <button class="button">View Larger Boxplots</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
 
 ```{r boxplot data type, echo = F}
 boxplot.data.type <-
@@ -156,7 +201,8 @@ boxplot.data.type <-
   unique() 
 ```
 ```{r boxplot comparison category (original data), echo = F, fig.height = 20, fig.width = 20}
-boxplot.data.type %>%
+boxplot.data.type.plot <-
+  boxplot.data.type %>%
   mutate(type = factor(type, levels = c("DT", "YT", "Natural", "Synthetic"))) %>%
   ggplot(aes(x = type, y = average, fill = type)) +
   geom_bar(stat = "identity", alpha = 0.5) +
@@ -171,18 +217,66 @@ boxplot.data.type %>%
   theme(axis.text.x = element_text(angle = 45, 
                                     hjust = 1),
         legend.position = 'none',
-        # legend.position = c(0.8,0.9),
         panel.background = element_rect(fill = "white"),
         axis.line = element_line(color = "black"),
-        panel.grid.major.x = element_line(color = "#F2F2F2"),
-        axis.text = element_text(size = 22),
-        axis.title = element_text(size = 22),
-        strip.text = element_text(size = 22)) +
+        panel.grid.major.x = element_line(color = "#F2F2F2")) +
   facet_wrap(~compound, 
              scales = "free_y",
-             ncol = 3)
+             ncol = 3) 
+
+boxplot.data.type.plot +
+  theme(axis.text = element_text(size = 22),
+        axis.title = element_text(size = 22),
+        strip.text = element_text(size = 22)) 
 
 ```
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <a href="larger_boxplots.qmd">
+    <button class="button">View Larger Boxplots</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
+
 
 ## Organized by Plant
 
@@ -228,6 +322,9 @@ boxplot.data.plant  %>%
                 alpha = 0.5) +
   labs(x = element_blank(),
        y = "VOC Concentration (ng/g/hr)") +
+  facet_wrap(~compound, 
+             scales = "free_y",
+             ncol = 3) +
   theme(axis.text.x = element_text(angle = 45, 
                                     hjust = 1),
         legend.position = 'bottom',
@@ -239,10 +336,8 @@ boxplot.data.plant  %>%
         axis.title = element_text(size = 22),
         strip.text = element_text(size = 22),
         legend.text = element_text(size = 22),
-        legend.title = element_text(size = 22)) +
-  facet_wrap(~compound, 
-             scales = "free_y",
-             ncol = 3)
+        legend.title = element_text(size = 22)) 
+  
 
 ```
 
