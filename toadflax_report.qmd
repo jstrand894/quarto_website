@@ -322,7 +322,59 @@ ggplotly(scores.type,
                                   'hoverCompareCartesian')
   )
 ```
+```{r save files6, echo = F}
+ggsave(filename = "Toadflax PCA - All Type.png",
+       plot = scores.type,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
 
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - All Type.png" download>
+    <button class="button">Download</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
 
 Next, we can look at our loadings and see where each compound is pushing the differences in our PCs.
 
@@ -343,47 +395,107 @@ loadings.ggplot +
   geom_text(data = loadings.plot,
             aes(PC1, PC2, label = compound))
 ```
+```{r save files6, echo = F}
+ggsave(filename = "Toadflax PCA - Loadings Plot Basic.png",
+       plot = loadings.ggplot,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
 
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Loadings Plot Basic.png" download>
+    <button class="button">Download</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
 <img src="toadflax_plots/loadings_with_boxes.png" alt="Toadflax PCA Loadings Plot with Box Labels" width="650"/>
 
-```{r more loading plots, echo = F}
-loadings.ggplot + 
-  geom_label_repel(data = loadings.plot,
-                   aes(PC1, PC2, label = compound),
-                   size = 4,
-                   fill = "white",
-                   color = "black",
-                   alpha = 0.7,
-                   label.padding = unit(0.25, "lines"),
-                   label.r = unit(0.15, "lines"))
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
 
-loadings.ggplot + 
-  geom_label(data = loadings.plot,
-             aes(PC1, PC2, label = compound),
-             size = 4,
-             fill = "white",
-             color = "black",
-             alpha = 0.7,
-             label.padding = unit(0.25, "lines"),
-             label.r = unit(0.15, "lines"))
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/loadings_with_boxes.png" download>
+    <button class="button">Download</button>
+  </a>
 
-# plotly options
+</div>
+</body>
+</html>
 
-# loadings.plotly <-
-# ggplotly(loadings.ggplot,
-#          width = 700) %>%
-#   layout(legend = list(title = "")) %>%
-#   config(
-#     displayModeBar = TRUE,
-#     displaylogo = FALSE,
-#     modeBarButtonsToRemove = list('lasso2d', 
-#                                   'hoverClosestCartesian',
-#                                   'hoverCompareCartesian')
-#   )
-# 
-# loadings.plotly
 ```
-
 
 
 
@@ -481,9 +593,8 @@ scores.post.natrem <-
 
 grid.arrange(scores.post.natrem, scores.type, ncol = 2)
 ```
-
 ```{r save files1, echo = F}
-ggsave(filename = "Toadflax PCA Scores - Type | All.png",
+ggsave(filename = "Toadflax PCA Scores - Type_All.png",
        plot = scores.type,
        path = "toadflax_plots/",
        width = 6,
@@ -494,15 +605,13 @@ ggsave(filename = "Toadflax PCA (Post) - DT, YT, Synthetic.png",
        width = 6,
        height = 4)
 ```
-
-
 ```{=html}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download File Button</title>
+<title>Download File Buttons</title>
 <style>
 /* Button styling */
 .button {
@@ -517,21 +626,35 @@ ggsave(filename = "Toadflax PCA (Post) - DT, YT, Synthetic.png",
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+  margin: 0 200px;
 }
 .button:hover {
   background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 </style>
 </head>
 <body>
 
-<!-- Button to download the file -->
-<a href="Toadflax PCA Scores - Type | All.png" download="TetonMountainRuns2023">
-  <button class="button">Download All Pictures</button>
-</a>
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA (Post) - DT, YT, Synthetic.png" download>
+    <button class="button">Download</button>
+  </a>
+  
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
 
 </body>
 </html>
+
 
 ```
 
@@ -601,7 +724,65 @@ ggplot() +
 
 grid.arrange(scores.pre.natrm, scores.type, ncol = 2)
 ```
+```{r save files2, echo = F}
+ggsave(filename = "Toadflax PCA (Pre) - DT, YT, Synthetic.png",
+       plot = scores.pre.natrm,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
 
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA (Pre) - DT, YT, Synthetic.png" download>
+    <button class="button">Download</button>
+  </a>
+  
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+
+</body>
+</html>
+
+
+```
 
 
 #### Compare: Synthetic and Natural  
@@ -633,11 +814,69 @@ ggplot() +
 grid.arrange(scores.post.hybrids, scores.type, ncol = 2)
 
 ```
+```{r save files3, echo = F}
+ggsave(filename = "Toadflax PCA (Post) - Hybrids.png",
+       plot = scores.post.hybrids,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA (Post) - Hybrids.png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
+```
 
 I've also plotted just the two hybrid plant categories but included the data points from the rest of the samples.
 
 ```{r scores plot type HYBRIDS with old data, echo = F, fig.width = 12, warning = F}
-scores.post.hybrids <-
+scores.post.hybrids.wold <-
 ggplot() +
   geom_point(data = model.data.all,
              aes(PC1, PC2, color = type)) +
@@ -658,13 +897,67 @@ ggplot() +
                                 "YT" = "grey",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.post.hybrids, scores.type, ncol = 2)
-
-
-
+grid.arrange(scores.post.hybrids.wold, scores.type, ncol = 2)
 
 ```
+```{r save files4, echo = F}
+ggsave(filename = "Toadflax PCA (Post) - Hybrids with entire.png",
+       plot = scores.post.hybrids.wold,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
 
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Post) - Hybrids with entire.png" download>
+    <button class="button">Download</button>
+  </a>
+  
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+
+</body>
+</html>
+
+```
 
 ##### Pre-PCA Model Filter
 
@@ -745,7 +1038,64 @@ ggplot() +
 
 grid.arrange(scores.pre.hybrids, scores.type, ncol = 2)
 ```
+```{r save files5, echo = F}
+ggsave(filename = "Toadflax PCA (Pre) - Hybrids.png",
+       plot = scores.pre.hybrids,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
 
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Pre) - Hybrids.png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
+```
 <div style="border: 1px solid black; padding: 10px; ">
 After running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two. 
 </div>
@@ -780,25 +1130,24 @@ loadings %>%
   
 
 meta <- data.clr %>% dplyr::select(plant, type, day)
-model.data <- data.frame(PC1, PC2, meta)
+model.data.plant <- data.frame(PC1, PC2, meta)
 
 ```
 
 ```{r scores plot plant, echo = F}
 scores.plant <-
 ggplot() +
-  geom_point(data = model.data,
+  geom_point(data = model.data.plant,
              aes(PC1, PC2, color = plant),
              alpha = 0.8) +
   # geom_text(aes(label = day))
   geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
   geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
   labs(x = "PC1", y = "PC2", 
-       title = "Toadflax PCA Plot",
-       color = element_blank()) +
-  stat_ellipse(data = model.data,
+       color = element_blank(),
+       title = "Toadflax PCA Scores Plot by Plant") +
+  stat_ellipse(data = model.data.plant,
                aes(PC1, PC2, color = plant)) +
-  labs(title = bquote("Toadflax PCA Scores Plot by "*bold("Plant"))) +
   scale_color_manual(values = c("HBR" = "#F8766D", 
                                 "RAD" = "#7CAE00",
                                 "D6" = "#00BA38",
@@ -807,9 +1156,71 @@ ggplot() +
                                 "D6Y6" = "#F564E3")) +
   theme_bw() 
 
-scores.plant
-```
+ggplotly(scores.plant, 
+         width = 700) %>%
+  layout(legend = list(title = "")) %>%
+  config(
+    displayModeBar = TRUE,
+    displaylogo = FALSE,
+    modeBarButtonsToRemove = list('lasso2d', 
+                                  'hoverClosestCartesian',
+                                  'hoverCompareCartesian')
+  )
 
+```
+```{r save files6, echo = F}
+ggsave(filename = "Toadflax PCA - Type_Plant.png",
+       plot = scores.plant,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Type_Plant.png" download>
+    <button class="button">Download</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
 ### Variable Plant Selection
 
 #### Compare: HBR and RAD
@@ -845,6 +1256,64 @@ ggplot() +
                                 "D6Y6" = "#F564E3"))
 
 grid.arrange(scores.post.hbrrad, scores.plant, ncol = 2)
+```
+```{r save files7, echo = F}
+ggsave(filename = "Toadflax PCA (Post_Plant_NBR RAD).png",
+       plot = scores.post.hbrrad,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Post_Plant_NBR RAD).png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Type_Plant.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
 ```
 
 ##### Pre-PCA Model Filter
@@ -890,7 +1359,7 @@ model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
 
 ```
 ```{r scores plot type Pre HBR RAD, echo = F, fig.width = 12}
-scores.post.hbrrad <-
+scores.pre.hbrrad <-
 ggplot() +
   geom_point(data = model.data.wild,
              aes(PC1, PC2, color = plant),
@@ -919,9 +1388,66 @@ ggplot() +
 
 
 
-grid.arrange(scores.post.hbrrad, scores.plant, ncol = 2)
+grid.arrange(scores.pre.hbrrad, scores.plant, ncol = 2)
 ```
+```{r save files8, echo = F}
+ggsave(filename = "Toadflax PCA (Pre_Plant_NBR RAD).png",
+       plot = scores.pre.hbrrad ,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
 
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Pre_Plant_NBR RAD).png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Type_Plant.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
+```
 
 <hr>
 
