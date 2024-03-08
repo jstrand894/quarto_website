@@ -1,5 +1,7 @@
 ---
 title: "save"
+editor_options: 
+  chunk_output_type: console
 ---
 
 # box with shadow when you hover
@@ -82,10 +84,10 @@ title: "save"
 ```{r}
 library(scales)
 
-for(i in 1:8){
+for(i in 1:6){
   print(hue_pal()(i))
 }
 hue_pal()(4)
-show_col(hue_pal()(4))
+show_col(hue_pal()(6))
 
 ```

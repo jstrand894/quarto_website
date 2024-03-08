@@ -295,6 +295,7 @@ model.data.all$day <- factor(model.data.all$day, levels = c("1", "2", "3", "4",
 We're going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
 
 ```{r scores plot, echo = F}
+scores.all <-
 ggplot() +
   geom_point(data = model.data.all,
              aes(PC1, PC2, color = type)) +
@@ -302,22 +303,32 @@ ggplot() +
   geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
   geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
   labs(x = "PC1", y = "PC2", 
-       title = "Toadflax PCA Plot",
-       color = element_blank()) +
+       title = "Toadflax PCA Scores Plot") +
   stat_ellipse(data = model.data.all,
                aes(PC1, PC2, color = type)) +
-  labs(title = "Toadflax PCA Scores Plot") +
   theme_bw() +
   scale_color_manual(values = c("DT" = "#F8766D", 
                                 "Synthetic" = "#7CAE00",
                                 "YT" = "#00BFC4",
                                 "Natural" = "#C77CFF"))
 
+ggplotly(scores.all,
+         width = 700) %>%
+  layout(legend = list(title = "")) %>%
+  config(
+    displayModeBar = TRUE,
+    displaylogo = FALSE,
+    modeBarButtonsToRemove = list('lasso2d', 
+                                  'hoverClosestCartesian',
+                                  'hoverCompareCartesian')
+  )
 ```
+
 
 Next, we can look at our loadings and see where each compound is pushing the differences in our PCs.
 
 ```{r loadings plot, echo = F}
+loadings.ggplot <-
 ggplot() +
   geom_segment(data = loadings.plot,
                aes(x = 0, y = 0, xend = PC1, yend = PC2),
@@ -332,15 +343,39 @@ ggplot() +
   theme_bw() +
   scale_x_continuous(expand = c(0.1, 0.1)) +
   scale_y_continuous(expand = c(0.1, 0.1))
+
+loadings.plotly <-
+ggplotly(loadings.ggplot,
+         width = 700) %>%
+  layout(legend = list(title = "")) %>%
+  config(
+    displayModeBar = TRUE,
+    displaylogo = FALSE,
+    modeBarButtonsToRemove = list('lasso2d', 
+                                  'hoverClosestCartesian',
+                                  'hoverCompareCartesian')
+  )
+
+loadings.plotly
 ```
 
 Finally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures. 
 
 ```{r sc.lo.plot, echo = F}
+ggplotly(
 ggbiplot(pca.results, obs.scale = 1, var.scale = 1, ellipse = FALSE,
          group = data.clr$type, circle = FALSE) +
   theme_bw() +
-  labs(title = "Toadflax PCA with loadings and scores")
+  labs(title = "Toadflax PCA with loadings and scores"),
+width = 700) %>%
+  layout(legend = list(title = "")) %>%
+  config(
+    displayModeBar = TRUE,
+    displaylogo = FALSE,
+    modeBarButtonsToRemove = list('lasso2d', 
+                                  'hoverClosestCartesian',
+                                  'hoverCompareCartesian')
+)
 ```
 
 Grouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context. 
@@ -362,7 +397,9 @@ Let's start by removing the natural hybrids from our PCA and view the results.
 ##### Post-PCA Model Filter  
 
 ```{r scores plot category POST natural removed, echo = F, fig.width = 12}
-all.scores <-
+# scores.all.plotly <-
+# ggplotly(
+scores.all <-
   ggplot() +
     geom_point(data = model.data.all,
                aes(PC1, PC2, color = type)) +
@@ -381,7 +418,8 @@ all.scores <-
                                   "YT" = "#00BFC4",
                                   "Natural" = "#C77CFF"))
 
-scores.post.natrem <- 
+
+scores.post.natrem <-
   ggplot() +
   geom_point(data = model.data.all %>%
                filter(!type == "Natural"),
@@ -391,6 +429,7 @@ scores.post.natrem <-
   geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
   labs(x = "PC1", y = "PC2", 
        title = "Toadflax PCA Plot",
+       color = element_blank(),
        color = element_blank()) +
   stat_ellipse(data = model.data.all %>%
                filter(!type == "Natural"),
@@ -403,7 +442,17 @@ scores.post.natrem <-
                                 "YT" = "#00BFC4",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.post.natrem, all.scores, ncol = 2)
+# remove the legend from one of the plots
+# for (i in 1:length(scores.all.plotly$x$data)) {
+#   scores.all.plotly$x$data[[i]]$showlegend <- FALSE
+# }
+# use subplot to plot the two plots side by side
+# subplot(scores.all.plotly, scores.post.natrem, 
+#         nrows = 1, shareY = FALSE, shareX = FALSE, 
+#         widths = c(0.5, 0.5)) %>%
+#   layout(legend = list(title = ""))
+
+grid.arrange(scores.post.natrem, scores.all, ncol = 2)
 
 ```
 
@@ -469,7 +518,7 @@ ggplot() +
                                 "Synthetic" = "#7CAE00",
                                 "YT" = "#00BFC4"))
 
-grid.arrange(scores.pre.natrm, all.scores, ncol = 2)
+grid.arrange(scores.pre.natrm, scores.all, ncol = 2)
 ```
 
 
@@ -500,7 +549,7 @@ ggplot() +
                                 "YT" = "#00BFC4",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.post.hybrids, all.scores, ncol = 2)
+grid.arrange(scores.post.hybrids, scores.all, ncol = 2)
 
 ```
 
@@ -528,12 +577,13 @@ ggplot() +
                                 "YT" = "grey",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.post.hybrids, all.scores, ncol = 2)
+grid.arrange(scores.post.hybrids, scores.all, ncol = 2)
 
 
 
 
 ```
+
 
 ##### Pre-PCA Model Filter
 
@@ -598,7 +648,7 @@ ggplot() +
                                 "YT" = "#00BFC4",
                                 "Natural" = "#C77CFF"))
 
-grid.arrange(scores.pre.hybrids, all.scores, ncol = 2)
+grid.arrange(scores.pre.hybrids, scores.all, ncol = 2)
 ```
 
 <div style="border: 1px solid black; padding: 10px; ">
@@ -607,6 +657,7 @@ After running all of these plots, it looks to me like the largest differences ar
 
 ## Organized by Plant 
 
+### All Data
 ```{r PCA plant, echo = F}
 pca.results <-
 data.clr %>%
@@ -639,9 +690,11 @@ model.data <- data.frame(PC1, PC2, meta)
 ```
 
 ```{r scores plot plant, echo = F}
+scores.plant <-
 ggplot() +
   geom_point(data = model.data,
-             aes(PC1, PC2, color = plant)) +
+             aes(PC1, PC2, color = plant),
+             alpha = 0.8) +
   # geom_text(aes(label = day))
   geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
   geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
@@ -651,8 +704,126 @@ ggplot() +
   stat_ellipse(data = model.data,
                aes(PC1, PC2, color = plant)) +
   labs(title = bquote("Toadflax PCA Scores Plot by "*bold("Plant"))) +
+  scale_color_manual(values = c("HBR" = "#F8766D", 
+                                "RAD" = "#7CAE00",
+                                "D6" = "#00BA38",
+                                "Y6" = "#00BFC4",
+                                "Y6D6" = "#619CFF",
+                                "D6Y6" = "#F564E3")) +
   theme_bw() 
+
+scores.plant
 ```
+
+### Variable Plant Selection
+
+#### Compare: HBR and RAD
+
+##### Post-PCA Model Filter
+```{r scores plot type Post HBR RAD, echo = F, fig.width = 12}
+scores.post.hbrrad <-
+ggplot() +
+  geom_point(data = model.data.all %>%
+               filter(plant %in% c("HBR", "RAD")),
+             aes(PC1, PC2, color = plant),
+             alpha = 0.8) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA - HBR and RAD",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+               filter(plant %in% c("HBR", "RAD")),
+               aes(PC1, PC2, color = plant)) +
+  # geom_polygon(data = model.data.all %>%
+  #                 filter(plant %in% c("HBR", "RAD")),
+  #               aes(x = PC1, y = PC2, fill = plant),
+  #               alpha = 0.1, color = NA,
+  #               stat = "ellipse") +
+  theme_bw() +
+  scale_color_manual(values = c("HBR" = "#F8766D", 
+                                "RAD" = "#7CAE00",
+                                "D6" = "#00BA38",
+                                "Y6" = "#00BFC4",
+                                "Y6D6" = "#619CFF",
+                                "D6Y6" = "#F564E3"))
+
+grid.arrange(scores.post.hbrrad, scores.plant, ncol = 2)
+```
+
+##### Pre-PCA Model Filter
+```{r PCA category PRE hbr rad, echo = F}
+plants <- c("RAD", "HBR")
+
+pca.results <-
+data.clr %>%
+  filter(plant %in% plants) %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+data.plus.pca <-
+  data.clr %>%
+    filter(plant %in% plants) %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+# meta data
+meta <- data.clr %>% 
+  filter(plant %in% plants) %>%
+  dplyr::select(plant, type, day) 
+  
+
+model.data.wild <- data.frame(PC1, PC2, meta)
+model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
+```
+```{r scores plot type Pre HBR RAD, echo = F, fig.width = 12}
+scores.post.hbrrad <-
+ggplot() +
+  geom_point(data = model.data.wild,
+             aes(PC1, PC2, color = plant),
+             alpha = 0.8) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA - HBR and RAD",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.wild,
+               aes(PC1, PC2, color = plant)) +
+  # geom_polygon(data = model.data.all %>%
+  #                 filter(plant %in% c("HBR", "RAD")),
+  #               aes(x = PC1, y = PC2, fill = plant),
+  #               alpha = 0.1, color = NA,
+  #               stat = "ellipse") +
+  theme_bw() +
+  scale_color_manual(values = c("HBR" = "#F8766D", 
+                                "RAD" = "#7CAE00",
+                                "D6" = "#00BA38",
+                                "Y6" = "#00BFC4",
+                                "Y6D6" = "#619CFF",
+                                "D6Y6" = "#F564E3"))
+
+grid.arrange(scores.post.hbrrad, scores.plant, ncol = 2)
+```
+
 
 <hr>
 
