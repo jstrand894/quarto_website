@@ -167,11 +167,11 @@ cat(html_code)
 <body>
 
 <div class="gallery">
-<img src="img/loco-plants/IMG_0064.HEIC" alt="Image 1" onclick="expandImage(this)">
-<img src="img/loco-plants/IMG_0820 2.HEIC" alt="Image 2" onclick="expandImage(this)">
-<img src="img/loco-plants/IMG_1165.HEIC" alt="Image 3" onclick="expandImage(this)">
-<img src="img/loco-plants/IMG_1177.HEIC" alt="Image 4" onclick="expandImage(this)">
-<img src="img/loco-plants/IMG_1923.HEIC" alt="Image 5" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_0064.jpg" alt="Image 1" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_0820 2.jpg" alt="Image 2" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_1165.jpg" alt="Image 3" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_1177.jpg" alt="Image 4" onclick="expandImage(this)">
+<img src="img/loco-plants/IMG_1923.jpg" alt="Image 5" onclick="expandImage(this)">
 </div>
 <div class="expanded-container" onclick="closeExpanded()">
   <img class="expanded" id="expanded-image" onclick="navigateGallery(event)">
