@@ -25,11 +25,11 @@
     ]
   },
   {
-    "objectID": "toadflax_report.html#simple-raw-boxplot-comparisons",
-    "href": "toadflax_report.html#simple-raw-boxplot-comparisons",
+    "objectID": "toadflax_report.html#organized-by-type",
+    "href": "toadflax_report.html#organized-by-type",
     "title": "Toadflax Analysis",
-    "section": "Simple Raw Boxplot Comparisons",
-    "text": "Simple Raw Boxplot Comparisons",
+    "section": "Organized by Type",
+    "text": "Organized by Type\nType: This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n  \n    View Larger Boxplots\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n  \n    View Larger Boxplots",
     "crumbs": [
       "Work",
       "Projects",
@@ -38,11 +38,11 @@
     ]
   },
   {
-    "objectID": "toadflax_report.html#multivariate-analysis-by-category",
-    "href": "toadflax_report.html#multivariate-analysis-by-category",
+    "objectID": "toadflax_report.html#organized-by-plant",
+    "href": "toadflax_report.html#organized-by-plant",
     "title": "Toadflax Analysis",
-    "section": "Multivariate Analysis by category",
-    "text": "Multivariate Analysis by category\nMultivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PCA, Permutational Multivariate ANOVA (PERMANOVA), Permutational Analysis of Multivariate Dispersion (PERMDISP), and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data (Brückner and Heethoff 2017). VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) (Oksanen et al. 2011). This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). Data were visualized using ggplot2 (Wickham 2016). The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output.\n\nPCA by category\nWe’re going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.\n\n\n\n\n\n\n\n\n\nNext, we can look at our loadings and see where each compound is pushing the differences in our PCs.\n\n\n\n\n\n\n\n\n\nFinally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures.\n\n\n\n\n\n\n\n\n\nGrouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context.\n\n\nPCA with variable category selection\nI will create several PCA plots by filtering out different plant categories. There’s a crucial distinction to be made here. In one set of plots, I’ll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I’ll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method.\nI’ve also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.\nIn my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.\nAs a reference, I’m going to show the plot from all varaibles and data on the right side.\nLet’s start by removing the natural hybrids from our PCA and view the results.\n\n\nCompare: DT, YT, Synthetic\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\nCompare: Synthetic and Natural\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\nI’ve also plotted just the two hybrid plant categories but included the data points from the rest of the samples.\n\n\n\n\n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\nAfter running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two.\n\n\n\n\nPERMANOVA\nAs stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). It is useful when considering non-normal multivariate data like our toadflax data set.\n\nPERMANOVA - D6, Y6, Synthetic, Natural\n\n\n\n\nToadflax Type PERMANOVA: D6, Y6, Synthetic, Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).\nLet’s check for a difference between our synthetic and natural plant types.\n\n\nPERMANOVA - Synthetic & Natural\n\n\n\n\nToadflax Type PERMANOVA: Synthetic & Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n1\n0.4267748\n0.1616969\n13.30914\n0.001\n\n\nResidual\n69\n2.2125751\n0.8383031\nNA\nNA\n\n\nTotal\n70\n2.6393499\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between Natural and Synthetic plant types.\n\n\n\nPERMDISP & PCoA\nPermutational Analysis of Multivariate Dispersions, or PERMDISP, is a multivariate statistic used to assess differences in dispersion (variation) among groups or treatments. This method is particularly useful when dealing with multivariate data where there are multiple variables measured on each sample or observation.\nPrincipal Coordinates Analysis (PCoA), also known as Classical Multidimensional Scaling (MDS), is a multivariate statistical technique used for exploring and visualizing patterns of similarity or dissimilarity in data. PCoA is closely related to Principal Component Analysis (PCA), but whereas PCA operates on the covariance matrix of the data, PCoA works directly on a distance or dissimilarity matrix.\nI ran a PERMDISP on our entire data set.\n\n\n\n    Homogeneity of multivariate dispersions\n\nCall: betadisper(d = dist, group = data.clr$type)\n\nNo. of Positive Eigenvalues: 26\nNo. of Negative Eigenvalues: 0\n\nAverage distance to median:\n       DT   Natural Synthetic        YT \n    6.572     6.623     6.699     7.161 \n\nEigenvalues for PCoA axes:\n(Showing 8 of 26 eigenvalues)\n PCoA1  PCoA2  PCoA3  PCoA4  PCoA5  PCoA6  PCoA7  PCoA8 \n1266.4  922.1  671.8  519.2  406.3  319.9  292.6  258.6 \n\n\nWe found no significant difference (pval = 0.5548198 ) in multivariate dispersion among groups.\n\n\n\n\n\n\n\n\n\nBasically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different (0.5548198) in the dispersion within each of our groups when we compare them to one another. We are seeing a very large p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot.\nThis means that we don’t need to consider differences in broad dispersional differences between our plant types.",
+    "section": "Organized by Plant",
+    "text": "Organized by Plant\nPlant: This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.",
     "crumbs": [
       "Work",
       "Projects",
@@ -51,11 +51,50 @@
     ]
   },
   {
-    "objectID": "toadflax_report.html#multivariate-analysis",
-    "href": "toadflax_report.html#multivariate-analysis",
+    "objectID": "toadflax_report.html#organized-by-type-1",
+    "href": "toadflax_report.html#organized-by-type-1",
     "title": "Toadflax Analysis",
-    "section": "Multivariate Analysis",
-    "text": "Multivariate Analysis\n\nPCA\n\n\n\n\n\n\n\n\n\n\n\nPERMANOVA\nLet’s say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference.\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$plant\n1\n0.1309064\n0.0574618\n2.072809\n0.08\n\n\nResidual\n34\n2.1472404\n0.9425382\nNA\nNA\n\n\nTotal\n35\n2.2781468\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show no evidence (p-val = 0.08) of a difference between volatile profiles between Y6D6 and D6Y6 plants.",
+    "section": "Organized by Type",
+    "text": "Organized by Type\n\nAll Data\nWe’re going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\nNext, we can look at our loadings and see where each compound is pushing the differences in our PCs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\nFinally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures.\n\n\n\n\n\n\nGrouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context.\n\n\nVariable Category Selection\nI will create several PCA plots by filtering out different plant categories. There’s a crucial distinction to be made here. In one set of plots, I’ll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I’ll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method.\nI’ve also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.\nIn my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.\nAs a reference, I’m going to show the plot from all varaibles and data on the right side.\nLet’s start by removing the natural hybrids from our PCA and view the results.\n\nCompare: DT, YT, Synthetic\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\n\n\nCompare: Synthetic and Natural\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\nI’ve also plotted just the two hybrid plant categories but included the data points from the rest of the samples.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\n\nAfter running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two.",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "toadflax_report.html#organized-by-plant-1",
+    "href": "toadflax_report.html#organized-by-plant-1",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Plant",
+    "text": "Organized by Plant\n\nAll Data\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\n\n\nVariable Plant Selection\n\nCompare: HBR and RAD\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "toadflax_report.html#organized-by-type-2",
+    "href": "toadflax_report.html#organized-by-type-2",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Type",
+    "text": "Organized by Type\nAs stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). It is useful when considering non-normal multivariate data like our Toadflax data set.\n\nD6, Y6, Synthetic, Natural\n\n\n\n\nToadflax Type PERMANOVA: D6, Y6, Synthetic, Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).\nLet’s check for a difference between our synthetic and natural plant types.\n\n\nSynthetic & Natural\n\n\n\n\nToadflax Type PERMANOVA: Synthetic & Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n1\n0.4267748\n0.1616969\n13.30914\n0.001\n\n\nResidual\n69\n2.2125751\n0.8383031\nNA\nNA\n\n\nTotal\n70\n2.6393499\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between Natural and Synthetic plant types.",
+    "crumbs": [
+      "Work",
+      "Projects",
+      "MSU-Master's",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "toadflax_report.html#organized-by-plant-2",
+    "href": "toadflax_report.html#organized-by-plant-2",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Plant",
+    "text": "Organized by Plant\nLet’s say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference.\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$plant\n1\n0.1309064\n0.0574618\n2.072809\n0.08\n\n\nResidual\n34\n2.1472404\n0.9425382\nNA\nNA\n\n\nTotal\n35\n2.2781468\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show no evidence (p-val = 0.08) of a difference between volatile profiles between Y6D6 and D6Y6 plants.",
     "crumbs": [
       "Work",
       "Projects",
@@ -96,7 +135,7 @@
     "href": "msu-masters.html",
     "title": "MSU Masters",
     "section": "",
-    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Wheat Stem Sawfly\n        Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.\n      \n    \n  \n  \n    \n       \n      \n        Locoweed Volatiles\n        Comparison of volatile organic compounds profiles of Oxytropis plants that contained the commensal endophyte Alternaria oxytropis and those that did not.\n      \n    \n  \n  \n    \n       \n      \n        Toadflax",
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        Wheat Stem Sawfly\n        Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Locoweed Volatiles\n        Comparison of volatile organic compounds profiles of Oxytropis plants that contained the commensal endophyte Alternaria oxytropis and those that did not.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Toadflax",
     "crumbs": [
       "Work",
       "Projects",
@@ -235,7 +274,7 @@
     "href": "weatherdata.html",
     "title": "Weather Data MT",
     "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(glue)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\ninventory_url &lt;- \"https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt\"\n\ninventory &lt;- read_table(inventory_url,\n           col_names = c(\"station\", \"lat\", \"lon\", \"variable\", \"start\", \"end\"))\n\n\n── Column specification ────────────────────────────────────────────────────────\ncols(\n  station = col_character(),\n  lat = col_double(),\n  lon = col_double(),\n  variable = col_character(),\n  start = col_double(),\n  end = col_double()\n)\n\ninventory\n\n# A tibble: 747,331 × 6\n   station       lat   lon variable start   end\n   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;\n 1 ACW00011604  17.1 -61.8 TMAX      1949  1949\n 2 ACW00011604  17.1 -61.8 TMIN      1949  1949\n 3 ACW00011604  17.1 -61.8 PRCP      1949  1949\n 4 ACW00011604  17.1 -61.8 SNOW      1949  1949\n 5 ACW00011604  17.1 -61.8 SNWD      1949  1949\n 6 ACW00011604  17.1 -61.8 PGTM      1949  1949\n 7 ACW00011604  17.1 -61.8 WDFG      1949  1949\n 8 ACW00011604  17.1 -61.8 WSFG      1949  1949\n 9 ACW00011604  17.1 -61.8 WT03      1949  1949\n10 ACW00011604  17.1 -61.8 WT08      1949  1949\n# ℹ 747,321 more rows\n\nmy_lat &lt;- 45.661966103346735 * 2 * pi/360\nmy_long &lt;- -111.04939878991246 * 2 * pi/360\n\nmy_station &lt;- \n  inventory %&gt;%\n    mutate(lat_r = lat *2 *pi/360,\n           lon_r = lon *2 *pi/360,\n           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + cos(lat_r) * cos(my_lat) * cos(my_long - lon_r))) %&gt;%\n    filter(start &lt; 1960 & end &gt; 2020) %&gt;%\n    top_n(n = -1, d) %&gt;%\n    distinct(station) %&gt;%\n    pull(station)\n\nstation_daily &lt;- glue(\"https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz\")\n\nlocal_weather &lt;- \nread_csv(station_daily,\n         col_names = c(\"station\", \"date\", \"variable\", \"value\", \"a\", \"b\", \"c\", \"d\")) %&gt;%\n  dplyr::select(station, date, variable, value) %&gt;%\n  pivot_wider(names_from = \"variable\", values_from = \"value\",\n                values_fill = 0) %&gt;%\n  dplyr::select(date, TMAX, PRCP, SNOW) %&gt;%\n  mutate(date = ymd(date))\n\nRows: 253119 Columns: 8\n\n\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (5): station, variable, a, b, c\ndbl (3): date, value, d\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nbozeman_weather &lt;-\n  local_weather %&gt;%\n  filter(date &gt; \"2000-01-01\")\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = PRCP)) +\n  theme_bw() \n\n\n\n\n\n\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = PRCP)) +\n  geom_smooth(aes(x = date, y = PRCP), method = \"loess\", se = TRUE) +\n  theme_bw()\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\ntitle: “Montana Weather Data”",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(glue)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\ninventory_url &lt;- \"https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt\"\n\ninventory &lt;- read_table(inventory_url,\n           col_names = c(\"station\", \"lat\", \"lon\", \"variable\", \"start\", \"end\"))\n\n\n── Column specification ────────────────────────────────────────────────────────\ncols(\n  station = col_character(),\n  lat = col_double(),\n  lon = col_double(),\n  variable = col_character(),\n  start = col_double(),\n  end = col_double()\n)\n\ninventory\n\n# A tibble: 747,392 × 6\n   station       lat   lon variable start   end\n   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;\n 1 ACW00011604  17.1 -61.8 TMAX      1949  1949\n 2 ACW00011604  17.1 -61.8 TMIN      1949  1949\n 3 ACW00011604  17.1 -61.8 PRCP      1949  1949\n 4 ACW00011604  17.1 -61.8 SNOW      1949  1949\n 5 ACW00011604  17.1 -61.8 SNWD      1949  1949\n 6 ACW00011604  17.1 -61.8 PGTM      1949  1949\n 7 ACW00011604  17.1 -61.8 WDFG      1949  1949\n 8 ACW00011604  17.1 -61.8 WSFG      1949  1949\n 9 ACW00011604  17.1 -61.8 WT03      1949  1949\n10 ACW00011604  17.1 -61.8 WT08      1949  1949\n# ℹ 747,382 more rows\n\nmy_lat &lt;- 45.661966103346735 * 2 * pi/360\nmy_long &lt;- -111.04939878991246 * 2 * pi/360\n\nmy_station &lt;- \n  inventory %&gt;%\n    mutate(lat_r = lat *2 *pi/360,\n           lon_r = lon *2 *pi/360,\n           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + cos(lat_r) * cos(my_lat) * cos(my_long - lon_r))) %&gt;%\n    filter(start &lt; 1960 & end &gt; 2020) %&gt;%\n    top_n(n = -1, d) %&gt;%\n    distinct(station) %&gt;%\n    pull(station)\n\nstation_daily &lt;- glue(\"https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz\")\n\nlocal_weather &lt;- \nread_csv(station_daily,\n         col_names = c(\"station\", \"date\", \"variable\", \"value\", \"a\", \"b\", \"c\", \"d\")) %&gt;%\n  dplyr::select(station, date, variable, value) %&gt;%\n  pivot_wider(names_from = \"variable\", values_from = \"value\",\n                values_fill = 0) %&gt;%\n  dplyr::select(date, TMAX, PRCP, SNOW) %&gt;%\n  mutate(date = ymd(date))\n\nRows: 253131 Columns: 8\n\n\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (5): station, variable, a, b, c\ndbl (3): date, value, d\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nbozeman_weather &lt;-\n  local_weather %&gt;%\n  filter(date &gt; \"2000-01-01\")\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = PRCP)) +\n  theme_bw() \n\n\n\n\n\n\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = PRCP)) +\n  geom_smooth(aes(x = date, y = PRCP), method = \"loess\", se = TRUE) +\n  theme_bw()\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\ntitle: “Montana Weather Data”",
     "crumbs": [
       "Work",
       "Projects",
@@ -263,7 +302,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "Box with Rounded Edges\n\n\n\n  \n    \n       \n      \n        MSU Master's - Entomology\n        Co-Advised by David Weaver & Tracy Sterling\n      \n    \n  \n  \n    \n       \n      \n        NBA Roster Analysis Tool",
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        Montana State University Master's\n        Co-advised by Dr. David Weaver and Dr. Tracy Sterling.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        NBA Roster Analysis Tool",
     "crumbs": [
       "Work",
       "Projects"
@@ -295,7 +334,7 @@
     "href": "save.html",
     "title": "save",
     "section": "",
-    "text": "box with shadow when you hover\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Wheat Stem Sawfly\n        \n      \n    \n  \n\n\n\n\n\nhow to see what the default colors are in R\n\nlibrary(scales)\n\nfor(i in 1:6){\n  print(hue_pal()(i))\n}\n\n[1] \"#F8766D\"\n[1] \"#F8766D\" \"#00BFC4\"\n[1] \"#F8766D\" \"#00BA38\" \"#619CFF\"\n[1] \"#F8766D\" \"#7CAE00\" \"#00BFC4\" \"#C77CFF\"\n[1] \"#F8766D\" \"#A3A500\" \"#00BF7D\" \"#00B0F6\" \"#E76BF3\"\n[1] \"#F8766D\" \"#B79F00\" \"#00BA38\" \"#00BFC4\" \"#619CFF\" \"#F564E3\"\n\nhue_pal()(4)\n\n[1] \"#F8766D\" \"#7CAE00\" \"#00BFC4\" \"#C77CFF\"\n\nshow_col(hue_pal()(6))"
+    "text": "box with shadow when you hover\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n       \n      \n        Wheat Stem Sawfly\n        \n      \n    \n  \n\n\n\n\n\nhow to see what the default colors are in R\n\nlibrary(scales)\n\nfor(i in 1:6){\n  print(hue_pal()(i))\n}\n\n[1] \"#F8766D\"\n[1] \"#F8766D\" \"#00BFC4\"\n[1] \"#F8766D\" \"#00BA38\" \"#619CFF\"\n[1] \"#F8766D\" \"#7CAE00\" \"#00BFC4\" \"#C77CFF\"\n[1] \"#F8766D\" \"#A3A500\" \"#00BF7D\" \"#00B0F6\" \"#E76BF3\"\n[1] \"#F8766D\" \"#B79F00\" \"#00BA38\" \"#00BFC4\" \"#619CFF\" \"#F564E3\"\n\nhue_pal()(4)\n\n[1] \"#F8766D\" \"#7CAE00\" \"#00BFC4\" \"#C77CFF\"\n\nshow_col(hue_pal()(6))\n\n\n\n\n\n\n\n\n\n\nmenu grid of boxes for selection"
   },
   {
     "objectID": "cv.html",
@@ -310,90 +349,5 @@
     "title": "smooth brome/winter wheat",
     "section": "",
     "text": "Image Gallery\n  \n\n\n\n\n\n\n\n\n\n  \n \n\n\n\n\n\n\n\n\n  \n  \n  Image Gallery"
-  },
-  {
-    "objectID": "toadflax_report.html#organized-by-type",
-    "href": "toadflax_report.html#organized-by-type",
-    "title": "Toadflax Analysis",
-    "section": "Organized by Type",
-    "text": "Organized by Type\nType: This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n  \n    View Larger Boxplots\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n  \n    View Larger Boxplots",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Toadflax"
-    ]
-  },
-  {
-    "objectID": "toadflax_report.html#organized-by-plant",
-    "href": "toadflax_report.html#organized-by-plant",
-    "title": "Toadflax Analysis",
-    "section": "Organized by Plant",
-    "text": "Organized by Plant\nPlant: This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Toadflax"
-    ]
-  },
-  {
-    "objectID": "toadflax_report.html#organized-by-type-1",
-    "href": "toadflax_report.html#organized-by-type-1",
-    "title": "Toadflax Analysis",
-    "section": "Organized by Type",
-    "text": "Organized by Type\n\nAll Data\nWe’re going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\nNext, we can look at our loadings and see where each compound is pushing the differences in our PCs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\nFinally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures.\n\n\n\n\n\n\nGrouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context.\n\n\nVariable Category Selection\nI will create several PCA plots by filtering out different plant categories. There’s a crucial distinction to be made here. In one set of plots, I’ll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I’ll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method.\nI’ve also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.\nIn my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.\nAs a reference, I’m going to show the plot from all varaibles and data on the right side.\nLet’s start by removing the natural hybrids from our PCA and view the results.\n\nCompare: DT, YT, Synthetic\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\n\n\nCompare: Synthetic and Natural\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\nI’ve also plotted just the two hybrid plant categories but included the data points from the rest of the samples.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\n\nAfter running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two.",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Toadflax"
-    ]
-  },
-  {
-    "objectID": "toadflax_report.html#organized-by-plant-1",
-    "href": "toadflax_report.html#organized-by-plant-1",
-    "title": "Toadflax Analysis",
-    "section": "Organized by Plant",
-    "text": "Organized by Plant\n\nAll Data\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\n\n\nVariable Plant Selection\n\nCompare: HBR and RAD\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Toadflax"
-    ]
-  },
-  {
-    "objectID": "toadflax_report.html#organized-by-type-2",
-    "href": "toadflax_report.html#organized-by-type-2",
-    "title": "Toadflax Analysis",
-    "section": "Organized by Type",
-    "text": "Organized by Type\nAs stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). It is useful when considering non-normal multivariate data like our Toadflax data set.\n\nD6, Y6, Synthetic, Natural\n\n\n\n\nToadflax Type PERMANOVA: D6, Y6, Synthetic, Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).\nLet’s check for a difference between our synthetic and natural plant types.\n\n\nSynthetic & Natural\n\n\n\n\nToadflax Type PERMANOVA: Synthetic & Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n1\n0.4267748\n0.1616969\n13.30914\n0.001\n\n\nResidual\n69\n2.2125751\n0.8383031\nNA\nNA\n\n\nTotal\n70\n2.6393499\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between Natural and Synthetic plant types.",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Toadflax"
-    ]
-  },
-  {
-    "objectID": "toadflax_report.html#organized-by-plant-2",
-    "href": "toadflax_report.html#organized-by-plant-2",
-    "title": "Toadflax Analysis",
-    "section": "Organized by Plant",
-    "text": "Organized by Plant\nLet’s say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference.\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$plant\n1\n0.1309064\n0.0574618\n2.072809\n0.08\n\n\nResidual\n34\n2.1472404\n0.9425382\nNA\nNA\n\n\nTotal\n35\n2.2781468\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show no evidence (p-val = 0.08) of a difference between volatile profiles between Y6D6 and D6Y6 plants.",
-    "crumbs": [
-      "Work",
-      "Projects",
-      "MSU-Master's",
-      "Toadflax"
-    ]
-  },
-  {
-    "objectID": "larger_boxpots.html",
-    "href": "larger_boxpots.html",
-    "title": "larger boxplots",
-    "section": "",
-    "text": "Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
   }
 ]

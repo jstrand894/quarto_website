@@ -12,54 +12,55 @@ editor_options:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Box with Rounded Edges</title>
 <style>
+  body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+
   .container {
-    width: 300px;
-    height: 300px; /* Set container height */
+    width: calc(100% - 20px); /* Adjusted width to fit the screen and account for margins */
+    max-width: 600px; /* Limiting maximum width */
+    height: auto; /* Set container height */
     border: 0.5px solid #ccc; /* Light grey color */
     border-radius: 8px; /* Less rounded edges */
     overflow: hidden; /* Hide overflow content */
-    position: relative;
-    display: inline-block;
-    transition: box-shadow 0.15s ease; /* Transition for box-shadow */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow by default */
-    text-align: center; /* Center content horizontally */
+    margin-bottom: 20px; /* Add margin to create space between rows */
+    margin-right: auto; /* Push containers to the left */
+    margin-left: 10px; /* Adjust margin between the left side of the screen */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
     text-decoration: none; /* Remove underline */
-    margin-right: 20px; /* Add margin to create space between boxes */
-    margin-bottom: 20px;
   }
   
   .container:last-child {
-    margin-right: 0; /* Remove margin from the last box */
+    margin-bottom: 0; /* Remove margin from the last box */
   }
   
   .container:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
   }
   
-  .content {
-    width: 100%;
-    height: 100%;
+  .image-container {
     padding: 20px;
     box-sizing: border-box;
   }
   
-  .content img {
-    width: 70%;
+  .image-container img {
+    width: 80px; /* Adjusted width for smaller image */
     height: auto;
     display: block;
-    margin: 0 auto; /* Center the image horizontally */
-    object-fit: cover; /* Crop the image to cover container */
+    border-radius: 8px; /* Rounded corners for image */
   }
   
-  .text {
-    margin-top: 10px;
-    text-align: center; /* Center text within the box */
-    text-decoration: none;
+  .content {
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1; /* Take remaining space */
   }
   
   .text h1 {
-    font-size: 24px; /* Larger text size */
-    margin-top: 1px;
+    font-size: 18px; /* Adjusted text size */
+    margin-top: 0;
     margin-bottom: 5px; /* Adjust margin between large and small text */
     color: black;
   }
@@ -71,47 +72,41 @@ editor_options:
     font-size: 14px;
     margin-top: 5px;
     color: #666;
+    text-align: justify; /* Align text */
   }
-  <!--  .nba-container { -->
-  <!--   background-color: #0E1D2D; -->
-  <!-- } -->
+
+  @media (max-width: 768px) {
+    .container {
+      width: calc(100% - 20px); /* Adjusted width to fit the screen */
+    }
+  }
 </style>
 </head>
 <body>
   <a href="msu-masters.qmd" class="container">
+    <div class="image-container">
+      <img src="img/projects-logos/msu-logo.jpg" alt="Image">
+    </div>
     <div class="content">
-      <img src="img/projects-logos/msu-logo.jpg" alt="Image"> <!-- Center the image within the box -->
       <div class="text">
-        <h1>MSU Master's - Entomology</h1>
-        <p>Co-Advised by David Weaver & Tracy Sterling</p>
+        <h1>Montana State University Master's</h1>
+        <p>Co-advised by Dr. David Weaver and Dr. Tracy Sterling.</p>
       </div>
     </div>
   </a>
-  <a href="bballref.qmd" class="container nba-container">
+  <a href="bballref.qmd" class="container">
+    <div class="image-container">
+      <img src="img/projects-logos/bballref-logo-circle.jpg" alt="Image">
+    </div>
     <div class="content">
-      <img src="img/projects-logos/bballref-logo-circle.jpg" alt="Image"> <!-- Center the image within the box -->
       <div class="text">
-        <h1><br>NBA Roster Analysis Tool</h1>
+        <h1>NBA Roster Analysis Tool</h1>
         <p></p>
       </div>
     </div>
   </a>
 </body>
 </html>
+
 ```
 
-<!-- ```{=html} -->
-<!-- <figure style="display: inline-block; overflow: hidden; position: relative; text-align: center;"> -->
-<!--     <a href="bballref.qmd" style="display: block;"> -->
-<!--         <img src="img/projects-logos/bballref-logo.jpeg" alt="NBA Roster Analysis Tool" width="200" style="transition: transform 0.3s ease-in-out;"> -->
-<!--     </a> -->
-<!--     <figcaption style="margin-top: 10px;">NBA Roster Analysis Tool</figcaption> -->
-<!-- </figure> -->
-
-<!-- <style> -->
-<!--     figure:hover img { -->
-<!--         transform: scale(1.05); -->
-<!--     } -->
-<!-- </style> -->
-
-<!-- ``` -->
