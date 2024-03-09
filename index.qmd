@@ -2,7 +2,7 @@
 about: 
   template: jolla
   id: about-block
-  image: "img/aboutme/crescent.HEIC"
+  image: "img/aboutme/crescent.jpg"
   links:
     - icon: linkedin
       text: LinkedIn
