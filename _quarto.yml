@@ -10,22 +10,22 @@ website:
     type: textbox
   bread-crumbs: false
   favicon: img/aboutme/logo.png
-  title: "Jackson Strand Website"
+  title: "Jackson Strand"
   navbar:
     background: primary
     search: true
     logo: img/logo.png
     left:
       - text: "Work"
-        file: projects.qmd
+        file: qmd/projects.qmd
       - text: "Pics"
         menu: 
-          - running.qmd
-          - bugs.qmd
+          - qmd/pics/running.qmd
+          - qmd/pics/bugs.qmd
       - text: "CV"
-        file: cv.qmd
+        file: qmd/cv.qmd
     right: 
-      - href: aboutme.qmd
+      - href: qmd/aboutme.qmd
         text: About Me
     tools:
       - icon: linkedin
@@ -38,36 +38,38 @@ website:
         href: "mailto:jstrand894@gmail.com"
   sidebar:
     - title: "Work"
-      collapse-level: 4
+      collapse-level: 3
       border: true
       style: "docked"
       search: true
       contents:
         - text: "Projects"
-          file: projects.qmd
+          file: qmd/projects.qmd
           contents:
             - text: "MSU-Master's"
-              href: msu-masters.qmd
+              href: qmd/projects/msu-masters.qmd
               contents:
                 - text: "Wheat Stem Sawfly"
-                  href: wss.qmd
+                  href: qmd/projects/msu-masters/wss.qmd
                   contents:
+                  - text: "Thesis Proposal"
+                    href: qmd/litreview.qmd
                   - text: "Controlled WSS Infestation"
-                    href: pfreport.qmd
+                    href: qmd/projects/msu-masters/wss/pfreport.qmd
                   - text: "Montana Field Sites"
-                    href: field_report.qmd
+                    href: qmd/projects/msu-masters/wss/field_report.qmd
                   - text: "Organic Volatile Collection"
-                    href: eag.qmd
+                    href: qmd/projects/msu-masters/wss/eag.qmd
                   - text: "Weather Data"
-                    href: weatherdata.qmd
+                    href: qmd/projects/msu-masters/wss/weatherdata.qmd
                 - text: "Locoweed Volatiles"
-                  href: locoweed-report.qmd
+                  href: qmd/projects/msu-masters/locoweed/locoweed-report.qmd
                 - text: "Toadflax"
-                  href: toadflax_report.qmd
-        - text: "Other"
-          contents:
-            - text: "Basketball Analysis Tool"
-              file: bballref.qmd
+                  href: qmd/projects/msu-masters/toadflax/toadflax_report.qmd
+            - text: "Other"
+              contents:
+                - text: "Basketball Analysis Tool"
+                  file: qmd/projects/bballtool.qmd
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
     left: "&copy; Copyright 2024, Jackson Strand"

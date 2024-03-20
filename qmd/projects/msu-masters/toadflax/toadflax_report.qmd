@@ -1,0 +1,1754 @@
+---
+title: "Toadflax Analysis"
+author: "Jackson Strand"
+date: '`r format(Sys.Date())`'
+editor_options: 
+  chunk_output_type: console
+toc: true
+toc-depth: 4
+bibliography: citations/citations.bib
+link-citations: true
+cls: council-of-science-editors-author-date.csl
+---
+
+```{r libraries, echo = F, message = F}
+library(dplyr)
+library(tidyr)
+library(readxl)
+library(compositions) # 
+library(ggplot2) # ggplot
+library(vegan) # Adonis
+library(tibble)
+library(kableExtra) # Kable
+library(plotly)
+library(stats) # PCA
+library(ggbiplot) # PCA biplot
+library(gridExtra)
+library(ggrepel)
+
+```
+
+```{r data load, echo = F}
+data <-
+read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/Toadflax/Toadflax 2023 Parent and Hybrid Volatiles.xlsx",
+           sheet = "compounds") %>%
+  rename("gc_file" = 1,
+         "plant_id" = 2,
+         "plant" = 3,
+         "type" = 4,
+         "Z-3-Hexenol" = 5,
+         "a-Pinene" = 6,
+         "Thujene" = 7,
+         "Myrcene" = 8,
+         "1-octen-3-ol" = 9,
+         "6-methyl-3-heptanone" = 10,
+         "B-pinene" = 11,
+         "Z-3-Hexenyl Acetate" = 12,
+         "Limonene" = 13,
+         "Trans-B-ociemene" = 14,
+         "Cis-B-ocimene" = 15,
+         "Undecane" = 16,
+         "Linalool" = 17,
+         "Nonanal" = 18,
+         "Octenyl Acetate" = 19,
+         "Allo-ocimene" = 20,
+         "Terpineol" = 21,
+         "Methyl Salicylate" = 22,
+         "Decanal" = 23,
+         "P-anisaldehyde" = 24,
+         "Undecanal" = 25,
+         "2-Undecanal" = 26,
+         "Copaene" = 27,
+         "Cubebene" = 28,
+         "Dodecanal" = 29,
+         "Caryophyllene" = 30,
+         "day" = 31) 
+```
+```{r CLR transformation, echo = F}
+data.clr <-
+data %>%
+  select(-gc_file) %>%
+  pivot_longer(-c(plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+  mutate(value = log(value + 1.01, 2)) %>%
+  pivot_wider(values_from = "value",
+              names_from = "compound") %>%
+  unite(plant_id, plant_id, plant, type, day, sep = "_") %>%
+  column_to_rownames("plant_id") %>%
+  clr() %>% # run the clr!
+  as.data.frame() %>%
+  rownames_to_column("plant_id") %>%
+  separate(plant_id, into = c("plant_id", "plant", "type", "day"),
+           sep = "_") %>%
+  pivot_longer(-c(plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+  mutate(value = value + 4) %>%
+  pivot_wider(values_from = "value",
+              names_from = "compound") %>%
+  mutate_at(vars(plant, type, day), list(factor))
+```
+```{r compound order, echo = F}
+compound.order <- c("Z-3-Hexenol",
+"a-Pinene",
+"Thujene",
+"Myrcene",
+"1-octen-3-ol",
+"6-methyl-3-heptanone",
+"B-pinene",
+"Z-3-Hexenyl Acetate",
+"Limonene",
+"Trans-B-ociemene",
+"Cis-B-ocimene",
+"Undecane",
+"Linalool",
+"Nonanal",
+"Octenyl Acetate",
+"Allo-ocimene",
+"Terpineol",
+"Methyl Salicylate",
+"Decanal",
+"P-anisaldehyde",
+"Undecanal",
+"2-Undecanal",
+"Copaene",
+"Cubebene",
+"Dodecanal",
+"Caryophyllene")
+```
+
+# Methods 
+
+Boxpot and multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1). We employed Principal Compoenent Analysis (PCA), Permutational Multivariate ANOVA (PERMANOVA), and Permutational Analysis of Multivariate Dispersion (PERMDISP). The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using ggplot2 [@ggplot]. The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output. 
+
+<div style="border: 1px solid black; padding: 10px;">
+I'm going to briefly analyze the data in two different formats.
+  
+- <u>Type:</u> groupings of YT, DT, Natural, and Synthetic
+- <u>Plant:</u> groupings of each plant type - D6, Y6, D6Y6, Y6D6, HBR, RAD
+</div>
+  
+  
+Overall, the data is quite good. I think a little bit of pairing down of the number of compounds we are looking at could be helpful. 
+
+# Raw Boxplot Comparisons
+
+## Organized by Type
+
+**Type:** This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <a href="larger_boxplots.qmd">
+    <button class="button">View Larger Boxplots</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
+
+```{r boxplot data type, echo = F}
+boxplot.data.type <-
+  data %>%
+    pivot_longer(-c(gc_file, plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+    group_by(type, compound) %>%
+    mutate(count = n(),
+           average = mean(value),
+           sd = sd(value),
+           se = (sd/sqrt(count))) %>%
+    reframe(type, compound,
+            average = mean(average),
+            sd = mean(sd),
+            se = mean(se)) %>%
+  unique() 
+```
+```{r boxplot comparison category (original data), echo = F, fig.height = 20, fig.width = 20}
+boxplot.data.type.plot <-
+  boxplot.data.type %>%
+  mutate(type = factor(type, levels = c("DT", "YT", "Natural", "Synthetic"))) %>%
+  ggplot(aes(x = type, y = average, fill = type)) +
+  geom_bar(stat = "identity", alpha = 0.5) +
+  geom_errorbar(aes(x = type,
+                    ymin = average - se,
+                    ymax = average + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  labs(x = element_blank(),
+       y = "VOC Concentration (ng/g/hr)") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                    hjust = 1),
+        legend.position = 'none',
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        panel.grid.major.x = element_line(color = "#F2F2F2")) +
+  facet_wrap(~compound, 
+             scales = "free_y",
+             ncol = 3) 
+
+boxplot.data.type.plot +
+  theme(axis.text = element_text(size = 22),
+        axis.title = element_text(size = 22),
+        strip.text = element_text(size = 22)) 
+
+```
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <a href="larger_boxplots.qmd">
+    <button class="button">View Larger Boxplots</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
+
+
+## Organized by Plant
+
+**Plant:** This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.  
+
+```{r boxplot data plant, echo = F}
+boxplot.data.plant <-
+  data %>%
+    pivot_longer(-c(gc_file, plant_id, plant, type, day),
+               names_to = "compound",
+               values_to = "value") %>%
+    group_by(plant, compound) %>%
+    mutate(count = n(),
+           average = mean(value),
+           sd = sd(value),
+           se = (sd/sqrt(count))) %>%
+    reframe(plant, compound,
+            mean = mean(average),
+            sd = mean(sd),
+            se = mean(se)) %>%
+  unique() %>%
+  left_join(data %>%
+              dplyr::select(plant, type),
+            by = "plant",
+            relationship = "many-to-many") %>%
+  unique() %>%
+  mutate(plant = factor(plant, 
+                        levels = c("D6", "Y6", 
+                                   "D6Y6", "Y6D6",
+                                   "HBR", "RAD"))) %>%
+  mutate(compound = factor(compound, levels = compound.order)) %>%
+  na.omit()
+```
+```{r boxplot comparison plant (original data), echo = F, fig.height = 20, fig.width = 20}
+boxplot.data.plant  %>%
+  ggplot(aes(x = plant, y = mean, fill = type)) +
+  geom_bar(stat = "identity", alpha = 0.5) +
+  geom_errorbar(aes(x = plant,
+                    ymin = mean - se,
+                    ymax = mean + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  labs(x = element_blank(),
+       y = "VOC Concentration (ng/g/hr)") +
+  facet_wrap(~compound, 
+             scales = "free_y",
+             ncol = 3) +
+  theme(axis.text.x = element_text(angle = 45, 
+                                    hjust = 1),
+        legend.position = 'bottom',
+        # legend.position = c(0.8,0.9),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        panel.grid.major.x = element_line(color = "#F2F2F2"),
+        axis.text = element_text(size = 22),
+        axis.title = element_text(size = 22),
+        strip.text = element_text(size = 22),
+        legend.text = element_text(size = 22),
+        legend.title = element_text(size = 22)) 
+  
+
+```
+
+<hr>
+
+# Principal Component Analysis (PCA)
+
+Principal Component Analysis (PCA) is a statistical method used to simplify complex datasets by identifying patterns and relationships among variables. It transforms the original data into a new set of variables called principal components, which capture the most important information in the data. These components help visualize and understand the main sources of variation among samples or observations. In this study, PCA was used to analyze the variability in volatile organic compound (VOC) compositions across samples, allowing researchers to explore and interpret the data more easily.
+
+
+## Organized by Type
+
+### All Data
+
+```{r PCA category all, echo = F}
+pca.results <-
+data.clr %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+data.plus.pca <-
+  data.clr %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+
+meta <- data.clr %>% dplyr::select(plant, type, day)
+model.data.all <- data.frame(PC1, PC2, meta)
+model.data.all$day <- factor(model.data.all$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
+```
+
+We're going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type. 
+
+```{r scores plot, echo = F}
+scores.type <-
+ggplot() +
+  geom_point(data = model.data.all,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Scores Plot") +
+  stat_ellipse(data = model.data.all,
+               aes(PC1, PC2, color = type)) +
+  theme_bw() +
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
+ggplotly(scores.type,
+         width = 700) %>%
+  layout(legend = list(title = "")) %>%
+  config(
+    displayModeBar = TRUE,
+    displaylogo = FALSE,
+    modeBarButtonsToRemove = list('lasso2d', 
+                                  'hoverClosestCartesian',
+                                  'hoverCompareCartesian')
+  )
+```
+```{r save files1, echo = F}
+ggsave(filename = "Toadflax PCA - All Type.png",
+       plot = scores.type,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - All Type.png" download>
+    <button class="button">Download</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
+
+Next, we can look at our loadings and see where each compound is pushing the differences in our PCs.
+
+```{r loadings plot, echo = F}
+loadings.ggplot <-
+ggplot() +
+  geom_segment(data = loadings.plot,
+               aes(x = 0, y = 0, xend = PC1, yend = PC2),
+               arrow = arrow(length = unit(0.1, "inches")),
+               alpha = 0.5,
+               color = "red") +
+  labs(x = "PC1", y = "PC2", title = "Toadflax PCA Loadings") +
+  theme_bw() +
+  scale_x_continuous(expand = c(0.1, 0.1)) +
+  scale_y_continuous(expand = c(0.1, 0.1))
+
+loadings.ggplot +
+  geom_text(data = loadings.plot,
+            aes(PC1, PC2, label = compound))
+```
+```{r save files2, echo = F}
+ggsave(filename = "Toadflax PCA - Loadings Plot Basic.png",
+       plot = loadings.ggplot,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Loadings Plot Basic.png" download>
+    <button class="button">Download</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
+<img src="toadflax_plots/loadings_with_boxes.png" alt="Toadflax PCA Loadings Plot with Box Labels" width="650"/>
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/loadings_with_boxes.png" download>
+    <button class="button">Download</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
+
+
+
+Finally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures. 
+
+```{r sc.lo.plot, echo = F}
+ggplotly(
+ggbiplot(pca.results, obs.scale = 1, var.scale = 1, ellipse = FALSE,
+         group = data.clr$type, circle = FALSE) +
+  theme_bw() +
+  labs(title = "Toadflax PCA with loadings and scores"),
+width = 700) %>%
+  layout(legend = list(title = "")) %>%
+  config(
+    displayModeBar = TRUE,
+    displaylogo = FALSE,
+    modeBarButtonsToRemove = list('lasso2d', 
+                                  'hoverClosestCartesian',
+                                  'hoverCompareCartesian')
+)
+```
+
+Grouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context. 
+
+### Variable Category Selection
+
+I will create several PCA plots by filtering out different plant categories. There's a crucial distinction to be made here. In one set of plots, I'll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I'll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method. 
+
+I've also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.
+
+In my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.
+
+As a reference, I'm going to show the plot from all varaibles and data on the right side. 
+
+Let's start by removing the natural hybrids from our PCA and view the results.  
+
+#### Compare: DT, YT, Synthetic  
+
+##### Post-PCA Model Filter  
+
+```{r scores plot category POST natural removed, echo = F, fig.width = 12}
+# scores.type.plotly <-
+# ggplotly(
+scores.type <-
+  ggplot() +
+    geom_point(data = model.data.all,
+               aes(PC1, PC2, color = type)) +
+    # geom_text(aes(label = day))
+    geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+    geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+    labs(x = "PC1", y = "PC2", 
+         title = "Toadflax PCA Plot",
+         color = element_blank()) +
+    stat_ellipse(data = model.data.all,
+                 aes(PC1, PC2, color = type)) +
+    labs(title = "Toadflax PCA - All Types") +
+    theme_bw() +
+    scale_color_manual(values = c("DT" = "#F8766D", 
+                                  "Synthetic" = "#7CAE00",
+                                  "YT" = "#00BFC4",
+                                  "Natural" = "#C77CFF"))
+
+
+scores.post.natrem <-
+  ggplot() +
+  geom_point(data = model.data.all %>%
+               filter(!type == "Natural"),
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       color = element_blank(),
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+               filter(!type == "Natural"),
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA - DT, YT, Synthetic") +
+  theme_bw() +
+  # theme(legend.position = "none") +
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
+# remove the legend from one of the plots
+# for (i in 1:length(scores.type.plotly$x$data)) {
+#   scores.type.plotly$x$data[[i]]$showlegend <- FALSE
+# }
+# use subplot to plot the two plots side by side
+# subplot(scores.type.plotly, scores.post.natrem, 
+#         nrows = 1, shareY = FALSE, shareX = FALSE, 
+#         widths = c(0.5, 0.5)) %>%
+#   layout(legend = list(title = ""))
+
+grid.arrange(scores.post.natrem, scores.type, ncol = 2)
+```
+```{r save files3, echo = F}
+ggsave(filename = "Toadflax PCA Scores - Type_All.png",
+       plot = scores.type,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+ggsave(filename = "Toadflax PCA (Post) - DT, YT, Synthetic.png",
+       plot = scores.type,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA (Post) - DT, YT, Synthetic.png" download>
+    <button class="button">Download</button>
+  </a>
+  
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+
+</body>
+</html>
+
+
+```
+
+
+
+
+##### Pre-PCA Model Filter
+```{r PCA category PRE no natural, echo = F}
+types <- c("DT", "YT", "Synthetic")
+
+pca.results <-
+data.clr %>%
+  filter(type %in% types) %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+data.plus.pca <-
+  data.clr %>%
+    filter(type %in% types) %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+# meta data
+meta <- data.clr %>% 
+  filter(type %in% types) %>%
+  dplyr::select(plant, type, day) 
+  
+
+model.data <- data.frame(PC1, PC2, meta)
+model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
+```
+```{r PCA scores plot category PRE no natural, echo = F, fig.width = 12}
+scores.pre.natrm <- 
+ggplot() +
+  geom_point(data = model.data,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data,
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA Scores Plot") +
+  theme_bw()+
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4"))
+
+grid.arrange(scores.pre.natrm, scores.type, ncol = 2)
+```
+```{r save files4, echo = F}
+ggsave(filename = "Toadflax PCA (Pre) - DT, YT, Synthetic.png",
+       plot = scores.pre.natrm,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA (Pre) - DT, YT, Synthetic.png" download>
+    <button class="button">Download</button>
+  </a>
+  
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+
+</body>
+</html>
+
+
+```
+
+
+#### Compare: Synthetic and Natural  
+
+##### Post-PCA Model Filter
+
+```{r scores plot type HYBRIDS, echo = F, fig.width = 12}
+scores.post.hybrids <-
+ggplot() +
+  geom_point(data = model.data.all %>%
+               filter(type %in% c("Synthetic", "Natural")),
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+               filter(type %in% c("Synthetic", "Natural")),
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA Scores Plot - Hybrids") +
+  theme_bw() +
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
+grid.arrange(scores.post.hybrids, scores.type, ncol = 2)
+
+```
+```{r save files5, echo = F}
+ggsave(filename = "Toadflax PCA (Post) - Hybrids.png",
+       plot = scores.post.hybrids,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA (Post) - Hybrids.png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
+```
+
+I've also plotted just the two hybrid plant categories but included the data points from the rest of the samples.
+
+```{r scores plot type HYBRIDS with old data, echo = F, fig.width = 12, warning = F}
+scores.post.hybrids.wold <-
+ggplot() +
+  geom_point(data = model.data.all,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+                 filter(type %in% c("Natural", "Synthetic")),
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA - Hybrids") +
+  theme_bw() +
+  lims(x = c(-5.726419, 7.824495), y = c(-3.879407, 4.630473)) +
+  scale_color_manual(values = c("DT" = "grey", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "grey",
+                                "Natural" = "#C77CFF"))
+
+grid.arrange(scores.post.hybrids.wold, scores.type, ncol = 2)
+
+```
+```{r save files6, echo = F}
+ggsave(filename = "Toadflax PCA (Post) - Hybrids with entire.png",
+       plot = scores.post.hybrids.wold,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Post) - Hybrids with entire.png" download>
+    <button class="button">Download</button>
+  </a>
+  
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+
+</body>
+</html>
+
+```
+
+##### Pre-PCA Model Filter
+
+```{r PCA category PRE hybrids, echo = F}
+types <- c("Natural", "Synthetic")
+
+pca.results <-
+data.clr %>%
+  filter(type %in% types) %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+
+##
+var.explained <- pca.results$sdev^2 / sum(pca.results$sdev^2) * 100
+formatted_variance <- format(var.explained, scientific = FALSE)
+pc_names <- paste0("PC", 1:length(var.explained))
+variance_table <- data.frame(PC = pc_names, var.explained = formatted_variance)
+
+var.table <- 
+variance_table %>%
+  as.data.frame() %>%
+  mutate(var.explained = as.numeric(var.explained)) %>%
+  mutate(var.explained = round(var.explained, 2))
+## 
+
+data.plus.pca <-
+  data.clr %>%
+    filter(type %in% types) %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+# meta data
+meta <- data.clr %>% 
+  filter(type %in% types) %>%
+  dplyr::select(plant, type, day) 
+  
+
+model.data <- data.frame(PC1, PC2, meta)
+model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
+```
+```{r PCA scores plot category PRE hybrids, echo = F, fig.width = 12}
+scores.pre.hybrids <- 
+ggplot() +
+  geom_point(data = model.data,
+             aes(PC1, PC2, color = type)) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1 (23.65%)", y = "PC2 (11.66%)", 
+       title = "Toadflax PCA Plot",
+       color = element_blank()) +
+  stat_ellipse(data = model.data,
+               aes(PC1, PC2, color = type)) +
+  labs(title = "Toadflax PCA - Hybrids") +
+  theme_bw()+
+  scale_color_manual(values = c("DT" = "#F8766D", 
+                                "Synthetic" = "#7CAE00",
+                                "YT" = "#00BFC4",
+                                "Natural" = "#C77CFF"))
+
+grid.arrange(scores.pre.hybrids, scores.type, ncol = 2)
+```
+```{r save files7, echo = F}
+ggsave(filename = "Toadflax PCA (Pre) - Hybrids.png",
+       plot = scores.pre.hybrids,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Pre) - Hybrids.png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
+```
+<div style="border: 1px solid black; padding: 10px; ">
+After running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two. 
+</div>
+
+## Organized by Plant 
+
+### All Data
+```{r PCA plant, echo = F}
+pca.results <-
+data.clr %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+data.plus.pca <-
+  data.clr %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+
+meta <- data.clr %>% dplyr::select(plant, type, day)
+model.data.plant <- data.frame(PC1, PC2, meta)
+
+```
+
+```{r scores plot plant, echo = F}
+scores.plant <-
+ggplot() +
+  geom_point(data = model.data.plant,
+             aes(PC1, PC2, color = plant),
+             alpha = 0.8) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       color = element_blank(),
+       title = "Toadflax PCA Scores Plot by Plant") +
+  stat_ellipse(data = model.data.plant,
+               aes(PC1, PC2, color = plant)) +
+  scale_color_manual(values = c("HBR" = "#F8766D", 
+                                "RAD" = "#7CAE00",
+                                "D6" = "#00BA38",
+                                "Y6" = "#00BFC4",
+                                "Y6D6" = "#619CFF",
+                                "D6Y6" = "#F564E3")) +
+  theme_bw() 
+
+ggplotly(scores.plant, 
+         width = 700) %>%
+  layout(legend = list(title = "")) %>%
+  config(
+    displayModeBar = TRUE,
+    displaylogo = FALSE,
+    modeBarButtonsToRemove = list('lasso2d', 
+                                  'hoverClosestCartesian',
+                                  'hoverCompareCartesian')
+  )
+
+```
+```{r save files8, echo = F}
+ggsave(filename = "Toadflax PCA - Type_Plant.png",
+       plot = scores.plant,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Type_Plant.png" download>
+    <button class="button">Download</button>
+  </a>
+
+</div>
+</body>
+</html>
+
+```
+### Variable Plant Selection
+
+#### Compare: HBR and RAD
+
+##### Post-PCA Model Filter
+```{r scores plot type Post HBR RAD, echo = F, fig.width = 12}
+scores.post.hbrrad <-
+ggplot() +
+  geom_point(data = model.data.all %>%
+               filter(plant %in% c("HBR", "RAD")),
+             aes(PC1, PC2, color = plant),
+             alpha = 0.8) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1", y = "PC2", 
+       title = "Toadflax PCA - HBR and RAD",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.all %>%
+               filter(plant %in% c("HBR", "RAD")),
+               aes(PC1, PC2, color = plant)) +
+  # geom_polygon(data = model.data.all %>%
+  #                 filter(plant %in% c("HBR", "RAD")),
+  #               aes(x = PC1, y = PC2, fill = plant),
+  #               alpha = 0.1, color = NA,
+  #               stat = "ellipse") +
+  theme_bw() +
+  scale_color_manual(values = c("HBR" = "#F8766D", 
+                                "RAD" = "#7CAE00",
+                                "D6" = "#00BA38",
+                                "Y6" = "#00BFC4",
+                                "Y6D6" = "#619CFF",
+                                "D6Y6" = "#F564E3"))
+
+grid.arrange(scores.post.hbrrad, scores.plant, ncol = 2)
+```
+```{r save files9, echo = F}
+ggsave(filename = "Toadflax PCA (Post_Plant_NBR RAD).png",
+       plot = scores.post.hbrrad,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Post_Plant_NBR RAD).png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Type_Plant.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
+```
+
+##### Pre-PCA Model Filter
+```{r PCA category PRE hbr rad, echo = F}
+plants <- c("RAD", "HBR")
+
+pca.results <-
+data.clr %>%
+  filter(plant %in% plants) %>%
+  dplyr::select(-c(plant_id, plant, type, day)) %>%
+  prcomp(scale = T) 
+
+scores <- as.data.frame(pca.results$x)
+loadings <- as.data.frame(pca.results$rotation)
+variance <- as.data.frame(pca.results$sdev^2)
+
+data.plus.pca <-
+  data.clr %>%
+    filter(plant %in% plants) %>%
+    cbind(scores)
+
+# scree.plot <- 
+#   plot(pca.results, type = "l", main = "Scree Plot")
+
+PC1 <- pca.results$x[,1]
+PC2 <- pca.results$x[,2]
+
+loadings.plot <-
+loadings %>%
+  dplyr::select(PC1, PC2) %>%
+  rownames_to_column("compound")
+  
+# meta data
+meta <- data.clr %>% 
+  filter(plant %in% plants) %>%
+  dplyr::select(plant, type, day) 
+  
+
+model.data.wild <- data.frame(PC1, PC2, meta)
+model.data$day <- factor(model.data$day, levels = c("1", "2", "3", "4",
+                                                    "5", "6", "7", "8",
+                                                    "9"))
+
+```
+```{r scores plot type Pre HBR RAD, echo = F, fig.width = 12}
+scores.pre.hbrrad <-
+ggplot() +
+  geom_point(data = model.data.wild,
+             aes(PC1, PC2, color = plant),
+             alpha = 0.8) +
+  # geom_text(aes(label = day))
+  geom_hline(yintercept = 0, color = "gray", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "gray", linetype = "dashed") +
+  labs(x = "PC1 (23.56%)", 
+       y = "PC2 (11.66%)", 
+       title = "Toadflax PCA - HBR and RAD",
+       color = element_blank()) +
+  stat_ellipse(data = model.data.wild,
+               aes(PC1, PC2, color = plant)) +
+  # geom_polygon(data = model.data.all %>%
+  #                 filter(plant %in% c("HBR", "RAD")),
+  #               aes(x = PC1, y = PC2, fill = plant),
+  #               alpha = 0.1, color = NA,
+  #               stat = "ellipse") +
+  theme_bw() +
+  scale_color_manual(values = c("HBR" = "#F8766D", 
+                                "RAD" = "#7CAE00",
+                                "D6" = "#00BA38",
+                                "Y6" = "#00BFC4",
+                                "Y6D6" = "#619CFF",
+                                "D6Y6" = "#F564E3"))
+
+
+
+grid.arrange(scores.pre.hbrrad, scores.plant, ncol = 2)
+```
+```{r save files10, echo = F}
+ggsave(filename = "Toadflax PCA (Pre_Plant_NBR RAD).png",
+       plot = scores.pre.hbrrad ,
+       path = "toadflax_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA (Pre_Plant_NBR RAD).png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax PCA - Type_Plant.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+
+```
+
+<hr>
+
+# PERMANOVA  
+
+## Organized by Type
+
+As stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. It is useful when considering non-normal multivariate data like our Toadflax data set. 
+
+### D6, Y6, Synthetic, Natural
+```{r PERMANOVA all type, echo = F}
+set.seed(1)
+
+permanova_data <-
+  data.clr %>%
+    unite(id, plant_id, plant, type, day, sep = "_") %>%
+    column_to_rownames("id") %>%
+    na.omit() %>%
+    mutate_all(~.^2) %>%
+    mutate_all(~.*100000) %>%
+    mutate_all(round, digits = 0)
+
+meta_data <-
+  data.clr %>%
+  select(plant_id, plant, type, day)
+
+
+# run PERMANOVA
+adonis_results <-
+adonis2(permanova_data ~ meta_data$type,
+        # strata = meta_data$day,
+        # strata = interaction(meta_data$day,
+        #                      meta_data$plant),
+        # method = "canberra",
+        permutataions = 999,
+        by = "terms")
+  
+kable(as.data.frame(adonis_results),
+      format = "html",
+      caption = "Toadflax Type PERMANOVA: D6, Y6, Synthetic, Natural",
+      align = "lccccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f9") 
+
+permanova.p <- adonis_results$`Pr(>F)`[1]
+
+```
+
+Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between our four plant types (YT, DT, Synthetic, and Natural). 
+
+Let's check for a difference between our synthetic and natural plant types. 
+
+### Synthetic & Natural
+```{r PERMANOVA synthetic natural type, echo = F}
+set.seed(1)
+
+types <- c("Synthetic", "Natural")
+
+permanova_data <-
+  data.clr %>%
+    filter(type %in% types) %>%
+    unite(id, plant_id, plant, type, day, sep = "_") %>%
+    column_to_rownames("id") %>%
+    na.omit() %>%
+    mutate_all(~.^2) %>%
+    mutate_all(~.*100000) %>%
+    mutate_all(round, digits = 0)
+
+meta_data <-
+  data.clr %>%
+  filter(type %in% types) %>%
+  select(plant_id, plant, type, day)
+
+
+# run PERMANOVA
+adonis_results <-
+adonis2(permanova_data ~ meta_data$type,
+        # strata = meta_data$day,
+        # strata = interaction(meta_data$day,
+        #                      meta_data$plant),
+        # method = "canberra",
+        permutataions = 999,
+        by = "terms")
+  
+kable(as.data.frame(adonis_results),
+      format = "html",
+      caption = "Toadflax Type PERMANOVA: Synthetic & Natural",
+      align = "lccccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f9") 
+
+permanova.p <- adonis_results$`Pr(>F)`[1]
+```
+Our results show **strong** evidence (p-val = `r permanova.p`) of a difference between Natural and Synthetic plant types.  
+
+## Organized by Plant
+
+Let's say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference. 
+
+```{r PERMANOVA D6Y6 & Y6D6, echo = F}
+set.seed(1)
+
+plants <- c("Y6D6", "D6Y6")
+
+permanova_data <-
+  data.clr %>%
+    filter(plant %in% plants) %>%
+    unite(id, plant_id, plant, type, day, sep = "_") %>%
+    column_to_rownames("id") %>%
+    na.omit() %>%
+    mutate_all(~.^2) %>%
+    mutate_all(~.*100000) %>%
+    mutate_all(round, digits = 0) 
+  
+
+meta_data <-
+  data.clr %>%
+  filter(plant %in% plants) %>%
+  select(plant_id, plant, type, day)
+
+
+# run PERMANOVA
+adonis_results <-
+adonis2(permanova_data ~ meta_data$plant,
+        # strata = meta_data$plant,
+        # strata = interaction(meta_data$day,
+        #                      meta_data$plant),
+        method = "canberra",
+        permutataions = 999,
+        by = "terms")
+  
+kable(as.data.frame(adonis_results),
+      format = "html",
+      caption = "Toadflax Type PERMANOVA",
+      align = "lccccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f9") 
+
+permanova.p <- adonis_results$`Pr(>F)`[1]
+```
+
+Our results show **no** evidence (p-val = `r permanova.p`) of a difference between volatile profiles between Y6D6 and D6Y6 plants. 
+
+<hr>
+
+# PERMDISP & PCoA
+Permutational Analysis of Multivariate Dispersions, or PERMDISP, is a multivariate statistic used to assess differences in dispersion (variation) among groups or treatments. This method is particularly useful when dealing with multivariate data where there are multiple variables measured on each sample or observation.  
+
+Principal Coordinates Analysis (PCoA), also known as Classical Multidimensional Scaling (MDS), is a multivariate statistical technique used for exploring and visualizing patterns of similarity or dissimilarity in data. PCoA is closely related to Principal Component Analysis (PCA), but whereas PCA operates on the covariance matrix of the data, PCoA works directly on a distance or dissimilarity matrix.
+
+I ran a PERMDISP on our entire data set. 
+
+```{r PERMDISP, echo = F, warning = F, message = F}
+
+dist <- dist(data.clr)
+
+permdisp.results <-
+betadisper(dist, data.clr$type)
+
+
+permdisp.results
+p_value <- anova(permdisp.results)$'Pr(>F)'[1]
+if (p_value < 0.05) {
+  cat("Significant differences in multivariate dispersion among groups.\n")
+} else {
+  cat("We found no significant difference (pval =",anova(permdisp.results)$'Pr(>F)'[1], ") in multivariate dispersion among groups.\n")
+}
+
+pcoa <-
+capscale(dist ~ 1, data = data.clr)
+
+pcoa_df <- data.frame(scores(pcoa)$sites, group = data.clr$type)
+
+ggplot(pcoa_df, aes(x = MDS1, y = MDS2, color = group)) +
+  geom_point(alpha = 0.7) +
+  labs(x = "PCo1", y = "PCo2", color = "Type",
+       title = "PCoA Plot") +
+  theme_bw() +
+  stat_ellipse()
+
+```
+
+Basically what all of the PERMDISP and PCoA results mean is that we are not seeing any significant different (`r anova(permdisp.results)$'Pr(>F)'[1]`) in the dispersion within each of our groups when we compare them to one another. We are seeing a very large p-value from our PERMDISP results and a considerable amount of overlap when looking at the PCoA plot. 
+
+This means that we don't need to consider differences in broad dispersional differences between our plant types. 
+
+
+
+<!-- Let's look to see if there are differences between the types individually.  -->
+
+<!-- ```{r basic ANOVA, echo = F} -->
+<!-- anova.data <- -->
+<!--   data.clr %>% -->
+<!--   dplyr::select(-c(plant_id, plant)) -->
+
+<!-- compounds <- -->
+<!-- anova.data[,3:26] %>% -->
+<!--   colnames() -->
+
+<!-- manova(cbind(compounds) ~ type + day, data = anova.data$type) -->
+<!-- ``` -->
+
+
+
+
+

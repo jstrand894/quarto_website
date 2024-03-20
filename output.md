@@ -1,1 +1,0 @@
-![](img/bugs/blueflowers.JPG)![](img/bugs/brownmoth.JPG)![](img/bugs/brownred-butterfly.JPG)![](img/bugs/butterfly-purpleflower.JPG)

@@ -1,0 +1,825 @@
+---
+title: "MT Field Site Analysis Report"
+author: "Jackson Strand"
+date: "`r Sys.Date()`"
+output: 
+  html:
+    # layout: sidebar
+    theme: cosmo
+    toc: true
+    toc_float: true
+    toc_title: "Table of Contents"
+    toc_expand: true
+    toc_depth: 4
+    # number_sections: true
+editor_options: 
+  chunk_output_type: console
+toc: true
+toc_title: "Table of Contents"
+# toc_expand: true
+# toc_float: true
+---
+<!-- field site cover image -->
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cropping Example</title>
+<style>
+    }
+    .image-container {
+        width: auto; /* Set the width of the container */
+        height: auto; /* Set the height of the container */
+        overflow: hidden; /* Hide overflow */
+    }
+    .image-container img {
+        width: 100%; /* Make the image fill the container horizontally */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="../../../../img/field-sites/big-sandy-wide.jpg" alt="Your Image">
+</div>
+
+</body>
+</html>
+
+```
+
+
+```{r library, echo = F, message = F, warning = F}
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+library(kableExtra)
+library(plotly)
+```
+```{r column.order, echo = F}
+column.order <- c("distance", "collection", "p.inf", 
+                  "p.cut", "p.par", "poten")
+
+column.order2 <- c("location", "distance", "collection", "p.inf", 
+                  "p.cut", "p.par", "poten")
+
+round_based_on_size <- function(x) {
+  threshold <- 0.01
+  rounded_values <- ifelse(abs(x) > threshold, round(x, 2), round(x, 3))
+  return(rounded_values)
+}
+```
+
+# MONTANA FIELD SITES
+
+## Methods  
+
+To assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.
+
+## Analysis
+
+```{r (raw) brome data, echo = F}
+raw.2022 <- 
+  read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/field Sites/2022/2022 FS Stem Data (2).xlsx", sheet = "n.infested") %>%
+  mutate(year = "2022") %>%
+  rename("site" = site.cap)
+
+raw.2023 <-
+read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/field Sites/2023/2023\ Field Site\ Data.xlsx", sheet = "n.infested") %>%
+  mutate(year = "2023") 
+```
+```{r (stubble.####) stubble data, echo = F}
+stubble.2023 <-
+  read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/field Sites/2023/2023\ Field Site\ Data.xlsx", 
+           sheet = "stubble") %>%
+  dplyr::select(-name) %>%
+  na.omit() %>%
+  mutate(year = "2023")
+  
+stubble.2022 <-
+  read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/field Sites/2022/2022 FS Stem Data (2).xlsx", 
+             sheet = "stubble") %>%
+  mutate(year = "2022")
+
+```
+```{r (joined.stubble) stubble join, echo = F}
+# the below code joins the 2022 and 2023 stubble data frames
+joined.stubble <-
+stubble.2023 %>%
+  dplyr::select(site, location, distance,
+                inf.nc, cut, cocoon, eh, total, year) %>%
+  mutate(collection = "fall") %>% 
+  rbind(stubble.2022 %>%
+          dplyr::select(site, year, location, distance, collection,
+                        inf.nc, cut, cocoon, eh, total)) %>%
+  # remove N sites and re add as NS and NN for example
+  group_by(site, location, year, distance, collection) %>%
+  mutate(inf = sum(cut, inf.nc, cocoon, eh)) %>%
+  # first, we remove the site arguement by grouping by everything else
+  group_by(site, location, year, distance, collection) %>%
+  dplyr::select(-c(inf.nc)) %>%
+  rename("e" = eh,
+         "c" = cocoon) %>%
+  mutate(p.inf = inf/total,
+         p.par = (c + e)/inf,
+         p.cut = cut/inf,
+         poten = (cut + e + c)/inf) 
+
+# duplicate the wheat data to match up with brome data locations
+# we are duplicating some of the stubble data so that we have stubble data
+# for the brome sections that are across the road from stubble data
+joined.stubble <-
+  joined.stubble %>%
+  bind_rows(joined.stubble %>%
+              filter(location == "n") %>%
+              mutate(location = "ns")) %>%
+  bind_rows(joined.stubble %>%
+              filter(location == "n") %>%
+              mutate(location = "nn")) %>%
+  filter(!location == "n") %>%
+  bind_rows(joined.stubble %>%
+              filter(location == "har") %>%
+              mutate(location = "sun")) 
+
+
+```
+```{r (n.inf) brome join, echo = F}
+n.inf <-
+raw.2023 %>%
+  dplyr::select(site, year, location, collection, 
+              n.uv, n.ur, n.iv, n.ir, n.ix, 
+              cut, e, c)  %>%
+  bind_rows(raw.2022 %>%
+              rename(n.uv = uv,
+                     n.ur = ur,
+                     n.iv = iv,
+                     n.ir = ir,
+                     n.ix = ix) %>%
+              dplyr::select(site, year, location, collection, 
+                    n.uv, n.ur, n.iv, n.ir, n.ix, 
+                    cut, e, c)) %>%
+  group_by(site, location, collection, year) %>%
+  mutate(inf = sum(n.iv, n.ir, n.ix),
+         total = sum(n.uv, n.ur, n.iv, n.ir, n.ix)) %>%
+  ungroup() %>%
+  dplyr::select(-c(n.uv, n.ur, n.iv, n.ir, n.ix)) %>%
+  mutate(p.inf = inf/total,
+         p.par = (c + e)/inf,
+         p.cut = cut/inf,
+         poten = (cut + c + e)/inf) %>%
+  pivot_longer(-c(site, location, collection, year),
+               names_to = "type",
+               values_to = "value") %>%
+  group_by(location, collection, year, type) %>%
+  distinct() %>%
+  mutate(distance = "brome",
+         location = case_when(
+           location == "kw" ~ "k",
+           location == "ke" ~ "k", 
+           TRUE ~ location))
+```
+```{r (stubble.brome) join stubble/brome, echo = F}
+# join the stubble data and the brome data
+stubble.brome <-
+joined.stubble %>%
+  pivot_longer(-c(site, location, distance, year, collection),
+               names_to = "type",
+               values_to = "value") %>%
+  distinct() %>%
+  rbind(n.inf) %>%  # rbind the brome data
+  filter(!type == "total") %>%  # remove type = "total"
+  mutate(type = case_when(
+    type == "c" ~ "p",
+    type == "e" ~ "p",
+    TRUE ~ type)) %>% # replace the e and c variables with p, for simplicity
+  ungroup() %>%
+  dplyr::select(-site) %>%
+  group_by(location, distance, year, collection, type) %>%
+  reframe(mean = mean(value),
+         count = n(),
+         sd = sd(value),
+         se = sd/sqrt(count)) %>%
+  distinct() %>%
+  filter(type %in% c("p.inf", "p.cut", "p.par", "poten")) %>%
+  distinct()
+```
+```{r, echo = F, eval = F}
+stubble.brome %>%
+  filter(location == "g",
+         distance %in% c("20", "5"),
+         year == "2023",
+         collection == "fall")
+```
+
+### Big Sandy, MT 2023
+   
+#### Lochy Property - North Road  
+
+```{=html}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="../../../../img/field-sites/nnns.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+<!-- ![North Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/nnns-min.png?raw=true) -->
+
+**Note:**    
+- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road. 
+
+
+```{r NN & NS data table, echo = F}
+nn.table <-
+stubble.brome %>%
+  filter(location %in% c("nn"),
+         year == "2023") %>%
+  dplyr::select(location, distance, collection, year, type, mean) %>%
+  mutate(mean = round_based_on_size(mean)) %>%
+  mutate_at(vars(location, distance, collection, year, type), as.factor) %>%
+  pivot_wider(names_from = type,
+              values_from = mean,
+              values_fn = list(mean = mean)) %>%
+  arrange(distance) %>%
+  ungroup() %>%
+  dplyr::select(-year)
+
+kable(nn.table[, column.order2], 
+      caption = "North Road (site nn) Infestation Table", 
+      format = "html",
+      col.names = c("Location", "Distance", "Collection", 
+                    "% Inf", "Cut", "Parasitized", "Potential Cut"),
+      align = "lllcccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f2")
+
+ns.table <-
+stubble.brome %>%
+  filter(location %in% c("ns"),
+         year == "2023",
+         distance == "brome") %>%
+  dplyr::select(location, distance, collection, year, type, mean) %>%
+  mutate(mean = round_based_on_size(mean)) %>%
+  mutate_at(vars(location, distance, collection, year, type), as.factor) %>%
+  pivot_wider(names_from = type,
+              values_from = mean,
+              values_fn = list(mean = mean)) %>%
+  arrange(distance) %>%
+  ungroup() %>%
+  dplyr::select(-year)
+
+kable(ns.table[, column.order2], 
+      caption = "North Road (site ns) Infestation Table", 
+      format = "html",
+      col.names = c("Location", "Distance", "Collection", 
+                    "% Inf", "Cut", "Parasitized", "Potential Cut"),
+      align = "lllcccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f2") 
+```
+
+```{r NN and NS plot, echo = F, fig.height = 3.5, fig.width = 10, warning = F}
+stubble.brome %>%
+  filter(location %in% c("nn", "ns"),
+         year == "2023",
+         collection == "fall") %>%
+  ggplot(aes(x = type, y = mean, fill = distance)) +
+  geom_bar(stat = "identity",
+           position = position_dodge()) +
+  geom_errorbar(aes(ymin = mean - se,
+                    ymax = mean + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  theme_bw() +
+  theme(legend.title = element_blank()) +
+  scale_fill_brewer(palette = "Purples",
+                    labels = c("Adjacet wheat: 20 m", "Adjacet wheat: 5 m", "Smooth brome")) +
+  labs(y = "Percent (%)",
+       x = element_blank(),
+       title = "North Road Infestation") +
+  scale_x_discrete(labels = c("p.cut" = "Cut",
+                              "p.inf" = "Infested",
+                              "p.par" = "Parasitized",
+                              "poten" = "Potential Cut")) +
+  facet_wrap(~location)
+```
+
+We saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines. 
+
+
+#### Lochy Property - Gardiner Road
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="../../../../img/field-sites/gardiner.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+<!-- ![Gardiner Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/gardiner%20road-min.png?raw=true) -->
+
+In 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway. 
+
+```{r G table, echo = F}
+g.table <-
+stubble.brome %>%
+  filter(location %in% c("g"),
+         year == "2023") %>%
+  dplyr::select(location, distance, collection, year, type, mean) %>%
+  mutate(mean = round_based_on_size(mean)) %>%
+  mutate_at(vars(location, distance, collection, year, type), as.factor) %>%
+  pivot_wider(names_from = type,
+              values_from = mean,
+              values_fn = list(mean = mean)) %>%
+  arrange(distance) %>%
+  ungroup() %>%
+  dplyr::select(-c(year, location))
+
+
+
+kable(g.table[, column.order], caption = "Gardiner Road Infestation Table", 
+      format = "html",
+      col.names = c("Distance", "Collection", 
+                    "% Inf", "Cut", "Parasitized", "Potential Cut"),
+      align = "lllcccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f2")
+```
+
+```{r G plot, echo = F, fig.height = 3.5, fig.align = 'center', warning = F}
+stubble.brome %>%
+  filter(location %in% c("g"),
+         year == "2023",
+         collection == "fall") %>%
+  ggplot(aes(x = type, y = mean, fill = distance)) +
+  geom_bar(stat = "identity",
+           position = position_dodge()) +
+  geom_errorbar(aes(ymin = mean - se,
+                    ymax = mean + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  theme_bw() +
+  theme(legend.title = element_blank()) +
+  scale_fill_brewer(palette = "Purples",
+                    labels = c("Adjacet wheat: 20 m", "Adjacet wheat: 5 m", "Smooth brome")) +
+  labs(y = "Percent (%)",
+       x = element_blank(),
+       title = "Gardiner Rd Infestation") +
+  scale_x_discrete(labels = c("p.cut" = "Cut",
+                              "p.inf" = "Infested",
+                              "p.par" = "Parasitized",
+                              "poten" = "Potential Cut"))
+```
+
+Similar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts. 
+
+### Moccasin, MT 2023
+
+#### Sunset & Harvest Road Intersection
+
+```{=html}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="../../../../img/field-sites/harvest.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+
+<!-- ![Harvest & Sunset Road Instersection, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/harvest%20road-min.png?raw=true) -->
+  
+```{r SUN/HAR data tables, echo = F}
+sun.table <-
+stubble.brome %>%
+  filter(location %in% c("sun"),
+         year == "2023") %>%
+  dplyr::select(location, distance, collection, year, type, mean) %>%
+  mutate(mean = round_based_on_size(mean)) %>%
+  mutate_at(vars(location, distance, collection, year, type), as.factor) %>%
+  pivot_wider(names_from = type,
+              values_from = mean,
+              values_fn = list(mean = mean)) %>%
+  arrange(distance) %>%
+  ungroup() %>%
+  dplyr::select(-year)
+
+kable(sun.table[, column.order2], caption = "Sunset Road Infestation Table", 
+      format = "html",
+      col.names = c("Location", "Distance", "Collection", 
+                    "% Inf", "Cut", "Parasitized", "Potential Cut"),
+      align = "lllcccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f2")
+
+har.table <-
+stubble.brome %>%
+  filter(location %in% c("har"),
+         year == "2023") %>%
+  dplyr::select(location, distance, collection, year, type, mean) %>%
+  mutate(mean = round_based_on_size(mean)) %>%
+  mutate_at(vars(location, distance, collection, year, type), as.factor) %>%
+  pivot_wider(names_from = type,
+              values_from = mean,
+              values_fn = list(mean = mean)) %>%
+  arrange(distance) %>%
+  ungroup() %>%
+  dplyr::select(-year)
+
+kable(har.table[, column.order2], caption = "Harvest Road Infestation Table", 
+      format = "html",
+      col.names = c("Location", "Distance", "Collection", 
+                    "% Inf", "Cut", "Parasitized", "Potential Cut"),
+      align = "lllcccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f2")
+```
+
+```{r SUN/HAR plot, echo = F, warning = F, fig.align = 'center', fig.height = 3.5, fig.width = 10}
+stubble.brome %>%
+  filter(location %in% c("sun", "har"),
+         year == "2023",
+         collection == "fall") %>%
+  ggplot(aes(x = type, y = mean, fill = distance)) +
+  geom_bar(stat = "identity",
+           position = position_dodge()) +
+  geom_errorbar(aes(ymin = mean - se,
+                    ymax = mean + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  theme_bw() +
+  theme(legend.title = element_blank()) +
+  guides(color = guide_legend(title.position = "top", 
+                              label.padding = unit(10, "lines"))) +
+  scale_fill_brewer(palette = "Purples",
+                    labels = c("Adjacet wheat: 20 m", "Adjacet wheat: 5 m", "Smooth brome")) +
+  labs(y = "Percent (%)",
+       x = element_blank(),
+       title = "Sunset & Harvest Rd Infestation") +
+  scale_x_discrete(labels = c("p.cut" = "Cut",
+                              "p.inf" = "Infested",
+                              "p.par" = "Parasitized",
+                              "poten" = "Potential Cut")) +
+  facet_wrap(~location)
+```
+
+
+#### Kolin Road
+
+```{=html}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Expand</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: auto;
+    }
+    .image {
+      max-width: 50%;
+      max-height: 80vh;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .image:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .image.expanded {
+      transform: scale(3); /* Scale up when expanded */
+      z-index: 9999; /* Ensure expanded image is on top */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-height: 80%;
+      max-width: 80%;
+      transform: translate(-50%, -50%); /* Center expanded image */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+      z-index: 9998; /* Ensure overlay is behind the expanded image */
+      display: none; /* Initially hidden */
+    }
+    .image.expanded + .overlay {
+      display: block; /* Show overlay when image is expanded */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img class="image" src="../../../../img/field-sites/kolin.png" alt="Image" onclick="expandImage(this)">
+  <div class="overlay" onclick="closeExpandedImage()"></div> <!-- Overlay element -->
+</div>
+
+<script>
+  function expandImage(element) {
+    element.classList.toggle('expanded');
+    document.querySelector('.overlay').classList.toggle('expanded');
+  }
+
+  function closeExpandedImage() {
+    var image = document.querySelector('.image');
+    image.classList.remove('expanded');
+    document.querySelector('.overlay').classList.remove('expanded');
+  }
+</script>
+
+</body>
+</html>
+```
+
+
+<!-- ![Kolin Road, Moccasin, MT (2023)](https://github.com/jstrand894/Website/blob/main/kolin%20road-min.png?raw=true) -->
+
+```{r K data table, echo = F}
+k.table <-
+stubble.brome %>%
+  filter(location %in% c("k"),
+         year == "2023") %>%
+  dplyr::select(location, distance, collection, year, type, mean) %>%
+  mutate(mean = round_based_on_size(mean)) %>%
+  mutate_at(vars(location, distance, collection, year, type), as.factor) %>%
+  mutate(mean = mean*100) %>%
+  pivot_wider(names_from = type,
+              values_from = mean,
+              values_fn = list(mean = mean)) %>%
+  arrange(distance) %>%
+  ungroup() %>%
+  dplyr::select(-year) 
+
+kable(k.table[, column.order], caption = "Kolin Road Infestation Table", 
+      format = "html",
+      col.names = c("Distance", "Collection", 
+                    "% Inf", "Cut", "Parasitized", "Potential Cut"),
+      align = "lllcccc") %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "bordered", "hover")) %>%
+  row_spec(0, background = "#f2f2f2")
+```
+  
+```{r K plot, echo = F, warning = F, fig.height = 3, fig.align = 'center'}
+stubble.brome %>%
+  filter(location %in% c("k"),
+         year == "2023",
+         collection == "fall") %>%
+  ggplot(aes(x = type, y = mean, fill = distance)) +
+  geom_bar(stat = "identity",
+           position = position_dodge()) +
+  geom_errorbar(aes(ymin = mean - se,
+                    ymax = mean + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  theme_bw() +
+  theme(legend.title = element_blank()) +
+  scale_fill_brewer(palette = "Purples",
+                    labels = c("Adjacet wheat: 20 m", "Adjacet wheat: 5 m", "Smooth brome")) +
+  labs(y = "Percent (%)",
+       x = element_blank(),
+       title = "Kolin Rd Infestation") +
+  scale_x_discrete(labels = c("p.cut" = "Cut",
+                              "p.inf" = "Infested",
+                              "p.par" = "Parasitized",
+                              "poten" = "Potential Cut")) 
+```
+
+
+
+
+
+
+
+
+

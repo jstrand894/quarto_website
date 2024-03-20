@@ -1,0 +1,74 @@
+---
+title: "Weather Data MT"
+author: "Jackson Strand"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(glue)
+library(lubridate)
+library(ggplot2)
+```
+
+
+```{r}
+inventory_url <- "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt"
+
+inventory <- read_table(inventory_url,
+           col_names = c("station", "lat", "lon", "variable", "start", "end"))
+
+
+inventory
+
+
+my_lat <- 45.661966103346735 * 2 * pi/360
+my_long <- -111.04939878991246 * 2 * pi/360
+
+my_station <- 
+  inventory %>%
+    mutate(lat_r = lat *2 *pi/360,
+           lon_r = lon *2 *pi/360,
+           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + cos(lat_r) * cos(my_lat) * cos(my_long - lon_r))) %>%
+    filter(start < 1960 & end > 2020) %>%
+    top_n(n = -1, d) %>%
+    distinct(station) %>%
+    pull(station)
+
+station_daily <- glue("https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz")
+
+local_weather <- 
+read_csv(station_daily,
+         col_names = c("station", "date", "variable", "value", "a", "b", "c", "d")) %>%
+  dplyr::select(station, date, variable, value) %>%
+  pivot_wider(names_from = "variable", values_from = "value",
+                values_fill = 0) %>%
+  dplyr::select(date, TMAX, PRCP, SNOW) %>%
+  mutate(date = ymd(date))
+
+```
+
+
+```{r}
+bozeman_weather <-
+  local_weather %>%
+  filter(date > "2000-01-01")
+
+ggplot(data = bozeman_weather) +
+  geom_line(aes(x = date, y = PRCP)) +
+  theme_bw() 
+
+
+
+ggplot(data = bozeman_weather) +
+  geom_line(aes(x = date, y = PRCP)) +
+  geom_smooth(aes(x = date, y = PRCP), method = "loess", se = TRUE) +
+  theme_bw()
+
+```
+title: "Montana Weather Data"
+---
+
