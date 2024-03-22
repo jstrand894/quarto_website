@@ -109,6 +109,88 @@ editor_options:
 </html>
 
 ```
+```{=html}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box with Rounded Edges</title>
+  <style>
+    body {
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+    }
+
+    .container {
+      width: 100%; /* Adjusted width to fit the screen */
+      max-width: 600px; /* Limiting maximum width */
+      height: auto; /* Set container height */
+      border: 0.5px solid #ccc; /* Light grey color */
+      border-radius: 8px; /* Less rounded edges */
+      overflow: hidden; /* Hide overflow content */
+      margin-bottom: 20px; /* Add margin to create space between rows */
+      display: flex; /* Use flexbox for layout */
+      align-items: center; /* Center items vertically */
+      text-decoration: none; /* Remove underline */
+    }
+
+    .container:last-child {
+      margin-bottom: 0; /* Remove margin from the last box */
+    }
+
+    .container:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+    }
+
+    .image-container {
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .image-container img {
+      max-width: 100%; /* Ensures the image does not exceed its container */
+      height: auto;
+      display: block;
+      border-radius: 8px; /* Rounded corners for image */
+    }
+
+    .content {
+      padding: 20px;
+      box-sizing: border-box;
+      flex: 1; /* Take remaining space */
+    }
+
+    .text h1 {
+      font-size: 22px; /* Adjusted text size */
+      margin-top: 0;
+      margin-bottom: 5px; /* Adjust margin between large and small text */
+      color: black;
+    }
+
+    .text h1:hover {
+      color: #2068DC; /* Change text color to blue on hover */
+    }
+
+    .text p {
+      font-size: 16px;
+      margin-top: 5px;
+      color: #666;
+      text-align: justify; /* Align text */
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin-right: auto; /* Reset margin-right */
+        margin-left: auto; /* Reset margin-left */
+        flex-direction: column; /* Stack items vertically on smaller screens */
+      }
+
+      .content {
+        padding: 10px; /* Reduce padding on smaller screens */
+      }
+    }
+  </style>
+</head>
+```
 
 ```{r, echo = F, message = F, results = 'hide'}
 library(pandoc)
