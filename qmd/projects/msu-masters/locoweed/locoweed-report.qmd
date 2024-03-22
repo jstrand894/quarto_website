@@ -81,7 +81,6 @@ These data consist of volatile collection events over the course of two years, 2
 
 Volatile collected was undergone on plants grown at a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an extension research station of Montana State University in Bozeman, MT. Plants were inventoried and logged using GPS, and tissue samples from each specimen were analyzed to establish whether the plant contained the endophyte. Volatiles were collected from all the plants in each year over the course of one to two successive weeks.
 
-
 Volatile were collected from 20 plants per day by placing Reynolds Turkey Oven Bags (Reynolds Group Holdings, Auckland, New Zealand) over the top of the selected number of leaflets. 
 
 
@@ -116,7 +115,6 @@ html_code <- paste(html_code, "</div>\n<div class=\"expanded-container\" onclick
 cat(html_code)
 
 ```
-
 ```{=html}
 <!DOCTYPE html>
 <html lang="en">
@@ -177,7 +175,7 @@ cat(html_code)
   <img class="expanded" id="expanded-image" onclick="navigateGallery(event)">
 </div>
 
-<p class="gallery-caption">Greenhouse Volatile Collection Plants looked like this.</p>
+<p class="gallery-caption">Greenhouse Locoweed volatiles were collected from plants that looked like these.</p>
 
 <script>
   var currentImageIndex = 0;
@@ -223,7 +221,7 @@ Volatiles were collected from twleve plants per day using glass volatile collect
 Volatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al. (2009). After the six hour collection period, glass volatile collection traps were eluted using 200 µL of dichloromethane into 2 mL screw top vials (Agilent Technologies, Inc., Santa Clara, CA), followed by a slow release of nitrogen to further clear the volatile trap. 10 µL of nonyl acetate solution was added to the eluted solution as internal standard to quantify compounds. Samples were then subject to gas chromatography (GC) on a J&W HP – 5ms; 30m x 0.25 µm film thickness column (Agilent Technologies, Inc., Santa Clara, CA). The GC unit (Agilent 6890; Agilent Technologies, Santa Clara, CA) was paired with a mass spectrometer (MS, Agilent 5973 instrument). Samples were injected into the column in pulse splitless mode, with the initial pressure of 82.7 kPa/m. 
 
 ## Data Analysis
-The data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using a combination of ggplot2 and knitr [@ggplot; @knitr]. I selected a subset of comounds to ues for each analysis. These compounds were seelcted based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output. I will highlight the cmopounds that I used for each analysis as I get to them.
+The data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using a combination of ggplot2 and knitr [@ggplot; @knitr]. I selected a subset of compounds to ues for each analysis. These compounds were selected based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output.
 
 # RESULTS
 <!-- LOAD DATA -->
@@ -300,7 +298,7 @@ field.2022 %>%
   mutate(type = ifelse(type == "leaves", "l", "f"))
   
 ```
-
+<!-- COMPOUNDS TO BE USED IN ANALYSIS -->
 ```{r COMPOUNDS, echo = F, message = F}
 compounds <- c('sixmethyl',
                'z3hex',
@@ -321,6 +319,7 @@ compounds <- c('sixmethyl',
 #                          "decanal", "methylsalicylate",
 #                          "cisthreehexiso"
 ```
+<!-- CLR TRANSFORMATION -->
 ```{R CLR, echo = F, message = F}
 joined.data <-
 field.2023 %>%
@@ -417,9 +416,22 @@ joined.data %>%
 
 ## Field Volatile Collection
 ### Boxplot Comparison
-```{r all comparison boxplot, echo = F, fig.align = 'center'}
 
+Eleven compounds were selected to display comparisons. 
+```{r all.comparison.plot, echo = F, fig.align = 'center', fig.width = 10}
+all.comparison.plot <-
 joined.data.clr %>%
+  rename("cis-3-Hexenyl Isovalerate" = cisthreehexiso,
+         "D-Limonene" = dlimonene,
+         "Dodecanal" = dodecanal,
+         "Heptanal" = heptanal,
+         "Mehthyl Salicylate" = methylsalicylate,
+         "Nonanal" = nonanal,
+         "Octanal" = octanal,
+         "6-methyl-5-hepten-2-one" = sixmethyl,
+         "Z-3-Hexenyl Acetate" = z3hex,
+         "B-Myrcene" = bmyrcene,
+         "B-Ocimene" = bocimene) %>%
   # pivot to make all compounds in one column
   pivot_longer(-c(plant.id, year, swa, type, pair2),
                names_to = "compound",
@@ -443,14 +455,73 @@ joined.data.clr %>%
         # legend.position = c(0.8,0.9),
         panel.background = element_rect(fill = "white"),
         axis.line = element_line(color = "black"),
+        plot.margin = margin(0.5,0.5,0.5,1.5,"cm"),
         panel.grid.major.x = element_line(color = "#F2F2F2")) +
   labs(x = element_blank(),
        y = "VOC quantity (CLR(ng/g/hr))",
        title = "2022/23 Field Locoweed Volatile Profile Comparison") +
   scale_fill_discrete(name = "Endophyte",
                       labels = c("Not Present", "Present"))
-
+all.comparison.plot
 ```
+```{r save all comparison plot, echo = F}
+ggsave(filename = "Field Locoweed Comparison BoxPlot.png",
+       plot = all.comparison.plot,
+       path = "locoweed_plots/",
+       width = 6,
+       height = 4)
+```
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="locoweed_plots/Field Locoweed Comparison BoxPlot.png" download>
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download>
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+</body>
+</html>
+```
+
 
 ### PERMANOVA
 ```{r PERMDISP & PERMANOVA data, echo = F}

@@ -89,6 +89,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -286,7 +315,7 @@ div.csl-indent {
   <li><a href="#research-approach" id="toc-research-approach" class="nav-link" data-scroll-target="#research-approach">Research Approach</a></li>
   <li><a href="#importance-of-topic" id="toc-importance-of-topic" class="nav-link" data-scroll-target="#importance-of-topic">Importance of Topic</a></li>
   </ul></li>
-  <li><a href="#prior-research-on-topic-literature-review" id="toc-prior-research-on-topic-literature-review" class="nav-link" data-scroll-target="#prior-research-on-topic-literature-review">Prior Research on Topic (Literature Review)</a>
+  <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review">Literature Review</a>
   <ul class="collapse">
   <li><a href="#history-and-distribution-of-wheat-stem-sawfly" id="toc-history-and-distribution-of-wheat-stem-sawfly" class="nav-link" data-scroll-target="#history-and-distribution-of-wheat-stem-sawfly">History and Distribution of Wheat Stem Sawfly</a></li>
   <li><a href="#host-plants-of-wheat-stem-sawfly" id="toc-host-plants-of-wheat-stem-sawfly" class="nav-link" data-scroll-target="#host-plants-of-wheat-stem-sawfly">Host Plants of Wheat Stem Sawfly</a></li>
@@ -327,48 +356,27 @@ div.csl-indent {
   <li><a href="#volatiles" id="toc-volatiles" class="nav-link" data-scroll-target="#volatiles">Volatiles</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#chapters" id="toc-chapters" class="nav-link" data-scroll-target="#chapters">CHAPTERS</a>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
   <ul class="collapse">
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">METHODS</a>
+  <li><a href="#field-experiments" id="toc-field-experiments" class="nav-link" data-scroll-target="#field-experiments">Field Experiments</a>
   <ul class="collapse">
-  <li><a href="#central-and-northern-montana-field-sites" id="toc-central-and-northern-montana-field-sites" class="nav-link" data-scroll-target="#central-and-northern-montana-field-sites">Central and Northern Montana Field Sites</a></li>
+  <li><a href="#field-survey" id="toc-field-survey" class="nav-link" data-scroll-target="#field-survey">Field Survey</a></li>
+  <li><a href="#controlled-c.-cinctus-infestation-of-b.-inermis" id="toc-controlled-c.-cinctus-infestation-of-b.-inermis" class="nav-link" data-scroll-target="#controlled-c.-cinctus-infestation-of-b.-inermis">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></a></li>
   </ul></li>
-  <li><a href="#controlled-c.-cinctus-infestation-of-b.-inermis" id="toc-controlled-c.-cinctus-infestation-of-b.-inermis" class="nav-link" data-scroll-target="#controlled-c.-cinctus-infestation-of-b.-inermis">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></a>
+  <li><a href="#greenhouse-experiments" id="toc-greenhouse-experiments" class="nav-link" data-scroll-target="#greenhouse-experiments">Greenhouse Experiments</a>
   <ul class="collapse">
-  <li><a href="#plant-selection-and-field-cages" id="toc-plant-selection-and-field-cages" class="nav-link" data-scroll-target="#plant-selection-and-field-cages">Plant Selection and Field Cages</a></li>
-  <li><a href="#insects" id="toc-insects" class="nav-link" data-scroll-target="#insects">Insects</a></li>
-  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
-  <li><a href="#statistical-analysis-1" id="toc-statistical-analysis-1" class="nav-link" data-scroll-target="#statistical-analysis-1">Statistical Analysis</a></li>
+  <li><a href="#organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" id="toc-organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" class="nav-link" data-scroll-target="#organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat">Organic Volatile Collection from <em>C. cinctus</em> Infested <em>B. inermis</em> and Winter Wheat</a></li>
+  <li><a href="#behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" id="toc-behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" class="nav-link" data-scroll-target="#behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds">Behavioral Assessment of Parasitoids in Response to <em>B. inermis</em> Organic Volatile Compounds</a></li>
   </ul></li>
-  <li><a href="#organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" id="toc-organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" class="nav-link" data-scroll-target="#organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat">Organic Volatile Collection from C. cinctus Infested B. inermis and Winter Wheat</a>
-  <ul class="collapse">
-  <li><a href="#insects-1" id="toc-insects-1" class="nav-link" data-scroll-target="#insects-1">Insects</a></li>
-  <li><a href="#plants" id="toc-plants" class="nav-link" data-scroll-target="#plants">Plants</a></li>
-  <li><a href="#volatile-collection" id="toc-volatile-collection" class="nav-link" data-scroll-target="#volatile-collection">Volatile Collection</a></li>
-  </ul></li>
-  <li><a href="#parasitoids" id="toc-parasitoids" class="nav-link" data-scroll-target="#parasitoids">PARASITOIDS</a>
-  <ul class="collapse">
-  <li><a href="#plants-1" id="toc-plants-1" class="nav-link" data-scroll-target="#plants-1">Plants</a></li>
-  </ul></li>
-  <li><a href="#behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" id="toc-behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" class="nav-link" data-scroll-target="#behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds">Behavioral Assessment of Parasitoids in Response to B. inermis Organic Volatile Compounds</a>
-  <ul class="collapse">
-  <li><a href="#insects-2" id="toc-insects-2" class="nav-link" data-scroll-target="#insects-2">Insects</a></li>
-  <li><a href="#electroantennography" id="toc-electroantennography" class="nav-link" data-scroll-target="#electroantennography">Electroantennography</a></li>
-  <li><a href="#y--tube-olfactometer-bioassay" id="toc-y--tube-olfactometer-bioassay" class="nav-link" data-scroll-target="#y--tube-olfactometer-bioassay">Y- Tube Olfactometer Bioassay</a></li>
-  </ul></li>
-  <li><a href="#volatile-collection-1" id="toc-volatile-collection-1" class="nav-link" data-scroll-target="#volatile-collection-1">Volatile Collection</a>
-  <ul class="collapse">
-  <li><a href="#sawfly-infestation" id="toc-sawfly-infestation" class="nav-link" data-scroll-target="#sawfly-infestation">Sawfly Infestation</a></li>
-  <li><a href="#volatile-compound-collection" id="toc-volatile-compound-collection" class="nav-link" data-scroll-target="#volatile-compound-collection">Volatile Compound Collection</a></li>
-  <li><a href="#volatile-elution" id="toc-volatile-elution" class="nav-link" data-scroll-target="#volatile-elution">Volatile Elution</a></li>
-  <li><a href="#volatile-analysis" id="toc-volatile-analysis" class="nav-link" data-scroll-target="#volatile-analysis">Volatile Analysis</a></li>
-  <li><a href="#electroantennogram" id="toc-electroantennogram" class="nav-link" data-scroll-target="#electroantennogram">Electroantennogram</a></li>
   </ul></li>
   <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a>
   <ul class="collapse">
-  <li><a href="#field-survey" id="toc-field-survey" class="nav-link" data-scroll-target="#field-survey">Field Survey</a></li>
-  <li><a href="#greenhouse-experiments" id="toc-greenhouse-experiments" class="nav-link" data-scroll-target="#greenhouse-experiments">Greenhouse Experiments</a></li>
+  <li><a href="#field-experiments-1" id="toc-field-experiments-1" class="nav-link" data-scroll-target="#field-experiments-1">Field Experiments</a>
+  <ul class="collapse">
+  <li><a href="#field-survey-1" id="toc-field-survey-1" class="nav-link" data-scroll-target="#field-survey-1">Field Survey</a></li>
+  <li><a href="#controlled-c.-cinctus-infestation-of-b.-inermis-1" id="toc-controlled-c.-cinctus-infestation-of-b.-inermis-1" class="nav-link" data-scroll-target="#controlled-c.-cinctus-infestation-of-b.-inermis-1">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></a></li>
   </ul></li>
+  <li><a href="#greenhouse-experiments-1" id="toc-greenhouse-experiments-1" class="nav-link" data-scroll-target="#greenhouse-experiments-1">Greenhouse Experiments</a></li>
   </ul></li>
   <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
   </ul>
@@ -489,8 +497,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>The wheat stem sawfly (WSS, Cephus cinctus Norton, Hymenoptera: Cephidae), is a serious problem for wheat producers throughout the Northern Great Plains of North America <span class="citation" data-cites="Fulbright2017">(<a href="#ref-Fulbright2017" role="doc-biblioref">Fulbright et al. 2017</a>)</span>. In Montana alone, the economic damage caused by the pest was reported to be upwards of $80 million annually between 2011-2016 <span class="citation" data-cites="Fulbright2017">(<a href="#ref-Fulbright2017" role="doc-biblioref">Fulbright et al. 2017</a>)</span>. Current techniques in combatting the damage caused by the WSS use a variety of chemical, cultural, and biocontrol strategies with limited short-term effectiveness and long-term sustainability. Utilizing biological control via promoting braconid parasitoid habitat holds considerable value to both growers and agricultural observers. As we seek to increase agricultural yields, we must also consider the environmental impact that tactics such as pesticides and tillage have on the future success on wheat farming.</p>
 </section>
 </section>
-<section id="prior-research-on-topic-literature-review" class="level1">
-<h1>Prior Research on Topic (Literature Review)</h1>
+<section id="literature-review" class="level1">
+<h1>Literature Review</h1>
 <section id="history-and-distribution-of-wheat-stem-sawfly" class="level2">
 <h2 class="anchored" data-anchor-id="history-and-distribution-of-wheat-stem-sawfly">History and Distribution of Wheat Stem Sawfly</h2>
 <p>The wheat stem sawfly was first described in 1872 by Edward Norton based upon a specimen found in Colorado <span class="citation" data-cites="Norton1872">(<a href="#ref-Norton1872" role="doc-biblioref">Norton 1872</a>)</span>. In 1890 it was found in California and Montana <span class="citation" data-cites="Ainslie1920">(<a href="#ref-Ainslie1920" role="doc-biblioref">Ainslie 1920</a>)</span>. Native to North America <span class="citation" data-cites="Lesieur2016">(<a href="#ref-Lesieur2016" role="doc-biblioref">Lesieur et al. 2016</a>)</span>, the largest populations of WSS are currently found in the western Canadian prairies as well as Wyoming, Montana, Colorado, and North and South Dakota <span class="citation" data-cites="Wallace1966 Weiss1992 Cockrell2021">(<a href="#ref-Wallace1966" role="doc-biblioref">Wallace and McNeal 1966</a>; <a href="#ref-Weiss1992" role="doc-biblioref">Weiss and Morrill 1992</a>; <a href="#ref-Cockrell2021" role="doc-biblioref">Cockrell et al. 2021</a>)</span>.</p>
@@ -517,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 <section id="larvae" class="level3">
 <h3 class="anchored" data-anchor-id="larvae">Larvae</h3>
-<p>After hatching and prior to feeding, the larvae are transparent and colorless <span class="citation" data-cites="Ainslie1920 Criddle1923">(<a href="#ref-Ainslie1920" role="doc-biblioref">Ainslie 1920</a>; <a href="#ref-Criddle1923" role="doc-biblioref">Norman Criddle 1923</a>)</span>. WSS larvae are distinguishable from other larvae feeding in wheat and grasses by their highly sclerotized head capsule and large body size <span class="citation" data-cites="Nelson1953">(<a href="#ref-Nelson1953" role="doc-biblioref">Nelson and Farstad 1953</a>)</span>. As the larvae chew their way through the parenchymous and vascular tissues of the host stem, the larvae begin to develop a yellow-green color. As the larvae progress through the stem, they excrete frass; the digested plant tissue as well as metabolic breakdown products from the WSS <span class="citation" data-cites="Beres2011">(<a href="#ref-Beres2011" role="doc-biblioref">Beres et al. 2011</a>)</span>. If multiple eggs are laid within the same stem, the largest (usually the first egg laid and hatched) will typically remain within a few weeks due to the larvae cannibalizing one another <span class="citation" data-cites="Criddle1923 Seamans1944 Buteler2015">(<a href="#ref-Criddle1923" role="doc-biblioref">Norman Criddle 1923</a>; <a href="#ref-Seamans1944" role="doc-biblioref">Seamans, Manson, and Farstad 1944</a>; <a href="#ref-Buteler2015" role="doc-biblioref">Buteler et al. 2015</a>)</span>. It remains unknown whether the consumption of other eggs and larvae is the result of intentional cannibalism or the indirect result of indiscriminate feeding <span class="citation" data-cites="Buteler2015">(<a href="#ref-Buteler2015" role="doc-biblioref">Buteler et al. 2015</a>)</span>. As the host plant physiologically matures, and the larvae reaches its fifth instar, the insect is cued to travel to the base of stem and prepare for obligatory diapause <span class="citation" data-cites="Beres2011">(<a href="#ref-Beres2011" role="doc-biblioref">Beres et al. 2011</a>)</span>. The descending movement of larvae and development of the hibernaculum are triggered by the host plant senescence. As the stem walls becoming increasingly transparent, they allow increased amounts of visible and infrared light into the stem <span class="citation" data-cites="Holmes1977 Beres2011">(<a href="#ref-Holmes1977" role="doc-biblioref">Holmes 1977</a>; <a href="#ref-Beres2011" role="doc-biblioref">Beres et al. 2011</a>)</span>. Once the larvae reach the base of the stem, they construct an interior V-shaped groove, making the stem weak enough to lodge due to gravity or wind <span class="citation" data-cites="Criddle1923">(<a href="#ref-Criddle1923" role="doc-biblioref">Norman Criddle 1923</a>)</span>. The larvae then plug the remaining stub with frass to insulate the hibernaculum during diapause <span class="citation" data-cites="Holmes1960">(<a href="#ref-Holmes1960" role="doc-biblioref">Holmes and Peterson 1960</a>)</span>. The larval stage of development can be as short as 30 days before entering diapause. Obligatory diapause lasts a minimum of 90 days <span class="citation" data-cites="Salt1947">(<a href="#ref-Salt1947" role="doc-biblioref">Salt and Hollick 1947</a>)</span>. After the larvae are exposed to temperatures less than 10C for 90 days, diapause is complete, and pupation can begin. Larvae can reenter diapause if temperatures approach 35C <span class="citation" data-cites="Salt1947">(<a href="#ref-Salt1947" role="doc-biblioref">Salt and Hollick 1947</a>)</span> or if conditions are abnormally dry <span class="citation" data-cites="Holmes1978">(<a href="#ref-Holmes1978" role="doc-biblioref">Holmes 1978</a>)</span> shortly after termination of diapause.</p>
+<p>After hatching and prior to feeding, the larvae are transparent and colorless <span class="citation" data-cites="Ainslie1920 Criddle1923">(<a href="#ref-Ainslie1920" role="doc-biblioref">Ainslie 1920</a>; <a href="#ref-Criddle1923" role="doc-biblioref">Norman Criddle 1923</a>)</span>. WSS larvae are distinguishable from other larvae feeding in wheat and grasses by their highly sclerotized head capsule and large body size <span class="citation" data-cites="Nelson1953">(<a href="#ref-Nelson1953" role="doc-biblioref">Nelson and Farstad 1953</a>)</span>. As the larvae chew their way through the parenchymous and vascular tissues of the host stem, the larvae begin to develop a yellow-green color. As the larvae progress through the stem, they excrete frass; the digested plant tissue as well as metabolic breakdown products from the WSS <span class="citation" data-cites="Beres2011">(<a href="#ref-Beres2011" role="doc-biblioref">Beres et al. 2011</a>)</span>. If multiple eggs are laid within the same stem, the largest (usually the first egg laid and hatched) will typically remain within a few weeks due to the larvae cannibalizing one another <span class="citation" data-cites="Criddle1923 Seamans1944 Buteler2015">(<a href="#ref-Criddle1923" role="doc-biblioref">Norman Criddle 1923</a>; <a href="#ref-Seamans1944" role="doc-biblioref">Seamans, Manson, and Farstad 1944</a>; <a href="#ref-Buteler2015" role="doc-biblioref">Buteler et al. 2015</a>)</span>. It remains unknown whether the consumption of other eggs and larvae is the result of intentional cannibalism or the indirect result of indiscriminate feeding <span class="citation" data-cites="Buteler2015">(<a href="#ref-Buteler2015" role="doc-biblioref">Buteler et al. 2015</a>)</span>. As the host plant physiologically matures, and the larvae reaches its fifth instar, the insect is cued to travel to the base of stem and prepare for obligatory diapause <span class="citation" data-cites="Beres2011">(<a href="#ref-Beres2011" role="doc-biblioref">Beres et al. 2011</a>)</span>. The descending movement of larvae and development of the hibernaculum are triggered by the host plant senescence. As the stem walls becoming increasingly transparent, they allow increased amounts of visible and infrared light into the stem <span class="citation" data-cites="Holmes1977 Beres2011">(<a href="#ref-Holmes1977" role="doc-biblioref">Holmes 1977</a>; <a href="#ref-Beres2011" role="doc-biblioref">Beres et al. 2011</a>)</span>. Once the larvae reach the base of the stem, they construct an interior V-shaped groove, making the stem weak enough to lodge due to gravity or wind <span class="citation" data-cites="Criddle1923">(<a href="#ref-Criddle1923" role="doc-biblioref">Norman Criddle 1923</a>)</span>. The larvae then plug the remaining stub with frass to insulate the hibernaculum during diapause <span class="citation" data-cites="Holmes1960">(<a href="#ref-Holmes1960" role="doc-biblioref">Holmes and Peterson 1960</a>)</span>. The larval stage of development can be as short as 30 days before entering diapause. Obligatory diapause lasts a minimum of 90 days <span class="citation" data-cites="Salt1947">(<a href="#ref-Salt1947" role="doc-biblioref">Salt and Hollick 1947</a>)</span>. After the larvae are exposed to temperatures less than 10°C for 90 days, diapause is complete, and pupation can begin. Larvae can reenter diapause if temperatures approach 35°C <span class="citation" data-cites="Salt1947">(<a href="#ref-Salt1947" role="doc-biblioref">Salt and Hollick 1947</a>)</span> or if conditions are abnormally dry <span class="citation" data-cites="Holmes1978">(<a href="#ref-Holmes1978" role="doc-biblioref">Holmes 1978</a>)</span> shortly after termination of diapause.</p>
 </section>
 <section id="pupae" class="level3">
 <h3 class="anchored" data-anchor-id="pupae">Pupae</h3>
@@ -640,77 +648,75 @@ Green House Samples and Volatile Collection</li>
 </section>
 </section>
 </section>
-<section id="chapters" class="level1">
-<h1>CHAPTERS</h1>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">METHODS</h2>
-<section id="central-and-northern-montana-field-sites" class="level3">
-<h3 class="anchored" data-anchor-id="central-and-northern-montana-field-sites">Central and Northern Montana Field Sites</h3>
-<section id="field-selection-data-collection" class="level4">
-<h4 class="anchored" data-anchor-id="field-selection-data-collection">Field Selection &amp; Data Collection</h4>
-<p>To assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. B. inermis sites were set up as polygons along the edge of adjoining wheat fields measuring approximately 100 meters in area. Four collection squares of 1ft x 1ft were randomly partitioned within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.</p>
+<section id="methodology" class="level1">
+<h1>Methodology</h1>
+<section id="field-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="field-experiments">Field Experiments</h2>
+<section id="field-survey" class="level3">
+<h3 class="anchored" data-anchor-id="field-survey">Field Survey</h3>
+<p>To assess <em>C. cinctus</em> infestation, larval mortality, and parasitoid prevalence within <em>B. inermis</em> and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. <em>B. inermis</em> sites were set up as polygons along the edge of adjoining wheat fields measuring approximately 100 meters in area. Four collection squares of 1ft x 1ft were randomly partitioned within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.</p>
 </section>
-<section id="statistical-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="statistical-analysis">Statistical Analysis</h4>
-<p>Statistical analyses were conducted in R (R Core Team 2022) using RStudio (version 4.2.1) using linear modeling after log transformation to improve the normality and constant variance assumptions. ‘Site’ and ‘polygon’ were used as fixed effects (treatments) while the mean number of infested stems, parasitized stems, dead larvae, alive larvae, dead eggs, alive eggs awere used as the response variable to assess the differences in parameters among the sampling sites. ANOVA was used to caculate P-values using F-distribution to understand overall significant differences in mean C. cinctus infestation and parasitism among polygons. To assess the profile of C. cintus infestation, paraisitms, and larval presence by node, a linear model was fit for each sampling site. Further assessment was done on the resonpses between sampling sites using a Tukey test using the ‘TukeyHSD’ function.</p>
+<section id="controlled-c.-cinctus-infestation-of-b.-inermis" class="level3">
+<h3 class="anchored" data-anchor-id="controlled-c.-cinctus-infestation-of-b.-inermis">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></h3>
+<section id="plant-selection-and-field-cages" class="level4">
+<h4 class="anchored" data-anchor-id="plant-selection-and-field-cages">Plant Selection and Field Cages</h4>
+<p>Assessment of <em>C. cinctus</em> infestation and mortality within <em>B. inermis</em> were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530<span class="math inline">\(\mu\)</span> Amber Lumite Screen (BioQuip<span class="math inline">\(^\circledR\)</span> Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.</p>
 </section>
+<section id="insects" class="level4">
+<h4 class="anchored" data-anchor-id="insects">Insects</h4>
+<p>Wheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of <em>C. cinctus</em> infestation and cutting the year prior. Cut stubble, which contained <em>C. cinctus</em> larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once <em>B. inermis</em> stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).</p>
 </section>
-</section>
-<section id="controlled-c.-cinctus-infestation-of-b.-inermis" class="level2">
-<h2 class="anchored" data-anchor-id="controlled-c.-cinctus-infestation-of-b.-inermis">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></h2>
-<section id="plant-selection-and-field-cages" class="level3">
-<h3 class="anchored" data-anchor-id="plant-selection-and-field-cages">Plant Selection and Field Cages</h3>
-<p>Assessment of C. cinctus infestation and mortality within B. inermis were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530 Amber Lumite Screen (BioQuip Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.</p>
-</section>
-<section id="insects" class="level3">
-<h3 class="anchored" data-anchor-id="insects">Insects</h3>
-<p>Wheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of C. cinctus infestation and cutting the year prior. Cut stubble, which contained C. cinctus larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once B. inermis stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).</p>
-</section>
-<section id="data-collection" class="level3">
-<h3 class="anchored" data-anchor-id="data-collection">Data Collection</h3>
+<section id="data-collection" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection">Data Collection</h4>
 <p>Stems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.</p>
 </section>
-<section id="statistical-analysis-1" class="level3">
-<h3 class="anchored" data-anchor-id="statistical-analysis-1">Statistical Analysis</h3>
-<p>Statistical analyses were conducted in R (R Core Team 2022) using RStudio (version 4.2.1) using linear modeling after log transformation to improve the normality and constant variance assumptions. ‘Site’ and ‘polygon’ were used as fixed effects (treatments) while the mean number of infested stems, parasitized stems, dead larvae, alive larvae, dead eggs, alive eggs were used as the response variable to assess the differences in parameters among the sampling sites. ANOVA was used to calculate P-values using F-distribution to understand overall significant differences in mean C. cinctus infestation and parasitism among polygons. To assess the profile of C. cinctus infestation, parasitism, and larval presence by node, a linear model was fit for each sampling site. Further assessment was done on the responses between sampling sites using a Tukey test using the ‘TukeyHSD’ function.</p>
 </section>
 </section>
-<section id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" class="level2">
-<h2 class="anchored" data-anchor-id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat">Organic Volatile Collection from C. cinctus Infested B. inermis and Winter Wheat</h2>
-<section id="insects-1" class="level3">
-<h3 class="anchored" data-anchor-id="insects-1">Insects</h3>
-<p>Wheat stubble collected the year prior to each experiment were used to rear adult WSS. Wheat stubble was collected from Big Sandy (48.17754 N, -110.11406 E) and Three Forks (46.020216 N, -111.586582 E), MT, USA. Stubble was collected from fields that experienced high levels of WSS infestation and cutting the year prior. Cut stubble, which contained WSS larvae in diapause, were kept in a refrigerator between 0-4 C for &gt;100 days as required to complete obligatory larval diapause. After completing diapause, immature WSS were kept at room temperature between 22-27 C for 4-5 weeks in sealed 70 cm x 35 cm x 20 cm plastic Tupperware bins to allow for pupation and emergence. Once emergence began, adults were collected daily and sorted in 2-liter glass mason jars sealed with filter paper to allow for airflow. Jars containing adults were refrigerated at 6-10C until they were needed for experiments. Unused adults were discarded after 48 hours of refrigeration.</p>
+<section id="greenhouse-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="greenhouse-experiments">Greenhouse Experiments</h2>
+<section id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" class="level3">
+<h3 class="anchored" data-anchor-id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat">Organic Volatile Collection from <em>C. cinctus</em> Infested <em>B. inermis</em> and Winter Wheat</h3>
+<section id="insects-1" class="level4">
+<h4 class="anchored" data-anchor-id="insects-1">Insects</h4>
+<p>Wheat stubble collected the year prior to each experiment were used to rear adult WSS. Wheat stubble was collected from Big Sandy (48.17754°N, -110.11406°E) and Three Forks (46.020216°N, -111.586582°E), MT, USA. Stubble was collected from fields that experienced high levels of WSS infestation and cutting the year prior. Cut stubble, which contained WSS larvae in diapause, were kept in a refrigerator between 0-4 °C for &gt;100 days as required to complete obligatory larval diapause. After completing diapause, immature WSS were kept at room temperature between 22-27 °C for 4-5 weeks in sealed 70 cm x 35 cm x 20 cm plastic Tupperware<span class="math inline">\(^\circledR\)</span> bins to allow for pupation and emergence. Once emergence began, adults were collected daily and sorted in 2-liter glass mason jars sealed with filter paper to allow for airflow. Jars containing adults were refrigerated at 6-10°C until they were needed for experiments. Unused adults were discarded after 48 hours of refrigeration.</p>
 </section>
-<section id="plants" class="level3">
-<h3 class="anchored" data-anchor-id="plants">Plants</h3>
-<p>Smooth brome was grown from transplanted plants harvested from the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W). Immediately following collection, plants were transplanted into 2.7 x 14 inch lightweight deepot cells (Stuewe &amp; Sons Inc, Tangent, OR) and moved into the greenhouse. Wheat was grown using ‘Yellowstone’ winter wheat cultivar seed stock, started in 1 x 8 inch conical pots. The soil used consisted of MSU Plant Growth Center soil mix (equal parts sterilized Bozeman silt loam soil and washed concrete sand with Canadian sphagnum peat moss incorporated) and Sunshine Mix 1 (Canadian sphagnum peat moss, vermiculite, perlite, and Dolomite lime) in a 1:1 ratio. Fertilization was undergone once weekly using Jack’s Professional® Water-Soluble Fertilizer (20-20-20) (J.R. Peters Inc., Allentown, PA, USA). The plants were kept in a greenhouse in the Montana State University Plant Growth Center using supplemental light from model MVR1000/C/U GE Multi-Vapor Lamps (GE Lighting, General Electric Company, Cleveland, OH) under photoperiod of 16:8 (L:D) h at 22  2C and 20 – 40 % RH. After the plants reached Zadoks 12, they were moved into vernalization storage for 6 weeks to experience the length of dormancy needed for successful flower development. After the six-week period, wheat stems were transplanted into the larger, 2.7 x 14-inch Stuewe &amp; Sons, Inc conical pots.</p>
+<section id="plants" class="level4">
+<h4 class="anchored" data-anchor-id="plants">Plants</h4>
+<p>Smooth brome was grown from transplanted stems harvested from the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. Immediately following collection, stems were transplanted into 2.7 x 14 inch lightweight deepot cells (Stuewe &amp; Sons Inc<span class="math inline">\(^\circledR\)</span>, Tangent, OR). Winter wheat plants were grown using Yellowstone Winter Wheat cultivar seed stock, started in 1 x 8 inch conical pots. The soil used consisted of MSU Plant Growth Center soil mix (equal parts sterilized Bozeman silt loam soil and washed concrete sand with Canadian sphagnum peat moss incorporated) and Sunshine Mix 1 (Canadian sphagnum peat moss, vermiculite, perlite, and Dolomite lime) in a 1:1 ratio. Fertilization was undergone once weekly using Jack’s Professional<span class="math inline">\(^\circledR\)</span> Water-Soluble Fertilizer (20-20-20) (J.R. Peters Inc., Allentown, PA, USA). The plants were kept in a greenhouse in the Montana State University Plant Growth Center using supplemental light from model MVR1000/C/U GE Multi-Vapor Lamps (GE Lighting, General Electric Company, Cleveland, OH) under photoperiod of 16:8 (L:D) h at 22 <span class="math inline">\(\pm\)</span> 2°C and 20 – 40 % RH. After the plants reached Zadoks 12, they were moved into vernalization storage for 6 weeks to experience the length of dormancy needed for successful flower development. After the six-week period, wheat stems were transplanted into the larger, 2.7 x 14-inch Stuewe &amp; Sons, Inc<span class="math inline">\(^\circledR\)</span> conical pots.</p>
 </section>
-<section id="volatile-collection" class="level3">
-<h3 class="anchored" data-anchor-id="volatile-collection">Volatile Collection</h3>
+<section id="sawfly-infestation" class="level4">
+<h4 class="anchored" data-anchor-id="sawfly-infestation">Sawfly Infestation</h4>
+<p>Winter wheat plants were deemed ready for infestation once they reached Zadoks 49. Both smooth brome and winter wheat plants were infested by placing a transparent plastic cylinder (60 x 3.8 cm) over the main stem of the plant. A 55-60 cm bamboo stick was added within each tube to help prevent toppling of the cylinder. Each cage had three holes, as well as an open top, covered with fine mesh cloth to allow for air circulation. Four females and two male WSS, newly emerged, were introduced into each tube via a small 1 cm opening. After which, the hole was plugged using a cotton ball covered in mesh cloth. Damp soil was mounded around the base of each tube to prevent insect escapees. Adult sawflies were left within infestation tubes for three days, after which the tubes were removed, and any surviving insects, as well as cadavers, were removed. After infestation, the plants were returned to normal water and fertilization schedules.</p>
+<p>Infestation was undertaken three days a week, for five weeks. Each replicate included 6 ‘Yellowstone’ winter wheat plants at Zadoks 49 and 6 smooth brome plants exhibiting three nodes. For each replicate, three wheat and three smooth brome plants were infested, with three of each left uninfested. Infestation tubes were placed around all twelve plants to maintain control.</p>
+</section>
+<section id="volatile-collection" class="level4">
+<h4 class="anchored" data-anchor-id="volatile-collection">Volatile Collection</h4>
 <p>Volatile compounds were collected from intact and healthy smooth brome and Yellowstone winter wheat. Collection was undergone on plants at Zadoks 49, for a period of six hours from 09:00 to 15:00. Collections were undergone three times a week, with twelve plants collected from each time. Each trial consisted of six smooth brome plants and six winter wheat, with four of each being infested, while the other two were controls.</p>
 <p>Volatiles were collected from twelve plants per day using glass VCC’s that were 80 cm long and 4 cm in diameter. The top end of each VCC funneled into a threaded port that was 10 cm in diameter. Threaded onto the top of each VCC was an eight-port manifold adapter. Two glass filters (traps) (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. An air source was connected to the base of each collection chamber with supply from charcoal air filters. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A small piece of cotton encompassed by a Teflon® guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Laboratory tape was used to seal the edges of the guillotine and prevent contamination by ambient and soil derived volatiles.</p>
-<p>Volatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al.&nbsp;(2009). Glass volatile collection traps were eluted using 200 µL of dichloromethane into 2 mL screw top vials (Agilent Technologies, Inc., Santa Clara, CA), followed by a slow release of nitrogen to further clear the volatile trap. 10 µL of nonyl acetate solution was added to the eluted solution as internal standard to quantify compounds. Samples were then subject to gas chromatography (GC) on a J&amp;W HP – 5ms; 30m x 0.25 µm film thickness column (Agilent Technologies, Inc., Santa Clara, CA). The GC unit (Agilent 6890; Agilent Technologies, Santa Clara, CA) was paired with a mass spectrometer (MS, Agilent 5973 instrument). Samples were injected into the column in pulse splitless mode, with the initial pressure of 82.7 kPa/m.</p>
+</section>
+<section id="volatile-elution" class="level4">
+<h4 class="anchored" data-anchor-id="volatile-elution">Volatile Elution</h4>
+<p>Volatile compounds were eluted from the glass traps using 200 <span class="math inline">\(\mu\)</span>L aliquot dichloromethane. Trapped volatiles were eluted slowly by adding dichloromethane and further clearing by using a slow release of nitrogen gas. The eluted samples were collected in a glass insert held within a 1.5-mL crimped top glass vial. 10 <span class="math inline">\(\mu\)</span>L of nonyl acetate were then added to the eluted samples as internal standard to quantify compound concentrations. The samples were processed using gas chromatography (GC) on a HP – 5MS; 30m x 0.25mm, 0.25 <span class="math inline">\(\mu\)</span>m film thickness column; (J and W Scientific, Folsom, CA). In order to analyze, the GC instrument (Agilent 6890; Agilent Technologies, Santa Clara, CA) was coupled to a mass spectrometer (MS, Agilent 5973 instrument). Each sample was injected using the automated system in pulse splitless mode, with the initial pressure set to 82.7 kPa per minute. The inlet temperature of the GC was set to 250°C while the column temperature was 50°C for 4 minutes. The temperature was set to increase at a rate of 5°C per minute until it reached 160°C, after which it increased to a rate of 25°C per minute until it reached 280°C. The temperature of the transfer line leading to the mass selective detector (MSD) was set at 300°C. Helium was used as a carrier gas to maintain the flow rate of samples within the column at 1.2 mL/min. The MSD was set in ‘SCAN’ mode running from 50 – 300 m/z.</p>
+</section>
+<section id="volatile-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="volatile-analysis">Volatile Analysis</h4>
+<p>The compounds collected from both the smooth brome and wheat samples were identified by comparing mass spectra and retention times using the National Institute of Standard and Technology (NIST) library. Peaks and volatiles were analyzed using MSD ChemStation (Agilent Technologies, Inc., Santa Clara, CA). The data obtained from the mass-spectrometer was transferred to a Microsoft® Excel spreadsheet where the compounds were quantified by comparison with the internal standard peak area. The amount obtained for each compound was then transformed to the amount produced in six hours. The true quantity of compounds was calculated relative to the internal standard.</p>
 </section>
 </section>
-<section id="parasitoids" class="level2">
-<h2 class="anchored" data-anchor-id="parasitoids">PARASITOIDS</h2>
-<p>Parasitoids B. cephi and B. lissogaster were collected from wheat fields in Three Forks, MT (46.020216 N, -111.586582 E). Wheat stem residue from fields that experienced high levels of C. cinctus infestation were collected and stored inside 170-liter plastic barrel liners. Filled liners were stored in a cold storage room at 4C until mid or late spring of the following year. After the storage time exceeded the mandatory duration needed for obligatory diapause, the plastic barrel liner was removed from cold storage and the residue was placed inside 170 L trash barrels at room temperature and watered to encourage emergence. Collected parasitoids were kept at 6-10C until used.</p>
-<section id="plants-1" class="level3">
-<h3 class="anchored" data-anchor-id="plants-1">Plants</h3>
-<p>Smooth brome was grown from transplanted stems harvested from the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. Immediately following collection, stems were transplanted into 2.7 x 14 inch lightweight deepot cells (Stuewe &amp; Sons Inc, Tangent, OR). Winter wheat plants were grown using Yellowstone Winter Wheat cultivar seed stock, started in 1 x 8 inch conical pots. The soil used consisted of MSU Plant Growth Center soil mix (equal parts sterilized Bozeman silt loam soil and washed concrete sand with Canadian sphagnum peat moss incorporated) and Sunshine Mix 1 (Canadian sphagnum peat moss, vermiculite, perlite, and Dolomite lime) in a 1:1 ratio. Fertilization was undergone once weekly using Jack’s Professional® Water-Soluble Fertilizer (20-20-20) (J.R. Peters Inc., Allentown, PA, USA). The plants were kept in a greenhouse in the Montana State University Plant Growth Center using supplemental light from model MVR1000/C/U GE Multi-Vapor Lamps (GE Lighting, General Electric Company, Cleveland, OH) under photoperiod of 16:8 (L:D) h at 22  2C and 20 – 40 % RH. After the plants reached Zadoks 12, they were moved into vernalization storage for 6 weeks to experience the length of dormancy needed for successful flower development. After the six-week period, wheat stems were transplanted into the larger, 2.7 x 14-inch Stuewe &amp; Sons, Inc conical pots.</p>
+<section id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" class="level3">
+<h3 class="anchored" data-anchor-id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds">Behavioral Assessment of Parasitoids in Response to <em>B. inermis</em> Organic Volatile Compounds</h3>
+<section id="insects-2" class="level4">
+<h4 class="anchored" data-anchor-id="insects-2">Insects</h4>
+<p>Parasitoids B. cephi and B. lissogaster were collected from wheat fields in Three Forks, MT (46.020216° N, -111.586582° E). Wheat stem residue from fields that experienced high levels of <em>C. cinctus</em> infestation were collected and stored inside 170-liter plastic barrel liners. Filled liners were stored in a cold storage room at 4°C until mid or late spring of the following year. After the storage time exceeded the mandatory duration needed for obligatory diapause, the plastic barrel liner was removed from cold storage and the residue was placed inside 170 L trash barrels at room temperature and watered to encourage emergence. Collected parasitoids were kept at 6-10°C until used.</p>
 </section>
+<section id="electroantennography" class="level4">
+<h4 class="anchored" data-anchor-id="electroantennography">Electroantennography</h4>
+<p>Specimens were prepared by excising the head from the body using fine micro-dissection scissors. For each specimen, a micro-capillarity tube was pulled in half using a pipette puller (Model PP-830, Narishige Scientific Instrument Lab, Tokyo, Japan). Each half was cut to the appropriate length and angle, then filled with saline solution. The parasitoid head was mounted on the broken end of one of the capillary tubes, then the tube was place on one of the conducting electrode wires connected to a micromanipulator, type INR-5 (Narishige MN-151). The second half of the capillary tube was place on the other electrode wire, and one insect antennae was positioned to touch the empty capillary tube, thus connecting the circuit. The amplifier transferred the information to a computer interface with an EAG version 2.7 software (Syntech NL 2001, Hilversum, Netherlands). This apparatus and method has been consistently used previously in assessing insect volatile response <span class="citation" data-cites="Agelopoulos1999">(<a href="#ref-Agelopoulos1999" role="doc-biblioref">Agelopoulos et al. 1999</a>)</span>.</p>
+<p>A consistent stream of purified, humidified air (20 mL sec-1) was delivered onto the antennae. The test compound was delivered via airborne stimulus released from a glass pipette with filter paper treated with 10 <span class="math inline">\(\mu\)</span>L of the test compound. The pipette was connected to a Stimulus Controller CS-55 (Syntech NL 2010, Hilversum, The Netherlands). The equipment was programmed to deliver a 0.4 second puff of air through a Teflon tube and through the glass pipette. The electrical response of the antenna to the test compound was detected by the recording electrode and transferred to the amplifier, increasing the signal and delivering the information to the computer. Figure 2: Electroantennogram connected to GCMS. Useful for connecting insect electrochemical response to host plant produced volatile compounds.</p>
 </section>
-<section id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" class="level2">
-<h2 class="anchored" data-anchor-id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds">Behavioral Assessment of Parasitoids in Response to B. inermis Organic Volatile Compounds</h2>
-<section id="insects-2" class="level3">
-<h3 class="anchored" data-anchor-id="insects-2">Insects</h3>
-</section>
-<section id="electroantennography" class="level3">
-<h3 class="anchored" data-anchor-id="electroantennography">Electroantennography</h3>
-</section>
-<section id="y--tube-olfactometer-bioassay" class="level3">
-<h3 class="anchored" data-anchor-id="y--tube-olfactometer-bioassay">Y- Tube Olfactometer Bioassay</h3>
-<p>Y-tube bioassays were conducted within the chemical ecology and insect behavior laboratory at the Plant Growth Center at Montana State University. Bioassays were undergone to determine behavioral choice preference response of individual female WSS to an airstream containing volatiles originating from smooth brome and a blank control. Bioassays were conducted using plants at growth stage Zadoks 49. The Y-tube system (Analytical Rsearch Systems, Micanopy, FL) used was similar as described in a previous study (Daisy et al., 2002) (Figure 1). A single plant was enclosed in a volatile collection chamber (VCC) (100 mm diameter, 254 mm length). Input air was charcoal-filtered and humidified, regulated by a diaphragm air pump that delivered air at a rate of 0.2 L min-1. Air was moved into the VCC through Teflon tubing connected with a 24/410 threaded glass joint. The bottom end of the VCC enclosed each plant and was tightly sealed by a Teflon guillotine (diameter 955 mm, 15 mm center opening), encircling the stem to prevent air leakage. The olfactory system used a Y-shaped glass tube that had two arms connected to the lower port of each VCC by Teflon tubing (diameter 0.64 cm), providing the airstream source from the plant. The VCC contained plant was illuminated by an enhanced spectrum LED grow light (sunshine Systems Grow UFO Light SS-Gu90w, Led Lighting4 Less, Paradise, CA) for one hour before the experiment to make the plant photosynthetically active.</p>
+<section id="y--tube-olfactometer-bioassay" class="level4">
+<h4 class="anchored" data-anchor-id="y--tube-olfactometer-bioassay">Y- Tube Olfactometer Bioassay</h4>
+<p>Y-tube bioassays were conducted within the chemical ecology and insect behavior laboratory at the Plant Growth Center at Montana State University. Bioassays were undergone to determine behavioral choice preference response of individual female WSS to an air stream containing volatiles originating from smooth brome and a blank control. Bioassays were conducted using plants at growth stage Zadoks 49. The Y-tube system (Analytical Research Systems, Micanopy, FL) used was similar as described in a previous study <span class="citation" data-cites="Daisy2002">(<a href="#ref-Daisy2002" role="doc-biblioref">Daisy et al. 2002</a>)</span> (Figure 1). A single plant was enclosed in a volatile collection chamber (VCC) (100 mm diameter, 254 mm length). Input air was charcoal-filtered and humidified, regulated by a diaphragm air pump that delivered air at a rate of 0.2 L min-1. Air was moved into the VCC through Teflon tubing connected with a 24/410 threaded glass joint. The bottom end of the VCC enclosed each plant and was tightly sealed by a Teflon guillotine (diameter 955 mm, 15 mm center opening), encircling the stem to prevent air leakage. The olfactory system used a Y-shaped glass tube that had two arms connected to the lower port of each VCC by Teflon tubing (diameter 0.64 cm), providing the airstream source from the plant. The VCC contained plant was illuminated by an enhanced spectrum LED grow light (sunshine Systems Grow UFO Light SS-Gu90w, Led Lighting4 Less, Paradise, CA) for one hour before the experiment to make the plant photosynthetically active.</p>
 <!-- Figure 1 y tube diagram -->
 
 
@@ -748,60 +754,33 @@ Green House Samples and Volatile Collection</li>
 
 
 
-<p>Figure 1: Y-tube olfactory bioassay as constructed by Daisy et al.&nbsp;(2002). Used to measure insect behavior in the presence of volatile stimulus.</p>
-<p>The Y-tube was made of bifurcated Corning® glass, measuring in at 28-mm diameter x 300 m length. The Y shape branched at an angle of 120, with each branch serving as an arm of the olfactometer. The stem of each Y-tube was 20 cm long. At the bifurcation, each branch extended 4 cm from the junction before ending in 10 cm parallel arms. The Y-tube was positioned horizontally inside a black box made of poster board (46 x 32 x 101.5 cm), designed to prevent the entry of unwanted ambient light. The black box had two holes on the upstream sie of the olfactometer, allowing a fiber optic illuminator (T-Q/FOI-1, Techni Quip Corp, El Segundo, CA) and Teflon tubing to pass through. The fiber optic illuminator was used to deliver light to both arms equally from the center of the bifurcation, while the Teflon tubing connected the VCC to the arms of the Y-tube. One arm of the Y-tube delivered volatiles from the enclosed plant while the other delivered filtered, pure air as a control. The movement of adult WSS is positively phototactic and the horizontally placed Y-tube was positioned such that the light distribution towards both arms was balanced to avoid bias. The arms of the Y-tube were oriented to minimize directional bias and the position of the plants was alternated between runs. For each assay, a single naïve female B. cephi or B. lissogaster parasitoid was introduced 1 cm into the unbranched end of the Y-tube. A 28-cm wire was used to facilitate parasitoid movement from the unbranched stem of the glass Y-tube to the test junction between the two upper arms. The order of individual test insects from a pool of naïve females was randomly assigned for each bioassay, and test plants were chosen randomly from the greenhouse culture before each experiment. All glassware was cleaned using dish soap and warm water, followed by solvent rinses with acetone and hexane. Cleaned and rinsed glassware was baked at 110C in a glassware oven for 24 hours before use. New plants were used for each experiment. Each individual parasitoid was allowed three minutes to respond to either airstream source. Once a positive response was determined to either source, the trail was ended. If no choice was made after five minutes, the trail was ended and the result was recorded as no response.</p>
+<p>The Y-tube was made of bifurcated Corning® glass, measuring in at 28-mm diameter x 300 m length. The Y shape branched at an angle of 120, with each branch serving as an arm of the olfactometer. The stem of each Y-tube was 20 cm long. At the bifurcation, each branch extended 4 cm from the junction before ending in 10 cm parallel arms. The Y-tube was positioned horizontally inside a black box made of poster board (46 x 32 x 101.5 cm), designed to prevent the entry of unwanted ambient light. The black box had two holes on the upstream sie of the olfactometer, allowing a fiber optic illuminator (T-Q/FOI-1, Techni Quip Corp, El Segundo, CA) and Teflon tubing to pass through. The fiber optic illuminator was used to deliver light to both arms equally from the center of the bifurcation, while the Teflon tubing connected the VCC to the arms of the Y-tube. One arm of the Y-tube delivered volatiles from the enclosed plant while the other delivered filtered, pure air as a control. The movement of adult WSS is positively phototactic and the horizontally placed Y-tube was positioned such that the light distribution towards both arms was balanced to avoid bias. The arms of the Y-tube were oriented to minimize directional bias and the position of the plants was alternated between runs.</p>
+<p>For each assay, a single naïve female B. cephi or B. lissogaster parasitoid was introduced 1 cm into the unbranched end of the Y-tube. A 28-cm wire was used to facilitate parasitoid movement from the unbranched stem of the glass Y-tube to the test junction between the two upper arms. The order of individual test insects from a pool of naïve females was randomly assigned for each bioassay, and test plants were chosen randomly from the greenhouse culture before each experiment. All glassware was cleaned using dish soap and warm water, followed by solvent rinses with acetone and hexane. Cleaned and rinsed glassware was baked at 110°C in a glassware oven for 24 hours before use. New plants were used for each experiment.</p>
+<p>Each individual parasitoid was allowed three minutes to respond to either airstream source. Once a positive response was determined to either source, the trail was ended. If no choice was made after five minutes, the trail was ended and the result was recorded as no response.</p>
 </section>
 </section>
-<section id="volatile-collection-1" class="level2">
-<h2 class="anchored" data-anchor-id="volatile-collection-1">Volatile Collection</h2>
-<section id="sawfly-infestation" class="level3">
-<h3 class="anchored" data-anchor-id="sawfly-infestation">Sawfly Infestation</h3>
-<p>Winter wheat plants were deemed ready for infestation once they reached Zadoks 49. Both smooth brome and winter wheat plants were infested by placing a transparent plastic cylinder (60 x 3.8 cm) over the main stem of the plant. A 55-60 cm bamboo stick was added within each tube to help prevent toppling of the cylinder. Each cage had three holes, as well as an open top, covered with fine mesh cloth to allow for air circulation. Four females and two male WSS, newly emerged, were introduced into each tube via a small 1 cm opening. After which, the hole was plugged using a cotton ball covered in mesh cloth. Damp soil was mounded around the base of each tube to prevent insect escapees. Adult sawflies were left within infestation tubes for three days, after which the tubes were removed, and any surviving insects, as well as cadavers, were removed. After infestation, the plants were returned to normal water and fertilization schedules.</p>
-<p>Infestation was undertaken three days a week, for five weeks. Each replicate included 6 ‘Yellowstone’ winter wheat plants at Zadoks 49 and 6 smooth brome plants exhibiting three nodes. For each replicate, three wheat and three smooth brome plants were infested, with three of each left uninfested. Infestation tubes were placed around all twelve plants to maintain control.</p>
-</section>
-<section id="volatile-compound-collection" class="level3">
-<h3 class="anchored" data-anchor-id="volatile-compound-collection">Volatile Compound Collection</h3>
-<p>Volatile compounds were collected from intact and healthy smooth brome and ‘Yellowstone’ winter wheat. Collection was undergone on plants at Zadoks 49, for a period of six hours from 10:00 to 16:00. Collections were undergone three times a week, with twelve plants collected from each time. Each trail consisted of six smooth brome plants and six winter wheat, with three of each being infested, while the other three were a control.</p>
-<p>Volatiles were collected from twelve plants per day using glass VCC’s that were 80 cm long and 4 cm in diameter. Volatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al.&nbsp;(2009). The top end of each VCC funneled into a threaded port that was 10 cm in diameter. Threaded onto the top of each VCC was an eight-port manifold adapter. Two glass filters (traps) (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A Teflon guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Each plant stem was wrapped with a small piece of cotton prior to the application of the guillotine to further seal the base of the collection system and prevent contamination by ambient and soil derived volatiles.</p>
-</section>
-<section id="volatile-elution" class="level3">
-<h3 class="anchored" data-anchor-id="volatile-elution">Volatile Elution</h3>
-<p>Volatile compounds were eluted from the glass traps using 200 L aliquot dichloromethane. Trapped volatiles were eluted slowly by adding dichloromethane and further clearing by using a slow release of nitrogen gas. The eluted samples were collected in a glass insert held within a 1.5-mL crimped top glass vial. 10 L of nonyl acetate were then added to the eluted samples as internal standard to quantify compound concentrations. The samples were processed using gas chromatography (GC) on a HP – 5MS; 30m x 0.25mm, 0.25 m film thickness column; (J and W Scientific, Folsom, CA). In order to analyze, the GC instrument (Agilent 6890; Agilent Technologies, Santa Clara, CA) was coupled to a mass spectrometer (MS, Agilent 5973 instrument). Each sample was injected using the automated system in pulse splitless mode, with the initial pressure set to 82.7 kPa per minute. The inlet temperature of the GC was set to 250C while the column temperature was 50C for 4 minutes. The temperature was set to increase at a rate of 5C per minute until it reached 160C, after which it increased to a rate of 25C per minute until it reached 280C. The temperature of the transfer line leading to the mass selective detector (MSD) was set at 300C. Helium was used as a carrier gas to maintain the flow rate of samples within the column at 1.2 mL/min. The MSD was set in ‘SCAN’ mode running from 50 – 300 m/z.</p>
-</section>
-<section id="volatile-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="volatile-analysis">Volatile Analysis</h3>
-<p>The compounds collected from both the smooth brome and wheat samples were identified by comparing mass spectra and retention times using the National Institute of Standard and Technology (NIST) library. Peaks and volatiles were analyzed using MSD ChemStation (Agilent Technologies, Inc., Santa Clara, CA). The data obtained from the mass-spectrometer was transferred to a Microsoft® Excel spreadsheet where the compounds were quantified by comparison with the internal standard peak area. The amount obtained for each compound was then transformed to the amount produced in six hours. The true quantity of compounds was calculated relative to the internal standard.</p>
-</section>
-<section id="electroantennogram" class="level3">
-<h3 class="anchored" data-anchor-id="electroantennogram">Electroantennogram</h3>
-<p>Specimens were prepared by excising the head from the body using fine micro-dissection scissors. For each specimen, a micro-capillarity tube was pulled in half using a pipette puller (Model PP-830, Narishige Scientific Instrument Lab, Tokyo, Japan). Each half was cut to the appropriate length and angle, then filled with saline solution. The parasitoid head was mounted on the broken end of one of the capillary tubes, then the tube was place on one of the conducting electrode wires connected to a micromanipulator, type INR-5 (Narishige MN-151). The second half of the capillary tube was place on the other electrode wire, and one insect antennae was positioned to touch the empty capillary tube, thus connecting the circuit. The amplifier transferred the information to a computer interface with an EAG version 2.7 software (Syntech NL 2001, Hilversum, Netherlands). This apparatus and method has been consistently used previously in assessing insect volatile response (<span class="citation" data-cites="Agelopoulos1999">Agelopoulos et al. (<a href="#ref-Agelopoulos1999" role="doc-biblioref">1999</a>)</span>).</p>
-<p>A consistent stream of purified, humidified air (20 mL sec-1) was delivered onto the antennae. The test compound was delivered via airborne stimulus released from a glass pipette with filter paper treated with 10 L of the test compound. The pipette was connected to a Stimulus Controller CS-55 (Syntech NL 2010, Hilversum, The Netherlands). The equipment was programmed to deliver a 0.4 second puff of air through a Teflon tube and through the glass pipette. The electrical response of the antenna to the test compound was detected by the recording electrode and transferred to the amplifier, increasing the signal and delivering the information to the computer. Figure 2: Electroantennogram connected to GCMS. Useful for connecting insect electrochemical response to host plant produced volatile compounds. List of compounds used.</p>
 </section>
 </section>
-<section id="data-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
-<section id="field-survey" class="level3">
-<h3 class="anchored" data-anchor-id="field-survey">Field Survey</h3>
+<section id="data-analysis" class="level1">
+<h1>Data Analysis</h1>
+<section id="field-experiments-1" class="level2">
+<h2 class="anchored" data-anchor-id="field-experiments-1">Field Experiments</h2>
+<section id="field-survey-1" class="level3">
+<h3 class="anchored" data-anchor-id="field-survey-1">Field Survey</h3>
+<p>Statistical analyses were conducted in R (R Core Team 2022) using RStudio (version 4.2.1) using linear modeling after log transformation to improve the normality and constant variance assumptions. ‘Site’ and ‘polygon’ were used as fixed effects (treatments) while the mean number of infested stems, parasitized stems, dead larvae, alive larvae, dead eggs, alive eggs awere used as the response variable to assess the differences in parameters among the sampling sites. ANOVA was used to caculate P-values using F-distribution to understand overall significant differences in mean <em>C. cinctus</em> infestation and parasitism among polygons. To assess the profile of <em>C. cintus</em> infestation, paraisitms, and larval presence by node, a linear model was fit for each sampling site. Further assessment was done on the resonpses between sampling sites using a Tukey test using the ‘TukeyHSD’ function.</p>
 </section>
-<section id="greenhouse-experiments" class="level3">
-<h3 class="anchored" data-anchor-id="greenhouse-experiments">Greenhouse Experiments</h3>
-<section id="comparative-analysis-of-collection-of-volatiles" class="level4">
-<h4 class="anchored" data-anchor-id="comparative-analysis-of-collection-of-volatiles">Comparative Analysis of Collection of Volatiles</h4>
-<p>The concentration of volatile compounds gathered was determined as nanogram per gram per hour (ng-1g1hr1), accounting for plant biomass adjustments. Data were analyzed using R Studio version 2023.12.0+369 (R Core team 2023). Data were first transformed via centered-log ratio (CLR) transformation, a common technique for compositional data (Brückner and Heethoff, 2017). The data underwent both Permutational Analysis of Variance (PERMANOVA) and Permutational Analysis of Multivariate Dispersions (PERMDISP). PERMANOVA was used to determine differences among identified plant volatile compounds between the two plant types (Yellowstone winter wheat, B. inermis) at two infestation levels (Infested, control). PERMDISP was used to assess the variance of volatile quantities within our different groups.</p>
-</section>
-<section id="eag-fid" class="level4">
-<h4 class="anchored" data-anchor-id="eag-fid">EAG-FID</h4>
-</section>
-<section id="organic-volatile-collections" class="level4">
-<h4 class="anchored" data-anchor-id="organic-volatile-collections">Organic Volatile Collections</h4>
-<section id="centered-log-ratio-transformation" class="level5">
-<h5 class="anchored" data-anchor-id="centered-log-ratio-transformation">Centered Log-Ratio Transformation</h5>
-<p>The data was transformed using a centered log-ratio transformation (CLR). This method is commonly used for multivariate compositional data (Brückner and Heethoff, 2017). CLR works by taking the natural logarithm of the ratios between the values of individual components and their geometric mean across samples. This helps to mitigate spurious correlations and allows the application of standard statistical techniques to our compositional data.</p>
-</section>
-<section id="permanova" class="level5">
-<h5 class="anchored" data-anchor-id="permanova">PERMANOVA</h5>
+<section id="controlled-c.-cinctus-infestation-of-b.-inermis-1" class="level3">
+<h3 class="anchored" data-anchor-id="controlled-c.-cinctus-infestation-of-b.-inermis-1">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></h3>
 </section>
 </section>
+<section id="greenhouse-experiments-1" class="level2">
+<h2 class="anchored" data-anchor-id="greenhouse-experiments-1">Greenhouse Experiments</h2>
+<section id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat-1" class="level4">
+<h4 class="anchored" data-anchor-id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat-1">Organic Volatile Collection from <em>C. cinctus</em> Infested <em>B. inermis</em> and Winter Wheat</h4>
+<p>The data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data <span class="citation" data-cites="chemoguide">(<a href="#ref-chemoguide" role="doc-biblioref">Brückner and Heethoff 2017</a>)</span>. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2011</a>)</span>. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. Data were visualized using a combination of ggplot2 and knitr <span class="citation" data-cites="ggplot knitr">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>; <a href="#ref-knitr" role="doc-biblioref">Xie 2021</a>)</span>. I selected a subset of compounds to ues for each analysis. These compounds were selected based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output.</p>
+</section>
+<section id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds-1" class="level4">
+<h4 class="anchored" data-anchor-id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds-1">Behavioral Assessment of Parasitoids in Response to <em>B. inermis</em> Organic Volatile Compounds</h4>
 </section>
 </section>
 </section>
@@ -825,6 +804,9 @@ Ainslie, C. N. 1920. <span>“The Western Grass-Stem Sawfly.”</span> <em>Unite
 <div id="ref-Ainslie1929" class="csl-entry" role="listitem">
 ———. 1929. <span>“The Western Gras-Stem Sawfly, a Pest of Small Grains.”</span> <em>Bulletien of U.S. Department of Agriculture</em> 157.
 </div>
+<div id="ref-anderson2017" class="csl-entry" role="listitem">
+Anderson, Marti J. 2017. <span>“Permutational Multivariate Analysis of Variance (<span>PERMANOVA</span>).”</span> In <em>Wiley <span>StatsRef</span>: Statistics Reference Online</em>, 1–15. Chichester, UK: John Wiley &amp; Sons, Ltd.
+</div>
 <div id="ref-Beres2007" class="csl-entry" role="listitem">
 Beres, B. L., H. A. Cárcamo, and J. R. Byers. 2007. <span>“Effect of Wheat Stem Sawfly Damage on Yield and Quality of Selected Canadian Spring Wheat.”</span> <em>Journal of Economic Entomology</em> 100 (February): 79–87. <a href="https://doi.org/10.1093/jee/100.1.79">https://doi.org/10.1093/jee/100.1.79</a>.
 </div>
@@ -836,6 +818,9 @@ Bhandari, Rekha. 2020. <span>“<a href="https://www.ncbi.nlm.nih.gov/pubmed/252
 </div>
 <div id="ref-Blodgett1996" class="csl-entry" role="listitem">
 Blodgett, S. L., H. B. Goosey, D. K. Waters, C. I. Tharp, and G. D. Johnson. 1996. <span>“Wheat Stem Sawfly Control on Winter Wheat.”</span> <em>Arthropod Management</em> 22: 331–32.
+</div>
+<div id="ref-chemoguide" class="csl-entry" role="listitem">
+Brückner, Adrien, and Michael Heethoff. 2017. <span>“A Chemo-Ecologists’ Practical Guide to Compositional Data Analysis.”</span> <em>Chemoecology</em> 27: 33–46. <a href="https://doi.org/10.1007/s00049-016-0227-8">https://doi.org/10.1007/s00049-016-0227-8</a>.
 </div>
 <div id="ref-Buteler2015" class="csl-entry" role="listitem">
 Buteler, Micaela, Robert K. D. Peterson, Megan L. Hofland, and David K. Weaver. 2015. <span>“A Multiple Decrement Life Table Reveals That Host Plant Resistance and Parasitism Are Major Causes of Mortality for the Wheat Stem Sawfly.”</span> <em>Environmental Entomology</em> 44: 1571–80. <a href="https://doi.org/10.1093/ee/nvv128">https://doi.org/10.1093/ee/nvv128</a>.
@@ -869,6 +854,9 @@ Criddle, N. 1922. <span>“The Western-Stem Sawfly and Its Control.”</span> <e
 </div>
 <div id="ref-Criddle1923" class="csl-entry" role="listitem">
 Criddle, Norman. 1923. <span>“Popular and Practical Entomology: The Life Habits of Cephus Cinctus Nort. In Manitoba.”</span> <em>The Canadian Entomologist</em> 55: 1–4.
+</div>
+<div id="ref-Daisy2002" class="csl-entry" role="listitem">
+Daisy, Bryn H, Gary A Strobel, Uvidelio Castillo, David Ezra, Joe Sears, David K Weaver, and Justin B Runyon. 2002. <span>“Naphthalene, an Insect Repellent, Is Produced by Muscodor Vitigenus, a Novel Endophytic Fungus.”</span> <em>Microbiology</em> 148: 3737–41.
 </div>
 <div id="ref-Davis1955" class="csl-entry" role="listitem">
 Davis, E. G., Curtis Benton, and H. W. Somsen. 1955. <span>“Natural Enemies of the Wheat Stem Sawfly in North Dakota and Montana.”</span> <em>North Dakota Agricultural Experimental Bimonthly Bulletin</em> 18: 63–65.
@@ -990,6 +978,9 @@ Norin, Torbjörn. 2007. <span>“Semiochemicals for Insect Pest Management.”</
 <div id="ref-Norton1872" class="csl-entry" role="listitem">
 Norton, Edward. 1872. <span>“Notes on North American Tenthredinid<span>æ</span> , with Descriptions of New Species.”</span> <em>American Entomological Society</em> 4: 77–86.
 </div>
+<div id="ref-vegan" class="csl-entry" role="listitem">
+Oksanen, Jari, L. Gavin Simpson, F. Guillaume Blanchet, and Roeland Kindt. 2011. <span>“Ordination Methods, Diversity Analysis and Other Functions for Community and Vegetation Ecologists.”</span>
+</div>
 <div id="ref-mendoza2006" class="csl-entry" role="listitem">
 Perez-Mendoza, Joel, and David K. Weaver. 2006. <span>“Temperature and Relative Humidity Effects on Postdiapause Larval Development and Adult Emergence in Three Populations of Wheat Stem Sawfly (Hymenoptera: Cephidae).”</span> <em>Environmental Entomology</em> 35 (October): 1222–31. <a href="https://doi.org/10.1093/ee/35.5.1222">https://doi.org/10.1093/ee/35.5.1222</a>.
 </div>
@@ -1068,11 +1059,17 @@ Weiss, M. J., W. L. Morrill, and L. L. Reitz. 1987. <span>“Influence of Planti
 <div id="ref-Wenda2009" class="csl-entry" role="listitem">
 Wenda-Piesik, Anna, Zhitan Sun, William E. Grey, David K. Weaver, and Wendell L. Morrill. 2009. <span>“Mycoses of Wheat Stem Sawfly (Hymenoptera: Cephidae) Larvae by Fusarium Spp. Isolates.”</span> <em>Environmental Entomology</em> 38 (April): 387–94. <a href="https://doi.org/10.1603/022.038.0211">https://doi.org/10.1603/022.038.0211</a>.
 </div>
+<div id="ref-ggplot" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
 <div id="ref-Willson2000" class="csl-entry" role="listitem">
 Willson, Gary D., and James Stubbendieck. 2000. <span>“A Provisional Model for Smooth Brome Management in Degraded Tallgrass Prairie.”</span> <em>Ecological Restoration</em>. <a href="https://doi.org/10.3368/er.18.1.34">https://doi.org/10.3368/er.18.1.34</a>.
 </div>
 <div id="ref-Wilson1987" class="csl-entry" role="listitem">
 Wilson, F, ; Douglas, Jayne L; Szaro, Benny R Stapp, F Douglas Wilson, and Jayne L Szaro. 1987. <span>“Antibiosis in Cotton to Pink Bollworm.”</span> <a href="https://repository.arizona.edu/handle/10150/204497">https://repository.arizona.edu/handle/10150/204497</a>.
+</div>
+<div id="ref-knitr" class="csl-entry" role="listitem">
+Xie, Yihui. 2021. <span>“Knitr: A <span>General-Purpose</span> Package for Dynamic Report Generation in <span>R</span>.”</span> <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
 <div id="ref-VanZoeren2017" class="csl-entry" role="listitem">
 Zoeren, J Van, and C Guedot. 2017. <span>“IPM Tools: Host Plant Resistance.”</span> <em>Wisconsin Fruit News</em> 2: 2–3. <a href="https://vegento.russell.wisc.edu/ipm/host-plant-resistance/#:~:text=Host Plant Resistance. One IPM strategy is to,into three categories%3A non-preference%2C antibiosis%2C and tolerance.">https://vegento.russell.wisc.edu/ipm/host-plant-resistance/#:~:text=Host Plant Resistance. One IPM strategy is to,into three categories%3A non-preference%2C antibiosis%2C and tolerance.</a>

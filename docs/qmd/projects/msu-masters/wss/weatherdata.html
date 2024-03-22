@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jackson Strand">
-<meta name="dcterms.date" content="2024-03-20">
+<meta name="dcterms.date" content="2024-03-22">
 
 <title>Jackson Strand - Weather Data MT</title>
 <style>
@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 20, 2024</p>
+      <p class="date">March 22, 2024</p>
     </div>
   </div>
   
@@ -358,7 +358,7 @@ cols(
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>inventory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 747,433 × 6
+<pre><code># A tibble: 747,471 × 6
    station       lat   lon variable start   end
    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
  1 ACW00011604  17.1 -61.8 TMAX      1949  1949
@@ -371,7 +371,7 @@ cols(
  8 ACW00011604  17.1 -61.8 WSFG      1949  1949
  9 ACW00011604  17.1 -61.8 WT03      1949  1949
 10 ACW00011604  17.1 -61.8 WT08      1949  1949
-# ℹ 747,423 more rows</code></pre>
+# ℹ 747,461 more rows</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_lat <span class="ot">&lt;-</span> <span class="fl">45.661966103346735</span> <span class="sc">*</span> <span class="dv">2</span> <span class="sc">*</span> pi<span class="sc">/</span><span class="dv">360</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>my_long <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">111.04939878991246</span> <span class="sc">*</span> <span class="dv">2</span> <span class="sc">*</span> pi<span class="sc">/</span><span class="dv">360</span></span>
@@ -397,7 +397,7 @@ cols(
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(date, TMAX, PRCP, SNOW) <span class="sc">%&gt;%</span></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 253191 Columns: 8</code></pre>
+<pre><code>Rows: 253197 Columns: 8</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Column specification ────────────────────────────────────────────────────────

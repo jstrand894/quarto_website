@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jackson Strand">
-<meta name="dcterms.date" content="2024-03-20">
+<meta name="dcterms.date" content="2024-03-22">
 
 <title>Jackson Strand - Locoweed Volatiles Report</title>
 <style>
@@ -329,7 +329,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 20, 2024</p>
+      <p class="date">March 22, 2024</p>
     </div>
   </div>
   
@@ -449,7 +449,7 @@ div.csl-indent {
   <img class="expanded" id="expanded-image" onclick="navigateGallery(event)">
 </div>
 
-<p class="gallery-caption">Greenhouse Volatile Collection Plants looked like this.</p>
+<p class="gallery-caption">Greenhouse Locoweed volatiles were collected from plants that looked like these.</p>
 
 <script>
   var currentImageIndex = 0;
@@ -493,26 +493,77 @@ div.csl-indent {
 </section>
 <section id="data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
-<p>The data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data <span class="citation" data-cites="chemoguide">(<a href="#ref-chemoguide" role="doc-biblioref">Brückner and Heethoff 2017</a>)</span>. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2011</a>)</span>. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. Data were visualized using a combination of ggplot2 and knitr <span class="citation" data-cites="ggplot knitr">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>; <a href="#ref-knitr" role="doc-biblioref">Xie 2021</a>)</span>. I selected a subset of comounds to ues for each analysis. These compounds were seelcted based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output. I will highlight the cmopounds that I used for each analysis as I get to them.</p>
+<p>The data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data <span class="citation" data-cites="chemoguide">(<a href="#ref-chemoguide" role="doc-biblioref">Brückner and Heethoff 2017</a>)</span>. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) <span class="citation" data-cites="vegan">(<a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2011</a>)</span>. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant <span class="citation" data-cites="anderson2017">(<a href="#ref-anderson2017" role="doc-biblioref">Anderson 2017</a>)</span>. Data were visualized using a combination of ggplot2 and knitr <span class="citation" data-cites="ggplot knitr">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>; <a href="#ref-knitr" role="doc-biblioref">Xie 2021</a>)</span>. I selected a subset of compounds to ues for each analysis. These compounds were selected based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output.</p>
 </section>
 </section>
 <section id="results" class="level1">
 <h1>RESULTS</h1>
 <!-- LOAD DATA -->
 <!-- CLEAN UP DATA -->
+<!-- COMPOUNDS TO BE USED IN ANALYSIS -->
+<!-- CLR TRANSFORMATION -->
 <section id="field-volatile-collection-1" class="level2">
 <h2 class="anchored" data-anchor-id="field-volatile-collection-1">Field Volatile Collection</h2>
 <section id="boxplot-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="boxplot-comparison">Boxplot Comparison</h3>
+<p>Eleven compounds were selected to display comparisons.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="locoweed-report_files/figure-html/all comparison boxplot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="locoweed-report_files/figure-html/all.comparison.plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download File Buttons</title>
+<style>
+/* Button styling */
+.button {
+  background-color: #2068DC; /* Header of website color (blue) */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 200px;
+}
+.button:hover {
+  background-color: #3F91FB; /* Sky blue */
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+</style>
+
+
+
+<!-- Buttons to download the file -->
+<div class="button-container">
+  <a href="locoweed_plots/Field Locoweed Comparison BoxPlot.png" download="">
+    <button class="button">Download</button>
+  </a>
+
+<div class="button-container">
+  <a href="toadflax_plots/Toadflax_plots/Toadflax PCA Scores - Type_All.png" download="">
+    <button class="button">Download</button>
+  </a>
+</div>
+</div>
+
+
 </section>
 <section id="permanova" class="level3">
 <h3 class="anchored" data-anchor-id="permanova">PERMANOVA</h3>

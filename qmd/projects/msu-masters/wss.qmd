@@ -2,7 +2,7 @@
 title: "MSU Master's: Wheat Stem Sawfly"
 ---
 
-<a href="litreview.qmd" target="_blank">View Project Proposal</a>
+<a href="../../litreview.qmd" target="_blank">View Project Proposal</a>
 
 
 ```{=html}
