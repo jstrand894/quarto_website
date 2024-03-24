@@ -5,13 +5,13 @@ project:
   
   
 website:
+  title: "Jackson Strand"
+  site-url: "https://jackson-strand.com"
   search:
     location: sidebar
     type: textbox
   bread-crumbs: false
   favicon: img/aboutme/logo.png
-  title: "Jackson Strand"
-  site-url: https://jackson-strand.com
   navbar:
     background: primary
     search: true
