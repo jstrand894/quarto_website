@@ -11,6 +11,7 @@ website:
   bread-crumbs: false
   favicon: img/aboutme/logo.png
   title: "Jackson Strand"
+  site-url: https://jackson-strand.com
   navbar:
     background: primary
     search: true

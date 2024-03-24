@@ -47,7 +47,8 @@ filled_data[is.na(filled_data)] <- 0
 fid_plot <- 
 filled_data %>%
   dplyr::select(MeasRetTime, Area, Height) %>%
-  mutate(Height = ifelse(MeasRetTime < 3.2, 0, Height))
+  mutate(Height = ifelse(MeasRetTime < 3.2, 0, Height)) %>%
+  mutate()
   # ggplot() +
   # geom_point(aes(x = MeasRetTime, y = Height)) +
   # geom_line(aes(x = MeasRetTime, y = Height)) +
@@ -56,12 +57,17 @@ eag_plot <-
 eag %>%
   mutate(row_num = row_number()) %>%
   rename("EAD" = 'EAD 1') 
+
+
+
 ggplotly(
 ggplot() +
   geom_line(data = fid_plot, aes(x = MeasRetTime, 
                                  y = Height), 
             color = "red") +
-  geom_line(data = eag_plot, aes(x = scale_values(row_num)+1.2, 
+  geom_line(data = eag_plot %>%
+              mutate(EAD = ifelse(row_num == 42500, -1.5, EAD),
+                     EAD = ifelse(row_num == 42501, -1, EAD)), aes(x = scale_values(row_num)+0.2, 
                                  y = EAD * 100), 
             color = "blue") +
 
@@ -73,6 +79,17 @@ ggplot() +
   theme_bw() 
 )
   
+# ggplotly(
+#   ggplot(data = eag_plot,
+#          aes(x = row_num,
+#              y = EAD)) +
+#     geom_line() +
+#     theme_bw()
+# )
+
+stimuli <- 
+eag_plot %>%
+  filter(row_num >= 19220 & row_num <= 19810)
 ```
 
 
