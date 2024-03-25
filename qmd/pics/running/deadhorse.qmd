@@ -2,9 +2,7 @@
 title: "Deadhorse Ultra 50 Miler"
 subtitle: "November 18, 2023"
 format: html
-filters:
-   - lightbox
-lightbox: auto
+
 editor_options: 
   chunk_output_type: console
 ---
