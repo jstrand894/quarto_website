@@ -4,7 +4,7 @@ project:
   
 website:
   title: "Jackson Strand"
-  site-url: https://jackson-strand.com
+  site-url: https://msu-git.jacksonstrand.com
   search:
     location: sidebar
     type: textbox
