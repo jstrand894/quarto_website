@@ -2,31 +2,30 @@ project:
   type: website
   output-dir: docs
   
-  
-  
 website:
   title: "Jackson Strand"
-  site-url: "https://jackson-strand.com"
+  site-url: https://jackson-strand.com
   search:
     location: sidebar
     type: textbox
   bread-crumbs: false
   favicon: img/aboutme/logo.png
   navbar:
-    background: primary
+    background: light
     search: true
     logo: img/logo.png
+    title: "Jackson Strand"
     left:
-      - text: "Work"
+      - text: "Projects"
         file: qmd/projects.qmd
-      - text: "Pics"
+      - text: "Pictures"
         menu: 
           - qmd/pics/running.qmd
           - qmd/pics/bugs.qmd
       - text: "CV"
         file: qmd/cv.qmd
     right: 
-      - href: qmd/aboutme.qmd
+      - href: index.qmd
         text: About Me
     tools:
       - icon: linkedin
@@ -77,8 +76,19 @@ website:
 
 format:
   html:
-    theme: cosmo
+    toc: true
+    theme: 
+      light: [cosmo, _box.scss]
+    code-copy: true
+    code-overflow: wrap
+    css: styles.css
+    grid:
+      sidebar-width: 300px
+      body-width: 1000px
+      margin-width: 200px
 
-editor: source
+freeze: true
+
+editor: visual
 
 

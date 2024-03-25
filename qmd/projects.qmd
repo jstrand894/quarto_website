@@ -2,7 +2,19 @@
 title: "Projects"
 editor_options: 
   chunk_output_type: console
+toc: true
 ---
+
+# Montana State University
+## Master's Project
+Understanding how smooth brome impacts the ecology of wheat stem sawfly and native biocontrol parasitoids.  
+
+## Toadflax  
+Data analysis done for US Forest Service office out of Bozeman, MT. 
+
+## Salt Cedar
+
+
 
 ```{=html}
 <!DOCTYPE html>

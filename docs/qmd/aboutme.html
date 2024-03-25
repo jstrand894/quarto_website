@@ -67,9 +67,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -90,13 +91,13 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../qmd/projects.html"> 
-<span class="menu-text">Work</span></a>
+<span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pics" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Pics</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pictures" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Pictures</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-pics">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pictures">    
         <li>
     <a class="dropdown-item" href="../qmd/pics/running.html">
  <span class="dropdown-text">Running Pictures</span></a>
@@ -114,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../qmd/aboutme.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
 </ul>
@@ -132,7 +133,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#education" id="toc-education" class="nav-link active" data-scroll-target="#education">Education</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -170,98 +179,21 @@ ul.task-list li input[type="checkbox"] {
 <div style="margin: 30px; text-align: center;">
   <a class="btn btn-primary" href="../qmd/cv.html" role="button" style="padding: 15px 30px;">View my CV</a>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../img/aboutme/iceberg.JPG" class="img-fluid figure-img"></p>
-<figcaption>Me and Grace at Glacier National Park, 2023</figcaption>
-</figure>
-</div>
 </div></div>
 </div>
 
-<!-- ```{=html} -->
-<!-- <!DOCTYPE html> -->
-<!-- <html lang="en"> -->
-<!-- <head> -->
-<!--   <meta charset="UTF-8"> -->
-<!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-<!--   <title>Image Gallery</title> -->
-<!--   <style> -->
-<!--     .gallery { -->
-<!--       display: grid; -->
-<!--       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); -->
-<!--       grid-gap: 10px; -->
-<!--     } -->
-<!--     .gallery img { -->
-<!--       width: 100%; -->
-<!--       height: auto; -->
-<!--       cursor: pointer; -->
-<!--       transition: transform 0.3s ease; -->
-<!--     } -->
-<!--     .gallery img:hover { -->
-<!--       transform: scale(1.05); /* Slightly increase size on hover */ -->
-<!--     } -->
-<!--     .expanded-container { -->
-<!--       position: fixed; -->
-<!--       top: 0; -->
-<!--       left: 0; -->
-<!--       width: 100%; -->
-<!--       height: 100%; -->
-<!--       background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */ -->
-<!--       display: none; /* Initially hidden */ -->
-<!--       justify-content: center; -->
-<!--       align-items: center; -->
-<!--       z-index: 9999; -->
-<!--     } -->
-<!--     .expanded { -->
-<!--       max-width: 80%; -->
-<!--       max-height: 80%; -->
-<!--       cursor: pointer; -->
-<!--     } -->
-<!--   </style> -->
-<!-- </head> -->
-<!-- <body> -->
-<!-- <div class="gallery"> -->
-<!--   <img src="../img/bugs/blueflowers.JPG" alt="Image 1" onclick="expandImage(this)"> -->
-<!--   <img src="../img/bugs/brownmoth.JPG" alt="Image 2" onclick="expandImage(this)"> -->
-<!--   <img src="../img/bugs/butterfly-purpleflower.JPG" alt="Image 3" onclick="expandImage(this)"> -->
-<!-- </div> -->
-<!-- <div class="expanded-container" onclick="closeExpanded()"> -->
-<!--   <img class="expanded" id="expanded-image" onclick="navigateGallery(event)"> -->
-<!-- </div> -->
-<!-- <script> -->
-<!--   var currentImageIndex = 0; -->
-<!--   var galleryImages = document.querySelectorAll('.gallery img'); -->
-<!--   function expandImage(img) { -->
-<!--     currentImageIndex = Array.from(galleryImages).indexOf(img); -->
-<!--     document.getElementById('expanded-image').src = img.src; -->
-<!--     document.querySelector('.expanded-container').style.display = 'flex'; -->
-<!--   } -->
-<!--   function closeExpanded() { -->
-<!--     document.querySelector('.expanded-container').style.display = 'none'; -->
-<!--   } -->
-<!--   function navigateGallery(event) { -->
-<!--     // Calculate the click position relative to the expanded image -->
-<!--     var clickX = event.pageX - event.target.getBoundingClientRect().left; -->
-<!--     var imageWidth = event.target.offsetWidth; -->
-<!--     // Determine if the click was on the left or right side of the image -->
-<!--     if (clickX < imageWidth / 2) { -->
-<!--       // Clicked on the left side: navigate to the previous image -->
-<!--       currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length; -->
-<!--     } else { -->
-<!--       // Clicked on the right side: navigate to the next image -->
-<!--       currentImageIndex = (currentImageIndex + 1) % galleryImages.length; -->
-<!--     } -->
-<!--     // Update the expanded image source -->
-<!--     document.getElementById('expanded-image').src = galleryImages[currentImageIndex].src; -->
-<!--   } -->
-<!-- </script> -->
-<!-- </body> -->
-<!-- </html> -->
-<!-- ``` -->
+<section id="education" class="level2">
+<h2 data-anchor-id="education">Education</h2>
+<div class="box">
+<p><strong>BA Biology</strong>, 2013-2017 - <em>University of Minnesota - Twin Cities</em><br>
+- Minor: Marine Biology</p>
+<p><strong>MSc Entomology</strong>, 2021-2024 - <em>Montana State University</em></p>
+</div>
+<!-- ![Me and Grace at Glacier National Park, 2023](../img/aboutme/iceberg.JPG)   -->
 
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
