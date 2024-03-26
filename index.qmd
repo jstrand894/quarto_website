@@ -20,16 +20,124 @@ about:
 toc: true
 ---
 ::: {#about-block}
-<span style="font-size: 30px;">**Jackson R. Strand**</span>
+<span style="font-size: 35px; font-family: 'Georgia', sans-serif;">**Jackson R. Strand**</span>
+
 :::
 
 ## About me
 I am currently a Master's graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace.
 
+**My Research Interests**  
 I am broadly interested in how insects impact the lives of humans and how we can better utilize them to positively impact modern issues such as crop yield, climate change, and waste management. 
 
-**Montana State University Master's in Entomology**  
+**Montana State University - MSc Entomology**  
 My research focuses on understanding how the ecological relationship between the wheat stem sawfly (*Cephus cinctus*) and two native biocontrol parasitoids (*Bracon cephi* and *Bracon lissogaster*) are impacted by smooth brome (*Bromis inermis*). My project includes field sites in southwest, central, and northern Montana, as well as volatile organic compound analysis of greenhouse-grown smooth brome and winter wheat.
+
+<!-- pictures below about me -->
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+    .gallery-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 10px;
+      max-width: 1200px;
+      width: 100%;
+    }
+    .gallery img {
+      width: 100%;
+      object-fit: cover; /* Ensure images cover the entire space */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05); /* Slightly increase size on hover */
+    }
+    .expanded-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+      display: none; /* Initially hidden */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .expanded {
+      max-width: 80%;
+      max-height: 80%;
+      cursor: pointer;
+    }
+    p.gallery-caption {
+      text-align: center;
+      font-style: italic;
+      color: #8B8989;
+    }
+  </style>
+</head>
+<body>
+
+<div class="gallery">
+  <img src="img/index/wss.JPG" alt="Image 1" onclick="expandImage(this)">
+  <img src="img/index/pinecreek.jpeg" alt="Image 1" onclick="expandImage(this)">
+  <img src="img/index/loco-bee.JPG" alt="Image 1" onclick="expandImage(this)">
+  <img src="img/index/mushroom1.jpeg" alt="Image 1" onclick="expandImage(this)">
+  <img src="img/index/brownmoth.JPG" alt="Image 1" onclick="expandImage(this)">
+  <img src="img/index/glacierfall.jpeg" alt="Image 1" onclick="expandImage(this)">
+</div>
+<div class="expanded-container" onclick="closeExpanded()">
+  <img class="expanded" id="expanded-image" onclick="navigateGallery(event)">
+</div>
+
+<script>
+  var currentImageIndex = 0;
+  var galleryImages = document.querySelectorAll('.gallery img');
+
+  function expandImage(img) {
+    currentImageIndex = Array.from(galleryImages).indexOf(img);
+    document.getElementById('expanded-image').src = img.src;
+    document.querySelector('.expanded-container').style.display = 'flex';
+  }
+
+  function closeExpanded() {
+    document.querySelector('.expanded-container').style.display = 'none';
+  }
+
+  function navigateGallery(event) {
+    // Calculate the click position relative to the expanded image
+    var clickX = event.pageX - event.target.getBoundingClientRect().left;
+    var imageWidth = event.target.offsetWidth;
+
+    // Determine if the click was on the left or right side of the image
+    if (clickX < imageWidth / 2) {
+      // Clicked on the left side: navigate to the previous image
+      currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    } else {
+      // Clicked on the right side: navigate to the next image
+      currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    }
+
+    // Update the expanded image source
+    document.getElementById('expanded-image').src = galleryImages[currentImageIndex].src;
+  }
+</script>
+
+</body>
+</html>
+
+```
 
 
 ```{=html}
@@ -63,7 +171,7 @@ My research focuses on understanding how the ecological relationship between the
 </div>
 <br>
 
-- Department of Land Resources and Environmental Sciences  
+- Committee: Dr. David Weaver (co-chair), Dr. Tracy Sterling (co-chair), Dr. Robert Peterson
 - Graduate Certificate in Applied Statistics
 
 </div>
