@@ -1,0 +1,13 @@
+---
+title: "Helpful Resources & Links"
+---
+
+## R Studio
+Great R-Markdown guide made by [Jared Adam](https://www.linkedin.com/in/jared-adam-24b107241/){style="text-decoration: none;"}: 
+<a href="https://jared-adam-psu.github.io/R-Tutorial-for-Tooker-Lab/" target="_blank">One code to rule them all (┛ಠ_ಠ)┛彡O</a>
+
+## Quarto Website
+YouTube video on how to make a R Studio Quarto Website: [How to create a web site using Quarto, RStudio, and GitHub Pages](https://youtu.be/YN75YXaLFGM?si=RyCG23IMBwFUKsO8)
+
+## GitHub
+A great guide to using GitHub created by [Callum Arnold](https://www.linkedin.com/in/arnold-c/){style="text-decoration: none;"}: <a href="https://psu-git.callumarnold.com" target="_blank">Introduction to Git and GitHub</a>

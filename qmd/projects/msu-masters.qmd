@@ -71,7 +71,7 @@ title: "MSU Masters"
     font-size: 16px;
     margin-top: 5px;
     color: #666;
-    text-align: justify; /* Align text */
+    <!-- text-align: justify; /* Align text */ -->
   }
 
   @media (max-width: 768px) {
@@ -93,7 +93,7 @@ title: "MSU Masters"
       </div>
     </div>
   </a>
-  <a href="msu-masters/locoweed/locoweed-report.qmd" class="container">
+  <a href="msu-masters/locoweed.qmd" class="container">
     <div class="image-container">
       <img src="../../img/msu-masters/loco-bee2.jpg" alt="Image">
     </div>

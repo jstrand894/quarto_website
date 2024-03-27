@@ -1,0 +1,157 @@
+---
+title: "Organic Volatile Analysis of Locoweed"
+toc: FALSE
+---
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cropping Example</title>
+<style>
+    }
+    .image-container {
+        width: auto; /* Set the width of the container */
+        height: auto; /* Set the height of the container */
+        overflow: hidden; /* Hide overflow */
+    }
+    .image-container img {
+        width: 100%; /* Make the image fill the container horizontally */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="locoweed/img/loco-bee-crop-exp.JPG" alt="Your Image">
+</div>
+
+</body>
+</html>
+
+```
+
+<span style="font-size: 20px;"><strong> Contributing Members </strong></span>  
+This project is a subset of a project headed by 
+[Dr. Tracy Sterling](http://weedeco.msu.montana.edu/faculty/tracy_sterling/){style="text-decoration: none;"}. 
+In addition to Dr. Sterling, Rosie Wollander was immensely helpful in collecting data for all of the experiments. Thank you both for all of your help!
+
+<div class="box">
+<span style="font-size: 30px;"><strong> Project Overview </strong></span>  
+Astragalus and Oxytropix species, part of the Legume Family, are found in terrestrial ecosystems globally, including the western regions of North America. Many of these species are both nontoxic and important forages. However, several species are known to be toxic to both livestock and wildlife. *Oxytropis sericea Nutt* can harbor a commensal endophyte, *Alternaira oxytropos*, a fungus that is associated with locoweed plants, specifically those of the genus *Oxytropis*. Plants containing the endophyte have been found to produce swansonine, a toxic alkaloid that can be harmful to livestock when ingested in large quantities. In this study, we investigated the differences in volatile organic compound (VOC) emissions between both field and greenhouse specimens that contained the commensal endophyte *Alternaria oxytropis*, and those that did not (E+/E-).
+
+</div>
+<br>
+
+
+## Reports  
+I have broken down the reports into two seperate, and more managable, reports. Both can be found below. 
+
+<!-- report buttons -->
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box with Rounded Edges</title>
+  <style>
+  .report-container {
+    width: calc(50% - 20px);
+    max-width: 500px;
+    height: auto;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .report-container:last-child {
+    margin-bottom: 0;
+  }
+  
+  .report-container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .report-img-container {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .report-img-container img {
+    width: 150px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .report-content {
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1;
+  }
+  
+  .report-text h1 {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: black;
+  }
+  .report-text h1:hover {
+    color: #2068DC;
+  }
+  
+  .report-text p {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #666;
+    text-align: justify;
+  }
+
+  @media (max-width: 768px) {
+    .report-container {
+      width: calc(100% - 20px);
+    }
+  }
+</style>
+</head>
+<body>
+  <a href="locoweed/field-locoweed-report.qmd" class="report-container">
+    <div class="report-img-container">
+      <img src="locoweed/img/bombus-loco.jpg" alt="Image">
+    </div>
+    <div class="report-content">
+      <div class="report-text">
+        <h1>Field</h1>
+        <p>VOC Collection Report</p>
+      </div>
+    </div>
+  </a>
+  <a href="locoweed/gh-locoweed-report.qmd" class="report-container">
+    <div class="report-img-container">
+      <img src="locoweed/img/ghloco1-sq.jpg" alt="Image">
+    </div>
+    <div class="report-content">
+      <div class="report-text">
+        <h1>Greenhouse</h1>
+        <p>VOC Collection Report</p>
+      </div>
+    </div>
+  </a>
+</body>
+</html>
+
+
+```
+
+

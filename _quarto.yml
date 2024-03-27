@@ -24,6 +24,8 @@ website:
           - qmd/pics/bugs.qmd
       - text: "CV"
         file: qmd/cv.qmd
+      - text: "Helpful Resources"
+        file: qmd/helpful.qmd
     right: 
       - href: index.qmd
         text: About Me
@@ -63,7 +65,12 @@ website:
                   - text: "Weather Data"
                     href: qmd/projects/msu-masters/wss/weatherdata.qmd
                 - text: "Locoweed Volatiles"
-                  href: qmd/projects/msu-masters/locoweed/locoweed-report.qmd
+                  href: qmd/projects/msu-masters/locoweed.qmd
+                  contents:
+                  - text: "Field VOCs"
+                    href: qmd/projects/msu-masters/locoweed/field-locoweed-report.qmd
+                  - text: "Greenhouse VOCs"
+                    href: qmd/projects/msu-masters/locoweed/gh-locoweed-report.qmd
                 - text: "Toadflax"
                   href: qmd/projects/msu-masters/toadflax/toadflax_report.qmd
             - text: "Other"
@@ -79,6 +86,9 @@ format:
     toc: true
     theme: 
       light: [cosmo, _box.scss]
+    # title-block-banner: "#9e74f1"
+    code-block-bg: true
+    code-block-border-left: "#1abcd9"
     code-copy: true
     code-overflow: wrap
     css: styles.css
