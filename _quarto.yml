@@ -91,7 +91,7 @@ format:
     code-block-border-left: "#1abcd9"
     code-copy: true
     code-overflow: wrap
-    css: styles.css
+    css: [styles.css, _box.scss]
     grid:
       sidebar-width: 300px
       body-width: 1000px

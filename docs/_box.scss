@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+
+// set constants
+
+// Project button class
+
+// Navbar
+$navbar-color: #DF536B !default; //go to default if this breaks 
+$navbar-padding-y: 1rem !default;
+
+// Link colors
+$box-bg-color:  whitesmoke !default;
+$box-border-color: lightgray !default;
+$hover-color: lightslategray !default;
+$link-color:  steelblue !default;
+
+/*-- scss:rules: --*/
+
+// making objects, like a box with specified colors 
+
+.box {
+    background: $box-bg-color;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid $box-border-color;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
