@@ -1,0 +1,35 @@
+---
+title: LRES Graduate Student Organization
+---
+
+<!-- header -->
+<img src="gso/headerz.png" alt="header" height="150">
+
+The Land Resources and Environmental Science Graduate Student Organization (LRES GSO) is a student-run group at Montana State University, working to provide social and professional networking opportunities for grad students in our department. LRES boasts a wide range of diversity, from plant scientists, to environmental microbiologists, to hydrologists, and the GSO exists to help students take advantage of the rich knowledge base that this broad range of interests encompasses.
+
+<a href="https://landresources.montana.edu/gso/" target="_blank">GSO Website</a>
+
+<!-- symposium -->
+<a href="projects/gso.qmd" style="text-decoration:none;">
+  <span style="font-size:2em;">2024 LRES-PSPP Student Research Symposium</span>
+</a>
+  <span style="fonts-size:1em;"></span>  
+<div class="box">  
+Along with the rest of GSO leadership, I helped to organize and put on the yearly student research symposium. In 2024, I created a website that the organzation uses to communicate information about the symposium to students and faculty. 
+<br>  
+<a href="https://lres-research-symposium.weebly.com" target="_blank">2024 LRES-PSPP Student Research Symposium website</a>
+
+<img src="gso/symposiumlogo.png" alt="Alt text" style="max-width: 200px; height: auto;">
+</div>
+
+<br>
+<!-- emails -->
+<a href="projects/gso.qmd" style="text-decoration:none;">
+  <span style="font-size:2em;">GSO Emails</span>
+</a>
+  <span style="fonts-size:1em;"></span>  
+<div class="box">  
+While serving as the co-chair, I managed and created rich HTML emails to communicate with the university community. 
+<br>   
+You can view my work [here](gso/emails/symposium-email-3-28.pdf). The emails don't always render correctly when converting to pdf, but you get the general idea.
+</div>

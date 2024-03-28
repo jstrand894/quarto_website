@@ -79,9 +79,9 @@
   {
     "objectID": "qmd/projects.html",
     "href": "qmd/projects.html",
-    "title": "Projects",
+    "title": "Montana State University",
     "section": "",
-    "text": "Understanding how smooth brome impacts the ecology of wheat stem sawfly and native biocontrol parasitoids.\n\n\n\nData analysis done for US Forest Service office out of Bozeman, MT.\n\n\n\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        \n        2021-2024 Co-advised by Dr. David Weaver and Dr. Tracy Sterling\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        \n        2017-2019\n      \n    \n  \n\n\n\n\n  \n  \n  Box with Rounded Edges",
+    "text": "Montana State University\n\n Master’s Project  wheat stem sawfly and native parasitoids\n\n\nUnderstanding the ecological importance of smooth brome (Bromus inermis) in biological control of the wheat stem sawfly (Cephus cinctus) using native parasitoids. \nPI: Dr. David Weaver\n\n   Locoweed Volatiles  volatile profile differences in Oxytropis sericea\n\n\nMeasuring the differences in volatile organic compound (VOC) profiles between Oxytropis sericea specimens containing the commensal endophyte Alternaira oxytropos, and those without.\n PI: Dr. Tracy Sterling\n\n   Toadflax  VOC data analysis\n\n\nAnalyzing the difference in VOC profiles between two toadflax species and hybrids. Project in joint with the US Forest Service. \nPI: Dr. David Weaver & Dr. Sharlene Sing (USFS)\n\n\n\nOther\n LRES Graduate Student Organization  \n\n\nServed as the treasurer from 2022-2023, then as co-chair from 2023-2024. Built and managed HTML emails, a website, and organized a research symposium.\n\n\n NBA Roster Analysis Tool  basketball roster analysis\n\n\nFrom 2017 to 2019, I built my own NBA roster analysis tool for analyzing roster construction, free agency, and per-game metrics. The information is out of date, but all of the functionality still works.\n\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        Montana State University\n        2021-2024\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        NBA Roster Analysis Tool\n        2017-2019\n      \n    \n  \n\n\n\n\n  \n  \n  Box with Rounded Edges",
     "crumbs": [
       "Projects"
     ]
@@ -91,7 +91,7 @@
     "href": "qmd/projects.html#masters-project",
     "title": "Projects",
     "section": "",
-    "text": "Understanding how smooth brome impacts the ecology of wheat stem sawfly and native biocontrol parasitoids.",
+    "text": "Understanding the ecological importance of smooth brome (Bromus inermis) in biological control of the wheat stem sawfly (Cephus cinctus) using native parasitoids.",
     "crumbs": [
       "Projects"
     ]
@@ -111,7 +111,7 @@
     "href": "qmd/projects.html#salt-cedar",
     "title": "Projects",
     "section": "",
-    "text": "Box with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        \n        2021-2024 Co-advised by Dr. David Weaver and Dr. Tracy Sterling\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        \n        2017-2019\n      \n    \n  \n\n\n\n\n  \n  \n  Box with Rounded Edges",
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        \n        2021-2024\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        \n        2017-2019\n      \n    \n  \n\n\n\n\n  \n  \n  Box with Rounded Edges",
     "crumbs": [
       "Projects"
     ]
@@ -733,28 +733,28 @@
     "href": "qmd/helpful.html",
     "title": "Helpful Resources & Links",
     "section": "",
-    "text": "Great R-Markdown guide made by Jared Adam: One code to rule them all (┛ಠ_ಠ)┛彡O"
+    "text": "Guide to using R made by Jared Adam: One code to rule them all (┛ಠ_ಠ)┛彡O"
   },
   {
     "objectID": "qmd/helpful.html#r-studio",
     "href": "qmd/helpful.html#r-studio",
     "title": "Helpful Resources & Links",
     "section": "",
-    "text": "Great R-Markdown guide made by Jared Adam: One code to rule them all (┛ಠ_ಠ)┛彡O"
+    "text": "Guide to using R made by Jared Adam: One code to rule them all (┛ಠ_ಠ)┛彡O"
   },
   {
     "objectID": "qmd/helpful.html#quarto-website",
     "href": "qmd/helpful.html#quarto-website",
     "title": "Helpful Resources & Links",
     "section": "Quarto Website",
-    "text": "Quarto Website\nYouTube video on how to make a R Studio Quarto Website: How to create a web site using Quarto, RStudio, and GitHub Pages"
+    "text": "Quarto Website\n\nYouTube video on how to make a R Studio Quarto Website: How to create a web site using Quarto, RStudio, and GitHub Pages\n\nGallery showing different options for formatting a Quarto website: Quarto Gallery"
   },
   {
     "objectID": "qmd/helpful.html#github",
     "href": "qmd/helpful.html#github",
     "title": "Helpful Resources & Links",
     "section": "GitHub",
-    "text": "GitHub\nA great guide to using GitHub created by Callum Arnold: Introduction to Git and GitHub"
+    "text": "GitHub\n\nA guide to using GitHub created by Callum Arnold: Introduction to Git and GitHub"
   },
   {
     "objectID": "qmd/pics/running/tmr50k.html",
@@ -1030,5 +1030,17 @@
     "title": "Jackson Strand",
     "section": "",
     "text": "LinkedIn\n  \n  \n    \n     Instagram\n  \n  \n    \n     GitHub\n  \n\n  \n  \nI am currently a Master’s graduate student at Montana State University studying entomology. I live in Bozeman, MT with my wife Grace.\n\n  View my CV\n\n\n\n\nMe and Grace at Glacier National Park, 2023\n\n\n\n\n\n&lt;html lang=\"en\"&gt;\n&lt;head&gt;\n  &lt;meta charset=\"UTF-8\"&gt;\n  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n  &lt;title&gt;Image Gallery&lt;/title&gt;\n  &lt;style&gt;\n    .gallery {\n      display: grid;\n      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n      grid-gap: 10px;\n    }\n\n    .gallery img {\n      width: 100%;\n      height: auto;\n    }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n\n&lt;div class=\"gallery\"&gt;\n  &lt;img src=\"img1.jpg\" alt=\"Image 1\"&gt;\n  &lt;img src=\"img2.jpg\" alt=\"Image 2\"&gt;\n  &lt;img src=\"img3.jpg\" alt=\"Image 3\"&gt;\n  &lt;!-- Add more images as needed --&gt;\n&lt;/div&gt;\n\n&lt;/body&gt;\n&lt;/html&gt;"
+  },
+  {
+    "objectID": "qmd/projects/gso.html",
+    "href": "qmd/projects/gso.html",
+    "title": "LRES Graduate Student Organization",
+    "section": "",
+    "text": "The Land Resources and Environmental Science Graduate Student Organization (LRES GSO) is a student-run group at Montana State University, working to provide social and professional networking opportunities for grad students in our department. LRES boasts a wide range of diversity, from plant scientists, to environmental microbiologists, to hydrologists, and the GSO exists to help students take advantage of the rich knowledge base that this broad range of interests encompasses.\nGSO Website\n\n 2024 LRES-PSPP Student Research Symposium  \n\n\nAlong with the rest of GSO leadership, I helped to organize and put on the yearly student research symposium. In 2024, I created a website that the organzation uses to communicate information about the symposium to students and faculty. \n2024 LRES-PSPP Student Research Symposium website\n\n\n   GSO Emails  \n\n\nWhile serving as the co-chair, I managed and created rich HTML emails to communicate with the university community. \nYou can view my work here. The emails don’t always render correctly when converting to pdf, but you get the general idea.",
+    "crumbs": [
+      "Projects",
+      "Other",
+      "Graduate Student Organization"
+    ]
   }
 ]

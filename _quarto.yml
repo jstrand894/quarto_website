@@ -8,7 +8,7 @@ website:
   search:
     location: sidebar
     type: textbox
-  bread-crumbs: false
+  bread-crumbs: true
   favicon: img/aboutme/logo.png
   navbar:
     background: light
@@ -77,6 +77,8 @@ website:
               contents:
                 - text: "Basketball Analysis Tool"
                   file: qmd/projects/bballtool.qmd
+                - text: "Graduate Student Organization"
+                  file: qmd/projects/gso.qmd
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
     left: "&copy; Copyright 2024, Jackson Strand"

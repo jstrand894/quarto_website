@@ -1,19 +1,62 @@
 ---
-title: "Projects"
+# title: "Projects"
 editor_options: 
   chunk_output_type: console
 toc: true
 ---
 
 # Montana State University
-## Master's Project
-Understanding how smooth brome impacts the ecology of wheat stem sawfly and native biocontrol parasitoids.  
+<!-- wss -->
+<a href="projects/msu-masters/wss.qmd" style="text-decoration:none;">
+  <span style="font-size:2em;">Master's Project</span>
+</a>
+  <span style="fonts-size:1em;">*wheat stem sawfly and native parasitoids*</span>  
+<div class="box">  
+Understanding the ecological importance of smooth brome (*Bromus inermis*) in biological control of the wheat stem sawfly (*Cephus cinctus*) using native parasitoids. 
+<br>  
+*PI: [Dr. David Weaver](https://landresources.montana.edu/directory/faculty/1524725/david-weaver){style="text-decoration:none;"}*
+</div>
+<br>
+<!-- locoweed -->
+<a href="projects/msu-masters/locoweed.qmd" style="text-decoration:none;">
+  <span style="font-size:2em;">Locoweed Volatiles</span>
+</a>
+  <span style="fonts-size:1em;">*volatile profile differences in Oxytropis sericea*</span>  
+<div class="box">  
+Measuring the differences in volatile organic compound (VOC) profiles between *Oxytropis sericea* specimens containing the commensal endophyte *Alternaira oxytropos*, and those without.  
+<br>
+*PI: [Dr. Tracy Sterling](http://weedeco.msu.montana.edu/faculty/tracy_sterling/){style="text-decoration:none;"}*
+</div>
+<br>
+<!-- toadflax -->
+<a href="projects/msu-masters/toadflax.qmd" style="text-decoration:none;">
+  <span style="font-size:2em;">Toadflax</span>
+</a>
+  <span style="fonts-size:1em;">*VOC data analysis*</span>  
+<div class="box">  
+Analyzing the difference in VOC profiles between two toadflax species and hybrids. Project in joint with the US Forest Service. 
+<br>  
+*PI: [Dr. David Weaver](https://landresources.montana.edu/directory/faculty/1524725/david-weaver){style="text-decoration: none;"} & [Dr. Sharlene Sing (USFS)](https://www.fs.usda.gov/research/about/people/ssing){style="text-decoration:none;"}*
+</div>
 
-## Toadflax  
-Data analysis done for US Forest Service office out of Bozeman, MT. 
+# Other
 
-## Salt Cedar
+<a href="projects/gso.qmd" style="text-decoration:none;">
+  <span style="font-size:2em;">LRES Graduate Student Organization</span>
+</a>
+  <span style="fonts-size:1em;"></span>  
+<div class="box">  
+Served as the treasurer from 2022-2023, then as co-chair from 2023-2024. Built and managed HTML emails, a website, and organized a research symposium. 
+</div>
+<br>
 
+<a href="projects/bballtool.qmd" style="text-decoration:none;">
+  <span style="font-size:2em;">NBA Roster Analysis Tool</span>
+</a>
+  <span style="fonts-size:1em;">basketball roster analysis</span>  
+<div class="box">  
+From 2017 to 2019, I built my own NBA roster analysis tool for analyzing roster construction, free agency, and per-game metrics. The information is out of date, but all of the functionality still works.
+</div>
 
 
 ```{=html}
@@ -101,8 +144,8 @@ Data analysis done for US Forest Service office out of Bozeman, MT.
     </div>
     <div class="content">
       <div class="text">
-        <h1>Montana State University Master's</h1>
-        <p>2021-2024<br> Co-advised by Dr. David Weaver and Dr. Tracy Sterling</p>
+        <h1>Montana State University</h1>
+        <p>2021-2024</p>
       </div>
     </div>
   </a>
