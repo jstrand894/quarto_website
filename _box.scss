@@ -6,7 +6,7 @@
 
 // Navbar
 $navbar-color: #DF536B !default; //go to default if this breaks 
-$navbar-padding-y: 1.5rem !default;
+$navbar-padding-y: 1rem !default;
 
 // Link colors
 $box-bg-color:  whitesmoke !default;
@@ -21,7 +21,10 @@ $link-color:  steelblue !default;
 .box {
     background: $box-bg-color;
     border-radius: 5px;
-    padding: 20px; 
+    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
     border: 1px solid $box-border-color;
     margin-left: 0px;
     margin-right: 0px;

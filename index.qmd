@@ -186,6 +186,21 @@ My research focuses on understanding how the ecological relationship between the
 </div>
 <br>
 
+- Understanding ecological importance of smooth brome (*Bromus inermis*) in biological control of wheat stem sawfly (*Cephus cinctus*) using native braconid parasitoids. 
+  - Field work collecting smooth brome and winter wheat samples from southwest, central, and northern Montana.
+  - Controlled wheat stem safwly infestation of smooth brome using insect netting and PVC cages.
+  - Collection of volatile organic compounds (VOCs) using greenhouse volatile collection system.
+  - Gas chromatography - mass spectroscopy (GCMS) run on VOC samples, data processed and analyzed using RStudio. 
+  - Electroantennogram - Flame Ionization Detector (EAD-FID) run on parasitoids to measure response to smooth brome and winter wheat VOCs.
+  
+- Locoweed
+  - Collected VOCs from greenhouse and field *Oxytropis sericea* specimens using greenhouse volatile collection system and push-pull field volatile collection system. 
+  - GCMS run on VOC samples, data processed and analyzed using RStudio.  
+
+- Biocontrol of Salt Cedar (*Tamarix ramosissima*) using subtropical tamarisk beetle (*Diorhabda sublineata*) in eastern Montana.
+  - Field work setting up insect cages on large salt cedar plants in central Montana.
+  - Collected salt cedar plants using pulaski from south central Montana.
+  
 </div>
 
 ## Teaching Experience
