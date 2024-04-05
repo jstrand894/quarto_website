@@ -48,31 +48,31 @@ website:
         - text: "Projects"
           file: qmd/projects.qmd
           contents:
-            - text: "MSU-Master's"
-              href: qmd/projects/msu-masters.qmd
+            - text: "Montana State University"
+              href: qmd/projects/msu.qmd
               contents:
                 - text: "Wheat Stem Sawfly"
-                  href: qmd/projects/msu-masters/wss.qmd
+                  href: qmd/projects/msu/wss.qmd
                   contents:
                   - text: "Thesis Proposal"
                     href: qmd/litreview.qmd
                   - text: "Controlled WSS Infestation"
-                    href: qmd/projects/msu-masters/wss/pfreport.qmd
+                    href: qmd/projects/msu/wss/pfreport.qmd
                   - text: "Montana Field Sites"
-                    href: qmd/projects/msu-masters/wss/field_report.qmd
+                    href: qmd/projects/msu/wss/field_report.qmd
                   - text: "Organic Volatile Collection"
-                    href: qmd/projects/msu-masters/wss/eag.qmd
+                    href: qmd/projects/msu/wss/eag.qmd
                   - text: "Weather Data"
-                    href: qmd/projects/msu-masters/wss/weatherdata.qmd
+                    href: qmd/projects/msu/wss/weatherdata.qmd
                 - text: "Locoweed Volatiles"
-                  href: qmd/projects/msu-masters/locoweed.qmd
+                  href: qmd/projects/msu/locoweed.qmd
                   contents:
                   - text: "Field VOCs"
-                    href: qmd/projects/msu-masters/locoweed/field-locoweed-report.qmd
+                    href: qmd/projects/msu/locoweed/field-locoweed-report.qmd
                   - text: "Greenhouse VOCs"
-                    href: qmd/projects/msu-masters/locoweed/gh-locoweed-report.qmd
+                    href: qmd/projects/msu/locoweed/gh-locoweed-report.qmd
                 - text: "Toadflax"
-                  href: qmd/projects/msu-masters/toadflax/toadflax_report.qmd
+                  href: qmd/projects/msu/toadflax/toadflax_report.qmd
             - text: "Other"
               contents:
                 - text: "Basketball Analysis Tool"

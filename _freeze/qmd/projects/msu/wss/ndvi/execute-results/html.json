@@ -1,0 +1,17 @@
+{
+  "hash": "bcbc9cb522ed7e137ed5f7434c6c225b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"ndvi\"\neditor_options: \n  chunk_output_type: console\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](ndvi_files/figure-html/plot-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "ndvi_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

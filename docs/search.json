@@ -79,9 +79,9 @@
   {
     "objectID": "qmd/projects.html",
     "href": "qmd/projects.html",
-    "title": "Montana State University",
+    "title": "Projects",
     "section": "",
-    "text": "Montana State University\n\n Master’s Project  wheat stem sawfly and native parasitoids\n\n\nUnderstanding the ecological importance of smooth brome (Bromus inermis) in biological control of the wheat stem sawfly (Cephus cinctus) using native parasitoids. \nPI: Dr. David Weaver\n\n   Locoweed Volatiles  volatile profile differences in Oxytropis sericea\n\n\nMeasuring the differences in volatile organic compound (VOC) profiles between Oxytropis sericea specimens containing the commensal endophyte Alternaira oxytropos, and those without.\n PI: Dr. Tracy Sterling\n\n   Toadflax  VOC data analysis\n\n\nAnalyzing the difference in VOC profiles between two toadflax species and hybrids. Project in joint with the US Forest Service. \nPI: Dr. David Weaver & Dr. Sharlene Sing (USFS)\n\n\n\nOther\n LRES Graduate Student Organization  \n\n\nServed as the treasurer from 2022-2023, then as co-chair from 2023-2024. Built and managed HTML emails, a website, and organized a research symposium.\n\n\n NBA Roster Analysis Tool  basketball roster analysis\n\n\nFrom 2017 to 2019, I built my own NBA roster analysis tool for analyzing roster construction, free agency, and per-game metrics. The information is out of date, but all of the functionality still works.\n\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        Montana State University\n        2021-2024\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        NBA Roster Analysis Tool\n        2017-2019\n      \n    \n  \n\n\n\n\n  \n  \n  Box with Rounded Edges",
+    "text": "Montana State University\n\n Master’s Project  wheat stem sawfly and native parasitoids\n\n\nUnderstanding the ecological importance of smooth brome (Bromus inermis) in biological control of the wheat stem sawfly (Cephus cinctus) using native parasitoids. \nPI: Dr. David Weaver\n\n   Locoweed Volatiles  volatile profile differences in Oxytropis sericea\n\n\nMeasuring the differences in volatile organic compound (VOC) profiles between Oxytropis sericea specimens containing the commensal endophyte Alternaira oxytropos, and those without.\n PI: Dr. Tracy Sterling\n\n   Toadflax  VOC data analysis\n\n\nAnalyzing the difference in VOC profiles between two toadflax species and hybrids. Project in joint with the US Forest Service. \nPI: Dr. David Weaver & Dr. Sharlene Sing (USFS)\n\n\n\nOther\n LRES Graduate Student Organization \n\n\nServed as the treasurer from 2022-2023, then as co-chair from 2023-2024. Built and managed HTML emails, a website, and organized a research symposium.\n\n\n NBA Roster Analysis Tool  basketball roster analysis\n\n\nFrom 2017 to 2019, I built my own NBA roster analysis tool for analyzing roster construction, free agency, and per-game metrics. The information is out of date, but all of the functionality still works.",
     "crumbs": [
       "Projects"
     ]
@@ -452,11 +452,7 @@
     "href": "qmd/projects/msu-masters.html",
     "title": "MSU Masters",
     "section": "",
-    "text": "Box with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        Wheat Stem Sawfly\n        Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Locoweed Volatiles\n        Comparison of volatile organic compounds profiles of Oxytropis plants that contained the commensal endophyte Alternaria oxytropis and those that did not.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Toadflax",
-    "crumbs": [
-      "Projects",
-      "MSU-Master's"
-    ]
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        Wheat Stem Sawfly\n        Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Locoweed Volatiles\n        Comparison of volatile organic compounds profiles of Oxytropis plants that contained the commensal endophyte Alternaria oxytropis and those that did not.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Toadflax"
   },
   {
     "objectID": "qmd/projects/bballtool.html",
@@ -1042,5 +1038,416 @@
       "Other",
       "Graduate Student Organization"
     ]
+  },
+  {
+    "objectID": "qmd/projects/msu.html",
+    "href": "qmd/projects/msu.html",
+    "title": "MSU Masters",
+    "section": "",
+    "text": "Box with Rounded Edges\n\n\n\n  \n    \n      \n    \n    \n      \n        Wheat Stem Sawfly\n        Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Locoweed Volatiles\n        Comparison of volatile organic compounds profiles of Oxytropis plants that contained the commensal endophyte Alternaria oxytropis and those that did not.\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Toadflax",
+    "crumbs": [
+      "Projects",
+      "Montana State University"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss/eag.html",
+    "href": "qmd/projects/msu/wss/eag.html",
+    "title": "eag",
+    "section": "",
+    "text": "New names:\n• `` -&gt; `...5`\n• `` -&gt; `...6`",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Wheat Stem Sawfly",
+      "Organic Volatile Collection"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss/weatherdata.html",
+    "href": "qmd/projects/msu/wss/weatherdata.html",
+    "title": "Weather Data MT",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(glue)\nlibrary(lubridate)\nlibrary(ggplot2)\n\n\ninventory_url &lt;- \"https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt\"\n\ninventory &lt;- read_table(inventory_url,\n           col_names = c(\"station\", \"lat\", \"lon\", \"variable\", \"start\", \"end\"))\n\n\n── Column specification ────────────────────────────────────────────────────────\ncols(\n  station = col_character(),\n  lat = col_double(),\n  lon = col_double(),\n  variable = col_character(),\n  start = col_double(),\n  end = col_double()\n)\n\ninventory\n\n# A tibble: 747,471 × 6\n   station       lat   lon variable start   end\n   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;\n 1 ACW00011604  17.1 -61.8 TMAX      1949  1949\n 2 ACW00011604  17.1 -61.8 TMIN      1949  1949\n 3 ACW00011604  17.1 -61.8 PRCP      1949  1949\n 4 ACW00011604  17.1 -61.8 SNOW      1949  1949\n 5 ACW00011604  17.1 -61.8 SNWD      1949  1949\n 6 ACW00011604  17.1 -61.8 PGTM      1949  1949\n 7 ACW00011604  17.1 -61.8 WDFG      1949  1949\n 8 ACW00011604  17.1 -61.8 WSFG      1949  1949\n 9 ACW00011604  17.1 -61.8 WT03      1949  1949\n10 ACW00011604  17.1 -61.8 WT08      1949  1949\n# ℹ 747,461 more rows\n\nmy_lat &lt;- 45.661966103346735 * 2 * pi/360\nmy_long &lt;- -111.04939878991246 * 2 * pi/360\n\nmy_station &lt;- \n  inventory %&gt;%\n    mutate(lat_r = lat *2 *pi/360,\n           lon_r = lon *2 *pi/360,\n           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + cos(lat_r) * cos(my_lat) * cos(my_long - lon_r))) %&gt;%\n    filter(start &lt; 1960 & end &gt; 2020) %&gt;%\n    top_n(n = -1, d) %&gt;%\n    distinct(station) %&gt;%\n    pull(station)\n\nstation_daily &lt;- glue(\"https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz\")\n\nlocal_weather &lt;- \nread_csv(station_daily,\n         col_names = c(\"station\", \"date\", \"variable\", \"value\", \"a\", \"b\", \"c\", \"d\")) %&gt;%\n  dplyr::select(station, date, variable, value) %&gt;%\n  pivot_wider(names_from = \"variable\", values_from = \"value\",\n                values_fill = 0) %&gt;%\n  dplyr::select(date, TMAX, PRCP, SNOW) %&gt;%\n  mutate(date = ymd(date))\n\nRows: 253239 Columns: 8\n\n\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (5): station, variable, a, b, c\ndbl (3): date, value, d\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nbozeman_weather &lt;-\n  local_weather %&gt;%\n  filter(date &gt; \"2000-01-01\")\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = PRCP)) +\n  theme_bw() \n\n\n\n\n\n\n\nggplot(data = bozeman_weather) +\n  geom_line(aes(x = date, y = PRCP)) +\n  geom_smooth(aes(x = date, y = PRCP), method = \"loess\", se = TRUE) +\n  theme_bw()\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\ntitle: “Montana Weather Data”",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Wheat Stem Sawfly",
+      "Weather Data"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "",
+    "text": "Note: This project is still a work in progress.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html#field-volatile-collection",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html#field-volatile-collection",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "Field Volatile Collection",
+    "text": "Field Volatile Collection\nVolatile collected was undergone on plants grown at a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. Plants were inventoried and logged using GPS, and tissue samples from each specimen were analyzed to establish whether the plant contained the endophyte. Volatiles were collected from all the plants in each year over the course of one to two successive weeks. Volatile were collected from 20 plants per day by placing Reynolds Turkey Oven Bags (Reynolds Group Holdings, Auckland, New Zealand) over the top of the selected number of leaflets. A push-pull system was used to pull air from inside each turkey back. Glass filter traps (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into one end of a lenght of plastic tubing that was connected to an air pump.\nVolatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al. (2009). After the two hour collection period, glass volatile collection traps were eluted using 200 µL of dichloromethane into 2 mL screw top vials (Agilent Technologies, Inc., Santa Clara, CA), followed by a slow release of nitrogen to further clear the volatile trap. 10 µL of nonyl acetate solution was added to the eluted solution as internal standard to quantify compounds. Samples were then subject to gas chromatography (GC) on a J&W HP – 5ms; 30m x 0.25 µm film thickness column (Agilent Technologies, Inc., Santa Clara, CA). The GC unit (Agilent 6890; Agilent Technologies, Santa Clara, CA) was paired with a mass spectrometer (MS, Agilent 5973 instrument). Samples were injected into the column in pulse splitless mode, with the initial pressure of 82.7 kPa/m.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html#data-analysis",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html#data-analysis",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "Data Analysis",
+    "text": "Data Analysis\nThe data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data (Brückner and Heethoff 2017). VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) (Oksanen et al. 2011). This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). Data were visualized using a combination of ggplot2 and knitr (Wickham 2016; Xie 2021). I selected a subset of compounds to use for each analysis. These compounds were selected based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output. The locoweed samples, both SWA + and SWA -, exhibited numerous chromatogram peaks during collection. However, only volatile compounds showing significant peaks in the mass spectroscopy output or presenting differences in the overlays of the two SWA types were chosen for analysis.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html#visual-comparisons",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html#visual-comparisons",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "Visual Comparisons",
+    "text": "Visual Comparisons\n\nBox Plot\nEleven compounds were selected to display comparisons.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\n\n\n\n\nNote\n\n\n\nI chose to visualize the data using a box plot, not a bar plot, because our data has been CLR transformed. As we can see, there isn’t a tremendous amount of obvious variance between E+ and E- samples. This does not, however, mean there aren’t differences when considering the overall volatile profiles.\n\n\n\n\nPCA\nPrincipal Component Analysis (PCA) is a dimensionality reduction technique used to transform high-dimensional data into a lower-dimensional representation while preserving most of the original variability. It identifies the directions (principal components) that capture the maximum variance in the data and projects the data onto these components.\n\n\n\n\n\n\n\n\n\nOur PCA shows very little difference overall between the two groups of plants. Let’s look at comparing PCA results if we change our response variable.\n\n\n\n\n\n\n\n\n\nIt looks like from our plant type PCA that there is a difference in the variance of the volatile profile emitted by flowers compared to leaves. Let’s break up our samples and run a separate PCA for flowers and for leaves and see if we notice a bigger difference between our E+ and E- groups.\n\n\n\n\n\n\n\n\n\nEven after splitting up our samples into flower and leaf subgroups, visually there does not appear to be a significant difference in volatile profiles between E+ and E-.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html#check-assumptions",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html#check-assumptions",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "Check Assumptions",
+    "text": "Check Assumptions\nThe statistical analyses we can perform are greatly impacted by our data’s ability to meet statistical assumptions. One of the major assumptions here is normality. We are going to test this assumption using the MVN package.\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Assessment of Normality\n\n\nTest\nVariable\nStatistic\np value\nNormality\n\n\n\n\nAnderson-Darling\ncisthreehexiso\n2.0029\n&lt;0.001\nNO\n\n\nAnderson-Darling\ndlimonene\n4.7235\n&lt;0.001\nNO\n\n\nAnderson-Darling\ndodecanal\n1.9608\n1e-04\nNO\n\n\nAnderson-Darling\nheptanal\n7.3877\n&lt;0.001\nNO\n\n\nAnderson-Darling\nmethylsalicylate\n1.2790\n0.0024\nNO\n\n\nAnderson-Darling\nnonanal\n1.8047\n1e-04\nNO\n\n\nAnderson-Darling\noctanal\n0.7937\n0.0387\nNO\n\n\nAnderson-Darling\nsixmethyl\n3.0596\n&lt;0.001\nNO\n\n\nAnderson-Darling\nz3hex\n3.0787\n&lt;0.001\nNO\n\n\nAnderson-Darling\nbmyrcene\n7.7717\n&lt;0.001\nNO\n\n\nAnderson-Darling\nbocimene\n1.4303\n0.001\nNO\n\n\n\n\n\n\n\n\n\nAssumption Conclusions\nFrom the Chi-Squared QQ-Plot (figure 2), we can see that our data set violates the normality assumption. The tail on the right half of the plot dramatically skews away from the normality line.\nIn addition, the results from the Anderson-Darling normality tests (table 1) reveal that every variable in individually non-normal.\nAs we can see, our data violates the normality assumption. This is the case even though we ran it though a CLR transformation.\n\n\n\n\n\n\n\nNote\n\n\n\nA quick note here.\nMany papers analyzing ecological or compositional data and VOC datasets often employ a statistical test known as MANOVA (Multivariate Analysis of Variance). Despite the similarity of the data to ours in many instances, MANOVA is used even though the data being analyzed violates the normality assumption. Since our data clearly violates this assumption, we have decided against using this method.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html#kruskal-wallis-test",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html#kruskal-wallis-test",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "Kruskal-Wallis Test",
+    "text": "Kruskal-Wallis Test\nThe Kruskal-Wallis test is a non-parametric statistical test used to determine if there are differences between two or more independent groups. It assesses whether the distributions of scores across groups are the same or different, without assuming the data follow a normal distribution, making it suitable for ordinal or non-normally distributed data.\n\n\n\n\nANOVA results\n\n\nColumn\nP_Value\n\n\n\n\nbocimene\n0.393\n\n\nheptanal\n0.476\n\n\ncisthreehexiso\n0.485\n\n\ndlimonene\n0.556\n\n\nbmyrcene\n0.571\n\n\nnonanal\n0.714\n\n\ndodecanal\n0.717\n\n\noctanal\n0.752\n\n\nmethylsalicylate\n0.759\n\n\nz3hex\n0.822\n\n\nsixmethyl\n0.955\n\n\n\n\n\n\n\n\nOur KW results show what we might expect after seeing the box and whisker plot above (figure 1). None of the p-values are significant.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html#permanova",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html#permanova",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "PERMANOVA",
+    "text": "PERMANOVA\nAs described above, a PERMANOVA (Permutational Multivariate Analysis of Variance) uses permutation testing to generate many different rearrangements of the data and assess if the observed differences are statistically significant (Anderson 2017). This method is important as it considers all of the volatile profiles overall when generating a p-value.\n\nset.seed(1)\npermanova.output &lt;-\nadonis2(permanova.data ~ data.per.meta$swa, \n        strata = interaction(data.per.meta$pair2, \n                             data.per.meta$type, \n                             data.per.meta$year),\n        method = \"canberra\",\n        permutations = 999,\n        by = \"terms\",\n        na.rm = TRUE)\n\npermanova.output\n\n\n\n\n\nTable 1: Field Locoweed VOC collection PERMANOVA results. data.per.meta$swa is our E+/E- variable.\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\ndata.per.meta$swa\n1\n0.0822318\n0.0056108\n0.7335174\n0.024\n\n\nResidual\n130\n14.5738048\n0.9943892\nNA\nNA\n\n\nTotal\n131\n14.6560367\n1.0000000\nNA\nNA",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/field-locoweed-report.html#random-forest",
+    "href": "qmd/projects/msu/locoweed/field-locoweed-report.html#random-forest",
+    "title": "Field Locoweed VOC Collection Report",
+    "section": "Random Forest",
+    "text": "Random Forest\nNext, we are going to use a random forest model to assess the importance of each of our compounds in distinguishing samples between E+ and E-. To do this we are going to use the ranger package in R.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Field VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss.html",
+    "href": "qmd/projects/msu/wss.html",
+    "title": "MSU Master’s: Wheat Stem Sawfly",
+    "section": "",
+    "text": "View Project Proposal\n\n\n\n\n\nBox with Rounded Edges\n\n\n\n  \n    \n       \n    \n    \n      \n        Controlled WSS Infestation\n        Assessing WSS infestation and cutting within smooth brome in controlled research plot at Arthur H. Post Agronomy Farm.\n      \n    \n  \n  \n    \n       \n    \n    \n      \n        Montana Field Sites\n        Collection of wheat and smooth brome in Big Sandy and Moccasin, Montana to assess parasitism and WSS infestation.\n      \n    \n  \n  \n    \n       \n    \n    \n      \n        Organic Volatile Collection\n        Collection of wheat and smooth brome in Big Sandy and Moccasin Montana to assess parasitism and WSS infestation.\n      \n    \n  \n  \n    \n       \n    \n    \n      \n        Weather Data\n        Weather data trends from Big Sandy and Moccasin, Montana.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Wheat Stem Sawfly"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/gh-locoweed-report.html",
+    "href": "qmd/projects/msu/locoweed/gh-locoweed-report.html",
+    "title": "Greenhouse Locoweed VOC Collection Report",
+    "section": "",
+    "text": "Note: This project is still a work in progress.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Greenhouse VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/gh-locoweed-report.html#data-collection",
+    "href": "qmd/projects/msu/locoweed/gh-locoweed-report.html#data-collection",
+    "title": "Greenhouse Locoweed VOC Collection Report",
+    "section": "Data Collection",
+    "text": "Data Collection\n\nGreenhouse Volatile Collection\nSamples of each plant were first sent for analysis to mystery lab to see if endophyte was present or not. Volatile compounds were collected from healthy (size/stage) locoweed plants. Plants were paired based on size similarity, with one being E+ and the other E-. Three sets of pairs (twelve plants) were used for each volatile collection event. Collection was undergone for a period of six hours from 09:00 to 15:00.\n\n\n\n\n\n  \n  \n  Image Gallery\n  \n\n\n\n\n\n\n\n\n\n\n\n  \n\n\nGreenhouse Locoweed volatiles were collected from plants that looked like these.\n\n\n\n\n\n\nVolatiles were collected from twleve plants per day using glass volatile collection chambers (VCCs) that were 30 cm long and 4 cm in diameter. The top end of each VCC funneled into a threaded port that was 10 cm in daimter. Threaded onto the top of each VCC was an eight-port “octopus” manifold adapter. Two glass filter traps (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. An air source was connected to the base of each collection chamber with supply from charcoal air filters. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A small piece of cotton encompassed by a Teflon® guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Laboratory tape was used to seal the edges of the guillotine and prevent contamination by ambient and soil derived volatiles.\nVolatile collection and successive GC-MS analysis were conducted following methods described in Weaver et al. (2009). After the six hour collection period, glass volatile collection traps were eluted using 200 µL of dichloromethane into 2 mL screw top vials (Agilent Technologies, Inc., Santa Clara, CA), followed by a slow release of nitrogen to further clear the volatile trap. 10 µL of nonyl acetate solution was added to the eluted solution as internal standard to quantify compounds. Samples were then subject to gas chromatography (GC) on a J&W HP – 5ms; 30m x 0.25 µm film thickness column (Agilent Technologies, Inc., Santa Clara, CA). The GC unit (Agilent 6890; Agilent Technologies, Santa Clara, CA) was paired with a mass spectrometer (MS, Agilent 5973 instrument). Samples were injected into the column in pulse splitless mode, with the initial pressure of 82.7 kPa/m.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Greenhouse VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/gh-locoweed-report.html#data-analysis",
+    "href": "qmd/projects/msu/locoweed/gh-locoweed-report.html#data-analysis",
+    "title": "Greenhouse Locoweed VOC Collection Report",
+    "section": "Data Analysis",
+    "text": "Data Analysis\nThe data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data (Brückner and Heethoff 2017). VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) (Oksanen et al. 2011). This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). Data were visualized using a combination of ggplot2 and knitr (Wickham 2016; Xie 2021). I selected a subset of compounds to ues for each analysis. These compounds were selected based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Greenhouse VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/gh-locoweed-report.html#visual-comparisons",
+    "href": "qmd/projects/msu/locoweed/gh-locoweed-report.html#visual-comparisons",
+    "title": "Greenhouse Locoweed VOC Collection Report",
+    "section": "Visual Comparisons",
+    "text": "Visual Comparisons\n\n\n\n\n\nBox Plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nI chose to visualize the data using a box plot, not a bar plot, because our data has been CLR transformed. As we can see, there isn’t a tremendous amount of obvious variance between E+ and E- samples. There is, perhaps, more of a difference at first glance than what we saw in our field volatile analysis bar plots.\n\n\n\n\nPCA\nPrincipal Component Analysis (PCA) is a dimensionality reduction technique used to transform high-dimensional data into a lower-dimensional representation while preserving most of the original variability. It identifies the directions (principal components) that capture the maximum variance in the data and projects the data onto these components.\n\n\n\n\n\n\n\n\n\nOur PCA shows very little difference overall between the two groups of plants. Let’s look at comparing PCA results if we change our response variable.\n\n\n\n\n\n\n\n\n\nInteresting. We are seeing a little bit of separation when we compare our collection years. We should remember this going forward, as we don’t want to capture the year-to-year difference.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Greenhouse VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/gh-locoweed-report.html#check-assumptions",
+    "href": "qmd/projects/msu/locoweed/gh-locoweed-report.html#check-assumptions",
+    "title": "Greenhouse Locoweed VOC Collection Report",
+    "section": "Check Assumptions",
+    "text": "Check Assumptions\nThe statistical analyses we can perform are greatly impacted by our data’s ability to meet statistical assumptions. One of the major assumptions here is normality. We are going to test this assumption using the MVN package.\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Assessment of Normality\n\n\nTest\nVariable\nStatistic\np value\nNormality\n\n\n\n\nAnderson-Darling\nbocimene\n1.8874\n1e-04\nNO\n\n\nAnderson-Darling\nbpinene\n1.9949\n&lt;0.001\nNO\n\n\nAnderson-Darling\ncyclohexene\n8.8796\n&lt;0.001\nNO\n\n\nAnderson-Darling\ndecanal\n1.1864\n0.0041\nNO\n\n\nAnderson-Darling\nnonanal\n1.2885\n0.0023\nNO\n\n\nAnderson-Darling\noctanal\n2.7829\n&lt;0.001\nNO\n\n\nAnderson-Darling\nsixmethyl\n1.4319\n0.001\nNO\n\n\nAnderson-Darling\nz3hex\n2.4346\n&lt;0.001\nNO\n\n\n\n\n\n\n\n\n\nAssumption Conclusions\nFrom the Chi-Squared QQ-Plot (figure 2), we can see that our data set violates the normality assumption. The tail on the right half of the plot dramatically skews away from the normality line.\nIn addition, the results from the Anderson-Darling normality tests (table 1) reveal that every variable in individually non-normal.\nAs we can see, our data violates the normality assumption. This is the case even though we ran it though a CLR transformation.\n\n\n\n\n\n\n\nNote\n\n\n\nA quick note here.\nMany papers analyzing ecological or compositional data and VOC datasets often employ a statistical test known as MANOVA (Multivariate Analysis of Variance). Despite the similarity of the data to ours in many instances, MANOVA is used even though the data being analyzed violates the normality assumption. Since our data clearly violates this assumption, we have decided against using this method.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Greenhouse VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/gh-locoweed-report.html#kruskal-wallis-test",
+    "href": "qmd/projects/msu/locoweed/gh-locoweed-report.html#kruskal-wallis-test",
+    "title": "Greenhouse Locoweed VOC Collection Report",
+    "section": "Kruskal-Wallis Test",
+    "text": "Kruskal-Wallis Test\nThe Kruskal-Wallis test is a non-parametric statistical test used to determine if there are differences between two or more independent groups. It assesses whether the distributions of scores across groups are the same or different, without assuming the data follow a normal distribution, making it suitable for ordinal or non-normally distributed data.\n\n\n\n\nANOVA results\n\n\nColumn\nP_Value\n\n\n\n\ncyclohexene\n0.078\n\n\nbocimene\n0.092\n\n\nz3hex\n0.473\n\n\nnonanal\n0.502\n\n\ndecanal\n0.509\n\n\nsixmethyl\n0.593\n\n\noctanal\n0.931\n\n\nbpinene\n0.973\n\n\n\n\n\n\n\n\nWe are seeing a few interesting numbers here. Cyclohexene and \\(\\beta\\)-ocimene have p-values close to 0.05.\n\nPERMANOVA\nAs described above, a PERMANOVA (Permutational Multivariate Analysis of Variance) uses permutation testing to generate many different rearrangements of the data and assess if the observed differences are statistically significant (Anderson 2017). This method is important as it considers all of the volatile profiles overall when generating a p-value.\n\nset.seed(1)\ngh.permanova.output &lt;-\nadonis2(gh.permanova.data ~ gh.data.per.meta$swa, \n        strata = interaction(gh.data.per.meta$pair,\n                             gh.data.per.meta$year),\n        # method = \"canberra\",\n        permutations = 9999,\n        by = \"terms\")\n\n\n\n\n\nTable 1: Greenhouse Locoweed VOC collection PERMANOVA results. gh.data.per.meta$swa is our E+/E- variable.\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\ngh.data.per.meta$swa\n1\n0.0681759\n0.0107798\n1.209602\n0.0631\n\n\nResidual\n111\n6.2562119\n0.9892202\nNA\nNA\n\n\nTotal\n112\n6.3243879\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show moderate evidence of a difference between SWA+ and SWA- locoweed plants (p-val = 0.0631).",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Greenhouse VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed/gh-locoweed-report.html#random-forest",
+    "href": "qmd/projects/msu/locoweed/gh-locoweed-report.html#random-forest",
+    "title": "Greenhouse Locoweed VOC Collection Report",
+    "section": "Random Forest",
+    "text": "Random Forest\nNext, we are going to use a random forest model to assess the importance of each of our compounds in distinguishing samples between E+ and E-. To do this we are going to use the ranger package in R.\n\nranger_model &lt;- ranger(swa ~ ., \n                       data = gh.joined.data.clr %&gt;% \n                         dplyr::select(-plant.id),\n                       importance = \"impurity\")",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles",
+      "Greenhouse VOCs"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss/pfreport.html#methods",
+    "href": "qmd/projects/msu/wss/pfreport.html#methods",
+    "title": "MT Post Farm Analysis Report",
+    "section": "Methods",
+    "text": "Methods\n\nPlant Selection and Cages\nAssessment of C. cinctus infestation and mortality within B. inermis were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530() Amber Lumite Screen (BioQuip® Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.\n\n\nInsects\nWheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of C. cinctus infestation and cutting in the prior year. Cut stubble, which contained C. cinctus larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once B. inermis stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).\n\nData Collection\nStems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Wheat Stem Sawfly",
+      "Controlled WSS Infestation"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss/pfreport.html#analysis",
+    "href": "qmd/projects/msu/wss/pfreport.html#analysis",
+    "title": "MT Post Farm Analysis Report",
+    "section": "Analysis",
+    "text": "Analysis\n\nOverall WSS Infestation and Cutting\n\nBasic Table and Plot of Infestation\n\n\n\n\n2023 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n337\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n421\n\n\n0.71\n\n\n0.13\n\n\n\n\nlow\n\n\n415\n\n\n0.51\n\n\n0.03\n\n\n\n\n\n\n\n\n2022 Post Farm Infestation\n\n\n\n\nTreatment\n\n\nTotal Stems\n\n\n% Inf\n\n\n% Cut\n\n\n\n\n\n\ncontrol\n\n\n444\n\n\n0.00\n\n\n0.00\n\n\n\n\nhigh\n\n\n418\n\n\n0.65\n\n\n0.03\n\n\n\n\nlow\n\n\n387\n\n\n0.45\n\n\n0.02\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s take a closer look at the number of nodes borrowed through by the larvae. Using this information we can make an arguement about the size and length of time each larvae was alive prior to dying. This can be informative in understanding how many larvae would have been left later in the season for potential parasitism.\n\n\nInfestation Percentage/Node\n\n\n\n\n\n\n\n\n\n\n\nANOVA Table\n\n\n\nDf\nSum Sq\nMean Sq\nF-Value\nPr(&gt;F)\n\n\n\n\ntreatment\n1\n0.044\n0.044\n6.692\n0.0144\n\n\nnodes.inf\n5\n0.286\n0.057\n8.612\n0.0000\n\n\nv.r\n2\n0.057\n0.029\n4.303\n0.0221\n\n\nResiduals\n32\n0.213\n0.007\nNA\nNA\n\n\n\n\n\n\n\n\nBased on the results of our ANOVA, we have weak evidence (Pval = 0.0221) to suggest there is a difference in the number of nodes infested when considering treatment group and vegetative and reproductive stems.\n\n\n\n\nCumulative sum of nodes infested\n\n\n\n\n\n\n\n\n\n\n\n\n\n# of Nodes Infested\n\n\n\nTreatment\n6\n5\n4\n3\n2\n1\n\n\n\n\nhigh\n0.01\n0.13\n0.36\n0.69\n0.89\n1\n\n\nlow\n0.03\n0.13\n0.47\n0.76\n0.94\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI like this plot because it shows the cumulative percentage sum of nodes infested at each node. For example, at the 3rd node in 2023, we see that close to 70% of the stems in the ‘high’ treatment group exhibited between 3 and 6 nodes infested. As a general thought exercise, the more nodes a larvae burrowed through, the larger the larvae. This means that if we classify a “large” larvae as one who burrowed through at least 4 nodes, our infestation data shows that 36% of the larvae in the ‘high’ treatment groups died as “large” larvae.\n\n\n\n\nStems with Living Larvae (2023)\n\n\nTreatment\nCount\nTotal Stems\n%\n\n\n\n\nhigh\n26\n421\n0.062\n\n\nlow\n35\n415\n0.084\n\n\n\n\n\n\n\n\nInteresting to see that 6.2% of stems in the ‘high’ treatment groups and 8.4% of stems in the ‘low’ treatment group had living WSS larvae. The stems for this experiement were harvested in late October, much later in the season when we would expect the second generation parasitoids to be searching for a host.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Wheat Stem Sawfly",
+      "Controlled WSS Infestation"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss/field_report.html#methods",
+    "href": "qmd/projects/msu/wss/field_report.html#methods",
+    "title": "MT Field Site Analysis Report",
+    "section": "Methods",
+    "text": "Methods\nTo assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Wheat Stem Sawfly",
+      "Montana Field Sites"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss/field_report.html#analysis",
+    "href": "qmd/projects/msu/wss/field_report.html#analysis",
+    "title": "MT Field Site Analysis Report",
+    "section": "Analysis",
+    "text": "Analysis\n\nBig Sandy, MT 2023\n\nLochy Property - North Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nNote:\n- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road.\n\n\n\n\nNorth Road (site nn) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nnn\n20\nfall\n0.09\n0.62\n0.15\n0.77\n\n\nnn\n5\nfall\n0.15\n0.53\n0.36\n0.89\n\n\nnn\nbrome\nfall\n0.69\n0.05\n0.05\n0.10\n\n\nnn\nbrome\nsummer\n0.35\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nNorth Road (site ns) Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nns\nbrome\nfall\n0.70\n0.03\n0.10\n0.13\n\n\nns\nbrome\nsummer\n0.44\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines.\n\n\nLochy Property - Gardiner Road\n\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\nIn 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway.\n\n\n\n\nGardiner Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n0.11\n0.25\n0.17\n0.42\n\n\n5\nfall\n0.17\n0.25\n0.20\n0.44\n\n\nbrome\nfall\n0.64\n0.04\n0.10\n0.14\n\n\nbrome\nsummer\n0.51\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts.\n\n\n\nMoccasin, MT 2023\n\nSunset & Harvest Road Intersection\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nSunset Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nsun\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nsun\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nsun\nbrome\nfall\n0.45\n0.15\n0.16\n0.31\n\n\nsun\nbrome\nsummer\n0.20\n0.00\n0.00\n0.00\n\n\n\n\n\n\n\n\n\n\nHarvest Road Infestation Table\n\n\nLocation\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\nhar\n20\nfall\n0.17\n0.67\n0.17\n0.85\n\n\nhar\n5\nfall\n0.25\n0.71\n0.10\n0.81\n\n\nhar\nbrome\nfall\n0.39\n0.07\n0.13\n0.21\n\n\nhar\nbrome\nsummer\n0.22\n0.00\n0.03\n0.03\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKolin Road\n\n\n  \n  \n  Centered Image Expand\n  \n\n\n\n\n  \n   \n\n\n\n\n\n\n\n\n\n\n\nKolin Road Infestation Table\n\n\nDistance\nCollection\n% Inf\nCut\nParasitized\nPotential Cut\n\n\n\n\n20\nfall\n48\n33.0\n2\n35\n\n\n5\nfall\n54\n35.0\n0\n35\n\n\nbrome\nfall\n60\n0.5\n1\n2\n\n\nbrome\nsummer\n34\n0.0\n0\n0",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Wheat Stem Sawfly",
+      "Montana Field Sites"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed.html",
+    "href": "qmd/projects/msu/locoweed.html",
+    "title": "Organic Volatile Analysis of Locoweed",
+    "section": "",
+    "text": "Contributing Members \nThis project is a subset of a project headed by Dr. Tracy Sterling. In addition to Dr. Sterling, Rosie Wollander was immensely helpful in collecting data for all of the experiments. Thank you both for all of your help!",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/locoweed.html#reports",
+    "href": "qmd/projects/msu/locoweed.html#reports",
+    "title": "Organic Volatile Analysis of Locoweed",
+    "section": "Reports",
+    "text": "Reports\nI have broken down the reports into two seperate, and more managable, reports. Both can be found below.\n\n\n\n\n\n\n  Box with Rounded Edges\n  \n\n\n  \n    \n      \n    \n    \n      \n        Field\n        VOC Collection Report\n      \n    \n  \n  \n    \n      \n    \n    \n      \n        Greenhouse\n        VOC Collection Report",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Locoweed Volatiles"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/toadflax/toadflax_report.html",
+    "href": "qmd/projects/msu/toadflax/toadflax_report.html",
+    "title": "Toadflax Analysis",
+    "section": "",
+    "text": "Boxpot and multivariate statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1). We employed Principal Compoenent Analysis (PCA), Permutational Multivariate ANOVA (PERMANOVA), and Permutational Analysis of Multivariate Dispersion (PERMDISP). The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data (Brückner and Heethoff 2017). VOC compositions were compared between samples and types using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) (Oksanen et al. 2011). This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). Data were visualized using ggplot2 (Wickham 2016). The compounds used in this analysis were selected based on consistency of presence across samples , as well as overall quality of mass spectroscopy output.\n\nI’m going to briefly analyze the data in two different formats.\n\nType: groupings of YT, DT, Natural, and Synthetic\nPlant: groupings of each plant type - D6, Y6, D6Y6, Y6D6, HBR, RAD\n\n\nOverall, the data is quite good. I think a little bit of pairing down of the number of compounds we are looking at could be helpful.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-type",
+    "href": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-type",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Type",
+    "text": "Organized by Type\nType: This section has data organized by the four grouping variables - YT, DT, Natural, and Synthetic.\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n  \n    View Larger Boxplots\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n  \n    View Larger Boxplots",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-plant",
+    "href": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-plant",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Plant",
+    "text": "Organized by Plant\nPlant: This section has data organized by the six plant types - D6, Y6, D6Y6, Y6D6, HBR, and RAD.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-type-1",
+    "href": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-type-1",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Type",
+    "text": "Organized by Type\n\nAll Data\nWe’re going to start by comparing all four plant categories. Our first look at our PCA results is in the form of a scores plot. This shows us how our data is grouped by type.\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\nNext, we can look at our loadings and see where each compound is pushing the differences in our PCs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\nFinally, we can overlay the two plots to get an idea of how our data groups around our compounds. I found this plot a little bit busy, which is why I broke it down in the above two figures.\n\n\n\n\n\n\nGrouping our compounds by family (i.e. terpenes, aldehydes, etc.) could provide a little bit of more context.\n\n\nVariable Category Selection\nI will create several PCA plots by filtering out different plant categories. There’s a crucial distinction to be made here. In one set of plots, I’ll filter out the specified category after running the PCA on the entire data set. This will result in plots with ellipses and points identical to those seen in the plots of the entire data set, just with the non-specified data removed. Additionally, I’ll show plots that display PCA results from data filtered prior to running the PCA model. In these plots, points and ellipses have the potential to appear different from the previous display method.\nI’ve also created plots showing just the ellipses for the specified groups, while leaving the rest of the data set grey. It should hopefully all become clearer as we proceed through each section.\nIn my opinion, using a PCA plot to represent a data set and then filtering the data after running the PCA model might not accurately depict the relationship between the variables. The placement of points on a PCA plot is influenced by the entire data set, so removing some data afterward could distort the representation and make it less meaningful.\nAs a reference, I’m going to show the plot from all varaibles and data on the right side.\nLet’s start by removing the natural hybrids from our PCA and view the results.\n\nCompare: DT, YT, Synthetic\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\n\n\nCompare: Synthetic and Natural\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\nI’ve also plotted just the two hybrid plant categories but included the data points from the rest of the samples.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n  \n\n  \n    Download\n  \n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\n\nAfter running all of these plots, it looks to me like the largest differences are between the PRE and Post PCA Model plots when we removed the Natural category. Looking at the hybrid comparison, it looks like the plots are basically the same, just flipped on an axis or two.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-plant-1",
+    "href": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-plant-1",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Plant",
+    "text": "Organized by Plant\n\nAll Data\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n\n\n\n\n\nVariable Plant Selection\n\nCompare: HBR and RAD\n\nPost-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download\n  \n\n\n\n\n\n\n\nPre-PCA Model Filter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDownload File Buttons\n\n\n\n\n\n\n  \n    Download\n  \n\n\n  \n    Download",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-type-2",
+    "href": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-type-2",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Type",
+    "text": "Organized by Type\nAs stated above, PERMANOVA uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant (Anderson 2017). It is useful when considering non-normal multivariate data like our Toadflax data set.\n\nD6, Y6, Synthetic, Natural\n\n\n\n\nToadflax Type PERMANOVA: D6, Y6, Synthetic, Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n3\n1.173032\n0.2591062\n12.00709\n0.001\n\n\nResidual\n103\n3.354192\n0.7408938\nNA\nNA\n\n\nTotal\n106\n4.527223\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between our four plant types (YT, DT, Synthetic, and Natural).\nLet’s check for a difference between our synthetic and natural plant types.\n\n\nSynthetic & Natural\n\n\n\n\nToadflax Type PERMANOVA: Synthetic & Natural\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$type\n1\n0.4267748\n0.1616969\n13.30914\n0.001\n\n\nResidual\n69\n2.2125751\n0.8383031\nNA\nNA\n\n\nTotal\n70\n2.6393499\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show strong evidence (p-val = 0.001) of a difference between Natural and Synthetic plant types.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-plant-2",
+    "href": "qmd/projects/msu/toadflax/toadflax_report.html#organized-by-plant-2",
+    "title": "Toadflax Analysis",
+    "section": "Organized by Plant",
+    "text": "Organized by Plant\nLet’s say, for example, that we want to see if there is a difference in the VOC profile between the D6Y6 and Y6D6 plants. We can run a PERMANOVA to assess for a significant difference.\n\n\n\n\nToadflax Type PERMANOVA\n\n\n\nDf\nSumOfSqs\nR2\nF\nPr(&gt;F)\n\n\n\n\nmeta_data$plant\n1\n0.1309064\n0.0574618\n2.072809\n0.08\n\n\nResidual\n34\n2.1472404\n0.9425382\nNA\nNA\n\n\nTotal\n35\n2.2781468\n1.0000000\nNA\nNA\n\n\n\n\n\n\n\n\nOur results show no evidence (p-val = 0.08) of a difference between volatile profiles between Y6D6 and D6Y6 plants.",
+    "crumbs": [
+      "Projects",
+      "Montana State University",
+      "Toadflax"
+    ]
+  },
+  {
+    "objectID": "qmd/projects/msu/wss/ndvi.html",
+    "href": "qmd/projects/msu/wss/ndvi.html",
+    "title": "ndvi",
+    "section": "",
+    "text": "# A tibble: 94 × 3\n           NDVI date                type \n          &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;\n 1  0.00000133  2023-03-01 00:00:00 brome\n 2  0.000000964 2023-03-06 00:00:00 brome\n 3 -0.000000799 2023-03-11 00:00:00 brome\n 4 -0.00000304  2023-03-16 00:00:00 brome\n 5 -0.00000139  2023-03-21 00:00:00 brome\n 6  0.000000399 2023-03-26 00:00:00 brome\n 7 -0.00000636  2023-03-31 00:00:00 brome\n 8 -0.000000125 2023-04-05 00:00:00 brome\n 9  0.00000274  2023-04-10 00:00:00 brome\n10  0.0000131   2023-04-15 00:00:00 brome\n# ℹ 84 more rows"
   }
 ]

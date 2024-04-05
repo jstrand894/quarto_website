@@ -1,0 +1,119 @@
+---
+title: "MSU Masters"
+---
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box with Rounded Edges</title>
+<style>
+  body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+
+  .container {
+    width: calc(100% - 20px); /* Adjusted width to fit the screen and account for margins */
+    max-width: 600px; /* Limiting maximum width */
+    height: auto; /* Set container height */
+    border: 0.5px solid #ccc; /* Light grey color */
+    border-radius: 8px; /* Less rounded edges */
+    overflow: hidden; /* Hide overflow content */
+    margin-bottom: 20px; /* Add margin to create space between rows */
+    margin-right: auto; /* Push containers to the left */
+    margin-left: 10px; /* Adjust margin between the left side of the screen */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .container:last-child {
+    margin-bottom: 0; /* Remove margin from the last box */
+  }
+  
+  .container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+  }
+  
+  .image-container {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .image-container img {
+    width: 80px; /* Adjusted width for smaller image */
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Rounded corners for image */
+  }
+  
+  .content {
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1; /* Take remaining space */
+  }
+  
+  .text h1 {
+    font-size: 22px; /* Adjusted text size */
+    margin-top: 0;
+    margin-bottom: 5px; /* Adjust margin between large and small text */
+    color: black;
+  }
+  .text h1:hover {
+    color: #2068DC; /* Change text color to blue on hover */
+  }
+  
+  .text p {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #666;
+    <!-- text-align: justify; /* Align text */ -->
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      width: calc(100% - 20px); /* Adjusted width to fit the screen */
+    }
+  }
+</style>
+</head>
+<body>
+  <a href="msu-masters/wss.qmd" class="container">
+    <div class="image-container">
+      <img src="../../img/msu-masters/oviposition.JPG" alt="Image">
+    </div>
+    <div class="content">
+      <div class="text">
+        <h1>Wheat Stem Sawfly</h1>
+        <p>Understanding the importance of smooth brome in promoting a Braconid parasitoid that targets the Wheat Stem Sawfly.</p>
+      </div>
+    </div>
+  </a>
+  <a href="msu-masters/locoweed.qmd" class="container">
+    <div class="image-container">
+      <img src="../../img/msu-masters/loco-bee2.jpg" alt="Image">
+    </div>
+    <div class="content">
+      <div class="text">
+        <h1>Locoweed Volatiles</h1>
+        <p>Comparison of volatile organic compounds profiles of <em>Oxytropis</em> plants that contained the commensal endophyte <em>Alternaria oxytropis</em> and those that did not.</p>
+      </div>
+    </div>
+  </a>
+  <a href="msu-masters/toadflax/toadflax_report.qmd" class="container">
+    <div class="image-container">
+      <img src="../../img/msu-masters/toadflax.jpeg" alt="Image">
+    </div>
+    <div class="content">
+      <div class="text">
+        <h1>Toadflax</h1>
+        <p></p>
+      </div>
+    </div>
+  </a>
+</body>
+</html>
+```
