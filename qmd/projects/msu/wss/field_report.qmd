@@ -19,7 +19,9 @@ toc_title: "Table of Contents"
 # toc_expand: true
 # toc_float: true
 ---
+
 <!-- field site cover image -->
+
 ```{=html}
 <!DOCTYPE html>
 <html lang="en">
@@ -50,10 +52,7 @@ toc_title: "Table of Contents"
 
 </body>
 </html>
-
 ```
-
-
 ```{r library, echo = F, message = F, warning = F}
 library(tidyverse)
 library(readxl)
@@ -61,6 +60,7 @@ library(ggplot2)
 library(kableExtra)
 library(plotly)
 ```
+
 ```{r column.order, echo = F}
 column.order <- c("distance", "collection", "p.inf", 
                   "p.cut", "p.par", "poten")
@@ -77,7 +77,7 @@ round_based_on_size <- function(x) {
 
 # MONTANA FIELD SITES
 
-## Methods  
+## Methods
 
 To assess C cinctus infestation, larval mortality, and parasitoid prevalence within B. inermis and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in both early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. Sample locations were chosen by identifying fields with consistent wheat production that were adjacent to healthy B. inermis stands, either situated between fields or between fields and roadways. Polygons containing B. inermis were set up along the periphery of adjacent wheat fields, each covering an area of approximately 100 meters. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.
 
@@ -93,6 +93,7 @@ raw.2023 <-
 read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/field Sites/2023/2023\ Field Site\ Data.xlsx", sheet = "n.infested") %>%
   mutate(year = "2023") 
 ```
+
 ```{r (stubble.####) stubble data, echo = F}
 stubble.2023 <-
   read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/field Sites/2023/2023\ Field Site\ Data.xlsx", 
@@ -107,6 +108,7 @@ stubble.2022 <-
   mutate(year = "2022")
 
 ```
+
 ```{r (joined.stubble) stubble join, echo = F}
 # the below code joins the 2022 and 2023 stubble data frames
 joined.stubble <-
@@ -148,6 +150,7 @@ joined.stubble <-
 
 
 ```
+
 ```{r (n.inf) brome join, echo = F}
 n.inf <-
 raw.2023 %>%
@@ -183,6 +186,7 @@ raw.2023 %>%
            location == "ke" ~ "k", 
            TRUE ~ location))
 ```
+
 ```{r (stubble.brome) join stubble/brome, echo = F}
 # join the stubble data and the brome data
 stubble.brome <-
@@ -208,6 +212,7 @@ joined.stubble %>%
   filter(type %in% c("p.inf", "p.cut", "p.par", "poten")) %>%
   distinct()
 ```
+
 ```{r, echo = F, eval = F}
 stubble.brome %>%
   filter(location == "g",
@@ -217,8 +222,8 @@ stubble.brome %>%
 ```
 
 ### Big Sandy, MT 2023
-   
-#### Lochy Property - North Road  
+
+#### Lochy Property - North Road
 
 ```{=html}
 <html lang="en">
@@ -295,12 +300,10 @@ stubble.brome %>%
 </body>
 </html>
 ```
-
 <!-- ![North Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/nnns-min.png?raw=true) -->
 
-**Note:**    
-- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road. 
-
+**Note:**\
+- In 2023, the field south of North Road was fallow, so no stubble infestation data was collected from the field south of North Road.
 
 ```{r NN & NS data table, echo = F}
 nn.table <-
@@ -380,8 +383,7 @@ stubble.brome %>%
   facet_wrap(~location)
 ```
 
-We saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines. 
-
+We saw very low levels of infestation in 2023 within the wheat. This was likely due a cold, mild spring that led to late stem development. Because the wheat was not well developed, the sawflies did not infest. This appears to have led to high infestation within the smooth brome. Will be interesting to compare to 2022 when stem elongation followed normal expected timelines.
 
 #### Lochy Property - Gardiner Road
 
@@ -461,10 +463,9 @@ We saw very low levels of infestation in 2023 within the wheat. This was likely 
 </body>
 </html>
 ```
-
 <!-- ![Gardiner Road, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/gardiner%20road-min.png?raw=true) -->
 
-In 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway. 
+In 2022, Gardiner road underwent a major reconstruction with both ditches being regraded. This severely diminished the amount smooth brome found along the edge of the roadway.
 
 ```{r G table, echo = F}
 g.table <-
@@ -519,7 +520,7 @@ stubble.brome %>%
                               "poten" = "Potential Cut"))
 ```
 
-Similar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts. 
+Similar results to North Road seen here. Low infestation in the adjacent wheat field was due to the cool spring and lack of infestable stems during the sawfly flight. This shows that even in odd years like 2023, sawflies are still present in the smooth brome, meaning parasitoids will still have larval hosts.
 
 ### Moccasin, MT 2023
 
@@ -600,10 +601,8 @@ Similar results to North Road seen here. Low infestation in the adjacent wheat f
 </body>
 </html>
 ```
-
-
 <!-- ![Harvest & Sunset Road Instersection, Big Sandy, MT (2023)](https://github.com/jstrand894/Website/blob/main/harvest%20road-min.png?raw=true) -->
-  
+
 ```{r SUN/HAR data tables, echo = F}
 sun.table <-
 stubble.brome %>%
@@ -680,7 +679,6 @@ stubble.brome %>%
                               "poten" = "Potential Cut")) +
   facet_wrap(~location)
 ```
-
 
 #### Kolin Road
 
@@ -759,8 +757,6 @@ stubble.brome %>%
 </body>
 </html>
 ```
-
-
 <!-- ![Kolin Road, Moccasin, MT (2023)](https://github.com/jstrand894/Website/blob/main/kolin%20road-min.png?raw=true) -->
 
 ```{r K data table, echo = F}
@@ -788,7 +784,7 @@ kable(k.table[, column.order], caption = "Kolin Road Infestation Table",
                 bootstrap_options = c("striped", "bordered", "hover")) %>%
   row_spec(0, background = "#f2f2f2")
 ```
-  
+
 ```{r K plot, echo = F, warning = F, fig.height = 3, fig.align = 'center'}
 stubble.brome %>%
   filter(location %in% c("k"),
@@ -814,12 +810,3 @@ stubble.brome %>%
                               "p.par" = "Parasitized",
                               "poten" = "Potential Cut")) 
 ```
-
-
-
-
-
-
-
-
-

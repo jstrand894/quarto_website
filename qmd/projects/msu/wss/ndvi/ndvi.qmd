@@ -1,0 +1,105 @@
+---
+title: "ndvi"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r library, echo = F, message = F}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(tidyr)
+library(lubridate)
+```
+
+```{r big sandy, echo = F}
+# setwd("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/GitHub/Quarto Website/Quarto Website/qmd/projects/msu/wss")
+
+lochy <-
+read_excel("ndvi/ndvi_2023.xlsx", sheet = "lochy") %>%
+  filter(use == "yes") %>%
+  mutate(date = ymd(date1)) %>%
+  dplyr::select(date,wheat,brome) %>%
+  pivot_longer(-date,
+               names_to = "plant_type",
+               values_to = "ndvi")
+
+
+lochy %>%
+  ggplot() +
+  geom_point(aes(x = date, y = ndvi, color = plant_type),
+             # alpha = 0.5,
+             pch = 1,
+             size = 0.75) +
+  geom_line(aes(x = date, y = ndvi, color = plant_type),
+            alpha = 0.5, 
+            size = 0.3) +
+  geom_smooth(aes(x = date, y = ndvi, color = plant_type),
+              se = FALSE) +
+  theme_bw() +
+  labs(x = NULL,
+       y = "NDVI",
+       color = "Plant Type",
+       title = "NDVI comparison between B. inermis and adjacent wheat field")
+
+
+
+```
+
+
+This data is not as good. Maybe need to find a new site to investigate. 
+```{r moccasin, echo = F}
+moccasin <-
+read_excel("ndvi_2023.xlsx", sheet = "moccasin") %>%
+  dplyr::select(3:6) %>%
+  rename("date" = 1,
+         "use" = 3) %>%
+  filter(use %in% c("yes",NA)) %>%
+  mutate(date = ymd(date)) %>%
+  dplyr::select(date,wheat,brome) %>%
+  pivot_longer(-date,
+               names_to = "plant_type",
+               values_to = "ndvi") %>%
+  filter(!date %in% c("2023-05-07",
+                      "2023-05-12"))
+
+ggplotly(
+moccasin %>%
+  ggplot() +
+  geom_point(aes(x = date, y = ndvi, color = plant_type),
+             alpha = 0.5,
+             color = "black") +
+  geom_line(aes(x = date, y = ndvi, color = plant_type),
+            alpha = 0.5) +
+  geom_smooth(aes(x = date, y = ndvi, color = plant_type),
+              se = FALSE) +
+  theme_bw() +
+  labs(x = NULL,
+       y = "NDVI",
+       color = "Plant Type",
+       title = "NDVI comparison between B. inermis and adjacent wheat field")
+)
+```
+
+
+
+```{r plot, echo = F, eval = F}
+ggplotly(data %>%
+  filter(!date %in% c("2023-03-31",
+                      "2023-04-20",
+                      "2023-05-10",
+                      "2023-05-30",
+                      "2023-06-09",
+                      "2023-06-19",
+                      "2023-07-14",
+                      "2023-08-13")) %>%
+  # mutate(NDVI = ifelse(type == "wheat", -NDVI, NDVI)) %>%
+  ggplot(aes(x = date, y = NDVI, fill = type)) +
+  geom_bar(stat = 'identity', 
+           position = position_dodge()) +
+  geom_line(stat = "smooth") +
+  theme_bw()
+)
+```
+

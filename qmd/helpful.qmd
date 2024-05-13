@@ -2,13 +2,44 @@
 title: "Helpful Resources & Links"
 ---
 
-## R Studio  
-- Guide to using R made by [Jared Adam](https://www.linkedin.com/in/jared-adam-24b107241/){style="text-decoration: none;"}: 
-<a href="https://jared-adam-psu.github.io/R-Tutorial-for-Tooker-Lab/" target="_blank">One code to rule them all (┛ಠ_ಠ)┛彡O</a>
+Below I have put many of the links that helped me.
 
-## Quarto Website  
-- YouTube video on how to make a R Studio Quarto Website: [How to create a web site using Quarto, RStudio, and GitHub Pages](https://youtu.be/YN75YXaLFGM?si=RyCG23IMBwFUKsO8)  
-- Gallery showing different options for formatting a Quarto website: [Quarto Gallery](https://quarto.org/docs/gallery/)
+## R Studio
 
-## GitHub  
-- A guide to using GitHub created by [Callum Arnold](https://www.linkedin.com/in/arnold-c/){style="text-decoration: none;"}: <a href="https://psu-git.callumarnold.com" target="_blank">Introduction to Git and GitHub</a>
+-   Guide to using R made by [Jared Adam](https://www.linkedin.com/in/jared-adam-24b107241/){style="text-decoration: none;"}: <a href="https://jared-adam-psu.github.io/R-Tutorial-for-Tooker-Lab/" target="_blank">One code to rule them all (┛ಠ_ಠ)┛彡O</a>
+-   Helpful free tutorial for learning R Studio through Codecademy: <a href="https://www.codecademy.com/learn/learn-r?utm_source=pepperjam&utm_medium=affiliate&utm_term=159404&clickId=4716939938&pj_creativeid=8-12462&pj_publisherid=159404" target="_blank">Learn R with Codecademy</a>
+-   Learn how to use R Markdown to create pdf and word outputs with your code: <a href="https://rmarkdown.rstudio.com/lesson-1.html" target="_blank">R Markdown Documentation</a>
+
+## Quarto Website
+
+-   YouTube video on how to make a R Studio Quarto Website: [How to create a web site using Quarto, RStudio, and GitHub Pages](https://youtu.be/YN75YXaLFGM?si=RyCG23IMBwFUKsO8)
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to create a web site using Quarto, RStudio, and GitHub Pages</title>
+</head>
+<body>
+    <!-- <h2></h2> -->
+    <!-- Replace 'VIDEO_ID' with the actual ID of your YouTube video -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/YN75YXaLFGM" frameborder="0" allowfullscreen></iframe>
+</body>
+</html>
+```
+-   Gallery showing different options for formatting a Quarto website: [Quarto Gallery](https://quarto.org/docs/gallery/)
+-   Quarto documentation showing how to do a lot of the basics including website navigation, website search, and website tools: <a href="https://quarto.org/docs/websites/" target="_blank">Quarto - Creating a Website</a>
+
+## GitHub
+
+-   A guide to using GitHub created by [Callum Arnold](https://www.linkedin.com/in/arnold-c/){style="text-decoration: none;"}: <a href="https://psu-git.callumarnold.com" target="_blank">Introduction to Git and GitHub</a>
+
+
+
+
+
+
+Watershed volunteering
+https://youtu.be/65MAB0qRtAE?si=beO8jD5t5SOJzooF

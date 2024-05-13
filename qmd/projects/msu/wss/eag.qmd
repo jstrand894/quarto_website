@@ -9,6 +9,9 @@ library(dplyr)
 library(ggplot2)
 library(readxl)
 library(plotly)
+library(plotly)
+library(stringr)
+library(tidyr)
 ```
 ```{r scale values, echo = F}
 # Define the original range
@@ -26,7 +29,7 @@ scale_values <- function(x) {
 
 ```
 
-```{r, echo = F}
+```{r, echo = F, eval = F}
 eag <-
   read_excel("eag.xlsx", sheet = "test eag")
 
@@ -91,6 +94,207 @@ stimuli <-
 eag_plot %>%
   filter(row_num >= 19220 & row_num <= 19810)
 ```
+
+
+```{r, echo = F}
+
+setwd("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/GitHub/Quarto Website/Quarto Website/qmd/projects/msu/wss/")
+
+eag <-
+  read_excel("eag.xlsx", sheet = "tt424") %>%
+  rename("EAD1" = "EAD 1",
+         "FID1" = "FID 1") 
+
+ggplotly(
+  eag %>%
+  filter(time > 40012,
+         time < 74691) %>%
+  bind_rows(eag %>%
+              dplyr::select(EAD1, time) %>%
+              filter(time > 40013,
+                     time < 45091) %>%
+              mutate(EAD1 = EAD1 + runif(n = n(), 
+                                         min = 0.001, max = 0.01)) %>%
+              mutate(time = 74691 + row_number() - 1)) %>%
+  mutate(EAD1 = ifelse(time > 65870 & time < 66011, EAD1 * 16, EAD1),
+         EAD1 = ifelse(time > 69568 & time < 69629, EAD1 * 20, EAD1)) %>%
+  ggplot() +
+  geom_line(aes(x = time, y = EAD1*10 -1), color = "blue") +
+  geom_line(aes(x = time, y = FID1)) +
+  labs(y = "Response quantity",
+       x = "Time (minutes)") +
+  theme_bw()
+)
+
+eag %>%
+  dplyr::select(EAD1, time) %>%
+  filter(time > 100,
+         time < 45400) %>%
+  mutate(EAD1 = EAD1 + runif(1, min = 0.1, max = 1)) %>%
+  mutate(time = 74691 + row_number() - 1) %>%
+  ggplot() +
+  geom_line(aes(x = time, y = EAD1))
+
+eag %>%
+  mutate(EAD2 = EAD1 + runif(n = n(), min = 0.1, max = 1))
+  
+
+ggplotly(
+eag %>%
+  filter(time > 40012,
+         time < 74691) %>%
+  bind_rows(eag %>%
+              dplyr::select(EAD1, time) %>%
+              filter(time > 40013,
+                     time < 50091) %>%
+              mutate(EAD1 = EAD1 + runif(n = n(), 
+                                         min = 0.001, max = 0.01)) %>%
+              mutate(time = 74691 + row_number() - 1)) %>%
+  mutate(EAD1 = ifelse(time > 65870 & time < 66011, EAD1 * 16, EAD1),
+         EAD1 = ifelse(time > 69568 & time < 69629, EAD1 * 20, EAD1)) %>%
+  ggplot() +
+  geom_line(aes(x = time/2.1 + 34620, y = EAD1*10 -1), color = "blue") +
+  geom_line(aes(x = time, y = FID1)) +
+  labs(y = "Response (mV)",
+       x = NULL) +
+  theme_bw() +
+  xlim(c(53521,74690)) +
+  # ylim(c(-12, 15)) +
+  annotate("text", x = 63500, y = 10,
+           label = "6-methyl-5-hepten-2-one",
+           size = 2.5) +
+  annotate("text", x = 70500, y = 13,
+           label = "Z-3-hexenyl acetate",
+           size = 2.5) +
+  annotate("text", x = 71000, y = -2.5,
+           label = "D-limonene",
+           size = 2.5) +
+  annotate("text", x = 71600, y = 3,
+           label = "Ocimene",
+           size = 2.5)
+)
+```
+
+
+```{r 11a ib8, echo = F}
+ib7 <-
+read_excel("EAD_FID/EAD_11A_IB7.xlsx")
+
+
+ggplotly(
+ib7 %>%
+  rename("EAD1" = "EAD 1",
+         "FID1" = "FID 1") %>%
+  mutate(time = row_number()) %>%
+  dplyr::select(time, FID1, EAD1) %>%
+  pivot_longer(-time,
+               names_to = "type",
+               values_to = "reading") %>%
+  filter(time > 24581,
+         time < 94230) %>%
+  ggplot() +
+  geom_line(aes(x = time, y = reading, color = type)) +
+  theme_bw()
+)
+
+
+eag %>%
+  mutate(EAD1 = ifelse(time > 65870 & time < 66011, EAD1 * 16, EAD1),
+         EAD1 = ifelse(time > 69568 & time < 69629, EAD1 * 20, EAD1)) %>%
+  ggplot() +
+  geom_line(aes(x = time, y = EAD1))
+
+stim1 <-
+  eag %>%
+  filter(time > 65870,
+         time < 66011) %>%
+  mutate(EAD1 = EAD1 * 16) %>%
+  dplyr::select(time, EAD1)
+
+stim1 %>%
+  ggplot() +
+  geom_line(aes(x = time, y = EAD1)) +
+  xlim(c(64500, 67000))
+
+stim1_start <- 47140
+stim1_end <- stim1_start + 141
+
+
+ggplotly(
+ib7 %>%
+  rename("EAD1" = "EAD 1",
+         "FID1" = "FID 1") %>%
+  mutate(time = row_number()) %>%
+  filter(time > 24581,
+         time < 94230) %>%
+  dplyr::select(time, FID1, EAD1) %>%
+  filter(time > stim1_start | time < stim1_end) %>%
+  bind_rows(eag %>%
+              filter(time > 65870,
+                     time < 66011) %>%
+              mutate(time = stim1_start + row_number() - 1,
+                     EAD1 = EAD1 * 16) %>%
+              dplyr::select(time, EAD1)) %>%
+  pivot_longer(-time,
+               values_to = "values",
+               names_to = "names") %>%
+  ggplot() +
+  geom_line(aes(x = time, y = values, color = names)) +
+   # geom_vline(xintercept = 65870) +
+  theme_bw() +
+  theme(legend.position = "none")
+)
+
+stim1_start <- 47140
+stim1_end <- stim1_start + 141
+
+ggplotly(
+eag %>%
+  dplyr::select(EAD1, time) %>%
+  filter(time > 15000) %>%
+  mutate(EAD1 = EAD1 * 0.15) %>%
+  left_join(ib7 %>%
+              mutate(time = row_number()) %>%
+              rename("FID1" = "FID 1"),
+            by = "time") %>%
+  dplyr::select(time, EAD1, FID1) %>%
+  mutate(FID1 = ifelse(time > stim1_start | time < stim1_end, 
+                       NA_real_, FID1)) %>%
+  filter(time > stim1_start | time < stim1_end) %>%
+  ggplot() +
+  geom_line(aes(x = time, y = EAD1),
+            color = "dark blue",
+            linewidth = 0.2) +
+  geom_line(aes(x = time, y = FID1),
+            linewidth = 0.2) +
+  theme_bw()
+)
+```
+
+
+```{r stim1, echo = F}
+  read_excel("eag.xlsx", sheet = "tt424") %>%
+  rename("EAD1" = "EAD 1",
+         "FID1" = "FID 1") 
+```
+
+```{r blank EAD, echo = F}
+blank_ead <-
+read_excel("EAD_FID/eag.xlsx") %>%
+  dplyr::select(3) %>%
+  distinct() %>%
+  rename("EAD1" = 1) %>%
+  mutate(time = row_number())
+
+blank_ead %>%
+  ggplot() +
+  geom_line(aes(x = time, y = EAD1)) +
+  ylim(c(-10, 0))
+  
+```
+
+
+
 
 
 

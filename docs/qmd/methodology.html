@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-04-05">
+
+<title>Jackson Strand - Methodology</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../img/aboutme/logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../_box.scss">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Jackson Strand</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../qmd/projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pictures" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Pictures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pictures">    
+        <li>
+    <a class="dropdown-item" href="../qmd/pics/running.html">
+ <span class="dropdown-text">Running Pictures</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd/pics/bugs.html">
+ <span class="dropdown-text">Bugs</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../qmd/cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../qmd/helpful.html"> 
+<span class="menu-text">Helpful Resources</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="https://linkedin.com/in/jacksonstrand" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://www.instagram.com/jstrand894/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-instagram"></i></a>
+    <a href="https://github.com/jstrand894/quarto_website" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="mailto:jstrand894@gmail.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link active" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#field-experiments" id="toc-field-experiments" class="nav-link" data-scroll-target="#field-experiments">Field Experiments</a>
+  <ul class="collapse">
+  <li><a href="#field-survey" id="toc-field-survey" class="nav-link" data-scroll-target="#field-survey">Field Survey</a></li>
+  <li><a href="#controlled-c.-cinctus-infestation-of-b.-inermis" id="toc-controlled-c.-cinctus-infestation-of-b.-inermis" class="nav-link" data-scroll-target="#controlled-c.-cinctus-infestation-of-b.-inermis">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></a></li>
+  </ul></li>
+  <li><a href="#greenhouse-experiments" id="toc-greenhouse-experiments" class="nav-link" data-scroll-target="#greenhouse-experiments">Greenhouse Experiments</a>
+  <ul class="collapse">
+  <li><a href="#organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" id="toc-organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" class="nav-link" data-scroll-target="#organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat">Organic Volatile Collection from <em>C. cinctus</em> Infested <em>B. inermis</em> and Winter Wheat</a></li>
+  <li><a href="#behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" id="toc-behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" class="nav-link" data-scroll-target="#behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds">Behavioral Assessment of Parasitoids in Response to <em>B. inermis</em> Organic Volatile Compounds</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Methodology</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 5, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="methodology" class="level1">
+<h1>Methodology</h1>
+<section id="field-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="field-experiments">Field Experiments</h2>
+<section id="field-survey" class="level3">
+<h3 class="anchored" data-anchor-id="field-survey">Field Survey</h3>
+<p>To assess <em>C. cinctus</em> infestation, larval mortality, and parasitoid prevalence within <em>B. inermis</em> and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. <em>B. inermis</em> sites were set up as polygons along the edge of adjoining wheat fields measuring approximately 100 meters in area. Four collection squares of 1ft x 1ft were randomly partitioned within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.</p>
+</section>
+<section id="controlled-c.-cinctus-infestation-of-b.-inermis" class="level3">
+<h3 class="anchored" data-anchor-id="controlled-c.-cinctus-infestation-of-b.-inermis">Controlled <em>C. cinctus</em> infestation of <em>B. inermis</em></h3>
+<section id="plant-selection-and-field-cages" class="level4">
+<h4 class="anchored" data-anchor-id="plant-selection-and-field-cages">Plant Selection and Field Cages</h4>
+<p>Assessment of <em>C. cinctus</em> infestation and mortality within <em>B. inermis</em> were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530<span class="math inline">\(\mu\)</span> Amber Lumite Screen (BioQuip<span class="math inline">\(^\circledR\)</span> Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.</p>
+</section>
+<section id="insects" class="level4">
+<h4 class="anchored" data-anchor-id="insects">Insects</h4>
+<p>Wheat stem stubble was collected in Three Forks, MT, USA (43°38’19.39”N, 116°14’28.86”W) from fields that experienced high levels of <em>C. cinctus</em> infestation and cutting the year prior. Cut stubble, which contained <em>C. cinctus</em> larvae in diapause, were kept refrigerated between -2°C and 3°C for &gt;100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once <em>B. inermis</em> stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).</p>
+</section>
+<section id="data-collection" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection">Data Collection</h4>
+<p>Stems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.</p>
+</section>
+</section>
+</section>
+<section id="greenhouse-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="greenhouse-experiments">Greenhouse Experiments</h2>
+<section id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat" class="level3">
+<h3 class="anchored" data-anchor-id="organic-volatile-collection-from-c.-cinctus-infested-b.-inermis-and-winter-wheat">Organic Volatile Collection from <em>C. cinctus</em> Infested <em>B. inermis</em> and Winter Wheat</h3>
+<section id="insects-1" class="level4">
+<h4 class="anchored" data-anchor-id="insects-1">Insects</h4>
+<p>Wheat stubble collected the year prior to each experiment were used to rear adult WSS. Wheat stubble was collected from Big Sandy (48.17754°N, -110.11406°E) and Three Forks (46.020216°N, -111.586582°E), MT, USA. Stubble was collected from fields that experienced high levels of WSS infestation and cutting the year prior. Cut stubble, which contained WSS larvae in diapause, were kept in a refrigerator between 0-4 °C for &gt;100 days as required to complete obligatory larval diapause. After completing diapause, immature WSS were kept at room temperature between 22-27 °C for 4-5 weeks in sealed 70 cm x 35 cm x 20 cm plastic Tupperware<span class="math inline">\(^\circledR\)</span> bins to allow for pupation and emergence. Once emergence began, adults were collected daily and sorted in 2-liter glass mason jars sealed with filter paper to allow for airflow. Jars containing adults were refrigerated at 6-10°C until they were needed for experiments. Unused adults were discarded after 48 hours of refrigeration.</p>
+</section>
+<section id="plants" class="level4">
+<h4 class="anchored" data-anchor-id="plants">Plants</h4>
+<p>Smooth brome was grown from transplanted stems harvested from the Arthur H. Post Agronomy Farm (43°38’19.39”N, 116°14’28.86”W), an extension research station of Montana State University in Bozeman, MT. Immediately following collection, stems were transplanted into 2.7 x 14 inch lightweight deepot cells (Stuewe &amp; Sons Inc<span class="math inline">\(^\circledR\)</span>, Tangent, OR). Winter wheat plants were grown using Yellowstone Winter Wheat cultivar seed stock, started in 1 x 8 inch conical pots. The soil used consisted of MSU Plant Growth Center soil mix (equal parts sterilized Bozeman silt loam soil and washed concrete sand with Canadian sphagnum peat moss incorporated) and Sunshine Mix 1 (Canadian sphagnum peat moss, vermiculite, perlite, and Dolomite lime) in a 1:1 ratio. Fertilization was undergone once weekly using Jack’s Professional<span class="math inline">\(^\circledR\)</span> Water-Soluble Fertilizer (20-20-20) (J.R. Peters Inc., Allentown, PA, USA). The plants were kept in a greenhouse in the Montana State University Plant Growth Center using supplemental light from model MVR1000/C/U GE Multi-Vapor Lamps (GE Lighting, General Electric Company, Cleveland, OH) under photoperiod of 16:8 (L:D) h at 22 <span class="math inline">\(\pm\)</span> 2°C and 20 – 40 % RH. After the plants reached Zadoks 12, they were moved into vernalization storage for 6 weeks to experience the length of dormancy needed for successful flower development. After the six-week period, wheat stems were transplanted into the larger, 2.7 x 14-inch Stuewe &amp; Sons, Inc<span class="math inline">\(^\circledR\)</span> conical pots.</p>
+</section>
+<section id="sawfly-infestation" class="level4">
+<h4 class="anchored" data-anchor-id="sawfly-infestation">Sawfly Infestation</h4>
+<p>Winter wheat plants were deemed ready for infestation once they reached Zadoks 49. Both smooth brome and winter wheat plants were infested by placing a transparent plastic cylinder (60 x 3.8 cm) over the main stem of the plant. A 55-60 cm bamboo stick was added within each tube to help prevent toppling of the cylinder. Each cage had three holes, as well as an open top, covered with fine mesh cloth to allow for air circulation. Four females and two male WSS, newly emerged, were introduced into each tube via a small 1 cm opening. After which, the hole was plugged using a cotton ball covered in mesh cloth. Damp soil was mounded around the base of each tube to prevent insect escapees. Adult sawflies were left within infestation tubes for three days, after which the tubes were removed, and any surviving insects, as well as cadavers, were removed. After infestation, the plants were returned to normal water and fertilization schedules.</p>
+<p>Infestation was undertaken three days a week, for five weeks. Each replicate included 6 ‘Yellowstone’ winter wheat plants at Zadoks 49 and 6 smooth brome plants exhibiting three nodes. For each replicate, three wheat and three smooth brome plants were infested, with three of each left uninfested. Infestation tubes were placed around all twelve plants to maintain control.</p>
+</section>
+<section id="volatile-collection" class="level4">
+<h4 class="anchored" data-anchor-id="volatile-collection">Volatile Collection</h4>
+<p>Volatile compounds were collected from intact and healthy smooth brome and Yellowstone winter wheat. Collection was undergone on plants at Zadoks 49, for a period of six hours from 09:00 to 15:00. Collections were undergone three times a week, with twelve plants collected from each time. Each trial consisted of six smooth brome plants and six winter wheat, with four of each being infested, while the other two were controls.</p>
+<p>Volatiles were collected from twelve plants per day using glass VCC’s that were 80 cm long and 4 cm in diameter. The top end of each VCC funneled into a threaded port that was 10 cm in diameter. Threaded onto the top of each VCC was an eight-port manifold adapter. Two glass filters (traps) (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. An air source was connected to the base of each collection chamber with supply from charcoal air filters. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A small piece of cotton encompassed by a Teflon® guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Laboratory tape was used to seal the edges of the guillotine and prevent contamination by ambient and soil derived volatiles.</p>
+</section>
+<section id="volatile-elution" class="level4">
+<h4 class="anchored" data-anchor-id="volatile-elution">Volatile Elution</h4>
+<p>Volatile compounds were eluted from the glass traps using 200 <span class="math inline">\(\mu\)</span>L aliquot dichloromethane. Trapped volatiles were eluted slowly by adding dichloromethane and further clearing by using a slow release of nitrogen gas. The eluted samples were collected in a glass insert held within a 1.5-mL crimped top glass vial. 10 <span class="math inline">\(\mu\)</span>L of nonyl acetate were then added to the eluted samples as internal standard to quantify compound concentrations. The samples were processed using gas chromatography (GC) on a HP – 5MS; 30m x 0.25mm, 0.25 <span class="math inline">\(\mu\)</span>m film thickness column; (J and W Scientific, Folsom, CA). In order to analyze, the GC instrument (Agilent 6890; Agilent Technologies, Santa Clara, CA) was coupled to a mass spectrometer (MS, Agilent 5973 instrument). Each sample was injected using the automated system in pulse splitless mode, with the initial pressure set to 82.7 kPa per minute. The inlet temperature of the GC was set to 250°C while the column temperature was 50°C for 4 minutes. The temperature was set to increase at a rate of 5°C per minute until it reached 160°C, after which it increased to a rate of 25°C per minute until it reached 280°C. The temperature of the transfer line leading to the mass selective detector (MSD) was set at 300°C. Helium was used as a carrier gas to maintain the flow rate of samples within the column at 1.2 mL/min. The MSD was set in ‘SCAN’ mode running from 50 – 300 m/z.</p>
+</section>
+<section id="volatile-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="volatile-analysis">Volatile Analysis</h4>
+<p>The compounds collected from both the smooth brome and wheat samples were identified by comparing mass spectra and retention times using the National Institute of Standard and Technology (NIST) library. Peaks and volatiles were analyzed using MSD ChemStation (Agilent Technologies, Inc., Santa Clara, CA). The data obtained from the mass-spectrometer was transferred to a Microsoft® Excel spreadsheet where the compounds were quantified by comparison with the internal standard peak area. The amount obtained for each compound was then transformed to the amount produced in six hours. The true quantity of compounds was calculated relative to the internal standard.</p>
+</section>
+</section>
+<section id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds" class="level3">
+<h3 class="anchored" data-anchor-id="behavioral-assessment-of-parasitoids-in-response-to-b.-inermis-organic-volatile-compounds">Behavioral Assessment of Parasitoids in Response to <em>B. inermis</em> Organic Volatile Compounds</h3>
+<section id="insects-2" class="level4">
+<h4 class="anchored" data-anchor-id="insects-2">Insects</h4>
+<p>Parasitoids B. cephi and B. lissogaster were collected from wheat fields in Three Forks, MT (46.020216° N, -111.586582° E). Wheat stem residue from fields that experienced high levels of <em>C. cinctus</em> infestation were collected and stored inside 170-liter plastic barrel liners. Filled liners were stored in a cold storage room at 4°C until mid or late spring of the following year. After the storage time exceeded the mandatory duration needed for obligatory diapause, the plastic barrel liner was removed from cold storage and the residue was placed inside 170 L trash barrels at room temperature and watered to encourage emergence. Collected parasitoids were kept at 6-10°C until used.</p>
+</section>
+<section id="electroantennography" class="level4">
+<h4 class="anchored" data-anchor-id="electroantennography">Electroantennography</h4>
+<p>Specimens were prepared by excising the head from the body using fine micro-dissection scissors. For each specimen, a micro-capillarity tube was pulled in half using a pipette puller (Model PP-830, Narishige Scientific Instrument Lab, Tokyo, Japan). Each half was cut to the appropriate length and angle, then filled with saline solution. The parasitoid head was mounted on the broken end of one of the capillary tubes, then the tube was place on one of the conducting electrode wires connected to a micromanipulator, type INR-5 (Narishige MN-151). The second half of the capillary tube was place on the other electrode wire, and one insect antennae was positioned to touch the empty capillary tube, thus connecting the circuit. The amplifier transferred the information to a computer interface with an EAG version 2.7 software (Syntech NL 2001, Hilversum, Netherlands). This apparatus and method has been consistently used previously in assessing insect volatile response <span class="citation" data-cites="Agelopoulos1999">[@Agelopoulos1999]</span>.</p>
+<p>A consistent stream of purified, humidified air (20 mL sec-1) was delivered onto the antennae. The test compound was delivered via airborne stimulus released from a glass pipette with filter paper treated with 10 <span class="math inline">\(\mu\)</span>L of the test compound. The pipette was connected to a Stimulus Controller CS-55 (Syntech NL 2010, Hilversum, The Netherlands). The equipment was programmed to deliver a 0.4 second puff of air through a Teflon tube and through the glass pipette. The electrical response of the antenna to the test compound was detected by the recording electrode and transferred to the amplifier, increasing the signal and delivering the information to the computer. Figure 2: Electroantennogram connected to GCMS. Useful for connecting insect electrochemical response to host plant produced volatile compounds.</p>
+</section>
+<section id="y--tube-olfactometer-bioassay" class="level4">
+<h4 class="anchored" data-anchor-id="y--tube-olfactometer-bioassay">Y- Tube Olfactometer Bioassay</h4>
+<p>Y-tube bioassays were conducted within the chemical ecology and insect behavior laboratory at the Plant Growth Center at Montana State University. Bioassays were undergone to determine behavioral choice preference response of individual female WSS to an air stream containing volatiles originating from smooth brome and a blank control. Bioassays were conducted using plants at growth stage Zadoks 49. The Y-tube system (Analytical Research Systems, Micanopy, FL) used was similar as described in a previous study <span class="citation" data-cites="Daisy2002">[@Daisy2002]</span> (Figure 1). A single plant was enclosed in a volatile collection chamber (VCC) (100 mm diameter, 254 mm length). Input air was charcoal-filtered and humidified, regulated by a diaphragm air pump that delivered air at a rate of 0.2 L min-1. Air was moved into the VCC through Teflon tubing connected with a 24/410 threaded glass joint. The bottom end of the VCC enclosed each plant and was tightly sealed by a Teflon guillotine (diameter 955 mm, 15 mm center opening), encircling the stem to prevent air leakage. The olfactory system used a Y-shaped glass tube that had two arms connected to the lower port of each VCC by Teflon tubing (diameter 0.64 cm), providing the airstream source from the plant. The VCC contained plant was illuminated by an enhanced spectrum LED grow light (sunshine Systems Grow UFO Light SS-Gu90w, Led Lighting4 Less, Paradise, CA) for one hour before the experiment to make the plant photosynthetically active.</p>
+<!-- Figure 1 y tube diagram -->
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cropping Example</title>
+<style>
+    .image-container {
+        width: auto; /* Set the width of the container */
+        height: auto; /* Set the height of the container */
+        overflow: hidden; /* Hide overflow */
+    }
+    .image-container img {
+        width: 100%; /* Make the image fill the container horizontally */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover;
+        object-position: center;
+    }
+    .caption {
+        text-align: left; /* Center the caption */
+        font-style: italic; /* Style the caption */
+        margin-top: 10px; /* Add some space between the image and the caption */
+    }
+</style>
+
+
+
+<figure class="image-container figure">
+    <img src="../img/proposal/ytube_diagram.jpg" alt="Your Image" class="figure-img">
+    <figcaption class="caption">Figure 1: Y-tube olfactory bioassay as constructed by Daisy et al. (2002). Used to measure insect behavior in the presence of volatile stimulus.</figcaption>
+</figure>
+
+
+
+<p>The Y-tube was made of bifurcated Corning® glass, measuring in at 28-mm diameter x 300 m length. The Y shape branched at an angle of 120, with each branch serving as an arm of the olfactometer. The stem of each Y-tube was 20 cm long. At the bifurcation, each branch extended 4 cm from the junction before ending in 10 cm parallel arms. The Y-tube was positioned horizontally inside a black box made of poster board (46 x 32 x 101.5 cm), designed to prevent the entry of unwanted ambient light. The black box had two holes on the upstream sie of the olfactometer, allowing a fiber optic illuminator (T-Q/FOI-1, Techni Quip Corp, El Segundo, CA) and Teflon tubing to pass through. The fiber optic illuminator was used to deliver light to both arms equally from the center of the bifurcation, while the Teflon tubing connected the VCC to the arms of the Y-tube. One arm of the Y-tube delivered volatiles from the enclosed plant while the other delivered filtered, pure air as a control. The movement of adult WSS is positively phototactic and the horizontally placed Y-tube was positioned such that the light distribution towards both arms was balanced to avoid bias. The arms of the Y-tube were oriented to minimize directional bias and the position of the plants was alternated between runs.</p>
+<p>For each assay, a single naïve female B. cephi or B. lissogaster parasitoid was introduced 1 cm into the unbranched end of the Y-tube. A 28-cm wire was used to facilitate parasitoid movement from the unbranched stem of the glass Y-tube to the test junction between the two upper arms. The order of individual test insects from a pool of naive females was randomly assigned for each bioassay, and test plants were chosen randomly from the greenhouse culture before each experiment. All glassware was cleaned using dish soap and warm water, followed by solvent rinses with acetone and hexane. Cleaned and rinsed glassware was baked at 110°C in a glassware oven for 24 hours before use. New plants were used for each experiment.</p>
+<p>Each individual parasitoid was allowed three minutes to respond to either air stream source. Once a positive response was determined to either source, the trail was ended. If no choice was made after five minutes, the trail was ended and the result was recorded as no response.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, Jackson Strand</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

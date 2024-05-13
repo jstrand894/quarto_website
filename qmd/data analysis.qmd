@@ -1,0 +1,24 @@
+---
+title: "Data Analysis"
+date: "April 5, 2024"
+---
+
+# Data Analysis
+
+## Field Experiments
+
+### Field Survey
+
+Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using linear modeling after log transformation to improve the normality and constant variance assumptions. ‘Site’ and ‘polygon’ were used as fixed effects (treatments) while the mean number of infested stems, parasitized stems, dead larvae, alive larvae, dead eggs, alive eggs were used as the response variable to assess the differences in parameters among the sampling sites. ANOVA was used to calculate P-values using F-distribution to understand overall significant differences in mean *C. cinctus* infestation and parasitism among polygons. To assess the profile of *C. cintus* infestation, parasitism, and larval presence by node, a linear model was fit for each sampling site. Further assessment was done on the responses between sampling sites using a Tukey test using the ‘TukeyHSD’ function.
+
+To assess the importance of smooth brome presence for parasitoid population buffering, we used a 
+
+### Controlled *C. cinctus* infestation of *B. inermis*
+
+## Greenhouse Experiments
+
+#### Organic Volatile Collection from *C. cinctus* Infested *B. inermis* and Winter Wheat
+
+The data analysis procedure for each collection type was the same. Statistical analyses were conducted in R (R Core Team 2024) using RStudio (version 4.2.1) using PERMANOVA, PERMDISP, and Random Forest modeling. The data was first transformed using a center log-ratio (CLR) transformation, a technique commonly used when analyzing multivariate compositional data [@chemoguide]. VOC compositions were compared between samples and treatments using a permutational multivariate analysis of variance (PERMANOVA, Canberra distance, 999 iterations) tests implemented in the vegan package (v 2.6-4) [@vegan]. This technique uses permutation testing to generate many different rearrangements of the data to assess if the observed differences are statistically significant [@anderson2017]. Data were visualized using a combination of ggplot2 and knitr [@ggplot; @knitr]. I selected a subset of compounds to ues for each analysis. These compounds were selected based on consistency of presence across samples and years, as well as overall quality of mass spectroscopy output.
+
+#### Behavioral Assessment of Parasitoids in Response to *B. inermis* Organic Volatile Compounds

@@ -1,0 +1,44 @@
+---
+title: "greenhouse volatiles"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r library, echo = F, message = F, warning = F}
+library(dplyr)
+library(readxl)
+library(ggplot2)
+library(kableExtra)
+
+```
+
+```{r data, echo = F}
+meta.23 <-
+read_excel("greenhouse_volatiles/BWW 2023 Results.xlsx",
+           sheet = "meta.data")
+
+meta.22 <-
+read_excel("greenhouse_volatiles/BWW 2022 Results.xlsx",
+           sheet = "meta.data")
+```
+
+```{r filter, echo = F, eval = F}
+meta.23 %>% 
+  dplyr::select(Sample, rep, sample.id,
+                inf, p.type) %>%
+  filter(p.type == "b",
+         inf == "y") %>%
+  mutate(Value = as.numeric(gsub("\\D", "", rep))) %>%
+  filter(rep == "11A")
+
+meta.22 %>%
+  dplyr::select(sample.id, infested, type) %>%
+  filter(sample.id == "1A7")
+  filter(infested == "Y",
+         type == "B")
+  
+  
+  
+```
+
+

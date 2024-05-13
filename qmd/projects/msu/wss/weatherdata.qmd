@@ -7,68 +7,425 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
+```{r, echo = F, message = F}
 library(tidyverse)
 library(glue)
 library(lubridate)
 library(ggplot2)
+library(maps)
+library(readxl)
+
 ```
 
 
-```{r}
+```{r, echo = F, message = F}
 inventory_url <- "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt"
 
 inventory <- read_table(inventory_url,
            col_names = c("station", "lat", "lon", "variable", "start", "end"))
+```
 
+```{r weather data load, echo = F}
+area <- c("Big Sandy", "Moccasin", "Bozeman")
+lats <- c(48.177540, 47.109558, 45.678871)
+longs <- c(-110.114060, -109.884338, -111.060815)
 
-inventory
+coordinates <- data.frame(area, lats, longs)
 
+my_coordinates <- 
+coordinates %>%
+  mutate(lats_conv = lats * 2 * pi/360,
+         longs_conv = longs * 2 * pi/360) %>%
+  ### SELECT AREA HERE ###
+  filter(area == "Big Sandy")
+  ########################
 
-my_lat <- 45.661966103346735 * 2 * pi/360
-my_long <- -111.04939878991246 * 2 * pi/360
-
-my_station <- 
+top_3_stations <- 
   inventory %>%
+    dplyr::select(station, lat, lon, start, end) %>%
     mutate(lat_r = lat *2 *pi/360,
            lon_r = lon *2 *pi/360,
-           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_lat)) + cos(lat_r) * cos(my_lat) * cos(my_long - lon_r))) %>%
+           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_coordinates$lats_conv)) + cos(lat_r) * cos(my_coordinates$lats_conv) * cos(my_coordinates$longs_conv - lon_r))) %>%
     filter(start < 1960 & end > 2020) %>%
-    top_n(n = -1, d) %>%
-    distinct(station) %>%
-    pull(station)
+    dplyr::select(-c(start, end)) %>%
+    distinct() %>%
+    arrange(d) %>%
+    top_n(n = -3, d) 
 
+station_1 <- 
+  top_3_stations %>%
+  slice(1) %>%
+  pull(station)
+
+station_2 <-
+  top_3_stations %>%
+  slice(2) %>%
+  pull(station)
+
+station_3 <-
+  top_3_stations %>%
+  slice(3) %>%
+  pull(station)
+
+####
+my_station <- station_1
+####
 station_daily <- glue("https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{my_station}.csv.gz")
 
 local_weather <- 
 read_csv(station_daily,
          col_names = c("station", "date", "variable", "value", "a", "b", "c", "d")) %>%
+  # filter(station == station_2) %>%
   dplyr::select(station, date, variable, value) %>%
   pivot_wider(names_from = "variable", values_from = "value",
                 values_fill = 0) %>%
   dplyr::select(date, TMAX, PRCP, SNOW) %>%
-  mutate(date = ymd(date))
+  mutate(date = ymd(date)) %>%
+  filter(date > "1950-01-01") %>%
+  filter(TMAX > -100)
+
+local_weather <-
+local_weather %>%
+  mutate(year = lubridate::year(date))
+```
+
+
+```{r plot, echo = F, message = F}
+# plot the weather
+local_weather %>%
+  group_by(year) %>%
+  filter(!year == "2024") %>%
+  reframe(average_prcp = mean(PRCP, na.rm =TRUE)) %>%
+  filter(year < 2024,
+         year > 1975) %>%
+  ggplot() +
+  geom_point(aes(x = year, y = average_prcp)) +
+  geom_line(aes(x = year, y = average_prcp)) +
+  geom_smooth(aes(x = year, y = average_prcp), 
+              method = "loess", 
+              se = TRUE) +
+  scale_x_continuous(breaks = seq(min(local_weather$year),
+                                  max(local_weather$year),
+                                  by = 5)) +
+  labs(x = NULL,
+       title = my_coordinates$area) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+
+local_weather %>%
+  group_by(year) %>%
+  reframe(average_prcp = mean(PRCP, na.rm =TRUE)) %>%
+  filter(year >= 2010,
+         year < 2024) %>%
+  ggplot() +
+  geom_point(aes(x = year, y = average_prcp)) +
+  geom_line(aes(x = year, y = average_prcp)) +
+  geom_smooth(aes(x = year, y = average_prcp), 
+              method = "loess", 
+              se = TRUE) +
+  scale_x_continuous(breaks = seq(min(local_weather$year),
+                                  max(local_weather$year),
+                                  by = 1)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.minor = element_blank()) +
+  labs(x = NULL,
+       y = "Average Precipitation (inches)",
+       title = paste0(my_coordinates$area, ", MT", " Average Yearly Precipitation", collapse =""))
+```
+
+
+Let's run a linear model to see if the downward trend is significant.
+```{r linear model, echo = F}
+local_weather %>%
+  filter(year >= 2010,
+         year < 2024) %>%
+  group_by(year) %>%
+  reframe(average_prcp = mean(PRCP, na.rm =TRUE)) %>%
+  lm(average_prcp ~ year, data = .) %>%
+  summary()
+```
+
+
+
+
+```{r map, echo = F}
+world_map <- map_data("world")
+states <- map_data("state")
+counties <- map_data("county") %>%
+  filter(region == "montana")
+
+ggplot() +
+  geom_polygon(data = world_map, aes(x = long, y = lat, group = group), 
+               fill = "white", color = "black") +
+  geom_polygon(data = states, aes(x = long, y = lat, group = group),
+               fill = NA, color = "black", alpha = 0.5) +
+  geom_polygon(data = counties, aes(x = long, y = lat, group = group),
+               fill = NA, color = "black", alpha = 0.5) +
+  geom_label(data = coordinates, aes(x = longs, y = lats), 
+             color = "black", 
+             label = area,
+             size = 3,
+             vjust = -0.3,
+             hjust = -0.1,
+             label.padding = unit(0.3, "lines")) +
+  geom_point(data = coordinates, aes(x = longs, y = lats),
+             color = "red") +
+  coord_cartesian(xlim = c(-116, -104), ylim = c(44, 49)) +
+  theme_bw()
+
 
 ```
 
 
 ```{r}
-bozeman_weather <-
-  local_weather %>%
-  filter(date > "2000-01-01")
 
-ggplot(data = bozeman_weather) +
-  geom_line(aes(x = date, y = PRCP)) +
-  theme_bw() 
+library(pacman)
+rgee_environment_dir = "/opt/miniconda3/envs/rgee_py"
 
 
+p_load(raster,
+       rgdal,
+       rgeos,
+       gdalUtils,
+       sp,
+       sf,
+       leaflet,
+       mapview,
+       caret)
 
-ggplot(data = bozeman_weather) +
-  geom_line(aes(x = date, y = PRCP)) +
-  geom_smooth(aes(x = date, y = PRCP), method = "loess", se = TRUE) +
-  theme_bw()
+p_load(rgee, geojsonio, remotes, reticulate, devtools, googledrive)
+install_github("r-spatial/rgee")
+
+library(remotes)
+library(rgee)
+
+# set python
+reticulate::use_python(rgee_environment_dir, required=T)
+rgee::ee_install_set_pyenv(
+  py_path = rgee_environment_dir, # Change it for your own Python PATH
+  py_env = "rgee_py" # Change it for your own Python ENV
+)
+Sys.setenv(RETICULATE_PYTHON = rgee_environment_dir)
+Sys.setenv(EARTHENGINE_PYTHON = rgee_environment_dir)
+```
+
+
+
+
+Big Sandy Data
+- Need data from 3 weather stations that are nearby lochy's property
+- average the data to get a good representation 
+- plot the past 30 years of data
+- plot the past 7 years of data
+
+
+```{r}
+library(readxl)
+lochy_weather <- 
+read_excel("Lochy_weather.xlsx", sheet = "clean2") %>%
+  mutate(date = ymd(date)) %>%
+  dplyr::select(region, lat, long, date, year, prcp, tmax) %>%
+  group_by(year) %>%
+  reframe(prcp = sum(prcp * 0.3937 / 2)) +
+  mutate(year = as.factor(year))
+  
+```
+
+
+```{r Big Sandy Data, echo = F}
+area <- c("Big Sandy", "Moccasin", "Bozeman")
+lats <- c(48.177540, 47.098790, 45.678871)
+longs <- c(-110.114060, -109.882962, -111.060815)
+
+
+
+coordinates <- data.frame(area, lats, longs)
+
+my_coordinates <- 
+coordinates %>%
+  mutate(lats_conv = lats * 2 * pi/360,
+         longs_conv = longs * 2 * pi/360) %>%
+  ### SELECT AREA HERE ###
+  filter(area == "Big Sandy")
+  ########################
+
+top_3_stations <- 
+  inventory %>%
+    dplyr::select(station, lat, lon, start, end) %>%
+    mutate(lat_r = lat *2 *pi/360,
+           lon_r = lon *2 *pi/360,
+           d = 1.609344 * 3963 * acos((sin(lat_r) * sin(my_coordinates$lats_conv)) + cos(lat_r) * cos(my_coordinates$lats_conv) * cos(my_coordinates$longs_conv - lon_r))) %>%
+    filter(start < 1960 & end > 2020) %>%
+    dplyr::select(-c(start, end)) %>%
+    distinct() %>%
+    arrange(d) %>%
+    top_n(n = -3, d) %>%
+    mutate(miles = d / 1.609344)
+
+
+# station 1
+station_1 <- 
+  top_3_stations %>%
+  slice(1) %>%
+  pull(station)
+
+station_1_data <-
+  read_csv(glue("https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{station_1}.csv.gz")) %>%
+           set_names(c("station", "date", "variable", 
+                         "value", "a", "b", "c", "d")) %>%
+  dplyr::select(station, date, variable, value)
+
+# station 2
+station_2 <-
+  top_3_stations %>%
+  slice(2) %>%
+  pull(station)
+
+station_2_data <-
+  read_csv(glue("https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{station_2}.csv.gz")) %>%
+           set_names(c("station", "date", "variable", 
+                         "value", "a", "b", "c", "d")) %>%
+  dplyr::select(station, date, variable, value)
+
+# station 3
+station_3 <-
+  top_3_stations %>%
+  slice(3) %>%
+  pull(station)
+
+station_3_data <-
+  read_csv(glue("https://ncei.noaa.gov/pub/data/ghcn/daily/by_station/{station_3}.csv.gz")) %>%
+           set_names(c("station", "date", "variable", 
+                         "value", "a", "b", "c", "d")) %>%
+  dplyr::select(station, date, variable, value)
+
+bind_rows(station_1_data,
+          station_2_data,
+          station_3_data) %>%
+  pivot_wider(names_from = "variable", values_from = "value",
+                values_fill = 0) %>%
+  dplyr::select(station, date, TMAX, PRCP, SNOW) %>%
+  mutate(date = ymd(date)) %>%
+  filter(date > "1950-01-01") %>%
+  filter(TMAX > -100) %>%
+  mutate(year = lubridate::year(date)) %>%
+  group_by(station, year) %>%
+  reframe(average_temp = mean(TMAX),
+          average_prcp = mean(PRCP)) %>%
+  filter(year < 2024,
+         year > 2014) %>%
+  left_join(top_3_stations, by = "station") %>%
+  mutate(miles = as.factor(round(miles,1))) %>%
+  ggplot() +
+  geom_point(aes(x = year, y = average_prcp, color = miles)) +
+  geom_line(aes(x = year, y = average_prcp, color = miles)) +
+  geom_smooth(aes(x = year, y = average_prcp), 
+              method = "loess", 
+              se = TRUE) +
+  scale_x_continuous(breaks = seq(min(local_weather$year),
+                                  max(local_weather$year),
+                                  by = 1)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.minor = element_blank()) +
+  labs(y = "Average Precipitation (inches)",
+       x = NULL)
+  
 
 ```
-title: "Montana Weather Data"
----
+
+```{r}
+# ndvi_brome <-
+  read_excel("ndvi_fixed.xlsx") %>%
+  dplyr::select(NDVI, date) %>%
+  mutate(date = ymd(date)) %>%
+  mutate(type = "brome") %>%
+  bind_rows(ndvi_wheat) %>%
+  mutate(year = lubridate::year(date),
+         month = lubridate::month(date),
+         day = lubridate::day(date)) %>%
+  mutate(year = as.factor(year)) %>%
+  # group_by(year, month, type) %>%
+  # reframe(date, NDVI = mean(NDVI)) %>%
+  ungroup() %>%
+  filter(year == "2021",
+         # NDVI > 0.05,
+         month > 3,
+         month < 10) %>%
+  ggplot() +
+  geom_line(aes(x = date, y = NDVI, color = type)) +
+  theme_bw()
+  
+read_excel("ndvi_brome_nn_2.xlsx") %>%
+  dplyr::select(NDVI, date) %>%
+  mutate(date = ymd(date),
+         year = lubridate::year(date)) %>%
+  filter(year == "2023") %>%
+  ggplot() +
+  geom_line(aes(x = date, y = NDVI))
+
+ndvi_wheat <-
+read_excel("ndvi_10years_nn.xlsx") %>%
+  dplyr::select(NDVI, date) %>%
+  mutate(date = ymd(date)) %>%
+  mutate(type = "wheat")
+
+
+
+  filter(month > 3,
+         month < 10,
+         NDVI > 0.05) %>%
+  mutate(year = as.factor(year),
+         month = as.factor(month)) %>%
+  filter(year == "2023")
+
+ndvi_data <-
+read_excel("ndvi_fixed.xlsx") %>%
+  mutate(type = "brome") %>%
+  bind_rows(read_excel("wheat_fixed.xlsx") %>%
+              mutate(type = "wheat")) %>%
+  dplyr::select(NDVI, date, type) %>%
+  mutate(date = ymd(date),
+         year = lubridate::year(date),
+         month = lubridate::month(date)) 
+
+
+ndvi_data %>%
+  mutate(subset = "original") %>%
+  filter(year == "2020") %>%
+  bind_rows(ndvi_data %>%
+              filter(year == "2023") %>%
+              filter(!(NDVI < 0.05 & month > 4 & month < 10),
+                     !(NDVI > 0.15 & month > 7)) %>%
+              mutate(subset = "new")) %>%
+  filter(subset == "new") %>%
+  ggplot() +
+  geom_point(aes(x = date, y = NDVI, color = type), 
+             alpha = 0.7,
+             position = position_jitter(width = 0.001, height = 0.002)) +
+  geom_smooth(aes(x = date, y = NDVI, color = type),
+              alpha = 0.5) +
+  theme_bw() 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

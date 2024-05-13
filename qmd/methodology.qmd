@@ -1,0 +1,120 @@
+---
+title: "Methodology"
+date: "April 5, 2024"
+---
+
+# Methodology
+
+## Field Experiments
+
+### Field Survey
+
+To assess *C. cinctus* infestation, larval mortality, and parasitoid prevalence within *B. inermis* and adjacent wheat fields, sites were chosen that had the best chance of accurately representing conditions throughout the Golden Triangle, a region of north-central Montana known for its dryland grain production. Samples were collected in early July and late August in 2021, 2022, and 2023 from sites in Big Sandy, Moccasin, and Amsterdam, MT, USA. *B. inermis* sites were set up as polygons along the edge of adjoining wheat fields measuring approximately 100 meters in area. Four collection squares of 1ft x 1ft were randomly partitioned within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected. The stems were then processed and split in the laboratory to assess infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting.
+
+### Controlled *C. cinctus* infestation of *B. inermis*
+
+#### Plant Selection and Field Cages
+
+Assessment of *C. cinctus* infestation and mortality within *B. inermis* were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530$\mu$ Amber Lumite Screen (BioQuip$^\circledR$ Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three. The cages were removed from the plot after 3 weeks of sawfly release.
+
+#### Insects
+
+Wheat stem stubble was collected in Three Forks, MT, USA (43°38'19.39"N, 116°14'28.86"W) from fields that experienced high levels of *C. cinctus* infestation and cutting the year prior. Cut stubble, which contained *C. cinctus* larvae in diapause, were kept refrigerated between -2°C and 3°C for \>100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Stubs were added to cages once *B. inermis* stems reached six inches tall, with sawfly quantity treatments as follows: high (600 stubs), low (200 stubs), and control (0 stubs).
+
+#### Data Collection
+
+Stems were collected from each cage site in late August. All stems from each 6 x 3 ft cage section were collected. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae, live larvae, and parasitism at each internode.
+
+## Greenhouse Experiments
+
+### Organic Volatile Collection from *C. cinctus* Infested *B. inermis* and Winter Wheat
+
+#### Insects
+
+Wheat stubble collected the year prior to each experiment were used to rear adult WSS. Wheat stubble was collected from Big Sandy (48.17754°N, -110.11406°E) and Three Forks (46.020216°N, -111.586582°E), MT, USA. Stubble was collected from fields that experienced high levels of WSS infestation and cutting the year prior. Cut stubble, which contained WSS larvae in diapause, were kept in a refrigerator between 0-4 °C for \>100 days as required to complete obligatory larval diapause. After completing diapause, immature WSS were kept at room temperature between 22-27 °C for 4-5 weeks in sealed 70 cm x 35 cm x 20 cm plastic Tupperware$^\circledR$ bins to allow for pupation and emergence. Once emergence began, adults were collected daily and sorted in 2-liter glass mason jars sealed with filter paper to allow for airflow. Jars containing adults were refrigerated at 6-10°C until they were needed for experiments. Unused adults were discarded after 48 hours of refrigeration.
+
+#### Plants
+
+Smooth brome was grown from transplanted stems harvested from the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an extension research station of Montana State University in Bozeman, MT. Immediately following collection, stems were transplanted into 2.7 x 14 inch lightweight deepot cells (Stuewe & Sons Inc$^\circledR$, Tangent, OR). Winter wheat plants were grown using Yellowstone Winter Wheat cultivar seed stock, started in 1 x 8 inch conical pots. The soil used consisted of MSU Plant Growth Center soil mix (equal parts sterilized Bozeman silt loam soil and washed concrete sand with Canadian sphagnum peat moss incorporated) and Sunshine Mix 1 (Canadian sphagnum peat moss, vermiculite, perlite, and Dolomite lime) in a 1:1 ratio. Fertilization was undergone once weekly using Jack’s Professional$^\circledR$ Water-Soluble Fertilizer (20-20-20) (J.R. Peters Inc., Allentown, PA, USA). The plants were kept in a greenhouse in the Montana State University Plant Growth Center using supplemental light from model MVR1000/C/U GE Multi-Vapor Lamps (GE Lighting, General Electric Company, Cleveland, OH) under photoperiod of 16:8 (L:D) h at 22 $\pm$ 2°C and 20 – 40 % RH. After the plants reached Zadoks 12, they were moved into vernalization storage for 6 weeks to experience the length of dormancy needed for successful flower development. After the six-week period, wheat stems were transplanted into the larger, 2.7 x 14-inch Stuewe & Sons, Inc$^\circledR$ conical pots.
+
+#### Sawfly Infestation
+
+Winter wheat plants were deemed ready for infestation once they reached Zadoks 49. Both smooth brome and winter wheat plants were infested by placing a transparent plastic cylinder (60 x 3.8 cm) over the main stem of the plant. A 55-60 cm bamboo stick was added within each tube to help prevent toppling of the cylinder. Each cage had three holes, as well as an open top, covered with fine mesh cloth to allow for air circulation. Four females and two male WSS, newly emerged, were introduced into each tube via a small 1 cm opening. After which, the hole was plugged using a cotton ball covered in mesh cloth. Damp soil was mounded around the base of each tube to prevent insect escapees. Adult sawflies were left within infestation tubes for three days, after which the tubes were removed, and any surviving insects, as well as cadavers, were removed. After infestation, the plants were returned to normal water and fertilization schedules.
+
+Infestation was undertaken three days a week, for five weeks. Each replicate included 6 ‘Yellowstone’ winter wheat plants at Zadoks 49 and 6 smooth brome plants exhibiting three nodes. For each replicate, three wheat and three smooth brome plants were infested, with three of each left uninfested. Infestation tubes were placed around all twelve plants to maintain control.
+
+#### Volatile Collection
+
+Volatile compounds were collected from intact and healthy smooth brome and Yellowstone winter wheat. Collection was undergone on plants at Zadoks 49, for a period of six hours from 09:00 to 15:00. Collections were undergone three times a week, with twelve plants collected from each time. Each trial consisted of six smooth brome plants and six winter wheat, with four of each being infested, while the other two were controls.
+
+Volatiles were collected from twelve plants per day using glass VCC’s that were 80 cm long and 4 cm in diameter. The top end of each VCC funneled into a threaded port that was 10 cm in diameter. Threaded onto the top of each VCC was an eight-port manifold adapter. Two glass filters (traps) (6.35 mm diameter x 76 mm length; Analytical Research Systems, Gainesville, FL) with 30 mg of Super-Q absorbent (Alltech Associates, Deerfield, IL) were inserted into two of the adapter ports. The remaining six collection ports were sealed to prevent ambient air exchange and pressure loss. One of the traps was used to collected extraneous volatiles from the initial experiment set up for the first ten minutes, whereas the other trap was used to collect volatile compounds emanating from plants beginning ten minutes after the system was turned on. An air source was connected to the base of each collection chamber with supply from charcoal air filters. A vacuum pump was used to maintain air pressure and flow rate (humidified air at 1.0 liter/min) within the collection system. A small piece of cotton encompassed by a Teflon® guillotine was used at the base of each plant to tightly seal the base of the system and prevent external air from entering. Laboratory tape was used to seal the edges of the guillotine and prevent contamination by ambient and soil derived volatiles.
+
+#### Volatile Elution
+
+Volatile compounds were eluted from the glass traps using 200 $\mu$L aliquot dichloromethane. Trapped volatiles were eluted slowly by adding dichloromethane and further clearing by using a slow release of nitrogen gas. The eluted samples were collected in a glass insert held within a 1.5-mL crimped top glass vial. 10 $\mu$L of nonyl acetate were then added to the eluted samples as internal standard to quantify compound concentrations. The samples were processed using gas chromatography (GC) on a HP – 5MS; 30m x 0.25mm, 0.25 $\mu$m film thickness column; (J and W Scientific, Folsom, CA). In order to analyze, the GC instrument (Agilent 6890; Agilent Technologies, Santa Clara, CA) was coupled to a mass spectrometer (MS, Agilent 5973 instrument). Each sample was injected using the automated system in pulse splitless mode, with the initial pressure set to 82.7 kPa per minute. The inlet temperature of the GC was set to 250°C while the column temperature was 50°C for 4 minutes. The temperature was set to increase at a rate of 5°C per minute until it reached 160°C, after which it increased to a rate of 25°C per minute until it reached 280°C. The temperature of the transfer line leading to the mass selective detector (MSD) was set at 300°C. Helium was used as a carrier gas to maintain the flow rate of samples within the column at 1.2 mL/min. The MSD was set in ‘SCAN’ mode running from 50 – 300 m/z.
+
+#### Volatile Analysis
+
+The compounds collected from both the smooth brome and wheat samples were identified by comparing mass spectra and retention times using the National Institute of Standard and Technology (NIST) library. Peaks and volatiles were analyzed using MSD ChemStation (Agilent Technologies, Inc., Santa Clara, CA). The data obtained from the mass-spectrometer was transferred to a Microsoft® Excel spreadsheet where the compounds were quantified by comparison with the internal standard peak area. The amount obtained for each compound was then transformed to the amount produced in six hours. The true quantity of compounds was calculated relative to the internal standard.
+
+### Behavioral Assessment of Parasitoids in Response to *B. inermis* Organic Volatile Compounds
+
+#### Insects
+
+Parasitoids B. cephi and B. lissogaster were collected from wheat fields in Three Forks, MT (46.020216° N, -111.586582° E). Wheat stem residue from fields that experienced high levels of *C. cinctus* infestation were collected and stored inside 170-liter plastic barrel liners. Filled liners were stored in a cold storage room at 4°C until mid or late spring of the following year. After the storage time exceeded the mandatory duration needed for obligatory diapause, the plastic barrel liner was removed from cold storage and the residue was placed inside 170 L trash barrels at room temperature and watered to encourage emergence. Collected parasitoids were kept at 6-10°C until used.
+
+#### Electroantennography
+
+Specimens were prepared by excising the head from the body using fine micro-dissection scissors. For each specimen, a micro-capillarity tube was pulled in half using a pipette puller (Model PP-830, Narishige Scientific Instrument Lab, Tokyo, Japan). Each half was cut to the appropriate length and angle, then filled with saline solution. The parasitoid head was mounted on the broken end of one of the capillary tubes, then the tube was place on one of the conducting electrode wires connected to a micromanipulator, type INR-5 (Narishige MN-151). The second half of the capillary tube was place on the other electrode wire, and one insect antennae was positioned to touch the empty capillary tube, thus connecting the circuit. The amplifier transferred the information to a computer interface with an EAG version 2.7 software (Syntech NL 2001, Hilversum, Netherlands). This apparatus and method has been consistently used previously in assessing insect volatile response [@Agelopoulos1999].
+
+A consistent stream of purified, humidified air (20 mL sec-1) was delivered onto the antennae. The test compound was delivered via airborne stimulus released from a glass pipette with filter paper treated with 10 $\mu$L of the test compound. The pipette was connected to a Stimulus Controller CS-55 (Syntech NL 2010, Hilversum, The Netherlands). The equipment was programmed to deliver a 0.4 second puff of air through a Teflon tube and through the glass pipette. The electrical response of the antenna to the test compound was detected by the recording electrode and transferred to the amplifier, increasing the signal and delivering the information to the computer. Figure 2: Electroantennogram connected to GCMS. Useful for connecting insect electrochemical response to host plant produced volatile compounds.
+
+#### Y- Tube Olfactometer Bioassay
+
+Y-tube bioassays were conducted within the chemical ecology and insect behavior laboratory at the Plant Growth Center at Montana State University. Bioassays were undergone to determine behavioral choice preference response of individual female WSS to an air stream containing volatiles originating from smooth brome and a blank control. Bioassays were conducted using plants at growth stage Zadoks 49. The Y-tube system (Analytical Research Systems, Micanopy, FL) used was similar as described in a previous study [@Daisy2002] (Figure 1). A single plant was enclosed in a volatile collection chamber (VCC) (100 mm diameter, 254 mm length). Input air was charcoal-filtered and humidified, regulated by a diaphragm air pump that delivered air at a rate of 0.2 L min-1. Air was moved into the VCC through Teflon tubing connected with a 24/410 threaded glass joint. The bottom end of the VCC enclosed each plant and was tightly sealed by a Teflon guillotine (diameter 955 mm, 15 mm center opening), encircling the stem to prevent air leakage. The olfactory system used a Y-shaped glass tube that had two arms connected to the lower port of each VCC by Teflon tubing (diameter 0.64 cm), providing the airstream source from the plant. The VCC contained plant was illuminated by an enhanced spectrum LED grow light (sunshine Systems Grow UFO Light SS-Gu90w, Led Lighting4 Less, Paradise, CA) for one hour before the experiment to make the plant photosynthetically active.
+
+<!-- Figure 1 y tube diagram -->
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cropping Example</title>
+<style>
+    .image-container {
+        width: auto; /* Set the width of the container */
+        height: auto; /* Set the height of the container */
+        overflow: hidden; /* Hide overflow */
+    }
+    .image-container img {
+        width: 100%; /* Make the image fill the container horizontally */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover;
+        object-position: center;
+    }
+    .caption {
+        text-align: left; /* Center the caption */
+        font-style: italic; /* Style the caption */
+        margin-top: 10px; /* Add some space between the image and the caption */
+    }
+</style>
+</head>
+<body>
+
+<figure class="image-container">
+    <img src="../img/proposal/ytube_diagram.jpg" alt="Your Image">
+    <figcaption class="caption">Figure 1: Y-tube olfactory bioassay as constructed by Daisy et al. (2002). Used to measure insect behavior in the presence of volatile stimulus.</figcaption>
+</figure>
+
+</body>
+</html>
+```
+The Y-tube was made of bifurcated Corning® glass, measuring in at 28-mm diameter x 300 m length. The Y shape branched at an angle of 120, with each branch serving as an arm of the olfactometer. The stem of each Y-tube was 20 cm long. At the bifurcation, each branch extended 4 cm from the junction before ending in 10 cm parallel arms. The Y-tube was positioned horizontally inside a black box made of poster board (46 x 32 x 101.5 cm), designed to prevent the entry of unwanted ambient light. The black box had two holes on the upstream sie of the olfactometer, allowing a fiber optic illuminator (T-Q/FOI-1, Techni Quip Corp, El Segundo, CA) and Teflon tubing to pass through. The fiber optic illuminator was used to deliver light to both arms equally from the center of the bifurcation, while the Teflon tubing connected the VCC to the arms of the Y-tube. One arm of the Y-tube delivered volatiles from the enclosed plant while the other delivered filtered, pure air as a control. The movement of adult WSS is positively phototactic and the horizontally placed Y-tube was positioned such that the light distribution towards both arms was balanced to avoid bias. The arms of the Y-tube were oriented to minimize directional bias and the position of the plants was alternated between runs.
+
+For each assay, a single naïve female B. cephi or B. lissogaster parasitoid was introduced 1 cm into the unbranched end of the Y-tube. A 28-cm wire was used to facilitate parasitoid movement from the unbranched stem of the glass Y-tube to the test junction between the two upper arms. The order of individual test insects from a pool of naive females was randomly assigned for each bioassay, and test plants were chosen randomly from the greenhouse culture before each experiment. All glassware was cleaned using dish soap and warm water, followed by solvent rinses with acetone and hexane. Cleaned and rinsed glassware was baked at 110°C in a glassware oven for 24 hours before use. New plants were used for each experiment.
+
+Each individual parasitoid was allowed three minutes to respond to either air stream source. Once a positive response was determined to either source, the trail was ended. If no choice was made after five minutes, the trail was ended and the result was recorded as no response.
+
+# 
