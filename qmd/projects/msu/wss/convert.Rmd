@@ -11,7 +11,7 @@ output: html_document
 # document into an .RMD file so that I can convert the .RMD
 # into a word document
 library(rmarkdown)
-content <- readLines("paper1.qmd", warn = FALSE)
+content <- readLines("paper_1.qmd", warn = FALSE)
 writeLines(content, "paper1.rmd")
 render("paper1.rmd", 
        output_format = "word_document",
