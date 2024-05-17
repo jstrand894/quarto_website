@@ -24,7 +24,7 @@ bs_coordinates <-
   coordinates %>%
   mutate(lats_conv = lats * 2 * pi/360,
          longs_conv = longs * 2 * pi/360) %>%
-  filter(area == "Havre")
+  filter(area == "Big Sandy")
 
 bs_top_3_stations <- 
   inventory %>%
@@ -36,7 +36,8 @@ bs_top_3_stations <-
   dplyr::select(-c(start, end)) %>%
   distinct() %>%
   arrange(d) %>%
-  top_n(n = -3, d) 
+  top_n(n = -3, d) %>%
+  pull(lat)
 
 bs_station_1 <- 
   bs_top_3_stations %>%
@@ -131,9 +132,9 @@ moc_station_3 <-
   slice(3) %>%
   pull(station)
 
+library(rmarkdown)
 
-
-
+render("paper1.rmd", output_format = "word_document")
 
 
 write.xlsx(moc_weather_data, "moccasin_prcp.xlsx", rowNames = FALSE)

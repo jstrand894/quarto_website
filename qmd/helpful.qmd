@@ -37,8 +37,8 @@ Below I have put many of the links that helped me.
 -   A guide to using GitHub created by [Callum Arnold](https://www.linkedin.com/in/arnold-c/){style="text-decoration: none;"}: <a href="https://psu-git.callumarnold.com" target="_blank">Introduction to Git and GitHub</a>
 
 
-
-
+Mixed Effects Models
+https://meghan.rbind.io/blog/2022-06-28-a-beginners-guide-to-mixed-effects-models/
 
 
 Watershed volunteering

@@ -56,6 +56,8 @@ website:
                   contents:
                   - text: "Thesis Proposal"
                     href: qmd/litreview.qmd
+                  - text: "Paper 1"
+                    href: qmd/projects/msu/wss/paper1(1).qmd
                   - text: "Controlled WSS Infestation"
                     href: qmd/projects/msu/wss/pfreport.qmd
                   - text: "Montana Field Sites"
