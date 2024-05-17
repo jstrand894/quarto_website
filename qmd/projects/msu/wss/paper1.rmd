@@ -1,24 +1,23 @@
 ---
 title: "Ecological Importance of Smooth Brome in Managing Wheat Stem Sawfly (Hymenoptera: Cephidae) via Its Associated Braconid Parasitoids"
 authors: "Jackson R. Strand, David K. Weaver"
-date: "May 14, 2024"
+date: "May 17, 2024"
 editor_options: 
   chunk_output_type: console
-bibliography: proposal.bib
+bibliography: paper1.bib
 link-citations: true
 biblio-style: apalike
 cls: 
   max-names: 1
-output: 
-  html_document:
-      fig_caption: true
 ---
-
+<div class="box">
 This document can be downloaded as either a .docx or .pdf document. Please be aware that conversion may cause the formatting to be altered. 
 
-[Download .docx](convert/Paper1.docx)
-[Download .pdf](convert/Paper1.pdf)
+<a href="convert/JacksonStrand_Paper%201.docx" target="_blank">Download .docx</a>  
 
+<a href="convert/JacksonStrand_Paper%201.pdf" target="_blank">Download .pdf</a>
+
+</div>
 
 ## Abstract
 
@@ -26,15 +25,19 @@ This document can be downloaded as either a .docx or .pdf document. Please be aw
 
 Ecologists and farmers frequently hold divergent views regarding the importance of natural habitats within agricultural landscapes, a distinction often overlooked in ecological and conservation discourse [@Tscharntke2016]. While ecologists recognize the role of natural habitats in supporting biodiversity and providing potential ecosystem services like biological pest control, many farmers perceive these habitat remnants as occupying valuable cropland or even as sources of pests. As such, documenting how pest and natural enemy populations interact with agricultural landscapes alongside natural habitat buffers is important in determining the degree of the services or disservices provided. 
 
-Numerous polyphagous insect herbivores and their natural enemies rely on a variety of resources found across diverse habitat types within their environment. Depending upon the quality of the resource, different habitat types can serve as sources for increased pest or natural enemy populations. Similarly, habitat types can serve as sinks for decreased populations [@Kennedy2000]. Altering the presence of these resources can have impacts on pest or natural enemy populations and can alter the ecology between the examined species. For example, diversifying the edge cropping of organic Kale (*Brassica oleracea*) using fava beans, fennel, and marigolds results in a diversity in beneficial arthropod communities that help reduce phytophagous herbivory [@DeMorias2023]. Understanding the ways in which landscape habitat diversity impacts the ecological relationship between pest and enemy is crucial for effectively managing pest species in large scale cropping systems.
+Numerous polyphagous insect herbivores and their natural enemies rely on a variety of resources found across diverse habitat types within their environment. Depending upon the quality of the resource, different habitat types can serve as sources for increased pest or natural enemy populations. Similarly, habitat types can serve as sinks for decreased populations [@Kennedy2000]. Altering the presence of these resources can have impacts on pest or natural enemy populations and can alter the ecology between the examined species. For example, diversifying the edge cropping of organic Kale (*Brassica oleracea*) using fava beans, fennel, and marigolds results in a diversity in beneficial arthropod communities that help reduce phytophagous herbivory [@DeMorais2023]. 
 
-The wheat stem sawfly (WSS), Hymenoptera *Cephus cinctus* Norton, is a grass-mining sawfly native to North America [@Lesieur2016]. Originally adept at utilizing wild grass hosts, the species became a major pest to cultivated cereals as the practice became more prevalent following European settlement, becoming a notable pest of winter wheat in 1990 [@Criddle1993]. Adult female WSS use their saw-like ovipositor to lay their eggs in the lumen of stems, where the eggs hatch, leading to larval feeding of parenchyma tissue [@Holmes1954]. Economic damage manifests in the form of both kernel weight reduction caused by tissue damage [@Beres2011] and stem toppling due to late-season larval girdling [@Holmes1960]. 
+Understanding the ways in which landscape habitat diversity impacts the ecological relationship between pest and enemy is crucial for effectively managing pest species in large scale cropping systems. Similarly, understanding how herbivore plant-hosts act as reservoirs for pests or beneficial natural enemies can potentially play a role in stabilizing year-over-year agricultural impact from these pests [@Cano2022]. 
+
+The wheat stem sawfly (WSS), Hymenoptera *Cephus cinctus* Norton, is a grass-mining sawfly native to North America [@Lesieur2016]. Originally adept at utilizing wild grass hosts, the species became a major pest to cultivated cereals as the practice became more prevalent following European settlement, becoming a notable pest of winter wheat in 1990 [@Morrill1996]. Adult female WSS use their saw-like ovipositor to lay their eggs in the lumen of stems, where the eggs hatch, leading to larval feeding of parenchyma tissue [@Holmes1956]. Economic damage manifests in the form of both kernel weight reduction caused by tissue damage [@Beres2011] and stem toppling due to late-season larval girdling [@Holmes1960]. 
   
-Several parsitoid species attack *C. cinctus* within wild grass hosts [@Davis1955; @Morrill1998], however, two species, *Bracon cephis* (Gahan) and *Bracon lissogaster* Muesebeck (Hymenoptera: Braconidae), have been observed targeting WSS within cultivated cereals [@Nelson1953; @Morrill 1998]. These two host-specific ectoparasitoids are native to North America. Both parasitoids are bivoltine, with the first generation present in Montana from late June to late July, while the second generation is active in August and September [@Somsen1956]. Adult female *B. cephi* and *B. lissogaster* paralyze *C. cinctus* larvae within the host stem, paralyze the host larvae, and depositing 1 (*B. cephi*) to three (*B. lissogaster*) eggs. *B. cephi* and *B. lissogaster* have been shown to provide biological control via irreplaceable mortality of *C. cinctus* populations [@Buteler2015] and can significantly reduce *C. cinctus* damage and impact on crop yields [@Buteler2008; @Rand2020]. While *C. cinctus* has a wide range of viable host plants, including native and non-native grasses and cultivated row-crops such as wheat (*Triticum aestivum L.*) and barley (*Hordeum vulgare*)[@Wallace1966; @Cockrell2017], infestation levels can vary widely across hosts. Previous research has shown preference for host plants with larger stem diameter [@Ainslie1920; @Bhandari2020]. 
+Several parsitoid species attack *C. cinctus* within wild grass hosts [@Davis1955; @Morrill1998], however, two species, *Bracon cephis* (Gahan) and *Bracon lissogaster* Muesebeck (Hymenoptera: Braconidae), have been observed targeting WSS within cultivated cereals [@Nelson1953; @Morrill1998]. These two host-specific ectoparasitoids are native to North America. Both parasitoids are bivoltine, with the first generation present in Montana from late June to late July, while the second generation is active in August and September [@Somsen1956]. Adult female *B. cephi* and *B. lissogaster* paralyze *C. cinctus* larvae within the host stem, paralyze the host larvae, and depositing 1 (*B. cephi*) to three (*B. lissogaster*) eggs. *B. cephi* and *B. lissogaster* have been shown to provide biological control via irreplaceable mortality of *C. cinctus* populations [@Buteler2015] and can significantly reduce *C. cinctus* damage and impact on crop yields [@Buteler2008; @Rand2020]. While *C. cinctus* has a wide range of viable host plants, including native and non-native grasses and cultivated row-crops such as wheat (*Triticum aestivum L.*) and barley (*Hordeum vulgare*)[@Wallace1966; @Cockrell2017], infestation levels can vary widely across hosts. Previous research has shown preference for host plants with larger stem diameter [@Ainslie1920; @Bhandari2020]. 
+
+Previous research has shown natural non-cultivated grasses such as *Agropyron cristatum*, *B. inermis*, *Elymus trachycaulus*, and *Elytrigia intermedium* host *C. cinctus* and Bracon spp. parasitoids quite well [@Peirce2021; @Rand2024]. We find investigating *B. inermis* holds the most potential, as it has been shown to be a quality host for *C. cinctus* while also leading to high larval mortality [@Farstad1945]. However, there is a lack of refined data relating to the total infestation, cutting, and parasitization within *B. inermis* at multiple time points throughout the growing season. Quantificative assessment of potential 'reservoire' characteristics and local spatial information could prove useful in fully understanding the ecological impacts of maintaining *B. inermis* along roadways and within coulles. 
 
 Smooth brome (*Bromus inermis* Lyess) is a Eurasian cool-season rhizomatous grass introduced to the United States in 1884 [@Salesman2011].*B. inermis* was originally thought of as potentially useful as a trap crop in order to combat the growing WSS problem with cultural control practices [@Farstad1945]. Due to its low agricultural value, and propensity to form monocultures and out compete many native grasses, *B. inermis* is categorized as invasive [@Carlson1985; @Willson2000; @Dillemuth2008]. However, *B. inermis* still holds immense ecological value in its late senescence and WSS antibiosis properties [@Otfinowski2006; @Rand2024].
 
-Montana's golden triangle, an area of central and northern Montana with intense cereal grain production, is prone to drought and burning via wildfire [@Wilson1923]. As both *C. cinctus* and its conspecific parasitoids are relatively restricted in their annual mobility [@Weaver2005], environmental extremes can have broad impacts on both local pest and natural enemy populations. As with many predator-prey interactions, the *C. cinctus* and parasitoid populations fluctuate similarly to wolves and moose on Isle Royale [@Peterson1999], with wolf populations spiking following moose populations, leading to a crash in moose, and as such, a crash in wolf. 
+Montana's golden triangle, an area of central and northern Montana with intense cereal grain production, is prone to drought and burning via wildfire [@Wilson1923]. As both *C. cinctus* and its host-specific parasitoids are relatively restricted in their annual mobility [@Weaver2005], environmental extremes can have broad impacts on both local pest and natural enemy populations. As with many predator-prey interactions, the *C. cinctus* and parasitoid populations fluctuate, with crashes and spikes experienced in close succession. Similar examples can be found in wolves and moose on Isle Royale [@Peterson1999], and Coccinelidae and aphids [@Evans1999].
 
 We examined historical weather data from our field sites in central and northern Montana. We used this data to understand how changes in global climate trends may be impacting *B. cephis* and *B. inermis* populations. In addition we analyzed normalized difference vegetative index (NDVI) at our field sites to understand how *B. inermis* senescence patterns compare to adjacent cultivated wheat. 
 
@@ -1042,27 +1045,6 @@ ratio_plot <-
   facet_grid(year~region)
 ```
 
-```{r}
-ratio_plot_data %>%
-  dplyr::select(year, region, plant_type, ratio) %>%
-  group_by(collection, year, region, plant_type) %>%
-  pivot_wider(names_from = "plant_type",
-              values_from = "ratio")
-
-lcm <- function(a, b) {
-  max_num <- max(a, b)
-  while (TRUE) {
-    if (max_num %% a == 0 && max_num %% b == 0) {
-      return(max_num)
-    }
-    max_num <- max_num + 1
-  }
-}
-
-lcm(5, 0.310)
-0.310*3.22580645
-5*3.22580645
-```
 
 We utilized the ratio of parasitized stems to cut stems to better understand the true impact of our *B. inermis* sink/source ecology. The largest ratio observed was in Big Sandy, MT in the fall of 2022, where we observed a ratio of 16 parasitoids to 1 cut stem. This means that for every 1 square meter of *B. inermis*, we would observe 16 stems that produced a parasitoid for every 1 stem that produced an adult *C. cinctus*. All three other sample selections also showed positive ratios of parasitoids to cut stems [fig. 8](#figure8).
 
@@ -1272,17 +1254,17 @@ Assessing the comparative abundance of *C. cinctus* and its associated parasitio
 ## Figures 
 
 ### Figure 1 {#figure1}
-```{r FIG1_both_prcp_plot, fig.width = 10, out.width = '100%', fig.align = 'left', fig.cap = "Figure 1: Average yearly precipitation (in) for Big Sandy and Moccasin, Montana. Black trend line signifies averaged negative trend between both locations. Data gathered from NOAA and MSU-ARS. A significant linear relationship (r = 0.1, P = 0.033, estimate = -0.058) was observed between year and average yearly precipitation."}
+```{r FIG1_both_prcp_plot, fig.cap = "Figure 1: Average yearly precipitation (in) for Big Sandy and Moccasin, Montana. Black trend line signifies averaged negative trend between both locations. Data gathered from NOAA and MSU-ARS. A significant linear relationship (r = 0.1, P = 0.033, estimate = -0.058) was observed between year and average yearly precipitation."}
 both_prcp_plot 
 ```
 
 ### Figure 2 {#figure2}
-```{r both_temp_plot, fig.width = 10, fig.align = 'left', fig.cap = "Figure 2: Average yearly temperature (°C) in Moccasin and Big Sandy, MT. Positive trendline slop suggests increasing average temperatures of the past 100 years. A significant linear relationship (*r =0.2447, P < 0.05, estimate = 0.028*) was observed between year and average yearly temperature."}
+```{r both_temp_plot, fig.cap = "Figure 2: Average yearly temperature (°C) in Moccasin and Big Sandy, MT. Positive trendline slop suggests increasing average temperatures of the past 100 years. A significant linear relationship (*r =0.2447, P < 0.05, estimate = 0.028*) was observed between year and average yearly temperature."}
 both_temp_plot
 ```
 
 ### Figure 3 {#figure3}
-```{r bs_ndvi_plot, fig.align = 'left', fig.cap = "Figure 3: Normalized difference vegetation index (NDVI) of *B. inermis* and adjacent spring wheat field from April 2023 to October 2023. Post harvest linear model indicates a significant difference (P values and stuff) when comparing the *B. inermis* post-harvest slope and the spring wheat post-harvest slope."}
+```{r bs_ndvi_plot, fig.cap = "Figure 3: Normalized difference vegetation index (NDVI) of *B. inermis* and adjacent spring wheat field from April 2023 to October 2023. Post harvest linear model indicates a significant difference (P values and stuff) when comparing the *B. inermis* post-harvest slope and the spring wheat post-harvest slope."}
 bs_ndvi_plot
 ```
 
