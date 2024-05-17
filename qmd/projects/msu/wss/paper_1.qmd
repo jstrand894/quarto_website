@@ -10,13 +10,14 @@ biblio-style: apalike
 cls: 
   max-names: 1
 ---
-
+<div class="box">
 This document can be downloaded as either a .docx or .pdf document. Please be aware that conversion may cause the formatting to be altered. 
 
 <a href="convert/JacksonStrand_Paper%201.docx" target="_blank">Download .docx</a>  
 
 <a href="convert/JacksonStrand_Paper%201.pdf" target="_blank">Download .pdf</a>
 
+</div>
 
 ## Abstract
 
@@ -1253,17 +1254,17 @@ Assessing the comparative abundance of *C. cinctus* and its associated parasitio
 ## Figures 
 
 ### Figure 1 {#figure1}
-```{r FIG1_both_prcp_plot, fig.width = 10, out.width = '100%', fig.align = 'left', fig.cap = "Figure 1: Average yearly precipitation (in) for Big Sandy and Moccasin, Montana. Black trend line signifies averaged negative trend between both locations. Data gathered from NOAA and MSU-ARS. A significant linear relationship (r = 0.1, P = 0.033, estimate = -0.058) was observed between year and average yearly precipitation."}
+```{r FIG1_both_prcp_plot, fig.cap = "Figure 1: Average yearly precipitation (in) for Big Sandy and Moccasin, Montana. Black trend line signifies averaged negative trend between both locations. Data gathered from NOAA and MSU-ARS. A significant linear relationship (r = 0.1, P = 0.033, estimate = -0.058) was observed between year and average yearly precipitation."}
 both_prcp_plot 
 ```
 
 ### Figure 2 {#figure2}
-```{r both_temp_plot, fig.width = 10, fig.align = 'left', fig.cap = "Figure 2: Average yearly temperature (°C) in Moccasin and Big Sandy, MT. Positive trendline slop suggests increasing average temperatures of the past 100 years. A significant linear relationship (*r =0.2447, P < 0.05, estimate = 0.028*) was observed between year and average yearly temperature."}
+```{r both_temp_plot, fig.cap = "Figure 2: Average yearly temperature (°C) in Moccasin and Big Sandy, MT. Positive trendline slop suggests increasing average temperatures of the past 100 years. A significant linear relationship (*r =0.2447, P < 0.05, estimate = 0.028*) was observed between year and average yearly temperature."}
 both_temp_plot
 ```
 
 ### Figure 3 {#figure3}
-```{r bs_ndvi_plot, fig.align = 'left', fig.cap = "Figure 3: Normalized difference vegetation index (NDVI) of *B. inermis* and adjacent spring wheat field from April 2023 to October 2023. Post harvest linear model indicates a significant difference (P values and stuff) when comparing the *B. inermis* post-harvest slope and the spring wheat post-harvest slope."}
+```{r bs_ndvi_plot, fig.cap = "Figure 3: Normalized difference vegetation index (NDVI) of *B. inermis* and adjacent spring wheat field from April 2023 to October 2023. Post harvest linear model indicates a significant difference (P values and stuff) when comparing the *B. inermis* post-harvest slope and the spring wheat post-harvest slope."}
 bs_ndvi_plot
 ```
 
