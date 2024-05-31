@@ -1,5 +1,5 @@
 ---
-title: "Ecological Importance of Smooth Brome in Managing Wheat Stem Sawfly (Hymenoptera: Cephidae) via Its Associated Braconid Parasitoids"
+title: "Agroecological Importance of Smooth Brome in Managing Wheat Stem Sawfly (Hymenoptera: Cephidae) via Its Associated Braconid Parasitoids"
 authors: "Jackson R. Strand, David K. Weaver"
 date: "May 17, 2024"
 editor_options: 
@@ -7,9 +7,9 @@ editor_options:
 bibliography: paper1.bib
 link-citations: true
 biblio-style: apalike
-cls: 
-  max-names: 1
+csl: entomological-society-of-america-2.csl
 ---
+
 <div class="box">
 This document can be downloaded as either a .docx or .pdf document. Please be aware that conversion may cause the formatting to be altered. 
 
@@ -21,29 +21,31 @@ This document can be downloaded as either a .docx or .pdf document. Please be aw
 
 ## Abstract
 
+Wheat stem sawfly, Cephus cinctus Norton (WSS), causes significant damage in cereal crops throughout the Northern Great Plains of North America. Bracon cephi and Bracon lissogaster are native WSS parasitoids important in managing WSS outbreaks and damage. Smooth Brome (Bromus inermis) grass has been found to be an effective parasitoid sink, and potential trap crop, when grown in areas surrounding wheat fields in Montana. As climate changes continue to alter central and northern Montana, WSS will continue to cause immense damage to dry-land cereal crop yields. My study observes the utilization of smooth brome in providing year-over-year host refuge for Bracon spp. We measured the WSS larval survival rate within controlled smooth brome plots, observing a maximum end-of-year survival of 5.7%. We also collected stems from central and northern Montana where we measured the WSS infestation and parasitoid prevalence within cultivated wheat and adjacent smooth brome. Montana fields sites showed similar high year-end WSS larval mortality while showcasing high levels of parasitism. This research underlines the importance of providing a sustainable ecological buffer for WSS parasitoids as climate conditions continue to change.
+
 ## Introduction
 
 Ecologists and farmers frequently hold divergent views regarding the importance of natural habitats within agricultural landscapes, a distinction often overlooked in ecological and conservation discourse [@Tscharntke2016]. While ecologists recognize the role of natural habitats in supporting biodiversity and providing potential ecosystem services like biological pest control, many farmers perceive these habitat remnants as occupying valuable cropland or even as sources of pests. As such, documenting how pest and natural enemy populations interact with agricultural landscapes alongside natural habitat buffers is important in determining the degree of the services or disservices provided. 
 
-Numerous polyphagous insect herbivores and their natural enemies rely on a variety of resources found across diverse habitat types within their environment. Depending upon the quality of the resource, different habitat types can serve as sources for increased pest or natural enemy populations. Similarly, habitat types can serve as sinks for decreased populations [@Kennedy2000]. Altering the presence of these resources can have impacts on pest or natural enemy populations and can alter the ecology between the examined species. For example, diversifying the edge cropping of organic Kale (*Brassica oleracea*) using fava beans, fennel, and marigolds results in a diversity in beneficial arthropod communities that help reduce phytophagous herbivory [@DeMorais2023]. 
+Numerous polyphagous insect herbivores and their natural enemies rely on a variety of resources found across diverse habitat types within their environment. Depending upon the quality of the resource, different habitat types can serve as sources for increased pest or natural enemy populations. Similarly, these habitat types can serve as sinks that decrease populations [@Kennedy2000]. Altering the presence of these resources can have impacts on pest or natural enemy populations and can alter the ecology between the examined species. For example, diversifying the edge cropping of organic *Brassica* using fava beans, fennel, and marigolds results in a diversity in beneficial arthropod communities that help reduce phytophagous herbivory [@DeMorais2023]. 
 
 Understanding the ways in which landscape habitat diversity impacts the ecological relationship between pest and enemy is crucial for effectively managing pest species in large scale cropping systems. Similarly, understanding how herbivore plant-hosts act as reservoirs for pests or beneficial natural enemies can potentially play a role in stabilizing year-over-year agricultural impact from these pests [@Cano2022]. 
 
 The wheat stem sawfly (WSS), Hymenoptera *Cephus cinctus* Norton, is a grass-mining sawfly native to North America [@Lesieur2016]. Originally adept at utilizing wild grass hosts, the species became a major pest to cultivated cereals as the practice became more prevalent following European settlement, becoming a notable pest of winter wheat in 1990 [@Morrill1996]. Adult female WSS use their saw-like ovipositor to lay their eggs in the lumen of stems, where the eggs hatch, leading to larval feeding of parenchyma tissue [@Holmes1956]. Economic damage manifests in the form of both kernel weight reduction caused by tissue damage [@Beres2011] and stem toppling due to late-season larval girdling [@Holmes1960]. 
   
-Several parsitoid species attack *C. cinctus* within wild grass hosts [@Davis1955; @Morrill1998], however, two species, *Bracon cephis* (Gahan) and *Bracon lissogaster* Muesebeck (Hymenoptera: Braconidae), have been observed targeting WSS within cultivated cereals [@Nelson1953; @Morrill1998]. These two host-specific ectoparasitoids are native to North America. Both parasitoids are bivoltine, with the first generation present in Montana from late June to late July, while the second generation is active in August and September [@Somsen1956]. Adult female *B. cephi* and *B. lissogaster* paralyze *C. cinctus* larvae within the host stem, paralyze the host larvae, and depositing 1 (*B. cephi*) to three (*B. lissogaster*) eggs. *B. cephi* and *B. lissogaster* have been shown to provide biological control via irreplaceable mortality of *C. cinctus* populations [@Buteler2015] and can significantly reduce *C. cinctus* damage and impact on crop yields [@Buteler2008; @Rand2020]. While *C. cinctus* has a wide range of viable host plants, including native and non-native grasses and cultivated row-crops such as wheat (*Triticum aestivum L.*) and barley (*Hordeum vulgare*)[@Wallace1966; @Cockrell2017], infestation levels can vary widely across hosts. Previous research has shown preference for host plants with larger stem diameter [@Ainslie1920; @Bhandari2020]. 
+Several parsitoid species attack *C. cinctus* within wild grass hosts [@Davis1955; @Morrill1998], however, two species, *Bracon cephis* (Gahan) and *Bracon lissogaster* Muesebeck (Hymenoptera: Braconidae), have been observed targeting WSS within cultivated cereals [@Nelson1953; @Morrill1998]. These two host-specific ectoparasitoids are native to North America. Both parasitoids are bivoltine, with the first generation present in Montana from late-June to late-July, while the second generation is active from mid-July to September [@Somsen1956]. Adult female *B. cephi* and *B. lissogaster* paralyze *C. cinctus* larvae within the host stem, paralyze the host larvae, and depositing one (*B. cephi*) to three (*B. lissogaster*) eggs. *B. cephi* and *B. lissogaster* have been shown to provide biological control via irreplaceable mortality of *C. cinctus* populations [@Buteler2015] and can significantly reduce *C. cinctus* damage and impact on crop yields [@Buteler2008; @Rand2020]. While *C. cinctus* has a wide range of viable host plants, including native and non-native grasses and cultivated row-crops such as wheat (*Triticum aestivum L.*) and barley (*Hordeum vulgare*) [@Wallace1966; @Cockrell2017], infestation levels can vary widely across hosts. Previous research has shown preference for host plants with larger stem diameter [@Ainslie1920; @Bhandari2020]. 
 
-Previous research has shown natural non-cultivated grasses such as *Agropyron cristatum*, *B. inermis*, *Elymus trachycaulus*, and *Elytrigia intermedium* host *C. cinctus* and Bracon spp. parasitoids quite well [@Peirce2021; @Rand2024]. We find investigating *B. inermis* holds the most potential, as it has been shown to be a quality host for *C. cinctus* while also leading to high larval mortality [@Farstad1945]. However, there is a lack of refined data relating to the total infestation, cutting, and parasitization within *B. inermis* at multiple time points throughout the growing season. Quantificative assessment of potential 'reservoire' characteristics and local spatial information could prove useful in fully understanding the ecological impacts of maintaining *B. inermis* along roadways and within coulles. 
+Recent research has shown natural non-cultivated grasses such as *Agropyron cristatum*, *B. inermis*, *Elymus trachycaulus*, and *Elytrigia intermedium* host *C. cinctus* and Bracon spp. parasitoids quite well [@Peirce2021; @Rand2024]. We find investigating *B. inermis* holds the most potential, as it has been shown to be a quality initially-accepted host for *C. cinctus* oviposition while also leading to high larval mortality later on [@Farstad1945]. However, there is a lack of refined data relating to the total infestation, cutting, and parasitization within *B. inermis* at multiple time points throughout the growing season. Quantitative assessment of potential 'reservoire' characteristics and local spatial information could prove useful in fully understanding the ecological impacts of maintaining *B. inermis* along roadways and within coulees.  
 
-Smooth brome (*Bromus inermis* Lyess) is a Eurasian cool-season rhizomatous grass introduced to the United States in 1884 [@Salesman2011].*B. inermis* was originally thought of as potentially useful as a trap crop in order to combat the growing WSS problem with cultural control practices [@Farstad1945]. Due to its low agricultural value, and propensity to form monocultures and out compete many native grasses, *B. inermis* is categorized as invasive [@Carlson1985; @Willson2000; @Dillemuth2008]. However, *B. inermis* still holds immense ecological value in its late senescence and WSS antibiosis properties [@Otfinowski2006; @Rand2024].
+Smooth brome (*Bromus inermis* Lyess) is a Eurasian cool-season rhizomatous grass introduced to the United States in 1884 [@Salesman2011].*B. inermis* was originally thought of as potentially useful as a trap crop in order to combat the growing WSS problem with cultural control practices [@Farstad1945]. Due to its low agricultural value, and propensity to form monocultures and out compete many native grasses, *B. inermis* is categorized as invasive in some habitats [@Carlson1985; @Willson2000; @Dillemuth2008]. However, *B. inermis* still holds considerable ecological value in its late senescence and WSS antibiosis properties [@Otfinowski2006; @Rand2024].
 
-Montana's golden triangle, an area of central and northern Montana with intense cereal grain production, is prone to drought and burning via wildfire [@Wilson1923]. As both *C. cinctus* and its host-specific parasitoids are relatively restricted in their annual mobility [@Weaver2005], environmental extremes can have broad impacts on both local pest and natural enemy populations. As with many predator-prey interactions, the *C. cinctus* and parasitoid populations fluctuate, with crashes and spikes experienced in close succession. Similar examples can be found in wolves and moose on Isle Royale [@Peterson1999], and Coccinelidae and aphids [@Evans1999].
+Montana's golden triangle, an area of central and northern Montana with intense cereal grain production, is prone to drought and burning via wildfire [@Wilson1923]. As both *C. cinctus* and its host-specific parasitoids are relatively restricted in their annual mobility [@Weaver2005], environmental extremes can have broad impacts on both local pest and natural enemy populations. As with many predator-prey interactions, the *C. cinctus* and parasitoid populations fluctuate, with crashes and spikes experienced in close succession. Similar examples can be found in wolves and moose on Isle Royale [@Peterson1999], and Coccinellidae and aphids [@Evans1999].
 
-We examined historical weather data from our field sites in central and northern Montana. We used this data to understand how changes in global climate trends may be impacting *B. cephis* and *B. inermis* populations. In addition we analyzed normalized difference vegetative index (NDVI) at our field sites to understand how *B. inermis* senescence patterns compare to adjacent cultivated wheat. 
+We examined historical weather data from two field sites in central and northern Montana. We used this data to understand how changes in global climate trends may be impacting *B. cephis* and *B. inermis* populations. In addition we analyzed normalized difference vegetative index (NDVI) at our field sites to understand how *B. inermis* senescence patterns compare to adjacent cultivated wheat. 
 
-In this study, we explored the ecological patterns between Montana populations of *C. cinctus* and its braconid parsitoids in relation to *B. inermis* host sites. Our goal, was 1) to understand the degree to which *C. cinctus* infested *B. inermis* stems in relation to neighboring cereal crops, and 2) the way in which braconid parasitoids utilized WSS hosts within *B. inermis* stems. To do so, we conducted two separate studies. In our first study, we conducted controlled *C. cinctus* infestation of *B. inermis* to understand the relative infestation and cutting rate of *C. cinctus* within the *B. inermis* stems. The second study examined rates of cutting and parasitism at field sites in central and northern Montana. 
+In this study, we explored the ecological patterns between Montana populations of *C. cinctus* and its braconid parasitoids in relation to *B. inermis* host sites. Our goal, was 1) to understand the degree to which *C. cinctus* infested *B. inermis* stems in relation to neighboring cereal crops, and 2) the way in which braconid parasitoids utilized WSS hosts within *B. inermis* stems. To do so, we conducted two separate studies. In our first study, we conducted controlled *C. cinctus* infestation of *B. inermis* to understand the relative infestation and cutting rate of *C. cinctus* within the *B. inermis* stems. The second study examined rates of cutting and parasitism at field sites in central and northern Montana. 
 
-Using these studies, we addressed three questions, 1) what is the total cutting, and thus source rate, of *C. cinctus* from *B. inermis*, 2) can *C. cinctus* larvae within *B. inermis* serve as second generation hosts for *B. cephi* and *B. lissogaster*, and 3) how do *C. cinctus* and parasitoid populations in *B. inermis* compare with those in adjacent cultivated wheat fields. 
+Using these studies, we addressed three questions, 1) what is the total cutting heading into overwinter, and thus source rate, of the subsequent *C. cinctus* population from *B. inermis*, 2) can *C. cinctus* larvae within *B. inermis* serve as critical second generation hosts for *B. cephi* and *B. lissogaster*, and 3) how do annual *C. cinctus* and parasitoid populations in *B. inermis* compare with those in adjacent cultivated wheat fields. 
 
 ## Materials and Methods
 
@@ -55,7 +57,7 @@ Using these studies, we addressed three questions, 1) what is the total cutting,
 
 ### Controlled *C. cinctus* infestation of *B. inermis*
 
-*Insects and Cages.* Assessment of *C. cinctus* infestation and mortality within *B. inermis* were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an extension research station of Montana State University in Bozeman, MT. The cage structure was built using 1-inch PVC piping with the netting made using 530$\mu$ Amber Lumite Screen (BioQuip$^\circledR$ Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three.
+*Insects and Cages.* Assessment of *C. cinctus* infestation and mortality within *B. inermis* were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an extension research station of Montana State University in Bozeman, MT. There is a negligible population of *C. cinctus* at this locaiton. The cage structure was built using 1-inch PVC piping with the netting made using 530$\mu$ Amber Lumite Screen (BioQuip$^\circledR$ Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three.
 
 Wheat stem stubble was collected in Three Forks, MT, USA (43°38'19.39"N, 116°14'28.86"W) from fields that experienced high levels of *C. cinctus* infestation and cutting the year prior. Cut stubble, which contained *C. cinctus* larvae in diapause, were kept refrigerated between -2°C and 3°C for \>100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Once *B. inermis* stems reached six inches tall, stub containers with emerging sawflies were added to cages to mimic sawfly infestation pressure. Sawfly quantity treatments were as follows: high (600 stubs), low (200 stubs), and control (0 stubs).
 
@@ -67,9 +69,9 @@ Wheat stem stubble was collected in Three Forks, MT, USA (43°38'19.39"N, 116°1
 
 Wheat and *B. inermis* stems were then returned to Montana State University, Bozeman, Montana and stored in a 10°C cold wet storage until dissection. Stems were dissected lengthwise with a fine-bladed scalpel to determine presence or absence of *C. cinctus* larvae infestation, live eggs, dead eggs, dead larvae, live larvae, parasitism, and cutting. Sawfly larvae were identified based on descriptions in Criddle (1915) and Wallace and McNeal (1996).
 
-*Statistical Analysis.* We used generalized linear mixed models with binomial errors (logit link) fit using bound optimization by quadratic approximation, with a maximum of 200,000 iterations, were run in the *lme4* package in R [@lme4] to examine the effects of location and year (fixed effects) on each of the three response variables: proportion of stems infested, proportion of stems cut, and proportion os stems parasitized by *Bracon* spp. '
+*Statistical Analysis.* We used generalized linear mixed models with binomial errors (logit link) fit using bound optimization by quadratic approximation, with a maximum of 200,000 iterations, were run in the *lme4* package in R [@lme4] to examine the effects of location and year (fixed effects) on each of the three response variables: proportion of stems infested, proportion of stems cut, and proportion of stems parasitized by *Bracon* spp. 
 
-To better understand the density of *Bracon* spp. within the wheat and *B. inermis* sampling sites, we converted our units to the ratio of parasitoids to stem per unit area. Densities of stems are different when considering *B. inermis* and cultivated wheat or barley. Using this conversion, we attempted to better understand how the density of parasitoids (and WSS) is changed by looking at each kind of plant.
+To better understand the density of *Bracon* spp. within the wheat and *B. inermis* sampling sites, we converted our units to the ratio of parasitoids to surviving hosts stem per unit area. Densities of stems are different when considering *B. inermis* and cultivated wheat or barley. Using this conversion, we attempted to better understand how the density of parasitoids (and WSS) is changed by looking at each kind of plant.
 
 ## Results
 
@@ -97,6 +99,7 @@ library(lme4)
 ### Historical Weather Analysis & NDVI
 
 ```{r moc_weather}
+
 # moccasin NOAA
 moc_weather_noaa <-
 read_excel("weather/moccasin_weather_noaa.xlsx") %>%
@@ -325,7 +328,10 @@ moc_temp_maes %>%
 
 ```
 
-We observed a significant linear relationship (*r = `r round(both_prcp_lm$r.squared,3)`, P = `r round(both_prcp_lm$coefficients[2,4],3)`, estimate = `r round(both_prcp_lm$coefficients[2,1],3)`*) between average precipitation and year for both Big Sandy and Moccasin, Montana. This means that for each one year increase, we are seeing a decrease in 0.05 inches of precipitation. ([Fig. 1](#figure1)). Additionally, we observed a significant positive linear relationship (*r = `r round(both_temp_lm$r.squared,3)`, P \< 0.05, estimate = `r round(both_temp_lm$coefficients[2,1],3)`*) between year and average yearly temperature for Moccasin and Big Sandy, MT. This means that each year, the average daily temperature has increased by `r round(both_temp_lm$coefficients[2,1],2)`°C. ([Fig. 2](#figure2)).
+
+
+
+We observed a significant linear relationship (*r = `r round(both_prcp_lm$r.squared,3)`, P = `r round(both_prcp_lm$coefficients[2,4],3)`, estimate = `r round(both_prcp_lm$coefficients[2,1],3)`*) between average precipitation and year for both Big Sandy and Moccasin, Montana. For each one-year increase, we are seeing a decrease in 0.05 inches of precipitation. ([Fig. 1](#figure1)). Additionally, we observed a significant positive linear relationship (*r = `r round(both_temp_lm$r.squared,3)`, P \< 0.05, estimate = `r round(both_temp_lm$coefficients[2,1],3)`*) between year and average yearly temperature for Moccasin and Big Sandy, MT. Thus, each year, the average daily temperature has increased by `r round(both_temp_lm$coefficients[2,1],2)`°C. ([Fig. 2](#figure2)).
 
 ```{r Big_Sandy_NDVI}
 lochy <-
@@ -384,7 +390,7 @@ lochy %>%
 
 We observed a notable difference in NDVI when comparing adjacent *B. inermis* and spring wheat. We saw a significant difference in the July NDVI (*`r round(ndvi_model$r.squared,3)`, P \< 0.05*). The *B. inermis* NDVI remained relatively linear in it's downslope (BROME SLOPE POST JULY) compared to the wheat field (WHEAT FIELD POST JULY). ([Fig. 3](#figure3))
 
-Need to add map showing where NDVI measurments came from
+Need to add map showing where NDVI measurements came from
 
 ### Controlled *C. cinctus* Infestation of *B. inermis*
 
@@ -536,7 +542,7 @@ raw.23 %>%
           p.cut = cut/inf)
 ```
 
-*C. cinctus* showed high infestation of *B. inermis* in the controlled test conditions. Averaged across both years, we observed 66.5% of stems infested for high treatments and 47.3% of stems for low treatments. We found strong evidence suggesting that there was a significant difference between infestation at high and low treatment levels when holding year constant (*r = `r round(pf_inf_lm$r.squared,3)`, P \< 0.05*, [Fig. 3](#figure4)).
+Initially, *C. cinctus* heavily infested stems of *B. inermis* in the controlled test conditions. Averaged across both years, we observed 66.5% of stems infested for high treatments and 47.3% of stems for low treatments. We found strong evidence suggesting that there was a significant difference between infestation at high and low treatment levels when holding year constant (*r = `r round(pf_inf_lm$r.squared,3)`, P \< 0.05*, [Fig. 3](#figure4)).
 
 ```{r fig4_inf_cut_plot code}
 inf_cut_plot <-
@@ -567,7 +573,7 @@ ggplot() +
                     labels = c("Cut", "Infested"))
 ```
 
-Cutting was observed at 5.7% for the high treatments and 3.9% for the low, showing strong evidence for a difference in cutting between high and low treatment groups (*r = `r round(pf_cut_lm$r.squared,3)`, P < 0.05*).
+Stem cutting by mature larvae, leading into winter, was observed at 5.7% for the high treatments and 3.9% for the low, showing strong evidence for a difference in cutting between high and low treatment groups (*r = `r round(pf_cut_lm$r.squared,3)`, P < 0.05*).
 
 ```{r figure_5_pf_inf_nodes}
 pf.y.2022 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2022.xlsx", sheet = "inf")
@@ -696,9 +702,9 @@ raw.2023 %>%
   mutate(distance = "brome")
 ```
 
-We quantified *C. cinctus* and *Bracon* spp. parasitoid presence in 6,148 wheat and grass stems across 10 research sites in 2022 and 2023. Infestation by *C. cinctus* within *B. inermis* varied between collection sites, with the greatest infestation taking place within our three Big Sandy, MT sampling sites (2023: 65.4%, 2022: 63.1%), while the lowest infestation observed was in Moccasin, MT (2023: 40.8%, 2022: 60.7%). Across all sites in Big Sandy and Moccasin, we observed an average infestation of 57.5% within *B. inermis* and 47.6% within the adjacent wheat. Cutting by *C. cintus* was observed at an average rate of 5.59% (se = 0.0164) in *B. inermis* and 47.1% (se = 0.0386) in the adjacent cultivated wheat ([fig. 7](#figure7). 
+We quantified *C. cinctus* and *Bracon* spp. parasitoid presence in 6,148 wheat and grass stems across 10 research sites in 2022 and 2023. Initial infestation by *C. cinctus* within *B. inermis* varied between collection sites, with the greatest infestation taking place within our three Big Sandy, MT sampling sites (2023: 65.4%, 2022: 63.1%), while the lowest infestation observed was in Moccasin, MT (2023: 40.8%, 2022: 60.7%). Across all sites in Big Sandy and Moccasin, we observed an average infestation of 57.5% within *B. inermis* and 47.6% within the adjacent wheat. Cutting by *C. cintus* was observed at an average rate of 5.59% (se = 0.0164) in *B. inermis* and 47.1% (se = 0.0386) in the adjacent cultivated wheat ([Fig. 7](#figure7). 
 
-To generate a relative estimate of the number of available *C. cinctus* host larvae within *B. inermis* late in the growing season, we calculated the number of stems that contained at least four or more nodes of infestation. In Big Sandy, 76.2% of collected stems in the fall exhibited at least 4 nodes of infestation. In Moccasin, the corresponding figure was 66.5%.
+To generate a relative estimate of the number of available *C. cinctus* host larvae within *B. inermis* late in the growing season, we calculated the number of stems that contained at least four or more nodes with burrowing injury. In Big Sandy, 76.2% of collected stems in the fall exhibited at least 4 nodes of burrowing injury. In Moccasin, the corresponding figure was 66.5%.
 
 ```{r y_inf_brome}
 brome_inf_2023 <-
@@ -813,7 +819,72 @@ comb.brome %>%
   ungroup() %>%
   dplyr::select(-site) %>%
   distinct() 
+
 ```
+
+```{r fig_9_brome_par_plot}
+brome_par_plot <-
+plot.data %>%
+  filter(
+         plant_type == "brome",
+         variable == "per.par") %>%
+  mutate(collection = factor(collection, levels = c("summer", "fall"))) %>%
+  ggplot() +
+  geom_bar(stat = "identity",
+           aes(x = sample_site, y = value, fill = collection),
+           position = position_dodge(),
+           width = 0.5,
+           color = "black") +
+  geom_errorbar(aes(x = sample_site,
+                    group = collection,
+                    ymin = value - se,
+                    ymax = value + se),
+                position = position_dodge(width = 0.5),
+                width = 0.15) +
+  theme_bw() +
+  labs(x = NULL) +
+  scale_fill_brewer(palette = "Greys") +
+  facet_wrap(year~region, scales = "free_x")
+```
+
+```{r brome_par_model}
+brome_par_model_data <-
+comb.brome %>%
+  rbind(comb.stubble) %>%
+  na.omit() %>%
+  filter(!location %in% c("chs", "b")) %>%
+  mutate(sample_site = case_when(
+    location %in% c("nn", "ss", "ns", "n") ~ "North Road",
+    location %in% c("kw", "ke", "k") ~ "Kolin Road",
+    location %in% c("sun", "har") ~ "Sunset & Harvest",
+    location == "g" ~ "Gardiner Road",
+    TRUE ~ NA_character_)) %>%
+  mutate(region = case_when(
+    location %in% c("nn", "ss", "ns", "n") ~ "Big Sandy",
+    location == "g" ~ "Big Sandy",
+    location %in% c("kw", "ke", "k") ~ "Moccasin",
+    location %in% c("sun", "har") ~ "Moccasin",
+    TRUE ~ NA_character_)) %>%
+  mutate(plant_type = if_else(distance == "brome", "brome", "wheat")) %>%
+  dplyr::select(year, region, sample_site, collection, plant_type,
+                total.stems, inf, uninf, cut, c, e) %>%
+  group_by(site, collection, year) %>%
+  mutate(par = sum(c,e)) %>% dplyr::select(-c(c,e)) %>%
+  group_by(year, collection, region, sample_site, plant_type, site) %>%
+  mutate(count = n()) %>%
+  ungroup() %>%
+  dplyr::select(-c(uninf)) %>%
+  group_by(year, collection, region, sample_site, plant_type, site)
+
+brome_par_model <-
+brome_par_model_data %>%
+  filter(plant_type == "brome") %>%
+  lm(par ~ year + region + collection, data = .) %>%
+  summary()
+
+
+```
+
 
 ```{r infestation_per, eval = F}
 comb.brome %>%
@@ -868,7 +939,7 @@ plot.data %>%
   theme_bw()
 ```
 
-```{r fig4_field_cut_plot_code}
+```{r fig7_field_cut_plot_code}
 field_cut_plot_data <-
 plot.data %>%
   filter(variable == "per.cut") %>%
@@ -1046,9 +1117,9 @@ ratio_plot <-
 ```
 
 
-We utilized the ratio of parasitized stems to cut stems to better understand the true impact of our *B. inermis* sink/source ecology. The largest ratio observed was in Big Sandy, MT in the fall of 2022, where we observed a ratio of 16 parasitoids to 1 cut stem. This means that for every 1 square meter of *B. inermis*, we would observe 16 stems that produced a parasitoid for every 1 stem that produced an adult *C. cinctus*. All three other sample selections also showed positive ratios of parasitoids to cut stems [fig. 8](#figure8).
+We utilized the ratio of parasitized stems to cut stems to better understand the true impact of our *B. inermis* sink/source ecology. The largest ratio observed was in Big Sandy, MT in the fall of 2022, where we observed a ratio of 16 parasitoids to a single cut stem. Thus, for every square meter of *B. inermis*, we would observe 16 stems that produced a parasitoid for every 1 stem that was likely to produce an adult *C. cinctus*. All three other sample selections also showed positive ratios of parasitoids to cut stems [Fig. 8](#figure8).
 
-
+To understand the seasonal trends of *Bracon* spp use of potential *C. cinctus* hosts within *B. inermis*, we collected stem samples twice each growing season. We collected one pre-harvest, in July, and a second time in September, after all adult *Bracon* spp would be dead. We observed a significant difference (*df = 96, r = 0.304, p < 0.05*) between parasitoid presence in infested stems collected in Big Sandy and Moccasin, MT. 
 
 
 ```{r larvae_status models, eval = F}
@@ -1224,34 +1295,75 @@ comb.stubble %>%
   reframe(inf = mean(inf))
 ```
 
+```{r montana map}
+world_map <- map_data("world")
+states <- map_data("state") %>%
+  filter(region == "montana")
+counties <- map_data("county") %>%
+  filter(region == "montana")
+
+area <- c("Big Sandy", "Moccasin", "Bozeman")
+lats <- c(48.177540, 47.098790, 45.678871)
+longs <- c(-110.114060, -109.882962, -111.060815)
+
+coordinates <- data.frame(area, lats, longs)
+
+montana_map <-
+ggplot() +
+  # geom_polygon(data = world_map, aes(x = long, y = lat, group = group), 
+  #              fill = "white", color = "black") +
+  geom_polygon(data = counties, aes(x = long, y = lat, group = group),
+               fill = NA, color = "black", linewidth = 0.2) +
+  geom_polygon(data = states, aes(x = long, y = lat, group = group),
+               fill = NA, color = "black", linewidth = 0.9) +
+  geom_label(data = coordinates, aes(x = longs, y = lats), 
+             color = "black", 
+             label = area,
+             size = 5,
+             vjust = 0,
+             hjust = -0.1,
+             label.padding = unit(0.25, "lines")) +
+  geom_point(data = coordinates, aes(x = longs, y = lats),
+             color = "red") +
+  coord_cartesian(xlim = c(-115.75, -104.5), ylim = c(44.5, 49)) +
+  theme_void() +
+  # theme(panel.grid.major = element_blank(),
+  #       panel.grid.minor = element_blank()) +
+  theme(aspect.ratio = 1/1.8)
+
+
+```
+
 
 ## Discussion
 
-Assessing the comparative abundance of *C. cinctus* and its associated parasitiods within *B. inermis* and adjacent cultivated cereal hosts is an important initial step in evaluating whether semi-natural environments within road-side or coulee areas could potentially serve as origins for both pests and beneficial natural adversaries infiltrating agricultural crops.
+Assessing the comparative abundance of *C. cinctus* and its associated parasitoids within *B. inermis* and adjacent cultivated cereal hosts is an important initial step in evaluating whether semi-natural environments within road-side or coulee areas serve as sink or source origins for both pests and beneficial natural adversaries infiltrating agricultural crops. As the climate of central and northern Montana continues to change, wheat stem sawfly infestation will continue to impact cereal crop yields. In this study, we monitored how *B. inermis* may be potentially beneficial in ecologically buffering *Bracon* spp parasitoids by observing *C. cinctus* mortality within *B. inermis* and within adjacent cereal crops as well as *Bracon* spp prevalence. 
+
+### Controlled Infestation  
+
+Results from the controlled *B. inermis* infestation confirmed high *C. cinctus* larval morality prior to overwintering [@Shanower2004; @Buteler2008] with 53% of stems exhibiting *C. cinctus* burrowing damage. Of those infested stems, a large proportion exhibited larval damage in at least 4 nodes (62.5%). While stem collection and dissection did not align with the establishment of a timeline of living larvae (stems dissected in October), we can assert that stems with at least 4 nodes of infestation would have a high probability of being alive, and thus a viable potential parasitoid host, in late July and August of the same year.  
+
+While total and per node *B inermis* infestation by *C. cinctus* was high, survival to overwintering (cutting) only occurred in 5.7% of *C. cinctus* infested stems. Our results indicate that *B. inermis* serves as a high-quality host for *C. cinctus* larvae during the spring and summer months. However, there was minimal survival of *C. cinctus* larvae in August and September, suggesting that there will be little adult emergence from *B. inermis* the following season. 
+
+### Montana Field Site Survey
+
+Analysis of weather trends in Big Sandy and Moccasin, MT confirmed that the  patterns in central and northern Montana are changing towards warmer and drier conditions [@Pederson2009]. We observed an average decrease in 0.058 inches of precipitation per year since 1975, while since 1950, temperatures have experienced an average yearly increase of 0.028°C. These changes in precipitation and temperature can have significant impacts on timing of crop production and harvest timing [@Zhu2021]. Year-over-year populations of the *Bracon* spp parasitoids are particularly sensitive, as their bivoltine nature requires the second yearly generation to find a suitable *C. cinctus* host [@Nelson1953; @Runyon2002]. NDVI analyses exhibited the prolonged senescence period for *B. inermis* when compared to adjacent cultivated wheat. *C. cinctus* larvae are cued via the thinning of the cell membranes during plant senescence to travel to the base of the stem and prepare for obligatory diapause [@Beres2011]. Because *B. inermis* senescence occurs at slower rates compared to wheat or barley, *C. cinctus* may remain within the stem later in into the summer and fall, providing potential host larvae for second generation *Bracon* parasitoids. 
+
+Previous research has shown *B. inermis* to be a quality host of both *C. cinctus* and *Bracon* spp parasitoids, but little data is available on the season fluctuation of *B. inermis* utilization [@Criddle1922; @Peirce2021; @Rand2024]. Because we collected stem samples twice during the growing season, we were able to compare parasitoid activity. We hoped to understand how parasitism rates changed from July (pre-harvest) and September of each year.
+
+Our results showed that parasitoid presence increase significantly at all sites between pre- and post-harvest collections. Given the collection methods, September collection parasitism was inherently a combination of both pre-harvest and post-harvest activity. While we cannot ascertain *Bracon* preference for host stems, we can assess that the parasitoids utilize infested *B. inermis* stems post-harvest when *C. cinctus* is no longer available within wheat stems. 
+
+Additionally, we observed a high number of stems exhibiting levels of *C. cinctus* damage that point to prolonged larval presence within *B. inermis* stems. In Big Sandy (76.2%) and Moccasin (66.5%), stems that exhibited four or more nodes of burrowing damage correlates similarly to the assertion that *C. cinctus* larvae are available within *B. inermis* stems past wheat harvest. Most importantly, in years of drought or increased temperatures where wheat senescence and harvest may occur earlier in the summer. 
+
+We utilized parasitism to cut stem ratios to understand the relative impact of *B. inermis* host sources on overall field parasitism. Assessing overall numbers of insects can potentially diminish the apparent importance of *B. inermis*, as per square meter stem counts in cultivated wheat are denser than *B. inermis* counts within coulees and along roadsides *B. inermis*. Our findings of significantly greater ratios of parasitized stems to cut stems within *B. inermis* when compared to adjacent when indicates these field-side areas provide greater parasitoid source per square meter when compared to cultivated fields. This emphasizes the significance of accounting for habitat diversity to sustain parasitoid populations over successive years, as well as recognizing the crucial role of edge-row areas in maximizing parasitoid effectiveness in minimizing *C. cinctus* damage.
+
+<!-- Overall, this work suggests that maintaining and supporting field-edge areas containing *B. inermis* provides an unmistakable benefit to *C. cinctus* control in cereal crop production. The characteristics of *B. inermis* make it uniquely beneficial in both as a sink for *C. cinctus* larvae, and as a source for *Bracon* adults. *B. inermis* is a common grass found throughout the golden triangle of Montana and other wheat cultivation areas [@Bolwahn2011]. -->
 
 
 
-<!-- Big Sandy -->
-
-<!-- Turn: 3m x 17m = 51$m^2$ -->
-
-<!-- North Road North: 5m x 20m = 100$m^2$ -->
-
-<!-- North Road South: 5m x 20m = 200$m^2$ -->
-
-<!-- Each sample: 1$m^2$ -->
-
-<!-- Wheat field sampled area 4 rows, 10 meters between each row samples taken at 5 and 20 distance from the edge This means the area of the sampled area is 20x4m = 80$m^2$ Each sample we'll count as 1m x 0.5m = 0.5$m^2$ This means 160 possible samples from the sampling area. -->
-
-<!-- Big Sandy NN Brome: 100$m^2$ - number of Wheat: 80$m^2$ -->
-
-<!-- Just need the density per unit area. don't need the total number of p-toids in the entire sampling area. -->
-
-<!-- Just need to standardize it to area so that the sampling size of wheat is the same as brome. These were different in the field. Brome: 1$m^2$ wheat: 0.5$m^2$ -->
-
-<!-- Also need: - weather data to see if there is a drought causing crashes/spikes - NDVI data to show greening of brome compared to wheat late in the season -->
 
 ## Figures 
+
 
 ### Figure 1 {#figure1}
 ```{r FIG1_both_prcp_plot, fig.cap = "Figure 1: Average yearly precipitation (in) for Big Sandy and Moccasin, Montana. Black trend line signifies averaged negative trend between both locations. Data gathered from NOAA and MSU-ARS. A significant linear relationship (r = 0.1, P = 0.033, estimate = -0.058) was observed between year and average yearly precipitation."}
@@ -1268,32 +1380,45 @@ both_temp_plot
 bs_ndvi_plot
 ```
 
+![](Images/brome_images.jpg)
+
 ### Figure 4 {#figure4}
-```{r inf_cut_plot, fig.align='left', fig.cap = "Figure 4: Comparison of year and treatment group for controlled infestation of *B. inermis*. We observed a significant difference in cutting between high and low treatment groups (*r = 0.592, P < 0.05*)."}
+```{r inf_cut_plot, fig.cap = "Figure 4: Comparison of year and treatment group for controlled infestation of *B. inermis*. We observed a significant difference in cutting between high and low treatment groups (*r = 0.592, P < 0.05*)."}
 inf_cut_plot
 ```
 
 ### Figure 5 {#figure5}
-```{r figure5_pf_nodes_plot, fig.align='left', fig.cap="Figure 6: Ineternodes infested by *B. cephi* within controlled infestation plots in Bozeman, MT, USA. We found that 61.2% of stems exhibited infestation in at least 5 nodes"}
+```{r figure5_pf_nodes_plot, fig.cap="Figure 6: Ineternodes infested by *B. cephi* within controlled infestation plots in Bozeman, MT, USA. We found that 61.2% of stems exhibited infestation in at least 5 nodes"}
 pf_nodes_plot
 ```
 
 ### Figure 6 {#figure6}
-```{r figure6_brome_nodes, fig.align='left', fig.cap="Figure 6: Internodes infested by *B. cephi* within collected *B. inermis* stems in Moccasin and Big Sandy, MT, USA."}
+```{r figure6_brome_nodes, fig.cap="Figure 6: Internodes infested by *B. cephi* within collected *B. inermis* stems in Moccasin and Big Sandy, MT, USA."}
 brome.nodes
 ```
 
 ### Figure 7 {#figure7}
-```{r figure7_field_cut_plot, fig.align='left', fig.cap="Figure 7: Stem cutting by *C. cinctus*. We compared WSS cutting in *B. inermis* and adjacent wheat fields in Big Sandy and Moccasin, MT, USA. The horizontal lines correspond to yearly mean cutting for each plant type across all sampling sites."}
+```{r figure7_field_cut_plot, fig.cap="Figure 7: Stem cutting by *C. cinctus*. We compared WSS cutting in *B. inermis* and adjacent wheat fields in Big Sandy and Moccasin, MT, USA. The horizontal lines correspond to yearly mean cutting for each plant type across all sampling sites."}
 field_cut_plot
 ```
 
 ### Figure 8 {#figure8}
-```{r figure8, fig.align='left', fig.cap="Ratios of parasitized to cut stems in *B. inermis* and adjacent cultivated wheat. Dotted line represents where a 1:1 cut:parasitized ratio lies."}
+```{r figure8, fig.cap="Ratios of parasitized to cut stems in *B. inermis* and adjacent cultivated wheat. Dotted line represents where a 1:1 cut:parasitized ratio lies."}
 ratio_plot
 ```
 
+### Figure 9 {#figure9}
+```{r figure9, fig.align = 'left', fig.cap="Comparison of parasitoid presence in *B. inermis* between July and September collections."}
+brome_par_plot 
+```
 
+
+
+### Figure 10 {#figurex}
+```{r figure10, fig.cap="Location of Montana, USA field sites. Controlled *B. inermis* infestation site was in Bozeman, while field sites were located in centrally location Moccasin, MT and northern Big Sandy, MT."}
+montana_map +
+  labs(title = "Montana, USA")
+```
 
 
 ## Citations
