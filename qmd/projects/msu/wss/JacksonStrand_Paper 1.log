@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.13)  31 MAY 2024 16:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.13)  6 JUN 2024 13:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -324,7 +324,8 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: l3backend-pdftex.def 2024-04-11 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count294
 \l__pdf_internal_box=\box53
-) (./JacksonStrand_Paper 1.aux)
+)
+No file "JacksonStrand_Paper 1".aux.
 \openout1 = `"JacksonStrand_Paper 1.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
@@ -415,114 +416,348 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 108.
 (/Users/jacksonstrand/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+
+LaTeX Warning: Citation `ref-Tscharntke2016' on page 1 undefined on input line 142.
+
+
+LaTeX Warning: Citation `ref-Kennedy2000' on page 1 undefined on input line 158.
+
+
+LaTeX Warning: Citation `ref-DeMorais2023' on page 1 undefined on input line 164.
+
+
+LaTeX Warning: Citation `ref-Cano2022' on page 1 undefined on input line 172.
+
+[1
 
 {/Users/jacksonstrand/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 
-LaTeX Warning: Citation `ref-Salesman2011' on page 2 undefined on input line 236.
+LaTeX Warning: Citation `ref-Criddle1922' on page 2 undefined on input line 176.
+
+
+LaTeX Warning: Citation `ref-Wallace1966' on page 2 undefined on input line 177.
+
+
+LaTeX Warning: Citation `ref-Lesieur2016' on page 2 undefined on input line 178.
+
+
+LaTeX Warning: Citation `ref-Morrill1996' on page 2 undefined on input line 182.
+
+
+LaTeX Warning: Citation `ref-Cockrell2021' on page 2 undefined on input line 184.
+
+
+LaTeX Warning: Citation `ref-Olfert2019' on page 2 undefined on input line 186.
+
+
+LaTeX Warning: Citation `ref-Weaver2023' on page 2 undefined on input line 186.
+
+
+LaTeX Warning: Citation `ref-Holmes1956' on page 2 undefined on input line 190.
+
+
+LaTeX Warning: Citation `ref-Beres2011a' on page 2 undefined on input line 192.
+
+
+LaTeX Warning: Citation `ref-Holmes1960' on page 2 undefined on input line 194.
+
+
+LaTeX Warning: Citation `ref-Nansen2005a' on page 2 undefined on input line 194.
+
+
+LaTeX Warning: Citation `ref-McCullough2020' on page 2 undefined on input line 195.
+
+
+LaTeX Warning: Citation `ref-Morrill2001' on page 2 undefined on input line 198.
+
+
+LaTeX Warning: Citation `ref-Nelson1953' on page 2 undefined on input line 202.
+
+
+LaTeX Warning: Citation `ref-Morrill1998' on page 2 undefined on input line 203.
+
+
+LaTeX Warning: Citation `ref-Runyon2001a' on page 2 undefined on input line 204.
+
+
+LaTeX Warning: Citation `ref-Runyon2001b' on page 2 undefined on input line 205.
+
+
+LaTeX Warning: Citation `ref-Gahan1918' on page 2 undefined on input line 209.
+
+
+LaTeX Warning: Citation `ref-Somsen1956' on page 2 undefined on input line 210.
+
+
+LaTeX Warning: Citation `ref-Davis2013' on page 2 undefined on input line 211.
+
+
+LaTeX Warning: Citation `ref-Peterson2011' on page 2 undefined on input line 217.
+
+
+LaTeX Warning: Citation `ref-Buteler2015' on page 2 undefined on input line 218.
+
+
+LaTeX Warning: Citation `ref-Buteler2008' on page 2 undefined on input line 220.
+
+
+LaTeX Warning: Citation `ref-Bekkerman2018' on page 2 undefined on input line 221.
+
+
+LaTeX Warning: Citation `ref-Adhikari2019' on page 2 undefined on input line 222.
+
+
+LaTeX Warning: Citation `ref-Rand2020' on page 2 undefined on input line 223.
+
+
+LaTeX Warning: Citation `ref-Wallace1966' on page 2 undefined on input line 227.
+
+
+LaTeX Warning: Citation `ref-Cockrell2017' on page 2 undefined on input line 228.
+
+
+LaTeX Warning: Citation `ref-Achhami2020' on page 2 undefined on input line 229.
+
+
+LaTeX Warning: Citation `ref-Ainslie1920' on page 2 undefined on input line 232.
+
+
+LaTeX Warning: Citation `ref-Buteler2009' on page 2 undefined on input line 233.
+
+
+LaTeX Warning: Citation `ref-Bhandari2020' on page 2 undefined on input line 234.
+
+
+LaTeX Warning: Citation `ref-Mendoza2006' on page 2 undefined on input line 240.
+
+
+LaTeX Warning: Citation `ref-Peirce2021' on page 2 undefined on input line 241.
+
+
+LaTeX Warning: Citation `ref-Rand2024' on page 2 undefined on input line 242.
+
+
+LaTeX Warning: Citation `ref-Seamans1928' on page 2 undefined on input line 246.
+
+
+LaTeX Warning: Citation `ref-Farstad1945' on page 2 undefined on input line 247.
+
+
+LaTeX Warning: Citation `ref-Bolwahn2011' on page 2 undefined on input line 257.
+
+
+LaTeX Warning: Citation `ref-Criddle1922' on page 2 undefined on input line 260.
+
+
+LaTeX Warning: Citation `ref-Farstad1945' on page 2 undefined on input line 261.
+
+
+LaTeX Warning: Citation `ref-Beres2011a' on page 2 undefined on input line 262.
+
+
+LaTeX Warning: Citation `ref-Carlson1985' on page 2 undefined on input line 265.
+
+
+LaTeX Warning: Citation `ref-Willson2000' on page 2 undefined on input line 266.
+
+
+LaTeX Warning: Citation `ref-Dillemuth2008' on page 2 undefined on input line 267.
+
+
+LaTeX Warning: Citation `ref-Otfinowski2006' on page 2 undefined on input line 270.
+
+
+LaTeX Warning: Citation `ref-Rand2024' on page 2 undefined on input line 271.
+
+
+LaTeX Warning: Citation `ref-Wilson1923' on page 2 undefined on input line 275.
+
+
+LaTeX Warning: Citation `ref-Adhikari2019' on page 2 undefined on input line 276.
+
+
+LaTeX Warning: Citation `ref-Weaver2005' on page 2 undefined on input line 278.
+
+
+LaTeX Warning: Citation `ref-Holmes1963' on page 2 undefined on input line 283.
+
+
+LaTeX Warning: Citation `ref-Holmes1982' on page 2 undefined on input line 284.
+
+
+LaTeX Warning: Citation `ref-Peterson1999' on page 2 undefined on input line 286.
+
+
+LaTeX Warning: Citation `ref-Evans1999' on page 2 undefined on input line 287.
 
 [2]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 322.
+
+LaTeX Warning: Citation `ref-ggplot' on page 3 undefined on input line 335.
+
+
+LaTeX Warning: Citation `ref-Pettorelli2005' on page 3 undefined on input line 345.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 357.
 (/Users/jacksonstrand/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 326.
+(Font)              <10> on input line 361.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 326.
+(Font)              <7> on input line 361.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 326.
-[3{/Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}] [4{/Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] [5]
-<JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf, id=146, 453.695pt x 313.17pt>
+(Font)              <5> on input line 361.
+
+LaTeX Warning: Citation `ref-Hager2024' on page 3 undefined on input line 370.
+
+[3{/Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
+
+LaTeX Warning: Citation `ref-lme4' on page 4 undefined on input line 418.
+
+
+LaTeX Warning: Hyper reference `figure1' on page 4 undefined on input line 439.
+
+
+LaTeX Warning: Hyper reference `figure2' on page 4 undefined on input line 443.
+
+
+LaTeX Warning: Hyper reference `figure3' on page 4 undefined on input line 450.
+
+
+LaTeX Warning: Hyper reference `figure4' on page 4 undefined on input line 464.
+
+[4{/Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
+
+LaTeX Warning: Hyper reference `figure5' on page 5 undefined on input line 475.
+
+
+LaTeX Warning: Hyper reference `figure7' on page 5 undefined on input line 490.
+
+
+LaTeX Warning: Hyper reference `figure8' on page 5 undefined on input line 507.
+
+
+LaTeX Warning: Citation `ref-Shanower2004' on page 5 undefined on input line 540.
+
+
+LaTeX Warning: Citation `ref-Mendoza2006' on page 5 undefined on input line 541.
+
+
+LaTeX Warning: Citation `ref-Buteler2008' on page 5 undefined on input line 542.
+
+[5]
+
+LaTeX Warning: Citation `ref-Pederson2009' on page 6 undefined on input line 567.
+
+
+LaTeX Warning: Citation `ref-Zhu2021' on page 6 undefined on input line 571.
+
+
+LaTeX Warning: Citation `ref-Nelson1953' on page 6 undefined on input line 575.
+
+
+LaTeX Warning: Citation `ref-Runyon2002' on page 6 undefined on input line 576.
+
+
+LaTeX Warning: Citation `ref-Villacorta1971' on page 6 undefined on input line 580.
+
+
+LaTeX Warning: Citation `ref-Beres2011' on page 6 undefined on input line 582.
+
+
+LaTeX Warning: Citation `ref-Criddle1922' on page 6 undefined on input line 589.
+
+
+LaTeX Warning: Citation `ref-Peirce2021' on page 6 undefined on input line 590.
+
+
+LaTeX Warning: Citation `ref-Rand2024' on page 6 undefined on input line 591.
+
+
+LaTeX Warning: Citation `ref-Criddle1922' on page 6 undefined on input line 593.
+
+
+LaTeX Warning: Citation `ref-Peirce2021' on page 6 undefined on input line 594.
+
+
+LaTeX Warning: Citation `ref-Rand2024' on page 6 undefined on input line 595.
+
+[6]
+<JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf, id=53, 453.695pt x 313.17pt>
 File: JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf  used on input line 597.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf  used on input line 640.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-<JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf, id=147, 453.695pt x 313.17pt>
+<JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf, id=54, 453.695pt x 313.17pt>
 File: JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf  used on input line 609.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf  used on input line 652.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-[6] [7 <./JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf>]
-<JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf, id=176, 454.69875pt x 315.1775pt>
+<JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf, id=55, 454.69875pt x 315.1775pt>
 File: JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf  used on input line 621.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf  used on input line 664.
 (pdftex.def)             Requested size: 454.70456pt x 315.18153pt.
-<Images/brome_images.jpg, id=177, 3864.4375pt x 1775.63374pt>
+<Images/brome_images.jpg, id=56, 3864.4375pt x 1775.63374pt>
 File: Images/brome_images.jpg Graphic file (type jpg)
 <use Images/brome_images.jpg>
-Package pdftex.def Info: Images/brome_images.jpg  used on input line 629.
+Package pdftex.def Info: Images/brome_images.jpg  used on input line 672.
 (pdftex.def)             Requested size: 469.72708pt x 215.83043pt.
-[8 <./JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf>] [9 <./JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf>]
-<JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf, id=210, 453.695pt x 308.15125pt>
+[7 <./JacksonStrand_Paper 1_files/figure-latex/FIG1_both_prcp_plot-1.pdf>] [8 <./JacksonStrand_Paper 1_files/figure-latex/both_temp_plot-1.pdf>] [9 <./JacksonStrand_Paper 1_files/figure-latex/bs_ndvi_plot-1.pdf>]
+<JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf, id=106, 453.695pt x 308.15125pt>
 File: JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf  used on input line 635.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf  used on input line 678.
 (pdftex.def)             Requested size: 453.6939pt x 308.15048pt.
-<JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf, id=211, 453.695pt x 313.17pt>
+<JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf, id=107, 453.695pt x 313.17pt>
 File: JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf  used on input line 646.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf  used on input line 691.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-[10 <./Images/brome_images.jpg> <./JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf>]
-<JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf, id=227, 453.695pt x 313.17pt>
+<JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf, id=108, 453.695pt x 313.17pt>
 File: JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf  used on input line 656.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf  used on input line 701.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-<JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf, id=228, 453.695pt x 313.17pt>
+<JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf, id=109, 453.695pt x 313.17pt>
 File: JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf  used on input line 665.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf  used on input line 710.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-<JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf, id=229, 459.7175pt x 313.17pt>
+<JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf, id=110, 459.7175pt x 313.17pt>
 File: JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf  used on input line 676.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf  used on input line 721.
 (pdftex.def)             Requested size: 459.7304pt x 313.17877pt.
-<JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf, id=230, 453.695pt x 313.17pt>
+<JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf, id=111, 453.695pt x 313.17pt>
 File: JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf  used on input line 686.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf  used on input line 731.
 (pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-<JacksonStrand_Paper 1_files/figure-latex/figure10-1.pdf, id=231, 466.74374pt x 270.00874pt>
+<JacksonStrand_Paper 1_files/figure-latex/figure10-1.pdf, id=112, 466.74374pt x 270.00874pt>
 File: JacksonStrand_Paper 1_files/figure-latex/figure10-1.pdf Graphic file (type pdf)
 <use JacksonStrand_Paper 1_files/figure-latex/figure10-1.pdf>
-Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure10-1.pdf  used on input line 695.
+Package pdftex.def Info: JacksonStrand_Paper 1_files/figure-latex/figure10-1.pdf  used on input line 740.
 (pdftex.def)             Requested size: 466.74971pt x 270.01219pt.
-[11 <./JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf>] [12 <./JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf>] [13 <./JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf>] [14 <./JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf>] [15 <./JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf>] [16 <./JacksonStrand_Paper 1_files/figure-latex/figure10-1.pdf>] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 878--881
-\T1/lmr/m/n/10 Mues / 37UXAAAAYAAJ ? hl = en & gbpv = 1 & dq = Bracon + Lissogaster + Mues : +A + Parasite + of + the + Wheat +
- []
+[10 <./Images/brome_images.jpg>] [11 <./JacksonStrand_Paper 1_files/figure-latex/inf_cut_plot-1.pdf>] [12 <./JacksonStrand_Paper 1_files/figure-latex/figure5_pf_nodes_plot-1.pdf>] [13 <./JacksonStrand_Paper 1_files/figure-latex/figure6_brome_nodes-1.pdf>] [14 <./JacksonStrand_Paper 1_files/figure-latex/figure7_field_cut_plot-1.pdf>] [15 <./JacksonStrand_Paper 1_files/figure-latex/figure8-1.pdf>] [16 <./JacksonStrand_Paper 1_files/figure-latex/figure9-1.pdf>]
 
+! LaTeX Error: Unicode character ▪ (U+25AA)
+               not set up for use with LaTeX.
 
-Overfull \hbox (813.28653pt too wide) in paragraph at lines 889--894
-\T1/lmr/m/n/10 De-part-ment of Agri-cul-ture Tech-ni-cal Bul-letin No. 1350. Avail-able from []https://books.google.com/books?hl=en&lr=&id=dcMXAAAAYAAJ&oi=fnd&pg=PA1&dq=Stem+sawflies+of+economic+importance+in+grain+crops+in+the+United+States&ots=e0FbKZOb6x&sig=_fPd1FCRZ_HK-
- []
-
-[18] (./JacksonStrand_Paper 1.aux)
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-04-11>
- ***********
-
-LaTeX Warning: There were undefined references.
-
- ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.781 ....prairiesoilsandcrops.caVolume4·▪2011}
+                                                  . 
 Here is how much of TeX's memory you used:
- 11276 strings out of 476010
- 178164 string characters out of 5790700
- 1942751 words of memory out of 5000000
- 33183 multiletter control sequences out of 15000+600000
+ 11171 strings out of 476010
+ 176309 string characters out of 5790700
+ 1939751 words of memory out of 5000000
+ 33119 multiletter control sequences out of 15000+600000
  612992 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 89i,7n,93p,645b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/jacksonstrand/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on "JacksonStrand_Paper 1.pdf" (18 pages, 2507043 bytes).
-PDF statistics:
- 513 PDF objects out of 1000 (max. 8388607)
- 436 compressed objects within 5 object streams
- 94 named destinations out of 1000 (max. 500000)
- 256 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 89i,7n,93p,366b,511s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+!  ==> Fatal error occurred, no output PDF file produced!
