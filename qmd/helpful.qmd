@@ -2,8 +2,6 @@
 title: "Helpful Resources & Links"
 ---
 
-Below I have put many of the links that helped me.
-
 ## R Studio
 
 -   Guide to using R made by [Jared Adam](https://www.linkedin.com/in/jared-adam-24b107241/){style="text-decoration: none;"}: <a href="https://jared-adam-psu.github.io/R-Tutorial-for-Tooker-Lab/" target="_blank">One code to rule them all (┛ಠ_ಠ)┛彡O</a>
@@ -36,10 +34,13 @@ Below I have put many of the links that helped me.
 
 -   A guide to using GitHub created by [Callum Arnold](https://www.linkedin.com/in/arnold-c/){style="text-decoration: none;"}: <a href="https://psu-git.callumarnold.com" target="_blank">Introduction to Git and GitHub</a>
 
+## R Statistics
+[Mixed Effects Models](https://meghan.rbind.io/blog/2022-06-28-a-beginners-guide-to-mixed-effects-models)
 
-Mixed Effects Models
-https://meghan.rbind.io/blog/2022-06-28-a-beginners-guide-to-mixed-effects-models/
+## Citations
+I use quarto to generate my website reports. Here are a couple of resources to do the same.  
 
+- [Zotero Citations Repository](https://www.zotero.org/styles){target="_blank"}  
+- 
 
-Watershed volunteering
-https://youtu.be/65MAB0qRtAE?si=beO8jD5t5SOJzooF
+[Watershed volunteering](https://youtu.be/65MAB0qRtAE?si=beO8jD5t5SOJzooF){target="_blank"}
