@@ -16,8 +16,8 @@ writeLines(content, "paper1.rmd")
 render("paper1.rmd", 
        output_format = "word_document",
        output_file = paste0("JacksonStrand_Paper 1.docx"))
-render("paper1.rmd", output_format = "pdf_document",
-       output_file = paste0("JacksonStrand_Paper 1.pdf"))
+# render("paper1.rmd", output_format = "pdf_document",
+#        output_file = paste0("JacksonStrand_Paper 1.pdf"))
 
 # move the files to the convert folder
 file.copy(paste0("JacksonStrand_Paper 1.docx"), 

@@ -20,7 +20,7 @@ This document can be downloaded as either a .docx or .pdf document. Please be aw
 
 ## Abstract
 
-Wheat stem sawfly, *Cephus cinctus* Norton (WSS), causes significant damage in cereal crops throughout the Northern Great Plains of North America. Bracon cephi and Bracon lissogaster are native WSS parasitoids important in managing WSS outbreaks and damage. Smooth Brome (Bromus inermis) grass has been found to be an effective parasitoid sink, and potential trap crop, when grown in areas surrounding wheat fields in Montana. As climate changes continue to alter central and northern Montana, WSS will continue to cause immense damage to dry-land cereal crop yields. My study observes the utilization of smooth brome in providing year-over-year host refuge for Bracon spp. We measured the WSS larval survival rate within controlled smooth brome plots, observing a maximum end-of-year survival of 5.7%. We also collected stems from central and northern Montana where we measured the WSS infestation and parasitoid prevalence within cultivated wheat and adjacent smooth brome. Montana fields sites showed similar high year-end WSS larval mortality while showcasing high levels of parasitism. This research underlines the importance of providing a sustainable ecological buffer for WSS parasitoids as climate conditions continue to change.
+Wheat stem sawfly, *Cephus cinctus* Norton (WSS), causes significant damage in cereal crops throughout the Northern Great Plains of North America. *Bracon cephi* and *B. lissogaster* are native WSS parasitoids important in managing WSS outbreaks and damage. Smooth Bromegrass (*Bromus inermis*) grass has been found to be an effective parasitoid sink, and potential trap crop, when grown in areas surrounding wheat fields in Montana. As climate changes continue to alter central and northern Montana, WSS will continue to cause immense damage to dry-land cereal crop yields. We analyzed both local temperature and precipitation trends at our sample sites, and found statistically significant increases in temperature and decreases in precipitation over the past fifty years. Our study observes the utilization of smooth brome in providing year-over-year host refuge for Bracon spp parasitoids. We measured the WSS larval infestation and survival rate within controlled smooth brome plots, observing a maximum infestation of 66.5% and a maximum end-of-year survival of 5.7%. We also collected stems from sites in central and northern Montana where we measured the WSS infestation and parasitoid prevalence within cultivated wheat and adjacent smooth brome. Montana fields sites showed high levels of *C. cinctus* infestation within both *B. inermis* and adjacent wheat crop in Big Sandy (64.5% *B. inermis*, 65.7% adjacent wheat) and Moccasin (50.6%, 38.6%). We observed high year-end WSS larval mortality measured as stem cutting of infested stems with *B. inermis* when compared to adjacent wheat in Big Sandy (2.9% *B. inermis*, 46.5% adjacent wheat) and Moccasin (6.4%, 49.4%). Infested stems exhibited parasitism in both Big Sandy (7.11% *B. inermis*, 8.6% adjacent wheat) and Moccasin (6.11%, 2.09%). This research underlines the importance of providing a sustainable ecological buffer for WSS parasitoids as climate conditions continue to change.
 
 ## Introduction
 
@@ -36,7 +36,7 @@ Several parasitoid or predatory species attack *C. cinctus* within wild grass ho
 
 Recent research has shown natural non-cultivated grasses such as *Agropyron cristatum*, *Bromus techtorum*, *Bromus inermis*, *Elymus trachycaulus*, and *Thinopyrum intermedium* host *C. cinctus* and most also host Bracon spp. parasitoids quite well [@Mendoza2006; @Peirce2021; @Rand2024]. We find investigating *B. inermis* holds the most potential, as it has been shown to be a quality initially-accepted host for *C. cinctus* oviposition while also leading to high larval mortality later on [@Seamans1928; @Farstad1945]. However, there is a lack of detailed relating to the total infestation, cutting, and parasitism within *B. inermis* at multiple time points throughout the growing season. Quantitative assessment of potential 'reservoir' characteristics and local spatial information could prove useful in fully understanding the ecological impacts of maintaining *B. inermis* along roadways and within coulees.  
 
-Smooth brome (*Bromus inermis* Leyss) is a Eurasian cool-season rhizomatous grass introduced to the United States in 1884 [@Bolwahn2011].*B. inermis* was originally thought of as potentially useful as a trap crop in order to combat the growing WSS problem with cultural control practices [@Criddle1922; @Farstad1945; @Beres2011a]. Due to its low agricultural value, and propensity to form monocultures and out compete many native grasses, *B. inermis* is categorized as invasive in some habitats [@Carlson1985; @Willson2000; @Dillemuth2008]. However, *B. inermis* still holds considerable ecological and potential economic value due to its late senescence and WSS antibiosis properties [@Otfinowski2006; @Rand2024].
+Smooth brome (*Bromus inermis* Leyss) is a Eurasian cool-season rhizomatous grass introduced to the United States in 1884 [@Bolwahn2011].*B. inermis* was originally thought of as potentially useful as a trap crop in order to combat the growing WSS problem with cultural control practices [@Criddle1922; @Seamans1928; @Farstad1945; @Beres2011a]. Due to its low agricultural value, and propensity to form monocultures and out compete many native grasses, *B. inermis* is categorized as invasive in some habitats [@Carlson1985; @Willson2000; @Dillemuth2008]. However, *B. inermis* still holds considerable ecological and potential economic value due to its late senescence and WSS antibiosis properties [@Otfinowski2006; @Rand2024].
 
 Montana's golden triangle, an area of central and northern Montana with intense cereal grain production, is prone to drought and burning via wildfire [@Wilson1923; @Adhikari2019]. As both *C. cinctus* and its host-specific parasitoids are relatively restricted in their annual mobility [@Weaver2005], environmental extremes can have broad impacts on both local pest and natural enemy populations. As with many predator-prey interactions, the *C. cinctus* and parasitoid populations fluctuate, with crashes and spikes experienced in close succession and through ineteraction with drought [@Holmes1963; @Holmes1982]. Similar examples of these classical population dynamics patterns can be found in wolves and moose on Isle Royale [@Peterson1999], and Coccinellidae and aphids [@Evans1999], among others. 
 
@@ -48,31 +48,33 @@ Using these studies, we addressed three questions, 1) what is the total *C. cinc
 
 ## Materials and Methods
 
-All data for experiments was analyzed using R Studio (R Studio version 2024.04.0+735, R 2024). 
-
-### Weather data and NDVI analysis
-
-*Weather data.* We assessed the medium- and long-term temperature and precipitation trends of our field sites using weather data from the National Oceanic and Atmospheric Administration (NOAA, Silver Spring, MA, USA). Data for each field site was averaged from three of the closest weather stations to that location. Data was plotted using R package 'ggplot' (version 3.4.4) [@ggplot]. Data was then fit using a linear model using the 'lm' command using average yearly precipitation (inches) as the response variable and year as the predictor.
-
-*NDVI analysis.* We compared the relative greening throughout the growing season between wheat fields and adjacent *B. inermis* using the normalized difference vegetation index (NDVI). NDVI is typically used to assess vegetation health and density, and is calculated from the visible and near-infrared light reflected by vegetation [@Pettorelli2005]. NDVI data measurements were directly downloaded using Google Earth Engine (Google Inc. 2023, Mountain View, CA, USA). Similar to our weather data analysis, NDVI data was modeled using the linear modeling package 'lm' in R to discern differences in NDVI measurments over time. 
-
 ### Controlled *C. cinctus* infestation of *B. inermis*
 
 *Insects and Cages.* Assessment of *C. cinctus* infestation and mortality within *B. inermis* were assessed using a 34 x 60 ft plot at the Arthur H. Post Agronomy Farm (43°38'19.39"N, 116°14'28.86"W), an experimental farm of Montana State University in Bozeman, MT. There is a negligible population of *C. cinctus* and associated parasitoids at this location. Experimental cages  were built using 1-inch PVC piping with the netting made using 530$\mu$ Amber Lumite Screen (BioQuip$^\circledR$ Products, LLC). Twelve cages were built to dimensions of 6ft x 3ft x 3ft (L x W x H) with cage locations selected randomly based on the space available within the plot and arranged in sets of three.
 
 Wheat stem stubble was collected in Three Forks, MT, USA (43°38'19.39"N, 116°14'28.86"W) from fields that experienced high levels of *C. cinctus* infestation and cutting the year prior, as previously described [@Hager2024]. Cut stubble, which contained *C. cinctus* larvae in diapause, were kept refrigerated between -2°C and 3°C for \>100 days as required to complete obligatory larval diapause. As needed, stubs were removed from refrigeration and kept at 22-27°C for 4-5 weeks inside of 100 oz GladWare® storage containers (Glad®, Oakland, California USA). Once *B. inermis* stems reached six inches tall, stub containers with emerging sawflies were added to cages to mimic sawfly infestation pressure. Sawfly quantity treatments were as follows: high (600 stubs), low (200 stubs), and control (0 stubs).
 
-*Data Collection.* In late August, *B. inermis* stems were collected from each cage. Each stem was sliced open using X-Acto® knives to collect data on infestation, dead larvae and live larvae, as well as very rare parasitism events, for each internode.
+*Data Collection.* In late August, *B. inermis* stems were collected from each cage. Each stem was dissected using X-Acto® knives to collect data on infestation, dead larvae and live larvae, as well as very rare parasitism events, for each internode.
 
 ### Montana Field Survey
 
-*Stem collection and processing.* We conducted a field survey to assess *C. cinctus* infestation, larval mortality, and *B. cephi* and *B. lissogaster* prevalence within *B. inermis* and adjacent wheat fields. Sites were chosen across 2 counties in north-central Montana, United States. (Chouteau, Judith Basin), which consistently experience high *C. cinctus* pressure. Samples were collected from wheat fields and adjacent *B. inermis* in early July and late August in 2022, and 2023 from sites in Big Sandy and Moccasin MT, USA. Sampling sites were set up as 100$m^2$ polygons along the edge of adjoining wheat fields. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected using a shovel to remove both stem and root material. Wheat stems were collected at distances of 5 and 20 meters from the edge of the field. Samples were collected in 4 rows at 10 meters apart. 2 samples were collected in each row at distances of 5 and 20 meters. 1 ft samples were collected at each point.
+*Weather data and NDVI* Field sites were chosen across two counties, Choteau and Judith Basin, within the 'Golden Triangle' of Montana, United States [fig. 1](#figure1), areas that consistently experience high *C. cinctus* pressure. We assessed the medium- and long-term temperature and precipitation trends of our field sites using weather data from the National Oceanic and Atmospheric Administration (NOAA, Silver Spring, MA, USA). Data for each field site was averaged from three of the closest weather stations to that location. 
+
+To better understand how precipitation patterns vary throughout the growing season, we looked at local daily precipitation totals from weather stations at our sampling sites in Big Sandy and Moccasin, MT. Data was pulled online from historical WeatherUnderground weather station data [@WeatherUnderground]. Precipitation readings were broken into two categories - dates before July 15 and after September 15, as well as between July 15 and September 15. These dates were chosen based on typical wheat harvest and historical periods of known *Bracon* spp activity. In the 'Golden Triangle', typical spring wheat harvest takes place in mid-July on average [@Wilson1923; @Zhu2021].
+
+We used the normalized difference vegetation index (NDVI) to compare the relative greening throughout the growing season between wheat fields and adjacent *B. inermis* ([fig. 2](#figure2)). NDVI is typically used to assess vegetation health and density, and is calculated from the visible and near-infrared light reflected by vegetation [@Pettorelli2005]. NDVI data measurements were directly downloaded using Google Earth Engine (Google Inc. 2023, Mountain View, CA, USA).
+
+*Stem collection and processing.* We conducted a field survey to assess *C. cinctus* infestation, larval mortality, and *B. cephi* and *B. lissogaster* prevalence within *B. inermis* and adjacent wheat fields. Samples were collected from wheat fields and adjacent *B. inermis* in early July and late August in 2022, and 2023 from sites in Big Sandy and Moccasin MT, USA. Sampling sites were set up as 100$m^2$ polygons along the edge of adjoining wheat fields. Four collection squares of 1ft x 1ft were randomly selected within each polygon during both collection events each year. All stems within each 1 x 1 ft square were collected using a shovel to remove both stem and root material. Wheat stems were collected at distances of 5 and 20 meters from the edge of the field. Samples were collected in 4 rows at 10 meters apart. 2 samples were collected in each row at distances of 5 and 20 meters. 1 ft samples were collected at each point.
 
 Wheat and *B. inermis* stems were then returned to Montana State University, Bozeman, Montana and stored in a 10°C cold, humid storage until dissection. Stems were dissected in the same manner as samples from our controlled experiment. We recorded presence or absence of *C. cinctus* larval infestation, live eggs, dead eggs, dead larvae, live larvae and parasitism, in addition to stem cutting. Sawfly larvae were identified based on descriptions in Criddle (1915) and Wallace and McNeal (1996).
 
-*Statistical Analysis.* We used generalized linear mixed models with binomial errors (logit link) fit using bound optimization by quadratic approximation, with a maximum of 200,000 iterations, were run in the *lme4* package in R [@lme4] to examine the effects of location and year (fixed effects) on each of the three response variables: proportion of stems infested, proportion of stems cut, and proportion of stems parasitized by *Bracon* spp. 
-
 To better understand the densities of host *C. cinctus* and the *Bracon* spp. within the wheat and adjacent *B. inermis* at each sampling site, we converted our units to the ratio of parasitoids to surviving hosts stem per unit area. Densities of stems are different when considering semi-natural, long-standing stands of *B. inermis* and the adjacent cultivated wheat or barley. 
+
+### Statistical Analysis
+
+All statistical analyses were done in R [@R2024] using R Studio (version 4.3.2). Data was plotted using R package 'ggplot' (version 3.4.4) [@ggplot]. We analyzed long- and short-term weather trends using linear modeling and the 'lm' command. Weather data was analyzed using either average yearly precipitation (inches) or average yearly temperature (°C) as the response variable and year as the predictor. Similar to our weather data analysis, NDVI data was linear modeled to discern differences in NDVI measurements over time. 
+
+We used generalized linear mixed models with binomial errors (logit link) fit using bound optimization by quadratic approximation, with a maximum of 200,000 iterations, were run in the *lme4* package in R [@lme4] to examine the effects of location and year (fixed effects) on each of the three response variables: proportion of stems infested, proportion of stems cut, and proportion of stems parasitized by *Bracon* spp. 
 
 ## Results
 
@@ -95,9 +97,260 @@ library(readxl)
 library(kableExtra)
 library(openxlsx)
 library(lme4)
+library(gridExtra)
 ```
 
-### Historical Weather Analysis & NDVI
+### Controlled *C. cinctus* Infestation of *B. inermis*
+
+```{r column.order}
+column.order <- c("distance", "collection", "p.inf", 
+                  "p.cut", "p.par", "poten")
+
+column.order2 <- c("location", "distance", "collection", "p.inf", 
+                  "p.cut", "p.par", "poten")
+
+round_based_on_size <- function(x) {
+  threshold <- 0.01
+  rounded_values <- ifelse(abs(x) > threshold, round(x, 2), round(x, 3))
+  return(rounded_values)
+}
+```
+
+```{r (pf.RAW) post farm n.inf data}
+pf.raw.2022 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2022/Post\ Farm\ 2022.xlsx", sheet = "n.inf")
+pf.raw.2023 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2023.xlsx", sheet = "n.inf")
+```
+
+```{r (pf.inf.23) post farm inf data}
+pf.inf.23 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2023.xlsx", sheet = "inf") %>%
+  rename(n.1 = 8, n.2 = 9, n.3 = 10, n.4 = 11,
+         n.5 = 12, n.6 = 13, n.7 = 14, n.8 = 15,
+         n.9 = 16, n.10 = 17)
+```
+
+```{r (pf.comb) post farm data combined}
+# 2022
+pf.2022.site <-
+pf.raw.2022 %>%
+  group_by(treatment, site) %>%
+  reframe(site, treatment,
+            p.inf = sum(iv, ir, ix)/sum(uv, ur, iv, ir, ix),
+            cut = sum(cut)/sum(total),
+            total.stems = sum(iv, ir, ix, uv, ur)) %>%
+  unique() %>%
+  pivot_longer(-c(treatment, total.stems, site),
+               names_to = "type",
+               values_to = "percent") %>%
+  mutate(year = "2022")
+
+# 2023
+pf.2023.site <-
+pf.raw.2023 %>%
+  group_by(treatment, site) %>%
+  reframe(treatment, site, 
+          t.inf = sum(n.iv, n.ir, n.ix),
+          p.inf = sum(n.iv, n.ir, n.ix)/sum(n.uv, n.ur, 
+                                            n.iv, n.ir, n.ix),
+          cut = sum(cut)/sum(total),
+          total.stems = sum(n.iv, n.ir, n.ix, n.uv, n.ur)) %>%
+  distinct() %>%
+  pivot_longer(-c(treatment, total.stems, site),
+               names_to = "type",
+               values_to = "percent") %>%
+  filter(!type == "t.inf") %>%
+  arrange(type) %>%
+  mutate(year = "2023")
+
+pf.comb <-
+  pf.2022.site %>%
+  rbind(pf.2023.site) %>%
+  group_by(treatment, year, type) %>%
+  mutate(count = n(),
+         average = mean(percent),
+         sd = sd(percent),
+         se = (sd/sqrt(count))) %>%
+  reframe(treatment, year, type,
+          mean = mean(percent),
+          sd = mean(sd),
+          se = mean(se)) %>%
+  unique()
+
+
+```
+
+```{r (pf.total) pf total stems}
+# 2022 totals
+pf.2022.total <-
+  pf.raw.2022 %>%
+  group_by(treatment) %>%
+  reframe(total = sum(uv, ur, iv, ir, ix)) %>%
+  mutate(year = "2022")
+  
+# 2023 totals
+pf.2023.total <-
+  pf.raw.2023 %>%
+  group_by(treatment) %>%
+  reframe(total = sum(n.uv, n.ur, n.iv, n.ir, n.ix)) %>%
+  mutate(year = "2023")
+
+pf.total.comb <-
+  pf.2022.total %>%
+  rbind(pf.2023.total)
+
+```
+
+```{r pf_lm}
+raw.23 <-
+pf.raw.2023 %>%
+  dplyr::select(site, treatment,
+                n.iv, n.ir, n.ix, n.ur, n.uv,
+                cut) %>%
+  rename(iv = n.iv,
+         ir = n.ir,
+         ur = n.ur,
+         ix = n.ix,
+         uv = n.uv) %>%
+  mutate(year = 2023)
+
+raw.22 <-
+pf.raw.2022 %>%
+  dplyr::select(site, treatment, 
+                ix, ir, iv, ur, uv,
+                cut) %>%
+  mutate(year = 2022)
+
+pf_inf_lm <-
+raw.23 %>%
+  rbind(raw.22) %>%
+  group_by(site, treatment, year) %>%
+  reframe(total = sum(iv, ir, ix, ur, uv),
+          inf = sum(iv, ir, ix)) %>%
+  lm(inf ~ treatment + year, data = .) %>%
+  summary()
+
+pf_cut_lm <-
+raw.23 %>%
+  rbind(raw.22) %>%
+  group_by(site, treatment, year) %>%
+  reframe(total = sum(iv, ir, ix, ur, uv),
+          inf = sum(iv, ir, ix),
+          cut = sum(cut)) %>%
+  lm(cut ~ treatment + year, data = .) %>%
+  summary()
+```
+
+```{r pf_per, eval = F}
+raw.23 %>%
+  rbind(raw.22) %>%
+  group_by(treatment) %>%
+  reframe(total = sum(iv, ir, ix, ur, uv),
+          inf = sum(iv, ir, ix),
+          cut = sum(cut),
+          p.inf = inf/total,
+          p.cut = cut/inf)
+```
+
+*C. cinctus* heavily infested stems of *B. inermis* in the controlled test conditions. Averaged across both years, we observed 66.5% of stems infested for high treatments and 47.3% of stems for low treatments. We found strong evidence suggesting that there was a significant difference between infestation at high and low treatment levels when holding year constant (*r = `r round(pf_inf_lm$r.squared,3)`, P \< 0.05*, [Fig. 3](#figure3)).
+
+```{r fig4_inf_cut_plot code}
+pf.comb.hl <-
+pf.comb %>%
+  filter(!treatment == "control")
+
+inf_cut_plot <-
+ggplot() +
+  facet_wrap(~treatment) +
+  geom_bar(stat = "identity",
+           position = position_dodge(),
+           data = pf.comb.hl %>%
+             filter(type == "p.inf"),
+           aes(year, mean, fill = "p.inf")) +
+  geom_bar(stat = "identity",
+           position = position_dodge(),
+           data = pf.comb.hl %>%
+             filter(type == "cut"),
+           aes(year, mean, fill = "cut")) +
+  geom_errorbar(data = pf.comb.hl,
+                aes(x = year,
+                    ymin = mean - se,
+                    ymax = mean + se),
+                position = position_dodge(0.9),
+                width = 0.2,
+                alpha = 0.5) +
+  theme_bw() +
+  labs(x = element_blank(),
+       y = "Percentage of stems (%)",
+       fill = element_blank()) +
+  scale_fill_brewer(palette = "Greys",
+                    labels = c("Cut", "Infested"))
+```
+
+Stem cutting by mature larvae, leading into winter, was observed at 5.7% for the high treatments and 3.9% for the low, showing strong evidence for a difference in cutting between high and low treatment groups (*r = `r round(pf_cut_lm$r.squared,3)`, P < 0.05*). There was a dramatic decrease in survival observed from initial infestation to stem cutting. 
+
+```{r figure_5_pf_inf_nodes}
+pf.y.2022 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2022.xlsx", sheet = "inf")
+pf.y.2023 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2023.xlsx", sheet = "inf")
+
+# DATA FOR THE PLOT
+pf.nodes.plot.data <-
+pf.y.2023 %>%
+  dplyr::select(-c(Name, 'Date Proc')) %>%
+  dplyr::select(treatment, 6:15) %>%
+  pivot_longer(-c(treatment),
+               names_to = "node",
+               values_to = "value") %>%
+  mutate(node = gsub("n_", "", node)) %>%
+  na.omit() %>%
+  mutate(year = "2023") %>%
+  rbind(pf.y.2022 %>%
+          dplyr::select(-c(site1, site2, site12, site3,
+                           Name, 'Date Proc')) %>%
+          dplyr::select(treatment, 
+                        2, 3, 4, 5, 6, 
+                        7, 8, 9, 10, 11) %>%
+          pivot_longer(-c(treatment),
+                       names_to = "node",
+                       values_to = "value") %>%
+          na.omit() %>%
+          mutate(year = "2022")) %>%
+  group_by(year, treatment, node) %>%
+  reframe(count = n()) %>%
+  group_by(year, treatment) %>%
+  mutate(per = count/sum(count)) %>%
+  mutate(node = as.numeric(node)) 
+
+# PLOT
+pf_nodes_plot <-
+  pf.nodes.plot.data %>%
+  ggplot() +
+  geom_bar(stat = 'identity',
+           aes(x = node, y = per, fill = treatment),
+           position = position_dodge(),
+           color = "black") +
+  theme_bw() +
+  scale_fill_brewer(palette = "Greys") +
+  scale_x_continuous(breaks = 1:10) +
+  labs(x = "Stem Internode",
+       y = "Percent of internodes infested") +
+  facet_wrap(~year) 
+
+pf_nodes_over_4_table <-
+pf.nodes.plot.data %>%
+  group_by(year, node) %>%
+  reframe(count = sum(count)) %>%
+  group_by(year) %>%
+  mutate(per = count/sum(count)) %>%
+  filter(node > 4) %>%
+  group_by(year) %>%
+  reframe(sum = sum(per))
+```
+
+*C. cinctus* infested stems often contained larvae burrowing through multiple nodes. In 2022, `r round(pf_nodes_over_4_table[1,2],3)*100`% of stems were observed to have at least 4 nodes burrowed through, or 5 internodes occupied. In 2023, `r round(pf_nodes_over_4_table[2,2],3)*100`% of stems had at least 4 nodes infested [Fig. 4](#figure4)
+
+
+### Montana Field Sites
+
+#### Historical Weather Analysis & NDVI
 
 ```{r moc_weather}
 
@@ -323,10 +576,286 @@ moc_temp_maes %>%
 
 ```
 
+```{r bs_seasonal_plot}
+lochy_precip <-
+read_excel("weather/precip_scrape.xlsx", sheet = "big_sandy")
 
+line_table <-
+lochy_precip %>%
+  dplyr::select(date, prcp) %>%
+  mutate(month = month(date),
+         day = day(date),
+         year = as.factor(year(date))) %>%
+  mutate(new_date = make_date(year = 0,
+                              month = month,
+                              day = day)) %>%
+   mutate(category = case_when(new_date < "0000-07-15" ~ "pre",
+                              new_date > "0000-09-15" ~ "post",
+                              new_date >= "0000-07-15" & new_date <= "0000-09-15" ~ "mid")) %>%
+  mutate(model_category = if_else(category == "mid", 
+                                  "mid", "no")) 
 
+line_table_average <-
+  line_table %>%
+  group_by(month, day) %>%
+  reframe(category, new_date,
+          prcp = mean(prcp)) 
 
-We observed a significant linear relationship (*r = `r round(both_prcp_lm$r.squared,3)`, P = `r round(both_prcp_lm$coefficients[2,4],3)`, estimate = `r round(both_prcp_lm$coefficients[2,1],3)`*) between average precipitation and year for both Big Sandy and Moccasin, Montana. For each location and one-year increase, we observed a 0.05 inch decrease in precipitation. ([Fig. 1](#figure1)). Additionally, we observed a significant positive linear relationship (*r = `r round(both_temp_lm$r.squared,3)`, P \< 0.05, estimate = `r round(both_temp_lm$coefficients[2,1],3)`*) between year and average yearly temperature for Moccasin and Big Sandy, MT. Thus, each year, the average daily temperature has increased by `r round(both_temp_lm$coefficients[2,1],2)`°C. ([Fig. 2](#figure2)).
+category_averages <-
+line_table_average %>%
+  na.omit() %>%
+  group_by(category) %>%
+  reframe(prcp = mean(prcp))
+
+bs_seasonal_lm <-  
+line_table %>%
+  lm(prcp ~ model_category + year, data = .) %>%
+  summary()
+
+mult = 3
+
+smooth_plot <-
+ggplot() +
+  geom_smooth(aes(x = new_date, y = prcp),
+              data = line_table_average,
+              se = FALSE,
+              method = 'loess',
+              color = "black") +
+  geom_rect(aes(xmin = as.Date("0000-05-01", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0528 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-05-01", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-07-15", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0528 * mult, yend = 0.0528 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  geom_rect(aes(xmin = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0164 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-09-15", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0164 * mult, yend = 0.0164 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  geom_rect(aes(xmin = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-10-31", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0281 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-10-31", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0281 * mult, yend = 0.0281 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  theme_bw()
+
+bs_seasonal_plot <-
+ggplot() +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "pre"),
+            color = "black",
+            linewidth = 0.25) +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "post"),
+            color = "black",
+            linewidth = 0.25) +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "mid"),
+            color = "black") +
+  geom_rect(aes(xmin = as.Date("0000-05-01", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0528 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-05-01", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-07-15", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0528 * mult, yend = 0.0528 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  geom_rect(aes(xmin = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0164 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-09-15", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0164 * mult, yend = 0.0164 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  geom_rect(aes(xmin = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-10-31", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0281 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-10-31", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0281 * mult, yend = 0.0281 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  labs(x = NULL,
+       y = "Average Daily Precipitation (in)",
+       color = NULL) +
+  scale_y_continuous(sec.axis = sec_axis(~ . * mult, 
+                                         name = "Average Seasonal Precpitation (in)")) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%B") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+```
+
+```{r moc_seasonal_plot}
+moc_precip <-
+read_excel("weather/precip_scrape.xlsx", sheet = "moccasin")
+
+line_table <-
+moc_precip %>%
+  dplyr::select(date, prcp) %>%
+  mutate(month = month(date),
+         day = day(date),
+         year = as.factor(year(date))) %>%
+  mutate(new_date = make_date(year = 0,
+                              month = month,
+                              day = day)) %>%
+   mutate(category = case_when(new_date < "0000-07-15" ~ "pre",
+                              new_date > "0000-09-15" ~ "post",
+                              new_date >= "0000-07-15" & new_date <= "0000-09-15" ~ "mid")) %>%
+  mutate(model_category = if_else(category == "mid", 
+                                  "mid", "no")) 
+
+line_table_average <-
+  line_table %>%
+  group_by(month, day) %>%
+  reframe(category, new_date,
+          prcp = mean(prcp)) 
+
+category_averages <-
+line_table_average %>%
+  na.omit() %>%
+  group_by(category) %>%
+  reframe(prcp = mean(prcp))
+
+moc_seasonal_lm <-  
+line_table %>%
+  lm(prcp ~ model_category + year, data = .) %>%
+  summary()
+
+mult = 3
+
+moc_seasonal_plot <-
+ggplot() +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "pre"),
+            color = "black",
+            linewidth = 0.25) +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "post"),
+            color = "black",
+            linewidth = 0.25) +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "mid"),
+            color = "black") +
+  geom_rect(aes(xmin = as.Date("0000-05-01", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0528 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-05-01", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-07-15", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0528 * mult, yend = 0.0528 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  geom_rect(aes(xmin = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0164 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-07-15", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-09-15", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0164 * mult, yend = 0.0164 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  geom_rect(aes(xmin = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"), 
+                xmax = as.Date("0000-10-31", 
+                               format = "%Y-%m-%d"),
+                ymin = 0, 
+                ymax = 0.0281 * mult),
+            alpha = 0.1,
+            fill = "blue") +
+  geom_segment(aes(x = as.Date("0000-09-15", 
+                               format = "%Y-%m-%d"), 
+                   xend = as.Date("0000-10-31", 
+                                  format = "%Y-%m-%d"),
+                   y = 0.0281 * mult, yend = 0.0281 * mult),
+               color = "blue",
+               alpha = 0.5) +
+  labs(x = NULL,
+       y = "Average Daily Precipitation (in)",
+       color = NULL) +
+  scale_y_continuous(sec.axis = sec_axis(~ . * mult, 
+                                         name = "Average Seasonal Precpitation (in)")) +
+  scale_x_date(
+    date_breaks = "1 month",
+    date_labels = "%B") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+```
+
+In both Big Sandy and Moccasin, MT, we observed a decrease in average yearly precipitation and increase in average yearly temperature. We observed a significant linear relationship (*r = `r round(both_prcp_lm$r.squared,3)`, P = `r round(both_prcp_lm$coefficients[2,4],3)`, estimate = `r round(both_prcp_lm$coefficients[2,1],3)`*) between average precipitation and year for both Big Sandy and Moccasin, Montana. For each location and one-year increase, we observed a 0.05 inch decrease in precipitation. ([Fig. 5](#figure5)). Additionally, we observed a significant positive linear relationship (*r = `r round(both_temp_lm$r.squared,3)`, P \< 0.05, estimate = `r round(both_temp_lm$coefficients[2,1],3)`*) between year and average yearly temperature for Moccasin and Big Sandy, MT. Thus, each year, the average daily temperature has increased by `r round(both_temp_lm$coefficients[2,1],2)`°C. ([Fig. 6](#figure6)). 
+Analyzing local, precipitation data over the past five years yielded information on how central and northern Montana experience relative dryness during the late-summer months. In Big Sandy, when controlling for year, we saw strong evidence of a significant difference (*p<0.05, F=2.067*, [fig. 7](#figure7)) between daily rainfall in months prior July 15 and after September 15 compared to days within the July 15 to September 15 'late-summer' period. Analysis of Moccain precipitation data revealed that there is little evidence (*p=0.08, F=1.535*) to suggest a difference between the two date categories. 
 
 ```{r Big_Sandy_NDVI}
 lochy <-
@@ -344,9 +873,9 @@ lochy %>%
   summary()
 
 
-label_x <- as.Date("2023-07-20")
+label_x <- as.Date("2023-07-15")
 label_y <- 0.75
-line_x <- as.numeric(as.Date("2023-07-20"))
+line_x <- as.numeric(as.Date("2023-07-15"))
 
 bs_ndvi_plot <-
 lochy %>%
@@ -355,7 +884,8 @@ lochy %>%
              alpha = 0.5,
              pch = 1,
              size = 0.75) +
-  geom_line(aes(x = date, y = ndvi, color = plant_type, linetype = plant_type),
+  geom_line(aes(x = date, y = ndvi, 
+                color = plant_type, linetype = plant_type),
             alpha = 0.5,
             size = 0.5) +
   geom_smooth(aes(x = date, y = ndvi, color = plant_type),
@@ -363,277 +893,21 @@ lochy %>%
   geom_vline(xintercept = line_x,
              linetype = "dashed", color = "black") +
   geom_label(aes(x = label_x,
-                 y = 0.75),
-             label = "Spring wheat harvest",
+                 y = 0.8),
+             label = "Average spring wheat harvest",
              hjust = -0.1,
              size = 3) +
-  geom_segment(aes(x = as.Date("2023-07-20")+5, 
-                   y = 0.75, 
-                   xend = as.Date("2023-07-20"), 
-                   yend = 0.75)) +
   theme_bw() +
   guides(color = FALSE) +
-  labs(x = "2023 Growing Season",
+  labs(x = NULL,
        y = "NDVI",
        linetype = NULL) +
-  scale_linetype_discrete(labels = c(expression(italic("B. inermis")),
-                                                      "Spring Wheat"))
+  scale_linetype_discrete(labels = c(expression(italic("B. inermis")),"Spring Wheat"))
 ```
 
-We observed a notable difference in NDVI when comparing adjacent *B. inermis* and spring wheat. We saw a significant difference in the July NDVI (*`r round(ndvi_model$r.squared,3)`, P \< 0.05*). The *B. inermis* NDVI remained relatively linear in it's downslope (BROME SLOPE POST JULY) compared to the wheat field (WHEAT FIELD POST JULY). ([Fig. 3](#figure3))
+We observed a notable difference in NDVI when comparing adjacent *B. inermis* and spring wheat. We saw a significant difference in the *B. inermis* post-July 15 NDVI (*`r round(ndvi_model$r.squared,3)`, P<0.05*) when compared to the post-July 15 NDVI of the adjacent wheat crop. The *B. inermis* NDVI remained relatively linear in it's downslope compared to the wheat field ([Fig. 7](#figure7)).
 
-Need to add map showing where NDVI measurements came from
-
-### Controlled *C. cinctus* Infestation of *B. inermis*
-
-```{r column.order}
-column.order <- c("distance", "collection", "p.inf", 
-                  "p.cut", "p.par", "poten")
-
-column.order2 <- c("location", "distance", "collection", "p.inf", 
-                  "p.cut", "p.par", "poten")
-
-round_based_on_size <- function(x) {
-  threshold <- 0.01
-  rounded_values <- ifelse(abs(x) > threshold, round(x, 2), round(x, 3))
-  return(rounded_values)
-}
-```
-
-```{r (pf.RAW) post farm n.inf data}
-pf.raw.2022 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2022/Post\ Farm\ 2022.xlsx", sheet = "n.inf")
-pf.raw.2023 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2023.xlsx", sheet = "n.inf")
-```
-
-```{r (pf.inf.23) post farm inf data}
-pf.inf.23 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2023.xlsx", sheet = "inf") %>%
-  rename(n.1 = 8, n.2 = 9, n.3 = 10, n.4 = 11,
-         n.5 = 12, n.6 = 13, n.7 = 14, n.8 = 15,
-         n.9 = 16, n.10 = 17)
-```
-
-```{r (pf.comb) post farm data combined}
-# 2022
-pf.2022.site <-
-pf.raw.2022 %>%
-  group_by(treatment, site) %>%
-  reframe(site, treatment,
-            p.inf = sum(iv, ir, ix)/sum(uv, ur, iv, ir, ix),
-            cut = sum(cut)/sum(total),
-            total.stems = sum(iv, ir, ix, uv, ur)) %>%
-  unique() %>%
-  pivot_longer(-c(treatment, total.stems, site),
-               names_to = "type",
-               values_to = "percent") %>%
-  mutate(year = "2022")
-
-# 2023
-pf.2023.site <-
-pf.raw.2023 %>%
-  group_by(treatment, site) %>%
-  reframe(treatment, site, 
-          t.inf = sum(n.iv, n.ir, n.ix),
-          p.inf = sum(n.iv, n.ir, n.ix)/sum(n.uv, n.ur, 
-                                            n.iv, n.ir, n.ix),
-          cut = sum(cut)/sum(total),
-          total.stems = sum(n.iv, n.ir, n.ix, n.uv, n.ur)) %>%
-  distinct() %>%
-  pivot_longer(-c(treatment, total.stems, site),
-               names_to = "type",
-               values_to = "percent") %>%
-  filter(!type == "t.inf") %>%
-  arrange(type) %>%
-  mutate(year = "2023")
-
-pf.comb <-
-  pf.2022.site %>%
-  rbind(pf.2023.site) %>%
-  group_by(treatment, year, type) %>%
-  mutate(count = n(),
-         average = mean(percent),
-         sd = sd(percent),
-         se = (sd/sqrt(count))) %>%
-  reframe(treatment, year, type,
-          mean = mean(percent),
-          sd = mean(sd),
-          se = mean(se)) %>%
-  unique()
-
-
-```
-
-```{r (pf.total) pf total stems}
-# 2022 totals
-pf.2022.total <-
-  pf.raw.2022 %>%
-  group_by(treatment) %>%
-  reframe(total = sum(uv, ur, iv, ir, ix)) %>%
-  mutate(year = "2022")
-  
-# 2023 totals
-pf.2023.total <-
-  pf.raw.2023 %>%
-  group_by(treatment) %>%
-  reframe(total = sum(n.uv, n.ur, n.iv, n.ir, n.ix)) %>%
-  mutate(year = "2023")
-
-pf.total.comb <-
-  pf.2022.total %>%
-  rbind(pf.2023.total)
-
-```
-
-```{r pf_lm}
-raw.23 <-
-pf.raw.2023 %>%
-  dplyr::select(site, treatment,
-                n.iv, n.ir, n.ix, n.ur, n.uv,
-                cut) %>%
-  rename(iv = n.iv,
-         ir = n.ir,
-         ur = n.ur,
-         ix = n.ix,
-         uv = n.uv) %>%
-  mutate(year = 2023)
-
-raw.22 <-
-pf.raw.2022 %>%
-  dplyr::select(site, treatment, 
-                ix, ir, iv, ur, uv,
-                cut) %>%
-  mutate(year = 2022)
-
-pf_inf_lm <-
-raw.23 %>%
-  rbind(raw.22) %>%
-  group_by(site, treatment, year) %>%
-  reframe(total = sum(iv, ir, ix, ur, uv),
-          inf = sum(iv, ir, ix)) %>%
-  lm(inf ~ treatment + year, data = .) %>%
-  summary()
-
-pf_cut_lm <-
-raw.23 %>%
-  rbind(raw.22) %>%
-  group_by(site, treatment, year) %>%
-  reframe(total = sum(iv, ir, ix, ur, uv),
-          inf = sum(iv, ir, ix),
-          cut = sum(cut)) %>%
-  lm(cut ~ treatment + year, data = .) %>%
-  summary()
-```
-
-```{r pf_per, eval = F}
-raw.23 %>%
-  rbind(raw.22) %>%
-  group_by(treatment) %>%
-  reframe(total = sum(iv, ir, ix, ur, uv),
-          inf = sum(iv, ir, ix),
-          cut = sum(cut),
-          p.inf = inf/total,
-          p.cut = cut/inf)
-```
-
-Initially, *C. cinctus* heavily infested stems of *B. inermis* in the controlled test conditions. Averaged across both years, we observed 66.5% of stems infested for high treatments and 47.3% of stems for low treatments. We found strong evidence suggesting that there was a significant difference between infestation at high and low treatment levels when holding year constant (*r = `r round(pf_inf_lm$r.squared,3)`, P \< 0.05*, [Fig. 3](#figure4)).
-
-```{r fig4_inf_cut_plot code}
-pf.comb.hl <-
-pf.comb %>%
-  filter(!treatment == "control")
-
-inf_cut_plot <-
-ggplot() +
-  facet_wrap(~treatment) +
-  geom_bar(stat = "identity",
-           position = position_dodge(),
-           data = pf.comb.hl %>%
-             filter(type == "p.inf"),
-           aes(year, mean, fill = "p.inf")) +
-  geom_bar(stat = "identity",
-           position = position_dodge(),
-           data = pf.comb.hl %>%
-             filter(type == "cut"),
-           aes(year, mean, fill = "cut")) +
-  geom_errorbar(data = pf.comb.hl,
-                aes(x = year,
-                    ymin = mean - se,
-                    ymax = mean + se),
-                position = position_dodge(0.9),
-                width = 0.2,
-                alpha = 0.5) +
-  theme_bw() +
-  labs(x = element_blank(),
-       y = "Percentage of stems (%)",
-       fill = element_blank()) +
-  scale_fill_brewer(palette = "Greys",
-                    labels = c("Cut", "Infested"))
-```
-
-Stem cutting by mature larvae, leading into winter, was observed at 5.7% for the high treatments and 3.9% for the low, showing strong evidence for a difference in cutting between high and low treatment groups (*r = `r round(pf_cut_lm$r.squared,3)`, P < 0.05*). There was a dramatic decrease in survival observed from initial infestation to stem cutting. 
-
-```{r figure_5_pf_inf_nodes}
-pf.y.2022 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2022.xlsx", sheet = "inf")
-pf.y.2023 <- read_excel("/Users/jacksonstrand/Library/CloudStorage/OneDrive-MontanaStateUniversity/Data/BWW/Field/Post\ Farm/2023/Post\ Farm\ 2023.xlsx", sheet = "inf")
-
-# DATA FOR THE PLOT
-pf.nodes.plot.data <-
-pf.y.2023 %>%
-  dplyr::select(-c(Name, 'Date Proc')) %>%
-  dplyr::select(treatment, 6:15) %>%
-  pivot_longer(-c(treatment),
-               names_to = "node",
-               values_to = "value") %>%
-  mutate(node = gsub("n_", "", node)) %>%
-  na.omit() %>%
-  mutate(year = "2023") %>%
-  rbind(pf.y.2022 %>%
-          dplyr::select(-c(site1, site2, site12, site3,
-                           Name, 'Date Proc')) %>%
-          dplyr::select(treatment, 
-                        2, 3, 4, 5, 6, 
-                        7, 8, 9, 10, 11) %>%
-          pivot_longer(-c(treatment),
-                       names_to = "node",
-                       values_to = "value") %>%
-          na.omit() %>%
-          mutate(year = "2022")) %>%
-  group_by(year, treatment, node) %>%
-  reframe(count = n()) %>%
-  group_by(year, treatment) %>%
-  mutate(per = count/sum(count)) %>%
-  mutate(node = as.numeric(node)) 
-
-# PLOT
-pf_nodes_plot <-
-  pf.nodes.plot.data %>%
-  ggplot() +
-  geom_bar(stat = 'identity',
-           aes(x = node, y = per, fill = treatment),
-           position = position_dodge(),
-           color = "black") +
-  theme_bw() +
-  scale_fill_brewer(palette = "Greys") +
-  scale_x_continuous(breaks = 1:10) +
-  labs(x = "Stem Internode",
-       y = "Percent of internodes infested") +
-  facet_wrap(~year) 
-
-pf_nodes_over_4_table <-
-pf.nodes.plot.data %>%
-  group_by(year, node) %>%
-  reframe(count = sum(count)) %>%
-  group_by(year) %>%
-  mutate(per = count/sum(count)) %>%
-  filter(node > 4) %>%
-  group_by(year) %>%
-  reframe(sum = sum(per))
-```
-
-*C. cinctus* infested stems often contained larvae burrowing through multiple nodes. In 2022, `r round(pf_nodes_over_4_table[1,2],3)*100`% of stems were observed to have at least 4 nodes burrowed through, or 5 internodes occupied. In 2023, `r round(pf_nodes_over_4_table[2,2],3)*100`% of stems had at least 4 nodes infested [Fig. 5](#figure5)
-
-
-### Montana Field Sites
-
+#### Field Site Samples
 ```{r stubble data}
 # stubble 2023
 stubble.2023 <-
@@ -694,9 +968,9 @@ raw.2023 %>%
   mutate(distance = "brome")
 ```
 
-We quantified *C. cinctus* and *Bracon* spp. parasitoid presence in 6,148 wheat and grass stems across 10 research sites in 2022 and 2023. Initial infestation of *B. inermis* by *C. cinctus* varied between collection sites, with the greatest infestation taking place within our three Big Sandy, MT sampling sites (2023: 65.4%, 2022: 63.1%), while the lowest infestation observed was in Moccasin, MT (2023: 40.8%, 2022: 60.7%). Across all sites in Big Sandy and Moccasin, we observed an average infestation of 57.5% within *B. inermis* and 47.6% within the adjacent wheat. Cutting by *C. cintus* was observed at an average rate of 5.59% (se = 0.02) in *B. inermis* and 47.1% (se = 0.04) in the adjacent cultivated wheat ([Fig. 7](#figure7). 
+We quantified *C. cinctus* and *Bracon* spp. parasitoid presence in 6,148 wheat and grass stems across 10 research sites in 2022 and 2023. Initial infestation of *B. inermis* by *C. cinctus* varied between collection sites, with the greatest infestation taking place within our three Big Sandy, MT sampling sites (2023: 65.4%, 2022: 63.1%), while the lowest infestation observed was in Moccasin, MT (2023: 40.8%, 2022: 60.7%). Across all sites in Big Sandy and Moccasin, we observed an average infestation of 57.5% within *B. inermis* and 47.6% within the adjacent wheat. Cutting by *C. cintus* was observed at an average rate of 5.59% in *B. inermis* and 47.1% in the adjacent cultivated wheat ([Fig. 8](#figure8). 
 
-To generate a relative estimate of the number of available *C. cinctus* host larvae within *B. inermis* late in the growing season, we calculated the number of stems that contained at least four or more nodes with burrowing injury. In Big Sandy, 76.2% of collected stems in the fall exhibited at least 4 nodes of burrowing injury at our second sampling date. In Moccasin, the corresponding figure was 66.5%.
+To generate a relative estimate of the number of available *C. cinctus* host larvae within *B. inermis* late in the growing season, we calculated the number of stems that contained at least four or more nodes with burrowing injury. In Big Sandy, 76.2% of collected stems in the fall exhibited at least 4 nodes of burrowing injury at our second sampling date. In Moccasin, the corresponding figure was 66.5% ([Fig. 9](#figure9)).
 
 ```{r y_inf_brome}
 brome_inf_2023 <-
@@ -875,6 +1149,22 @@ brome_par_model_data %>%
 
 ```
 
+```{r per.par, eval = F}
+comb.stubble %>%
+  mutate(region = if_else(location %in% c("har", "sun", "k", "chs"), "moccasin", "big sandy")) %>%
+  group_by(region) %>%
+  reframe(total.stems = sum(total.stems),
+          inf = sum(inf),
+          cut = sum(cut),
+          par = sum(c, e),
+          inf.per = inf/total.stems,
+          cut.per = cut/inf,
+          par.per = par/inf) %>%
+  dplyr::select(par.per)
+  
+comb.stubble %>%
+  dplyr::select(-c(uninf, cut, c, e, total.stems))
+```
 
 ```{r infestation_per, eval = F}
 comb.brome %>%
@@ -887,6 +1177,19 @@ comb.brome %>%
   reframe(inf = mean(inf)) %>%
   na.omit() %>%
   arrange(desc(inf))
+
+plot.data %>%
+  filter(collection == "fall") %>%
+  group_by(region, collection, plant_type) %>%
+  reframe(per.par = sum(par)/sum(total.stems))
+
+comb.brome %>%
+  mutate(region = if_else(location %in% c("har", "sun", "k", "chs"), "moccasin", "big sandy")) %>%
+  na.omit() %>%
+  group_by(region, collection) %>%
+  reframe(inf = sum(inf),
+          cut = sum(cut),
+          cut.per = cut/inf)
 ```
 
 ```{r paraistism_per, eval = F}
@@ -1102,7 +1405,7 @@ ratio_plot <-
 ```
 
 
-We utilized the ratio of parasitized stems to cut stems to better understand the true impact of our *B. inermis* sink/source ecology. The largest ratio observed was in Big Sandy, MT in the fall of 2022, where we observed a ratio of 16 parasitoids to a single *C. cinctus*-cut stem. Thus, for every square meter of *B. inermis*, we would observe 16 stems that produced a parasitoid for every 1 stem that was likely to produce an adult *C. cinctus*. All other sample locations also showed positive ratios of parasitoids to cut stems [(Fig. 8)](#figure8).
+We utilized the ratio of parasitized stems to cut stems to better understand the true impact of our *B. inermis* sink/source ecology. The largest ratio observed was in Big Sandy, MT in the fall of 2022, where we observed a ratio of 16 parasitoids to a single *C. cinctus*-cut stem. Thus, for every square meter of *B. inermis*, we would observe 16 stems that produced a parasitoid for every 1 stem that was likely to produce an adult *C. cinctus*. All other sample locations also showed positive ratios of parasitoids to cut stems [(Fig. 10)](#figure10).
 
 To understand the seasonal trends of *Bracon* spp use of potential *C. cinctus* hosts within *B. inermis*, we collected stem samples twice each growing season. We collected one pre-harvest, in July, and a second time in September, after all adult *Bracon* spp would be dead. We observed a significant difference (*df = 96, r = 0.304, p < 0.05*) between parasitoid presence in infested stems collected in Big Sandy and Moccasin, MT. 
 
@@ -1280,55 +1583,26 @@ comb.stubble %>%
   reframe(inf = mean(inf))
 ```
 
-```{r montana map}
-world_map <- map_data("world")
-states <- map_data("state") %>%
-  filter(region == "montana")
-counties <- map_data("county") %>%
-  filter(region == "montana")
-
-area <- c("Big Sandy", "Moccasin", "Bozeman")
-lats <- c(48.177540, 47.098790, 45.678871)
-longs <- c(-110.114060, -109.882962, -111.060815)
-
-coordinates <- data.frame(area, lats, longs)
-
-montana_map <-
-ggplot() +
-  # geom_polygon(data = world_map, aes(x = long, y = lat, group = group), 
-  #              fill = "white", color = "black") +
-  geom_polygon(data = counties, aes(x = long, y = lat, group = group),
-               fill = NA, color = "black", linewidth = 0.2) +
-  geom_polygon(data = states, aes(x = long, y = lat, group = group),
-               fill = NA, color = "black", linewidth = 0.9) +
-  geom_label(data = coordinates, aes(x = longs, y = lats), 
-             color = "black", 
-             label = area,
-             size = 5,
-             vjust = 0,
-             hjust = -0.1,
-             label.padding = unit(0.25, "lines")) +
-  geom_point(data = coordinates, aes(x = longs, y = lats),
-             color = "red") +
-  coord_cartesian(xlim = c(-115.75, -104.5), ylim = c(44.5, 49)) +
-  theme_void() +
-  # theme(panel.grid.major = element_blank(),
-  #       panel.grid.minor = element_blank()) +
-  theme(aspect.ratio = 1/1.8)
-
-
-```
 
 
 ## Discussion
+<!-- CONTROLLED INFESTATION -->
+Assessment of *C. cicntus* infestation and larval mortality within *B. inermis* from out controlled infestation survey showed high infestation coupled with high larval mortality prior to overwintering diapause. Even in cases of high infestation (70%+), larval survival to cutting topped out around around 15%, pointing towards *B. inermis'* ability to serve as a quality sink for *C. cinctus* larvae. These results confirm the assertions by Criddle (1992) and Seamans (1928) that *B. inermis* can serve as a quality *C. cinctus* trap crop. In addition to high larval mortality, stem dissection exhibited high numbers of stems with over four internodes burrowed through by *C. cinctus* larvae. Larval movement through stems can be quick in the case of susceptible cultivated cereal grains [@Criddle1923]. However, *B. inermis*, given it's presumed antibiosis properties, leads to slower larval development and thus movement through the stem. We found several *B.inermis* stems with living larvae as late as late-September. 
 
-Assessing the comparative abundance of *C. cinctus* and its associated parasitoids within *B. inermis* and adjacent cultivated cereal hosts is an important initial step in evaluating whether semi-natural environments within road-side or coulee areas serve as sink or source origins of the pest and its beneficial natural adversaries infiltrating agricultural crops. As the climate of central and northern Montana continues to change, wheat stem sawfly infestation will continue to impact cereal crop yields. In this study, we monitored how *B. inermis* may be potentially beneficial in ecologically buffering *Bracon* spp parasitoids by observing *C. cinctus* mortality within *B. inermis* and within adjacent cereal crops as well as *Bracon* spp prevalence. 
+<!-- WEATHER DATA -->
+As the climate of central and northern Montana continues to change, wheat stem sawfly infestation will continue to impact cereal crop yields. Precipitation and temperature data from our sampling sites underscores the importance of continuing to monitor and conserve areas of semi-natural grassland. 50-year trends analyzed in this study show similar results to Pederson et al (2009) in which the dry-land agricultural environments found in central and northern Montana are likely to continue to become hotter and dryer on average. Over the past fifty years, precipitation in Big Sandy has decreased by an average of 0.05 inches per year. Given the trend continues, by 2050 the area could experience an inch less of rain per year.
 
-### Controlled Infestation  
+Both average precipitation and average temperatures vary widely between years as the region goes through many droughts and periods of relative high rainfall [@WeatherUnderground; @Pederson2009]. Shown in our analysis of daily measurements over the past five years, precipitation significantly decreases during the period after wheat harvest, July 15 - September15, a period when second generation *Bracon* adults are searching for *C. cinctus* larval hosts. Mid-season senesence of many *C. cinctus* host plants can then leave *Bracon* parasitoids with little resources for 
 
-Results from the controlled *B. inermis* infestation confirmed large amounts of *C. cinctus* larval mortality prior to overwintering [@Shanower2004; @Mendoza2006; @Buteler2008] with 53% of total collected stems exhibiting *C. cinctus* burrowing damage. Of those infested stems, a large proportion exhibited larval damage in at least 5 internodes (62.5%). While the timing of stem collection and dissection did not align with precise measurement of living larvae (stems dissected in October), we can assert that stems with at least 4 nodes burrowed through would have a high probability of containing large, live larvae, and thus a viable potential parasitoid host, in late July and August of the same year.  
+Prolonged drought, like seen in 2021 in Big Sandy, MT, can cause a dearth of green host plants in these semi-arid environments that can be problimatic for second generation adult parasitoids. 
 
-While total and per node *B inermis* infestation by *C. cinctus* was high, survival to overwintering (cutting) only occurred in 5.7% of *C. cinctus* infested stems. Our results indicate that *B. inermis* serves as a high-quality host for *C. cinctus* larvae during the spring and summer months. However, there was minimal survival of *C. cinctus* larvae beyond August and September, confirming that there will be little adult emergence from *B. inermis* the following season. 
+Given our analysis of NDVI at our sampling sites, it is clear that *B. inermis* is capable of continued late seasonal greening and may provide important resources for *Bracon* spp parasitoids in years of drought or crop failure. It is these buffer zones where parasitoids may be able to find *C. cinctus* larvae in numbers great enough to prevent the larger population crashes that can lead large localized increases in *C. cinctus* populations and damage [@Holmes1982]. 
+
+Analysis of larval *C. cinctus* infestation of *B. inermis* and adjacent winter wheat reveal similar results to our controlled *B. inermis* infestation in Bozeman. We found *B. inermis* infestation to be similar to that of neighboring wheat fields, making it likely that *C. cinctus* pressures *B. inermis* similarly to cultivated wheat.  
+
+<div class="box">
+Still working on adding some citations and information discussing Rand & Peirce papers and how my findings are similar and different. I collected samples twice throughout the year so got a bigger picture of how parasitism changes for each generation. It is looking like parasitism in the fall collections is much higher in the brome compared to the summer collections. Interesting!
+</div>
 
 ### Montana Field Site Survey
 
@@ -1342,6 +1616,13 @@ Additionally, we observed a high number of stems exhibiting levels of *C. cinctu
 
 We utilized parasitism to cut stem ratios to understand the relative impact of *B. inermis* host sources on overall field parasitism. Assessing overall numbers of insects can potentially diminish the apparent importance of *B. inermis*, as per square meter stem counts in cultivated wheat are denser than *B. inermis* counts within coulees and along roadsides *B. inermis*. Our findings of significantly greater ratios of parasitized stems to cut stems within *B. inermis* when compared to adjacent when indicates these field-side areas provide greater parasitoid source per square meter when compared to cultivated fields. This emphasizes the significance of accounting for habitat diversity to sustain parasitoid populations over successive years, as well as recognizing the crucial role of edge-row areas in maximizing parasitoid effectiveness in minimizing *C. cinctus* damage.
 
+### Old Discussion Text
+*C. cinctus* mortality was found to be high in controlled *B. inermis* infestation trials. Our results build upon other studies where *B. inermis* infestation confirmed previously reported high *C. cinctus* larval mortality prior to overwintering [@Shanower2004; @Mendoza2006; @Buteler2008]. Of those infested stems, a large proportion exhibited larval damage in at least 5 internodes (62.5%). While the timing of stem collection and dissection did not align with precise measurement of living larvae (stems dissected in October), we can assert that stems with at least 4 nodes burrowed through would have a high probability of containing large, live larvae, and thus a viable potential parasitoid host, in late July and August of the same year.  
+
+While total and per node *B inermis* infestation by *C. cinctus* was high, survival to overwintering (cutting) only occurred in 5.7% of *C. cinctus* infested stems. Our results indicate that *B. inermis* serves as a high-quality host for *C. cinctus* larvae during the spring and summer months. However, there was minimal survival of *C. cinctus* larvae beyond August and September, confirming that there will be little adult emergence from *B. inermis* the following season. 
+
+Assessing the comparative abundance of *C. cinctus* and its associated parasitoids within *B. inermis* and adjacent cultivated cereal hosts is an important initial step in evaluating whether semi-natural environments within road-side or coulee areas serve as sink or source origins of the pest and its beneficial natural adversaries infiltrating agricultural crops. 
+
 <!-- Overall, this work suggests that maintaining and supporting field-edge areas containing *B. inermis* provides an unmistakable benefit to *C. cinctus* control in cereal crop production. The characteristics of *B. inermis* make it uniquely beneficial in both as a sink for *C. cinctus* larvae, and as a source for *Bracon* adults. *B. inermis* is a common grass found throughout the golden triangle of Montana and other wheat cultivation areas [@Bolwahn2011]. -->
 
 
@@ -1349,63 +1630,126 @@ We utilized parasitism to cut stem ratios to understand the relative impact of *
 
 ## Figures 
 
-
 ### Figure 1 {#figure1}
-```{r FIG1_both_prcp_plot, fig.cap = "Figure 1: Average yearly precipitation (in) for Big Sandy and Moccasin, Montana. Black trend line signifies averaged negative trend between both locations. Data gathered from NOAA and MSU-ARS. A significant linear relationship (r = 0.1, P = 0.033, estimate = -0.058) was observed between year and average yearly precipitation."}
-both_prcp_plot 
+```{r figure1, fig.cap="Figure 1: Location of Montana, USA field sites. Controlled *B. inermis* infestation site was in Bozeman, while field sites were located in centrally location Moccasin, MT and northern Big Sandy, MT."}
+world_map <- map_data("world")
+states <- map_data("state") %>%
+  filter(region == "montana")
+counties <- map_data("county") %>%
+  filter(region == "montana")
+
+area <- c("Big Sandy", "Moccasin", "Bozeman")
+lats <- c(48.177540, 47.098790, 45.678871)
+longs <- c(-110.114060, -109.882962, -111.060815)
+
+coordinates <- data.frame(area, lats, longs)
+
+ggplot() +
+  # geom_polygon(data = world_map, aes(x = long, y = lat, group = group), 
+  #              fill = "white", color = "black") +
+  geom_polygon(data = counties, aes(x = long, y = lat, group = group),
+               fill = NA, color = "black", linewidth = 0.1) +
+  geom_polygon(data = states, aes(x = long, y = lat, group = group),
+               fill = NA, color = "black", linewidth = 0.5) +
+  geom_label(data = coordinates, aes(x = longs, y = lats), 
+             color = "black", 
+             label = area,
+             size = 5,
+             vjust = 0,
+             hjust = -0.1,
+             label.padding = unit(0.25, "lines")) +
+  geom_point(data = coordinates, aes(x = longs, y = lats),
+             color = "red") +
+  coord_cartesian(xlim = c(-115.75, -104.5), ylim = c(44.5, 49)) +
+  theme_void() +
+  # theme(panel.grid.major = element_blank(),
+  #       panel.grid.minor = element_blank()) +
+  theme(aspect.ratio = 1/1.8) +
+  labs(title = "Montana, USA")
 ```
 
 ### Figure 2 {#figure2}
-```{r both_temp_plot, fig.cap = "Figure 2: Average yearly temperature (°C) in Moccasin and Big Sandy, MT. Positive trendline slop suggests increasing average temperatures of the past 100 years. A significant linear relationship (*r =0.2447, P < 0.05, estimate = 0.028*) was observed between year and average yearly temperature."}
-both_temp_plot
+```{r bigsandy_ndvi, fig.cap="Figure 2: June 29, 2023 - Big Sandy, MT. Orange polygons denote location where NDVI was pulled using Google Earth Engine from both (upper left) Vida spring wheat and (central) coulee containing semi-natural grasses including majority *B. inermis*."}
+knitr::include_graphics("Images/BigSandy_NDVI_pic2.jpg")
 ```
+
 
 ### Figure 3 {#figure3}
-```{r bs_ndvi_plot, fig.cap = "Figure 3: Normalized difference vegetation index (NDVI) of *B. inermis* and adjacent spring wheat field from April 2023 to October 2023. Post harvest linear model indicates a significant difference (P values and stuff) when comparing the *B. inermis* post-harvest slope and the spring wheat post-harvest slope."}
-bs_ndvi_plot
-```
-
-![](Images/brome_images.jpg)
-
-### Figure 4 {#figure4}
-```{r inf_cut_plot, fig.cap = "Figure 4: Comparison of year and treatment group for controlled infestation of *B. inermis*. Three treatment groups - high, low, and control (0) - were used. The controlled groups showed no sign of *C. cinctus* stem damage. We observed a significant difference in cutting between high and low treatment groups (*r = 0.592, P < 0.05*)."}
+```{r inf_cut_plot, fig.cap = "Figure 3: Comparison of year and treatment group for controlled infestation of *B. inermis*. Three treatment groups - high, low, and control (0) - were used. The controlled groups showed no sign of *C. cinctus* stem damage. We observed a significant difference in cutting between high and low treatment groups (*r = 0.592, P < 0.05*)."}
 inf_cut_plot
 ```
 
-### Figure 5 {#figure5}
-```{r figure5_pf_nodes_plot, fig.cap="Figure 6: Ineternodes infested by *B. cephi* within controlled infestation plots in Bozeman, MT, USA. We found that 61.2% of stems exhibited infestation in at least 5 nodes"}
+
+### Figure 4 {#figure4}
+```{r figure5_pf_nodes_plot, fig.cap="Figure 4: Ineternodes infested by *B. cephi* within controlled infestation plots in Bozeman, MT, USA. We found that 61.2% of stems exhibited infestation in at least 5 nodes"}
 pf_nodes_plot
 ```
 
+
+
+
+
+
+
+
+### Figure 5 {#figure5}
+```{r FIG1_both_prcp_plot, fig.cap = "Figure 5: Average yearly precipitation (in) for Big Sandy and Moccasin, Montana. Data gathered from NOAA. Black trend line signifies averaged negative trend between both locations. Data gathered from NOAA and MSU-ARS. A significant linear relationship (r = 0.1, P = 0.033, estimate = -0.058) was observed between year and average yearly precipitation."}
+both_prcp_plot 
+```
 ### Figure 6 {#figure6}
-```{r figure6_brome_nodes, fig.cap="Figure 6: Internodes infested by *B. cephi* within collected *B. inermis* stems in Moccasin and Big Sandy, MT, USA."}
+```{r both_temp_plot, fig.cap = "Figure 6: Average yearly temperature (°C) in Moccasin and Big Sandy, MT. Data gathered from NOAA. Positive trendline slop suggests increasing average temperatures of the past 100 years. A significant linear relationship (*r =0.2447, P < 0.05, estimate = 0.028*) was observed between year and average yearly temperature."}
+both_temp_plot
+```
+
+
+
+
+### Figure 7 {#figure7}
+```{r bs_ndvi_plot, fig.cap = "Figure 7: Normalized difference vegetation index (NDVI) of *B. inermis* and adjacent spring wheat field from April 2023 to October 2023 in Big Sandy, MT. Post harvest linear model indicates a significant difference (P values and stuff) when comparing the *B. inermis* post-harvest slope and the spring wheat post-harvest slope."}
+bs_ndvi_plot
+```
+
+
+
+```{r moc_seasonal_pot_show, fig.cap="Figure 5: Average precipitation in Big Sandy, MT. Average daily precipitation"}
+moc_seasonal_plot
+```
+
+
+
+
+
+
+
+
+
+### Figure 8 {#figure8}
+```{r figure7_field_cut_plot, fig.cap="Figure 8: Stem cutting by *C. cinctus*. We compared WSS cutting in *B. inermis* and adjacent wheat fields in Big Sandy and Moccasin, MT, USA. The horizontal lines correspond to yearly mean cutting for each plant type across all sampling sites."}
+field_cut_plot
+```
+### Figure 9 {#figure9}
+```{r figure6_brome_nodes, fig.cap="Figure 9: Percentage of infested stems with internodes infested by *B. cephi* within collected *B. inermis* stems in Moccasin and Big Sandy, MT, USA."}
 brome.nodes
 ```
 
-### Figure 7 {#figure7}
-```{r figure7_field_cut_plot, fig.cap="Figure 7: Stem cutting by *C. cinctus*. We compared WSS cutting in *B. inermis* and adjacent wheat fields in Big Sandy and Moccasin, MT, USA. The horizontal lines correspond to yearly mean cutting for each plant type across all sampling sites."}
-field_cut_plot
-```
 
-### Figure 8 {#figure8}
-```{r figure8, fig.cap="Ratios of parasitized to cut stems in *B. inermis* and adjacent cultivated wheat. Dotted line represents where a 1:1 cut:parasitized ratio lies."}
+
+### Figure 10 {#figure10}
+```{r figure10, fig.cap="Ratios of parasitized:cut stems in *B. inermis* and adjacent cultivated wheat. Dotted line represents where a 1:1 cut:parasitized ratio lies."}
 ratio_plot
 ```
 
 ### Figure 9 {#figure9}
 ```{r figure9, fig.align = 'left', fig.cap="Comparison of parasitoid presence in *B. inermis* between July and September collections."}
 brome_par_plot 
+
 ```
 
 
 
-### Figure 10 {#figurex}
-```{r figure10, fig.cap="Location of Montana, USA field sites. Controlled *B. inermis* infestation site was in Bozeman, while field sites were located in centrally location Moccasin, MT and northern Big Sandy, MT."}
-montana_map +
-  labs(title = "Montana, USA")
-```
 
 
+![](Images/brome_images.jpg)
 ## Citations
 
 ```{r save, eval = F}

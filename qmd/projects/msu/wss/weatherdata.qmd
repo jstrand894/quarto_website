@@ -414,8 +414,89 @@ ndvi_data %>%
 
 
 
+```{r}
+library(readxl)
+lochy <-
+read_excel("qmd/projects/msu/wss/weather/lochy_weather_scrape.xlsx")
+
+line_table <-
+lochy %>%
+  dplyr::select(date, prcp) %>%
+  mutate(month = month(date),
+         day = day(date),
+         year = as.factor(year(date))) %>%
+  mutate(new_date = make_date(year = 0,
+                              month = month,
+                              day = day)) %>%
+   mutate(category = case_when(new_date < "0000-07-15" ~ "pre",
+                              new_date > "0000-09-15" ~ "post",
+                              new_date >= "0000-07-15" & new_date <= "0000-09-15" ~ "mid")) %>%
+  mutate(model_category = if_else(category == "mid", 
+                                  "mid", "no")) 
+
+line_table_average <-
+  line_table %>%
+  group_by(month, day) %>%
+  reframe(category, new_date,
+          prcp = mean(prcp)) 
+  
+line_table %>%
+  lm(prcp ~ model_category + year, data = .) %>%
+  summary()
 
 
+ggplot() +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "pre"),
+            color = "black",
+            linewidth = 0.25) +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "post"),
+            color = "black",
+            linewidth = 0.25) +
+  geom_line(aes(x = new_date, y = prcp),
+            data = line_table_average %>%
+              filter(category == "mid"),
+            color = "black") +
+  geom_rect(aes(xmin = as.Date("0000-07-15", format = "%Y-%m-%d"),
+                xmax = as.Date("0000-09-15", format = "%Y-%m-%d"),
+                ymin = -0.01,
+                ymax = 0.5),
+            color = "Black",
+            fill = "Blue",
+            size = 0.3,
+            alpha = 0.05,
+            linetype = "solid") +
+  labs(x = NULL,
+       y = "Average Daily Precipitation (in)",
+       color = NULL) +
+  theme_bw() 
+
+
+
+  # geom_vline(xintercept = as.Date("0000-07-15", 
+  #                                 format = "%Y-%m-%d"),
+  #            linetype = "dashed",
+  #            alpha = 0.5) +
+  # geom_vline(xintercept = as.Date("0000-09-15", 
+  #                                 format = "%Y-%m-%d"),
+  #            linetype = "dashed",
+  #            alpha = 0.5) +
+
+bar_table <-
+lochy %>%
+  dplyr::select(date, prcp) %>%
+  mutate(month = month(date),
+         day = day(date),
+         year = as.factor(year(date))) %>%
+  mutate(new_date = make_date(year = 0,
+                              month = month,
+                              day = day)) %>%
+  group_by(month) %>%
+  mutate(prcp = mean(prcp, na.rm = TRUE))
+```
 
 
 
